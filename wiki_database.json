@@ -1,0 +1,259 @@
+[
+    {
+        "id": "world_contemporaneo",
+        "tipo": "mundo",
+        "nombre": "La Ciudad Contemporánea",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [],
+        "detalles": {
+            "tematica": "Realista, cotidiana y urbana",
+            "epoca": "Contemporánea (Año 2026-2027)",
+            "tono": "Íntimo, personal y costumbrista"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942050248593420"
+    },
+    {
+        "id": "lugar_atico",
+        "tipo": "lugar",
+        "nombre": "El Nuevo Ático",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Hogar"
+            },
+            {
+                "id_destino": "npc_kayn",
+                "relacion": "Hogar"
+            }
+        ],
+        "detalles": {
+            "tipo_lugar": "Residencial / Apartamento",
+            "ambiente": "Cálido, luminoso y seguro",
+            "ubicacion": "Barrio residencial arbolado"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942120058851418"
+    },
+    {
+        "id": "lugar_pueblo_sierra",
+        "tipo": "lugar",
+        "nombre": "La Casa de la Sierra",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_julian",
+                "relacion": "Residencia actual"
+            }
+        ],
+        "detalles": {
+            "tipo_lugar": "Vivienda unifamiliar",
+            "ambiente": "Rústico, frío e imponente",
+            "ubicacion": "Pueblo de montaña"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942183724060712"
+    },
+    {
+        "id": "npc_elena",
+        "tipo": "npc",
+        "nombre": "Elena",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "lugar_atico",
+                "relacion": "Residente"
+            },
+            {
+                "id_destino": "npc_julian",
+                "relacion": "Hija"
+            },
+            {
+                "id_destino": "npc_kayn",
+                "relacion": "Pareja"
+            },
+            {
+                "id_destino": "trama_el_embarazo",
+                "relacion": "Madre gestante"
+            }
+        ],
+        "detalles": {
+            "rol": "Co-protagonista / Pareja de Kayn",
+            "relacion_tipo": "aliado_estrecho",
+            "personalidad": "Cariñosa, leal, decidida y protectora de su autonomía"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [
+            "https://cdn.discordapp.com/attachments/1529942245526999110/1529944037732388964/descarga_1.jpg?ex=6a63c6eb&is=6a62756b&hm=afea822c70ec0729abd39b629ee493de64fef8c8ca83b93dcb3d673d95b7c1ee&"
+        ],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942245526999110"
+    },
+    {
+        "id": "npc_julian",
+        "tipo": "npc",
+        "nombre": "Julián",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Padre"
+            },
+            {
+                "id_destino": "lugar_pueblo_sierra",
+                "relacion": "Residente"
+            },
+            {
+                "id_destino": "npc_victor",
+                "relacion": "Antiguo socio / Contratador"
+            }
+        ],
+        "detalles": {
+            "rol": "Antagonista familiar / Padre de Elena",
+            "relacion_tipo": "rival",
+            "personalidad": "Autoritario, reservado, protector y manipulador"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942331338522755"
+    },
+    {
+        "id": "npc_victor",
+        "tipo": "npc",
+        "nombre": "Víctor",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_julian",
+                "relacion": "Cómplice"
+            },
+            {
+                "id_destino": "obj_carpeta_pruebas",
+                "relacion": "Portador de las pruebas"
+            }
+        ],
+        "detalles": {
+            "rol": "Intermediario portuario / Cómplice de Julián",
+            "relacion_tipo": "rival_menor",
+            "personalidad": "Cínico, codicioso, oportunista y rudo"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942385025486848"
+    },
+    {
+        "id": "obj_test_embarazo",
+        "tipo": "objeto",
+        "nombre": "El Test de Embarazo",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "trama_el_embarazo",
+                "relacion": "Desencadenante"
+            },
+            {
+                "id_destino": "lugar_atico",
+                "relacion": "Ubicado en"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Dispositivo de diagnóstico médico",
+            "significado": "El inicio de una nueva vida y la llegada de la paternidad"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942457381425153"
+    },
+    {
+        "id": "obj_carpeta_pruebas",
+        "tipo": "objeto",
+        "nombre": "La Carpeta de Pruebas",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_victor",
+                "relacion": "Propiedad"
+            },
+            {
+                "id_destino": "trama_el_chantaje",
+                "relacion": "Elemento de extorsión"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Documentos impresos",
+            "significado": "El intento fallido de chantaje de Julián"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942514520559667"
+    },
+    {
+        "id": "trama_el_chantaje",
+        "tipo": "trama",
+        "nombre": "El Chantaje Familiar",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_julian",
+                "relacion": "Instigador"
+            },
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Víctima indirecta"
+            },
+            {
+                "id_destino": "obj_carpeta_pruebas",
+                "relacion": "Elemento clave"
+            }
+        ],
+        "detalles": {
+            "tematica": "Extorsión, secretos de familia y lealtad de pareja",
+            "estado": "Resuelta",
+            "punto_inflexion": "La emboscada fallida en la casa de la sierra"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942564399087704"
+    },
+    {
+        "id": "trama_el_embarazo",
+        "tipo": "trama",
+        "nombre": "El Camino hacia la Paternidad",
+        "mundo_id": "world_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Madre"
+            },
+            {
+                "id_destino": "obj_test_embarazo",
+                "relacion": "Desencadenante"
+            },
+            {
+                "id_destino": "lugar_atico",
+                "relacion": "Escenario principal"
+            }
+        ],
+        "detalles": {
+            "tematica": "Paternidad, convivencia, ilusión y nuevos comienzos",
+            "estado": "En curso",
+            "punto_inflexion": "La primera patada del bebé en primavera y el inicio del parto"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942611333218444"
+    }
+]
