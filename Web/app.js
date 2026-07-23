@@ -17,14 +17,15 @@ async function loadWikiData() {
     }
 }
 
-// Helper: Formatea y limpia nombres y textos (quita guiones bajos)
+// Helper: Formatea y limpia nombres y textos de forma correcta
 function cleanText(text) {
     if (!text) return "";
-    return text
-        .toString()
+    let str = text.toString()
         .replace(/^(world_|npc_|lugar_|obj_|objeto_|faccion_|trama_)/i, '')
-        .replace(/_/g, ' ')
-        .replace(/\b\w/g, l => l.toUpperCase());
+        .replace(/_/g, ' ');
+    
+    // Capitaliza la primera letra del texto sin romper eñes ni tildes internas
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function getDisplayName(idOrName) {
@@ -87,7 +88,7 @@ function renderCards() {
     `).join('');
 }
 
-// Grafo
+// Grafo Interactivo
 function initGraph() {
     const container = document.getElementById('network-graph');
 
@@ -134,7 +135,7 @@ function setMainImage(url) {
     if (mainImg) mainImg.src = url;
 }
 
-// Modal de detalles LIMPIO Y SIN DUPLICADOS
+// Modal de detalles LIMPIO, CON DESPLEGABLE DE TRAMAS Y TÍTULO DINÁMICO
 function openModal(id) {
     const item = wikiData.find(i => i.id === id);
     if (!item) return;
@@ -144,7 +145,11 @@ function openModal(id) {
 
     const hasImage = item.imagenes && item.imagenes.length > 0;
 
-    // 1. Recopilar Relaciones Directas
+    // Título dinámico (Biografía para Personajes, Descripción para lo demás)
+    const isCharacter = ['npc', 'pc', 'personaje'].includes(item.tipo.toLowerCase());
+    const sectionTitle = isCharacter ? '📖 Biografía' : '📖 Descripción';
+
+    // Recopilar Relaciones Directas e Inversas sin duplicados
     const directRelations = (item.relaciones || []).map(r => ({
         targetId: r.id_destino,
         label: cleanText(r.relacion),
@@ -153,13 +158,12 @@ function openModal(id) {
 
     const directTargetIds = new Set(directRelations.map(r => r.targetId));
 
-    // 2. Recopilar Menciones Inversas (Excluyendo las que ya están en las relaciones directas)
     const backlinks = wikiData
         .filter(other => 
             other.id !== item.id && 
             other.relaciones && 
             other.relaciones.some(r => r.id_destino === item.id) &&
-            !directTargetIds.has(other.id) // ¡Evita duplicados!
+            !directTargetIds.has(other.id)
         )
         .map(other => ({
             targetId: other.id,
@@ -167,8 +171,22 @@ function openModal(id) {
             name: other.nombre
         }));
 
-    // 3. Unificar todas las conexiones sin repetir
     const allConnections = [...directRelations, ...backlinks];
+
+    // Separar conexiones generales de las Tramas
+    const directConnections = [];
+    const tramaConnections = [];
+
+    allConnections.forEach(c => {
+        const targetObj = wikiData.find(i => i.id === c.targetId);
+        const isTrama = (targetObj && targetObj.tipo === 'trama') || c.label.toLowerCase().includes('trama');
+        
+        if (isTrama) {
+            tramaConnections.push(c);
+        } else {
+            directConnections.push(c);
+        }
+    });
 
     modalBody.innerHTML = `
         <div class="modal-grid" style="${!hasImage ? 'grid-template-columns: 1fr;' : ''}">
@@ -192,7 +210,7 @@ function openModal(id) {
                     </div>
                 </div>
 
-                <!-- Atributos limpios sin guiones bajos -->
+                <!-- Atributos del YAML -->
                 ${item.detalles && Object.keys(item.detalles).length > 0 ? `
                     <div class="attributes-row">
                         ${Object.entries(item.detalles).map(([k, v]) => `
@@ -204,18 +222,18 @@ function openModal(id) {
                     </div>
                 ` : ''}
 
-                <!-- Lore / Biografía -->
+                <!-- Título Dinámico: Biografía o Descripción -->
                 <div class="lore-section">
-                    <h3>📖 Biografía / Descripción</h3>
-                    ${item.contenido_lore ? marked.parse(item.contenido_lore) : '<p class="empty-lore">Sin descripción detallada registrada aún.</p>'}
+                    <h3>${sectionTitle}</h3>
+                    ${item.contenido_lore ? marked.parse(item.contenido_lore) : '<p class="empty-lore">Sin información detallada registrada aún.</p>'}
                 </div>
 
-                <!-- Conexiones Unificadas en Chips Horizontales (Sin duplicados) -->
-                ${allConnections.length > 0 ? `
+                <!-- Conexiones Directas (NPCs, Lugares, Objetos, Facciones) -->
+                ${directConnections.length > 0 ? `
                     <div class="connections-section">
-                        <h3>🔗 Conexiones y Vínculos (${allConnections.length})</h3>
+                        <h3>🔗 Conexiones y Vínculos (${directConnections.length})</h3>
                         <div class="connection-chips">
-                            ${allConnections.map(c => `
+                            ${directConnections.map(c => `
                                 <a href="#" class="chip-link" onclick="openModal('${c.targetId}')">
                                     <span class="chip-relation">${c.label}:</span>
                                     <span class="chip-name">${c.name}</span>
@@ -223,6 +241,21 @@ function openModal(id) {
                             `).join('')}
                         </div>
                     </div>
+                ` : ''}
+
+                <!-- Desplegable para Tramas asociadas -->
+                ${tramaConnections.length > 0 ? `
+                    <details class="tramas-details">
+                        <summary>📜 Ver Tramas asociadas (${tramaConnections.length})</summary>
+                        <div class="connection-chips">
+                            ${tramaConnections.map(c => `
+                                <a href="#" class="chip-link" onclick="openModal('${c.targetId}')">
+                                    <span class="chip-relation">${c.label}:</span>
+                                    <span class="chip-name">${c.name}</span>
+                                </a>
+                            `).join('')}
+                        </div>
+                    </details>
                 ` : ''}
 
             </div>

@@ -52,7 +52,7 @@ main { flex: 1; overflow: hidden; position: relative; }
 /* Grafo de red */
 #network-graph { width: 100%; height: 100%; min-height: 600px; background: #11111b; }
 
-/* MODAL REDISEÑADO LIMPIO */
+/* MODAL REDISEÑADO */
 .modal { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:100; backdrop-filter: blur(4px); }
 .modal.hidden { display: none; }
 .modal-content { background: var(--bg-card); width: 90%; max-width: 950px; max-height: 90vh; border-radius: 12px; padding: 30px; overflow-y: auto; border: 1px solid var(--border); position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
@@ -73,8 +73,8 @@ main { flex: 1; overflow: hidden; position: relative; }
 .modal-header h2 { font-size: 2rem; color: #fff; margin-bottom: 2px; }
 .modal-subtitle { color: var(--accent-blue); font-size: 0.9rem; margin-bottom: 15px; display: flex; gap: 15px; }
 
-/* Atributos en parrilla limpia sin cajas pesadas */
-.attributes-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
+/* Atributos en parrilla limpia */
+.attributes-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
 .attr-item { background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 6px; border-left: 3px solid var(--accent); }
 .attr-label { font-size: 0.7rem; color: var(--text-sub); text-transform: uppercase; font-weight: bold; display: block; }
 .attr-value { font-size: 0.9rem; color: #fff; font-weight: 500; }
@@ -83,8 +83,8 @@ main { flex: 1; overflow: hidden; position: relative; }
 .lore-section h3 { font-size: 1.1rem; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 .empty-lore { font-style: italic; color: var(--text-sub); font-size: 0.9rem; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 6px; }
 
-/* Sección de Conexiones Unificada con Chips Horizontales */
-.connections-section { background: rgba(0,0,0,0.2); padding: 18px; border-radius: 8px; border: 1px solid var(--border); }
+/* Sección de Conexiones Directas */
+.connections-section { background: rgba(0,0,0,0.2); padding: 15px 18px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; }
 .connections-section h3 { font-size: 1rem; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
 
 .connection-chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -109,3 +109,26 @@ main { flex: 1; overflow: hidden; position: relative; }
 }
 .chip-relation { font-weight: bold; color: var(--accent-blue); }
 .chip-link:hover .chip-relation { color: #11111b; }
+
+/* Desplegable para Tramas */
+.tramas-details { 
+    background: rgba(0,0,0,0.25); 
+    border: 1px solid var(--border); 
+    border-radius: 8px; 
+    padding: 12px 18px; 
+}
+.tramas-details summary { 
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    color: var(--accent-blue); 
+    cursor: pointer; 
+    user-select: none; 
+    outline: none; 
+    transition: color 0.2s;
+}
+.tramas-details summary:hover { color: var(--accent); }
+.tramas-details[open] summary { 
+    margin-bottom: 12px; 
+    border-bottom: 1px dashed var(--border); 
+    padding-bottom: 8px; 
+}
