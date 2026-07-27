@@ -604,39 +604,6 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1531277990686621826"
     },
     {
-        "id": "npc_peyj",
-        "tipo": "npc",
-        "nombre": "Pey'j",
-        "mundo_id": "mundo_hillys",
-        "relaciones": [
-            {
-                "id_destino": "npc_jade",
-                "relacion": "Tío adoptivo, tutor legal y protector incondicional"
-            },
-            {
-                "id_destino": "lugar_refugio_orfanato",
-                "relacion": "Cofundador y jefe del taller de mantenimiento del faro"
-            },
-            {
-                "id_destino": "faccion_red_iris",
-                "relacion": "Miembro cofundador histórico en secreto"
-            },
-            {
-                "id_destino": "lugar_taller_mammago",
-                "relacion": "Aliados mecánicos y colegas de profesión"
-            }
-        ],
-        "detalles": {
-            "especie": "Híbrido Porcino (Jabalí antropomórfico)",
-            "ocupacion": "Mecánico jefe, inventor y tutor",
-            "equipo": "Cortador de Jet-Boots (Botas Propulsoras) y llave inglesa pesada"
-        },
-        "etiquetas_discord": [],
-        "contenido_lore": "### Biografía\nPey'j es un híbrido porcino de carácter cascarrabias pero corazón de oro. Experto absoluto en mecánica, soldadura e ingeniería improvisada, es capaz de construir o reparar cualquier máquina a partir de chatarra militar. Detrás de sus constantes quejas y su humor socarrón se esconde una devoción total hacia su sobrina adoptiva Jade, a quien ha criado desde muy pequeña jurando protegerla de las sombras de su verdadero pasado.\nPey'j conoció a los verdaderos padres de Jade en los primeros días de la invasión alienígena. Tras la trágica desaparición de ambos, prometió mantener a la niña a salvo en Hillys. Para lograrlo, construyó el refugio del Faro y mantuvo en absoluto secreto su propia implicación pasada en la creación de la resistencia clandestina de la Red IRIS, intentando alejar a Jade de los peligros de la guerra abierta.\nA medida que la trama se intensifica, Pey'j se ve obligado a volver a la acción directa, equipando a Jade con inventos clave como las Botas Propulsoras para superar barreras defensivas. Su posterior captura durante la infiltración en la Antigua Fábrica de Nutripills destruye la calma del grupo y se convierte en la motivación principal de Jade para asaltar las instalaciones militares y viajar hasta Selene para rescatarlo.",
-        "imagenes": [],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1531279296876904608"
-    },
-    {
         "id": "npc_double_h",
         "tipo": "npc",
         "nombre": "Doble H (Hubert)",
@@ -846,6 +813,41 @@
         "contenido_lore": "### Biografía\nMing-Tzu es un anciano e ilustrado híbrido morsá de maneras refinadas que regenta una tienda de antigüedades y objetos raros en la zona peatonal de la Ciudad de Hillys. Detrás de sus grandes gafas y su aspecto de modesto comerciante de libros viejos se encuentra uno de los hombres más informados y cultos de toda la urbe.\nMing-Tzu conoce a Jade cuando esta visita su tienda en busca de mapas náuticos e instrumental de exploración. Admirado por el espíritu noble de la joven y cansado del acoso del ejército sobre los comerciantes locales, Ming-Tzu decide ayudarla discretamente. Es él quien le proporciona las primeras contraseñas secretas para acceder a la trastienda del Akuda Bar y contactar con la cúpula de la Red IRIS.\nAdemás de su papel como conector clandestino, Ming-Tzu actúa como un valioso comerciante en el juego: vende a Jade componentes esenciales como detectores de fauna y perlas para el mapa del holodisco, sirviendo como una guía constante para la recolección de pruebas y el avance de la causa rebelde.",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531280265572515840"
+    },
+    {
+        "id": "npc_peyj",
+        "tipo": "npc",
+        "nombre": "Pey'j",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Tío adoptivo, tutor legal y protector incondicional"
+            },
+            {
+                "id_destino": "lugar_refugio_orfanato",
+                "relacion": "Cofundador y jefe del taller de mantenimiento del faro"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Miembro cofundador histórico en secreto"
+            },
+            {
+                "id_destino": "lugar_taller_mammago",
+                "relacion": "Aliados mecánicos y colegas de profesión"
+            }
+        ],
+        "detalles": {
+            "especie": "Híbrido Porcino (Jabalí antropomórfico)",
+            "ocupacion": "Mecánico jefe, inventor y tutor",
+            "equipo": "Cortador de Jet-Boots (Botas Propulsoras) y llave inglesa pesada"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nPey'j es un híbrido porcino de carácter cascarrabias pero corazón de oro. Experto absoluto en mecánica, soldadura e ingeniería improvisada, es capaz de construir o reparar cualquier máquina a partir de chatarra militar. Detrás de sus constantes quejas y su humor socarrón se esconde una devoción total hacia su sobrina adoptiva Jade, a quien ha criado desde muy pequeña jurando protegerla de las sombras de su verdadero pasado.\nPey'j conoció a los verdaderos padres de Jade en los primeros días de la invasión alienígena. Tras la trágica desaparición de ambos, prometió mantener a la niña a salvo en Hillys. Para lograrlo, construyó el refugio del Faro y mantuvo en absoluto secreto su propia implicación pasada en la creación de la resistencia clandestina de la Red IRIS, intentando alejar a Jade de los peligros de la guerra abierta.\nA medida que la trama se intensifica, Pey'j se ve obligado a volver a la acción directa, equipando a Jade con inventos clave como las Botas Propulsoras para superar barreras defensivas. Su posterior captura durante la infiltración en la Antigua Fábrica de Nutripills destruye la calma del grupo y se convierte en la motivación principal de Jade para asaltar las instalaciones militares y viajar hasta Selene para rescatarlo.",
+        "imagenes": [
+            "https://i.ibb.co/S4JzW9HY/076c3c3d6d09.jpg"
+        ],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531304153157210152"
     },
     {
         "id": "objeto_hovercraft",
