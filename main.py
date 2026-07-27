@@ -1,10 +1,23 @@
+import os
+import threading
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 import discord
 from discord.ext import commands
 import config
 from modules.exporter import save_to_json
 from modules.scanner import scan_guild_forums
 
-# Configuración de Intents de Discord
+
+# Servidor web en segundo plano para activar el plan GRATIS ($0) de Render
+def run_dummy_server():
+    port = int(os.environ.get("PORT", 10000))
+    server = HTTPServer(("0.0.0.0", port), SimpleHTTPRequestHandler)
+    server.serve_forever()
+
+
+threading.Thread(target=run_dummy_server, daemon=True).start()
+
+# Configuración del Bot
 intents = discord.Intents.default()
 intents.message_content = True
 intents.guilds = True
@@ -15,30 +28,24 @@ bot = commands.Bot(command_prefix=config.PREFIX, intents=intents)
 @bot.event
 async def on_ready():
     print("--------------------------------------------------")
-    print(f"🤖 Bot iniciado exitosamente como: {bot.user}")
-    print(f"Escribe '{config.PREFIX}sync' para sincronizar la Wiki.")
+    print(f"🤖 Bot en la nube iniciado como: {bot.user}")
     print("--------------------------------------------------")
 
 
 @bot.command(name="sync")
 async def sync_wiki(ctx):
-    """Comando para ejecutar el escaneo y guardar la Wiki"""
-    status_msg = await ctx.send("🔄 Escaneando foros de Discord...")
+    status_msg = await ctx.send("🔄 Escaneando foros y subiendo a la nube...")
 
-    # 1. Escanear
     database, errors = await scan_guild_forums(ctx.guild)
-
-    # 2. Exportar
     success = save_to_json(database, config.JSON_FILE)
 
-    # 3. Informar
     if success:
-        response = f"✅ **¡Wiki sincronizada con éxito!**\nSe han procesado **{len(database)} elementos** en `{config.JSON_FILE}`."
+        response = f"✅ **¡Wiki en la nube actualizada!**\nSe procesaron **{len(database)} elementos**."
     else:
-        response = "❌ Hubo un error al guardar la base de datos local."
+        response = "❌ Hubo un error al actualizar GitHub."
 
     if errors:
-        response += f"\n\n⚠️ **Avisos ({len(errores)}):**\n" + "\n".join(
+        response += f"\n\n⚠️ **Avisos ({len(errors)}):**\n" + "\n".join(
             [f"- {e}" for e in errors[:5]]
         )
 
@@ -46,9 +53,4 @@ async def sync_wiki(ctx):
 
 
 if __name__ == "__main__":
-    if not config.TOKEN:
-        print(
-            "❌ ERROR: No se encontró el DISCORD_TOKEN en el archivo .env"
-        )
-    else:
-        bot.run(config.TOKEN)
+    bot.run(config.TOKEN)
