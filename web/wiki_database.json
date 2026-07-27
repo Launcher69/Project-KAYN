@@ -1,0 +1,1284 @@
+[
+    {
+        "id": "mundo_contemporaneo",
+        "tipo": "mundo",
+        "nombre": "Mundo Contemporáneo",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "lugar_primer_atico",
+                "relacion": "Ubicación inicial de la partida"
+            },
+            {
+                "id_destino": "lugar_nuevo_atico",
+                "relacion": "Ubicación actual del hogar familiar"
+            }
+        ],
+        "detalles": {
+            "tematica": "Realismo cotidiano / Drama personal y de convivencia",
+            "nivel_tecnologico": "Moderno",
+            "amenaza": "Baja (conflictos estrictamente interpersonales y familiares)"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "Mundo Contemporáneo",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942050248593420"
+    },
+    {
+        "id": "lugar_primer_atico",
+        "tipo": "lugar",
+        "nombre": "Primer Ático de Kayn",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Antiguo propietario"
+            },
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Antigua residente temporal"
+            },
+            {
+                "id_destino": "trama_cambio_hogar",
+                "relacion": "Escenario de partida"
+            }
+        ],
+        "detalles": {
+            "tipo_lugar": "Apartamento urbano",
+            "ubicacion": "Centro de la ciudad",
+            "ambiente": "Cálido, íntimo y acogedor"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "Primer Ático de Kayn",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942120058851418"
+    },
+    {
+        "id": "lugar_casa_sierra",
+        "tipo": "lugar",
+        "nombre": "Casa de la Sierra de Julián",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_julian",
+                "relacion": "Propietario / Residencia habitual"
+            },
+            {
+                "id_destino": "trama_confrontacion_julian",
+                "relacion": "Escenario del desenlace"
+            }
+        ],
+        "detalles": {
+            "tipo_lugar": "Vivienda unifamiliar",
+            "ubicacion": "Pueblo de montaña",
+            "ambiente": "Rústico, tradicional y silencioso"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "Casa de la Sierra de Julián",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942183724060712"
+    },
+    {
+        "id": "lugar_nuevo_atico",
+        "tipo": "lugar",
+        "nombre": "El Nuevo Ático",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Co-propietario"
+            },
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Co-propietaria"
+            },
+            {
+                "id_destino": "trama_paternidad",
+                "relacion": "Hogar de la futura familia"
+            }
+        ],
+        "detalles": {
+            "tipo_lugar": "Ático con gran terraza",
+            "ubicacion": "Barrio residencial silencioso",
+            "ambiente": "Luminoso, amplio y lleno de paz"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529950281729835078"
+    },
+    {
+        "id": "npc_elena",
+        "tipo": "npc",
+        "nombre": "Elena",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Pareja y compañera de vida"
+            },
+            {
+                "id_destino": "npc_julian",
+                "relacion": "Hija (actualmente distanciada)"
+            },
+            {
+                "id_destino": "lugar_nuevo_atico",
+                "relacion": "Residente y co-propietaria"
+            },
+            {
+                "id_destino": "trama_paternidad",
+                "relacion": "Madre gestante"
+            }
+        ],
+        "detalles": {
+            "rol": "Co-protagonista",
+            "estado": "En proceso de parto",
+            "personalidad": "Cariñosa, leal, resuelta y protectora",
+            "ocupacion": "No especificada (vida civil activa)"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [
+            "https://i.ibb.co/kV5gSggt/607c1cdf1eb9.jpg"
+        ],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942245526999110"
+    },
+    {
+        "id": "npc_julian",
+        "tipo": "npc",
+        "nombre": "Julián",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Padre (distanciado)"
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Ex-cliente y extorsionador"
+            },
+            {
+                "id_destino": "lugar_casa_sierra",
+                "relacion": "Residente"
+            },
+            {
+                "id_destino": "trama_confrontacion_julian",
+                "relacion": "Instigador principal"
+            }
+        ],
+        "detalles": {
+            "rol": "Antagonista relacional / Padre de Elena",
+            "estado": "Aislado en su residencia de montaña",
+            "personalidad": "Sobrio, posesivo, reservado y obstinado",
+            "ocupacion": "Ex-empresario de logística / Retirado"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942331338522755"
+    },
+    {
+        "id": "npc_victor",
+        "tipo": "npc",
+        "nombre": "Víctor",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_julian",
+                "relacion": "Cómplice y ex-socio"
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Contacto de negocios turbios del pasado"
+            }
+        ],
+        "detalles": {
+            "rol": "Antagonista menor",
+            "estado": "Activo",
+            "personalidad": "Cínico, codicioso, manipulador y pragmático",
+            "ocupacion": "Intermediario de logística en mercados grises"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942385025486848"
+    },
+    {
+        "id": "objeto_test_embarazo",
+        "tipo": "objeto",
+        "nombre": "Test de Embarazo Positivo",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Confirmante"
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Receptor"
+            },
+            {
+                "id_destino": "trama_paternidad",
+                "relacion": "Catalizador inicial"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Dispositivo de diagnóstico médico",
+            "rareza": "Común",
+            "funcion": "Confirmación de embarazo"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942457381425153"
+    },
+    {
+        "id": "objeto_carpeta_victor",
+        "tipo": "objeto",
+        "nombre": "Carpeta de Pruebas Falsas de Víctor",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_victor",
+                "relacion": "Creador"
+            },
+            {
+                "id_destino": "npc_julian",
+                "relacion": "Propietario temporal"
+            },
+            {
+                "id_destino": "trama_confrontacion_julian",
+                "relacion": "Instrumento fallido de extorsión"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Documentación impresa",
+            "rareza": "Única",
+            "funcion": "Evidencia circunstancial para chantaje"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529942514520559667"
+    },
+    {
+        "id": "trama_confrontacion_julian",
+        "tipo": "trama",
+        "nombre": "La Encerrona de Julián",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_julian",
+                "relacion": "Instigador"
+            },
+            {
+                "id_destino": "npc_victor",
+                "relacion": "Cómplice"
+            },
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Víctima y aliada de Kayn"
+            },
+            {
+                "id_destino": "lugar_casa_sierra",
+                "relacion": "Escenario del clímax"
+            }
+        ],
+        "detalles": {
+            "estado_trama": "Concluida con victoria de la pareja",
+            "importancia": "Crítica (Unión inquebrantable de Elena y Kayn)"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529950727814905856"
+    },
+    {
+        "id": "trama_cambio_hogar",
+        "tipo": "trama",
+        "nombre": "Un Nuevo Comienzo en el Ático",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "lugar_primer_atico",
+                "relacion": "Punto de partida"
+            },
+            {
+                "id_destino": "lugar_nuevo_atico",
+                "relacion": "Destino y nuevo hogar"
+            }
+        ],
+        "detalles": {
+            "estado_trama": "Completada",
+            "importancia": "Alta (Establecimiento de la independencia familiar)"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529950792088555622"
+    },
+    {
+        "id": "trama_paternidad",
+        "tipo": "trama",
+        "nombre": "El Camino a la Paternidad",
+        "mundo_id": "mundo_contemporaneo",
+        "relaciones": [
+            {
+                "id_destino": "npc_elena",
+                "relacion": "Madre gestante"
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Padre"
+            },
+            {
+                "id_destino": "lugar_nuevo_atico",
+                "relacion": "Lugar de crianza"
+            }
+        ],
+        "detalles": {
+            "estado_trama": "En curso (Comienzo del parto)",
+            "importancia": "Máxima (Arco vital de la partida)"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1529950842097107194"
+    },
+    {
+        "id": "Beyond_Good_Evil",
+        "tipo": "mundo",
+        "nombre": "Beyond Good & Evil",
+        "mundo_id": "mundo_hillys",
+        "relaciones": {
+            "facciones_presentes": [
+                "faccion_gobierno_hillys",
+                "faccion_secciones_alfa",
+                "faccion_red_iris",
+                "faccion_domz"
+            ],
+            "lugares_destacados": [
+                "lugar_refugio_orfanato",
+                "lugar_akuda_bar",
+                "lugar_taller_mammago",
+                "lugar_fabrica_nutripills",
+                "lugar_matadero_cuarentena",
+                "lugar_luna_selene"
+            ]
+        },
+        "detalles": {
+            "clima": "Oceánico costero, templado con humedad elevada y tormentas periódicas",
+            "poblacion": "Sociedad híbrida (Humanos y antropomorfos como porcinos, caprinos y aquiles)",
+            "tecnologia": "Ciencia ficción retro-futurista (Tecnología MecaImpulso, holodisco, naves anfibias)",
+            "estatus": "Bajo asedio alienígena constante y ley marcial impuesta por las Secciones Alfa"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nEl planeta Hillys es un mundo pacífico y predominantemente acuático compuesto por un gran archipiélago de islas volcánicas, una extensa red de canales transitables y vastos océanos. Su ecosistema es sumamente próspero y alberga una biodiversidad fascinante donde conviven en armonía seres humanos y razas híbridas antropomórficas. La arquitectura de sus asentamientos combina estética costera tradicional con infraestructuras futuristas impulsadas por la tecnología MecaImpulso, dando a las ciudades y poblados un ambiente dinámico y cercano a la naturaleza.\nLamentablemente, la tranquilidad de Hillys se ha visto trágicamente interrumpida por las continuas invasiones de los DomZ, una despiadada raza alienígena que busca drenar la energía vital del planeta y secuestrar a sus habitantes. Para contrarrestar esta amenaza constante, las Secciones Alfa —un ejército privado fuertemente armado— han tomado el control militar del planeta. Aunque afirman desplegar escudos de protección para defender a la población civil, su imponente presencia, el férreo control mediático y la constante propaganda gubernamental han sembrado la duda y el descontento en gran parte de la sociedad.\n\nBeyond Good & Evil",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531271747599339530"
+    },
+    {
+        "id": "lugar_luna_selene",
+        "tipo": "lugar",
+        "nombre": "Base DomZ en la Luna Selene",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_gran_sacerdote_domz",
+                "relacion": "Centro de mando supremo del líder alienígena"
+            },
+            {
+                "id_destino": "npc_general_keyl",
+                "relacion": "Lugar de reunión para pactos y conspiraciones secretas"
+            },
+            {
+                "id_destino": "faccion_domz",
+                "relacion": "Fortaleza principal y reactor de almas robadas"
+            },
+            {
+                "id_destino": "faccion_secciones_alfa",
+                "relacion": "Punto de destino final de los cargamentos humanos robados"
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Satélite natural Selene en la órbita de Hillys",
+            "atmosfera": "Artificial / Controlada por magia espiritual y biotecnología DomZ",
+            "estatus": "Fortalezas centrales de la raza alienígena y origen del conflicto"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nSelene es la luna desolada y pálida que orbita el planeta Hillys. Desde la superficie del planeta se aprecia como un astro tranquilo e inofensivo en el firmamento nocturno, pero en su cara oculta alberga la colosal estructura orgánica y metálica que sirve como la fortaleza central de la invasión DomZ en todo el sistema.\nLa base lunar es un santuario alienígena oscuro y retorcido, donde la biotecnología extraterrestre se fusiona con salas de energía mística y recámaras de almacenamiento de almas. Es aquí donde se transfieren los contenedores de energía vital absorbidos de las víctimas de Hillys y donde el Gran Sacerdote DomZ canaliza su poder para someter la voluntad de los altos mandos militares que han traicionado a la población civil.\nLlegar a la Luna Selene requiere reacondicionar por completo la nave Beluga con propulsores estelares MecaImpulso de gran potencia. Este escenario lunar representa el frente final de la guerra: un territorio inhóspito y sobrecogedor donde se decidirá no solo la liberación de todos los prisioneros secuestrados, sino el destino definitivo de toda la civilización de Hillys.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531273157334405160"
+    },
+    {
+        "id": "lugar_refugio_orfanato",
+        "tipo": "lugar",
+        "nombre": "Refugio del Orfanato (El Faro)",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Hogar, estudio fotográfico y base de operaciones"
+            },
+            {
+                "id_destino": "npc_peyj",
+                "relacion": "Residencia habitual y taller de mantenimiento"
+            },
+            {
+                "id_destino": "npc_secundo",
+                "relacion": "Servidor local y sistema de inteligencia"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Centro neurálgico clandestino de transmisiones"
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Isla costera aislada en el archipiélago de Hillys",
+            "funcion": "Orfanato para víctimas del conflicto DomZ y base operacional de Jade",
+            "sistema_defensa": "Generador de escudo MecaImpulso propulsado localmente"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nEl Faro es una estructura imponente construida sobre una prominente formación rocosa en medio del océano de Hillys. Antiguamente una baliza de navegación para las embarcaciones de los canales, el edificio fue reconvertido por Jade y su tío Pey'j en un cálido refugio y orfanato para cuidar a los niños cuyos padres han sido víctimas o secuestrados por las destructivas incursiones de las tropas DomZ.\nEl interior del Faro está adaptado para la vida cotidiana y el trabajo técnico: cuenta con dormitorios infantiles, una cocina comunitaria, la habitación de Jade con sus monitores de noticias y un completo taller en el hangar donde Pey'j realiza constantes labores de mantenimiento a su equipo. En la parte superior, la lente principal del faro ha sido modificada con un emisor de escudo protector MecaImpulso que protege toda la propiedad frente a bombardeos o meteoritos alienígenas.\nA pesar de ser un remanso de paz y un símbolo de esperanza en medio de la crisis planetaria, la constante escasez de energía para mantener activo el escudo obligará a sus residentes a adentrarse en arriesgadas misiones, convirtiendo al Faro en el centro neurálgico desde donde se orquestan los primeros pasos de la verdad periodística.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531276329746698341"
+    },
+    {
+        "id": "lugar_akuda_bar",
+        "tipo": "lugar",
+        "nombre": "Bar Akuda",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_ming_tzu",
+                "relacion": "Comercio de información e intercambios en secreto"
+            },
+            {
+                "id_destino": "npc_double_h",
+                "relacion": "Punto de contacto y reunión clandestina"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Cuartel general secreto en la planta superior"
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Zona peatonal principal de la Ciudad de Hillys",
+            "ambiente": "Taberna clandestina, centro de información y ocio nocturno",
+            "seguridad": "Clave de acceso secreta requerida para ingresar al piso superior"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nUbicado en el corazón de la zona urbana de la Ciudad de Hillys, el Bar Akuda es la taberna más célebre de todo el archipiélago. Con una mezcla entre taberna marinera tradicional y club social futurista, sus salones iluminados por letreros de neón son el punto de encuentro predilecto para marineros, comerciantes, viajeros y figuras marginales de la sociedad hillyana.\nEn la planta baja se respiran risas, música relajante e interactiva, juegos de mesa como el célebre truco de los trileros y conversaciones informales sobre el estado de las noticias y los ataques de las Secciones Alfa. Sin embargo, bajo este ambiente lúdico se esconden múltiples secretos: el bar esconde vías de escape y compartimentos de contrabando cuidadosamente disimulados tras la barra y las paredes decoradas.\nEl plato fuerte del Akuda Bar reside en su piso superior, accesible únicamente para aquellos que poseen la contraseña adecuada dada por los informantes del pueblo. Este espacio confidencial sirve como la sede de operaciones secreta y punto de encuentro de la Red IRIS en la ciudad, donde los agentes se reúnen para compartir pruebas fotográficas, desencriptar holodiscos y planear estrategias contra el régimen.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531276461963477115"
+    },
+    {
+        "id": "lugar_taller_mammago",
+        "tipo": "lugar",
+        "nombre": "Taller Mecánico de los Hermanos Mammago",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_hermanos_mammago",
+                "relacion": "Propietarios, mecánicos y gestores del taller"
+            },
+            {
+                "id_destino": "objeto_hovercraft",
+                "relacion": "Taller principal para reparaciones y mejoras MecaImpulso"
+            },
+            {
+                "id_destino": "objeto_nave_beluga",
+                "relacion": "Lugar de ensamblaje y reacondicionamiento estelar"
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Atolón flotante en las aguas exteriores del océano",
+            "especialidad": "Ingeniería náutica avanzada, motores MecaImpulso y piezas de combate",
+            "moneda_aceptada": "Perlas Azules DomZ"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nEl Taller Mammago es una impresionante estación flotante de inspiración náutica y jamaicana levantada sobre un atolón artificial en medio del mar. Regentado por los peculiares y carismáticos Hermanos Mammago —una familia de híbridos rinoceronte apasionados por la mecánica pesada y la música reggae—, este garaje es el taller de tuneo y reparación más prestigioso de todo el planeta Hillys.\nEl taller cuenta con grúas mecánicas hidráulicas, plataformas elevadoras para deslizadores y hangares diseñados específicamente para adaptar componentes de uso militar en vehículos civiles. Debido a las duras restricciones impuestas por las Secciones Alfa sobre la venta de tecnología avanzada, los Mammago no aceptan unidades monetarias convencionales para sus mejoras más potentes, exigiendo exclusivamente las valiosas y peligrosas Perlas Azules arrojadas por las criaturas DomZ.\nLleno de buen ambiente, música retumbando en los altavoces y olor a aceite de motor, el Taller Mammago es una parada obligatoria para cualquier piloto que busque transformar una modesta embarcación civil en un vehículo hiperveloz o equipar la legendaria nave Beluga para viajes interplanetarios.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531276615538180136"
+    },
+    {
+        "id": "lugar_fabrica_nutripills",
+        "tipo": "lugar",
+        "nombre": "Antigua Fábrica de Nutripills",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_double_h",
+                "relacion": "Lugar de captura y rescate durante la investigación"
+            },
+            {
+                "id_destino": "npc_general_keyl",
+                "relacion": "Instalación supervisada bajo órdenes militares directas"
+            },
+            {
+                "id_destino": "faccion_secciones_alfa",
+                "relacion": "Base industrial de patrulla y resguardo militar"
+            },
+            {
+                "id_destino": "faccion_domz",
+                "relacion": "Zona de experimentación y transferencia biológica"
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Periferia industrial de la Ciudad de Hillys",
+            "estado": "Oficialmente clausurada / Operativa en secreto",
+            "peligro": "Alto (Patrullas de Soldados Alfa pesados, robots de seguridad y trampas electrificadas)"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLa Antigua Fábrica de Nutripills es un complejo industrial lúgubre y masivo situado en las afueras de la urbe principal. En el pasado, estas instalaciones estaban dedicadas a la producción en masa de suplementos alimenticios para la población, pero tras un supuesto accidente de contaminación, el edificio fue declarado en cuarentena permanente y cerrado al público por las Secciones Alfa.\nSin embargo, detrás de sus fachadas oxidadas y sus letreros de peligro biológico se oculta una escalofriante realidad. La fábrica ha sido reequipada clandestinamente como un laboratorio militar de alta seguridad vigilado celosamente por guardias pesadamente blindados, torretas automáticas y un enjambre de robots de patrulla. Sus cintas transportadoras ya no procesan alimentos, sino contenedores sospechosos y tecnología alienígena de origen DomZ.\nAdentrarse en la Fábrica de Nutripills representa uno de los mayores desafíos de infiltración en Hillys. Es un entorno claustrofóbico de tuberías de vapor, pasillos oscuros y salas de control donde cualquier error de sigilo puede activar alarmas planetarias, pero donde se custodian las primeras pruebas irrefutables de la conspiración que envuelve al régimen.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531276735725961398"
+    },
+    {
+        "id": "lugar_matadero_cuarentena",
+        "tipo": "lugar",
+        "nombre": "El Matadero (Centro de Cuarentena Alfa)",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "faccion_secciones_alfa",
+                "relacion": "Instalación de máxima seguridad militar y control de acceso"
+            },
+            {
+                "id_destino": "faccion_domz",
+                "relacion": "Centro encubierto de recolección y embarque de prisioneros"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Objetivo prioritario de infiltración para reportaje fotográfico"
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Red de canales del sector este de Hillys",
+            "nivel_seguridad": "Extremo (Barricadas de minas, campos de fuerza y vigilancia por satélite)",
+            "proposito_oculto": "Centro de procesamiento y embarque de prisioneros civiles secuestrados"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nConocido popularmente como \"El Matadero\", este vasto y tenebroso recinto industrial en desuso es la instalación militar más fuertemente custodiada de todo el planeta Hillys. Rodeado por aguas infestadas de minas magnéticas, campos de energía infranqueables y torretas láser de largo alcance, el acceso no autorizado a este sector es castigado con la muerte inmediata.\nBajo la excusa de ser un centro médico de confinamiento y desinfección para víctimas infectadas por los ataques alienígenas, las Secciones Alfa han convertido el Matadero en una gigantesca prisión de paso y centro de logística encubierto. En su interior, miles de ciudadanos secuestrados son retenidos en cápsulas de estasis a la espera de ser transportados hacia destinos desconocidos fuera del planeta.\nEl aire dentro del Matadero es denso y frío, marcado por el eco de maquinaria pesada y la presencia perturbadora de materia orgánica DomZ entrelazada con la arquitectura metálica. Descubrir los secretos ocultos en las entrañas de este complejo es la misión más arriesgada de la resistencia, pues expone de manera definitiva el pacto secreto entre los invasores alienígenas y el alto mando militar.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531276915296571514"
+    },
+    {
+        "id": "npc_jade",
+        "tipo": "npc",
+        "nombre": "Jade",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "lugar_refugio_orfanato",
+                "relacion": "Hogar, estudio fotográfico y centro de cuidado infantil"
+            },
+            {
+                "id_destino": "npc_peyj",
+                "relacion": "Tío adoptivo, mentor técnico y compañero de equipo"
+            },
+            {
+                "id_destino": "npc_secundo",
+                "relacion": "IA asistente integrada en su equipamiento"
+            },
+            {
+                "id_destino": "npc_double_h",
+                "relacion": "Compañero de armas y colega en la Red IRIS"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Reportera investigadora estrella (nombre en clave Shauni)"
+            }
+        ],
+        "detalles": {
+            "edad": "20 años aprox.",
+            "ocupacion": "Fotoperiodista, instructora de artes marciales y cuidadora de huérfanos",
+            "armamento": "Bastón de combate Dai-Jo y Cámara MecaImpulso",
+            "origen": "Misterioso (Vinculado a la energía ancestral DomZ \"Shauni\")"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nJade es una joven independiente, empática y de tenacidad inquebrantable. Criada en el Refugio del Faro junto a su tío Pey'j, combina una profunda calidez humana con una destreza física envidiable en el combate con bastón Dai-Jo. Tras la pérdida de los padres de varios niños de la isla a manos de las tropas alienígenas, Jade asumió la responsabilidad de mantener el orfanato con escasos recursos, ganándose la vida realizando encargos de fotografía botánica y zoológica para el centro de ciencias planetario.\nSu vida cambia radicalmente cuando un corte de energía en el escudo del faro permite un ataque directo de los DomZ. Para financiar la factura eléctrica y salvar el hogar de los niños, acepta un contrato periodístico de incognito que rápidamente la conecta con la Red IRIS. Asumiendo el pseudónimo de \"Shauni\", Jade utiliza su cámara fotográfica no solo como herramienta documental, sino como un arma periodística capaz de atravesar la censura militar impuesta por las Secciones Alfa.\nA lo largo de la historia, Jade pasa de ser una valiente protectora local a convertirse en la líder indiscutible de la resistencia en Hillys. A medida que se infiltra en las instalaciones enemigas, descubre que posee un poder espiritual latente de origen alienígena que desconcierta tanto a los humanos como a los propios DomZ, situándola en el centro mismo de una profecía que decidirá el destino del planeta.",
+        "imagenes": [
+            "https://i.ibb.co/WvRfqWm9/eca36bdabacc.jpg"
+        ],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531277990686621826"
+    },
+    {
+        "id": "npc_peyj",
+        "tipo": "npc",
+        "nombre": "Pey'j",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Tío adoptivo, tutor legal y protector incondicional"
+            },
+            {
+                "id_destino": "lugar_refugio_orfanato",
+                "relacion": "Cofundador y jefe del taller de mantenimiento del faro"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Miembro cofundador histórico en secreto"
+            },
+            {
+                "id_destino": "lugar_taller_mammago",
+                "relacion": "Aliados mecánicos y colegas de profesión"
+            }
+        ],
+        "detalles": {
+            "especie": "Híbrido Porcino (Jabalí antropomórfico)",
+            "ocupacion": "Mecánico jefe, inventor y tutor",
+            "equipo": "Cortador de Jet-Boots (Botas Propulsoras) y llave inglesa pesada"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nPey'j es un híbrido porcino de carácter cascarrabias pero corazón de oro. Experto absoluto en mecánica, soldadura e ingeniería improvisada, es capaz de construir o reparar cualquier máquina a partir de chatarra militar. Detrás de sus constantes quejas y su humor socarrón se esconde una devoción total hacia su sobrina adoptiva Jade, a quien ha criado desde muy pequeña jurando protegerla de las sombras de su verdadero pasado.\nPey'j conoció a los verdaderos padres de Jade en los primeros días de la invasión alienígena. Tras la trágica desaparición de ambos, prometió mantener a la niña a salvo en Hillys. Para lograrlo, construyó el refugio del Faro y mantuvo en absoluto secreto su propia implicación pasada en la creación de la resistencia clandestina de la Red IRIS, intentando alejar a Jade de los peligros de la guerra abierta.\nA medida que la trama se intensifica, Pey'j se ve obligado a volver a la acción directa, equipando a Jade con inventos clave como las Botas Propulsoras para superar barreras defensivas. Su posterior captura durante la infiltración en la Antigua Fábrica de Nutripills destruye la calma del grupo y se convierte en la motivación principal de Jade para asaltar las instalaciones militares y viajar hasta Selene para rescatarlo.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531279296876904608"
+    },
+    {
+        "id": "npc_double_h",
+        "tipo": "npc",
+        "nombre": "Doble H (Hubert)",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Camarada de combate y reportera asignada en el campo"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Agente veterano de asalto y ejecutor militar"
+            },
+            {
+                "id_destino": "lugar_fabrica_nutripills",
+                "relacion": "Lugar donde fue apresado y torturado con toxina DomZ"
+            },
+            {
+                "id_destino": "lugar_akuda_bar",
+                "relacion": "Punto de reunión con los mandos de la resistencia"
+            }
+        ],
+        "detalles": {
+            "especie": "Humano",
+            "ocupacion": "Ex-militar y agente de campo de la Red IRIS",
+            "equipo": "Armadura pesada de asalto y manual militar \"Optima Optimo\""
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nHubert, conocido dentro de la resistencia bajo el código \"Doble H\", es un exmilitar de constitución imponente, sentido del honor inquebrantable y una lealtad absoluta hacia la causa de la libertad. Educado bajo la disciplina más estricta, cita constantemente el libro de doctrina militar \"Optima Optimo\" para guiar cada una de sus decisiones tácticas, lo que aporta una mezcla de rigor y alivio cómico en los momentos de mayor tensión.\nDoble H conoce a Jade cuando esta se infiltra en las profundidades de la Antigua Fábrica de Nutripills. Jade lo encuentra al borde de la muerte, atrapado en un dispositivo de tortura alienígena e infectado con materia DomZ. Tras ser rescatado y curado gracias a la valentía de la joven reportera, Doble H la reconoce inmediatamente como una líder nata y jura protegerla con su vida en cada misión posterior.\nDentro del grupo, Doble H actúa como el tanque del equipo: su pesada armadura le permite embestir puertas blindadas, absorber fuego enemigo y servir de cobertura pesada mientras Jade toma las fotografías incriminatorias. Su testimonio como antiguo soldado confiere una validez irrefutable a las transmisiones que la Red IRIS emite para desenmascarar al alto mando de las Secciones Alfa.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531279453664182353"
+    },
+    {
+        "id": "npc_secundo",
+        "tipo": "npc",
+        "nombre": "Secundo",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Inteligencia artificial asistente personal y gestor de datos"
+            },
+            {
+                "id_destino": "objeto_camara_fotografica",
+                "relacion": "Procesador integrado de escaneo y transferencia de datos"
+            }
+        ],
+        "detalles": {
+            "tipo_entidad": "Inteligencia Artificial Holográfica",
+            "apariencia": "Pequeño duendecillo holográfico de estética estilizada",
+            "funcion": "Gestión del Holodisco, almacenamiento de inventario y desencriptación"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nSecundo es la unidad de asistencia holográfica personalizada de Jade. Presentado como una pequeña figura digital flotante con una voz expresiva y un marcado acento dramático, Secundo combina una eficiencia informática extraordinaria con una personalidad extrovertida, vanidosa y sarcástica que añade dinamismo a las exploraciones de Jade.\nFue programado e instalado en el equipamiento fotográfico de Jade para gestionar sus transacciones monetarias, organizar el inventario de recursos y procesar las instantáneas biológicas que la joven envía al Centro Científico de Hillys a cambio de recompensas monetarias. Aunque técnicamente es una inteligencia artificial, demuestra un verdadero apego y preocupación por la seguridad de Jade y sus compañeros.\nDurante las misiones de infiltración, Secundo cumple un papel vital: se encarga de desencriptar códigos de acceso para abrir puertas selladas, almacenar la evidencia fotográfica de la Red IRIS en holodiscos seguros y ofrecer valiosos consejos tácticos sobre las debilidades biológicas de la fauna y las tropas enemigas.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531279583028969544"
+    },
+    {
+        "id": "npc_gobernadora_hillys",
+        "tipo": "npc",
+        "nombre": "Gobernadora de Hillys",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "faccion_gobierno_hillys",
+                "relacion": "Máxima representante del poder ejecutivo civil"
+            },
+            {
+                "id_destino": "faccion_secciones_alfa",
+                "relacion": "Opositora política atada por decretos de ley marcial"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Aliada institucional secreta tras la recepción de pruebas"
+            }
+        ],
+        "detalles": {
+            "especie": "Humana",
+            "cargo": "Jefa de Estado del Gobierno Planetario de Hillys",
+            "posicion_politica": "Favorable a las libertades civiles y contraria al régimen militar"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nLa Gobernadora de Hillys es una diplomática respetada y de principios firmes que ostenta el liderazgo civil del planeta. Durante los primeros años de su mandato buscó mantener la prosperidad y el desarrollo armónico entre humanos e híbridos. Sin embargo, la llegada del conflicto DomZ la dejó en una posición extremadamente frágil, viendo cómo las Secciones Alfa asumían el control total de la seguridad planetaria mediante decretos de emergencia.\nA pesar de aparecer públicamente junto a los generales militares en los comunicados oficiales para evitar el pánico social, la Gobernadora siempre albergó profundas sospechas sobre la veracidad de los informes militares y los misteriosos secuestros de ciudadanos. Su contacto indirecto con la Red IRIS se produce cuando Jade comienza a transmitir imágenes irrefutables desde los recintos secretos del gobierno.\nAl recibir las pruebas fotográficas presentadas por Jade sobre el tráfico de prisioneros en el Matadero, la Gobernadora toma la valiente decisión de romper su silencio. Utiliza los canales de emergencia estatales para autorizar la rebelión civil, desmovilizar a las Fuerzas Regulares contra las Secciones Alfa y dar respaldo institucional completo a la misión espacial de la Beluga.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531279699400196157"
+    },
+    {
+        "id": "npc_general_keyl",
+        "tipo": "npc",
+        "nombre": "General Keyl",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "faccion_secciones_alfa",
+                "relacion": "Comandante Supremo e ideólogo del régimen militar"
+            },
+            {
+                "id_destino": "faccion_domz",
+                "relacion": "Socio traidor en el pacto de captura de civiles"
+            },
+            {
+                "id_destino": "npc_gran_sacerdote_domz",
+                "relacion": "Subordinado terrenal al servicio de la entidad alienígena"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Enemigo mortal y perseguidor de las transmisiones IRIS"
+            }
+        ],
+        "detalles": {
+            "especie": "Humano",
+            "cargo": "Comandante en Jefe de las Secciones Alfa",
+            "estatus": "Antagonista militar principal de Hillys"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nEl General Keyl es el Comandante Supremo de las Secciones Alfa y la figura pública más poderosa de Hillys. Se presenta ante la población golpeada por la guerra como un líder fuerte, incansable y protector, utilizando sofisticadas campañas de propaganda mediática para proyectar la imagen de que solo sus tropas fuertemente blindadas pueden salvar el planeta de la erradicación alienígena.\nDetrás de su imponente uniforme y sus discursos patrióticos se esconde un tirano desprovisto de escrúpulos. Años atrás, Keyl pactó en secreto con el Gran Sacerdote DomZ: las Secciones Alfa permitirían y facilitarían el secuestro masivo de ciudadanos hillyanos para alimentar la energía de los alienígenas a cambio de tecnología armamentística y la garantía de mantener el poder absoluto sobre el planeta.\nKeyl se convierte en el gran antagonista militar al que Jade debe desenmascarar. Despliega todos los recursos del ejército —incluyendo comandos de élite, cañoneras pesadas y bloqueo de noticias— para cazar a \"Shauni\" y destruir a la Red IRIS antes de que sus fotografías salgan a la luz, enfrentándose finalmente a la resistencia cuando el pueblo de Hillys se alza en su contra.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531279825195503716"
+    },
+    {
+        "id": "npc_gran_sacerdote_domz",
+        "tipo": "npc",
+        "nombre": "Gran Sacerdote DomZ",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "faccion_domz",
+                "relacion": "Líder supremo, deidad mística y fuente de poder"
+            },
+            {
+                "id_destino": "npc_general_keyl",
+                "relacion": "Manipulador cósmico y beneficiario del pacto de almas"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Némesis mística y obsesión milenaria (Búsqueda de Shauni)"
+            },
+            {
+                "id_destino": "lugar_luna_selene",
+                "relacion": "Soberano del trono central en la base lunar"
+            }
+        ],
+        "detalles": {
+            "especie": "Entidad Alienígena DomZ (Ser cósmico ancestral)",
+            "habilidades": "Manipulación de almas, telequinesis, control mental e ilusión",
+            "estatus": "Antagonista supremo del universo"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nEl Gran Sacerdote DomZ es la entidad ancestral que gobierna a la destructiva raza alienígena DomZ. Se trata de un ser de inmenso poder místico e intelectual que ha consumido la energía vital de innumerables mundos a lo largo de los eones para alimentar a su especie y mantener su propia inmortalidad a costa de las almas robadas.\nSu conexión con Jade es profunda y perturbadora. Revela que la joven reportera posee en su interior una chispa sagrada de energía ancestral DomZ llamada \"Shauni\". El Sacerdote orquestó la invasión de Hillys y la manipulación del General Keyl con el objetivo último de acorralar a Jade, arrastrarla hasta su trono lunar y absorber su poder espiritual para alcanzar una metamorfosis definitiva.\nComo villano final en la Luna Selene, el Gran Sacerdote utiliza ilusiones mentales, distorsión de controles y olas de sirvientes para intentar doblegar la voluntad de Jade. Su derrota a manos de la joven reportera destruye el vínculo mental que sostenía a las fuerzas alienígenas, liberando finalmente al planeta Hillys de la amenaza mística.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531279965277130793"
+    },
+    {
+        "id": "npc_hermanos_mammago",
+        "tipo": "npc",
+        "nombre": "Los Hermanos Mammago",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "lugar_taller_mammago",
+                "relacion": "Fundadores, mecánicos y gestores de la estación flotante"
+            },
+            {
+                "id_destino": "npc_peyj",
+                "relacion": "Colegas de profesión e ingenieros náuticos de confianza"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Proveedores de tecnología avanzada para vehículos"
+            }
+        ],
+        "detalles": {
+            "especie": "Híbridos Rinoceronte",
+            "ocupacion": "Mecánicos navales, ingenieros pesados y comerciantes",
+            "estilo": "Excéntricos, melómanos (amantes del reggae) y amigables"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nLos Hermanos Mammago son una simpática y estrafalaria trinidad de híbridos rinoceronte que regentan el garaje flotante más famoso de las aguas de Hillys. Vestudos con petos mecánicos y caracterizados por su actitud relajada y pacífica, pasan los días trabajando en motores pesados mientras disfrutan de buena música en sus altavoces de taller.\nConocen a Jade a través de Pey'j, quien mantiene desde hace años una excelente relación profesional con ellos. Cuando el hovercraft de Jade necesita mejoras cruciales para adentrarse en zonas de combate o cruzar barreras de minas, los Mammago ofrecen sus servicios con entusiasmo, demostrando un dominio único de la tecnología MecaImpulso.\nA pesar del ambiente festivo de su taller, son mecánicos de una lealtad a toda prueba. Aceptan negociar exclusivamente con Perlas Azules DomZ para eludir el control fiscal y las prohibiciones de armas de las Secciones Alfa, convirtiéndose en aliados clave para armar el deslizador de Jade con cañones de disparo y reacondicionar la Beluga para la travesía espacial.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531280127084990576"
+    },
+    {
+        "id": "npc_ming_tzu",
+        "tipo": "npc",
+        "nombre": "Ming-Tzu",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "lugar_akuda_bar",
+                "relacion": "Cliente habitual e informante del piso confidencial"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Simpatizante, facilitador de claves y colaborador clandestino"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Comerciante de confianza y mentor de información urbana"
+            }
+        ],
+        "detalles": {
+            "especie": "Híbrido Morsá",
+            "ocupacion": "Mercader de antigüedades, historiador y conector de la resistencia",
+            "ubicacion": "Tienda de curiosidades de Ming-Tzu en la Ciudad de Hillys"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nMing-Tzu es un anciano e ilustrado híbrido morsá de maneras refinadas que regenta una tienda de antigüedades y objetos raros en la zona peatonal de la Ciudad de Hillys. Detrás de sus grandes gafas y su aspecto de modesto comerciante de libros viejos se encuentra uno de los hombres más informados y cultos de toda la urbe.\nMing-Tzu conoce a Jade cuando esta visita su tienda en busca de mapas náuticos e instrumental de exploración. Admirado por el espíritu noble de la joven y cansado del acoso del ejército sobre los comerciantes locales, Ming-Tzu decide ayudarla discretamente. Es él quien le proporciona las primeras contraseñas secretas para acceder a la trastienda del Akuda Bar y contactar con la cúpula de la Red IRIS.\nAdemás de su papel como conector clandestino, Ming-Tzu actúa como un valioso comerciante en el juego: vende a Jade componentes esenciales como detectores de fauna y perlas para el mapa del holodisco, sirviendo como una guía constante para la recolección de pruebas y el avance de la causa rebelde.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531280265572515840"
+    },
+    {
+        "id": "objeto_hovercraft",
+        "tipo": "objeto",
+        "nombre": "Deslizador / Hovercraft MecaImpulso",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Vehículo principal de transporte, exploración y combate"
+            },
+            {
+                "id_destino": "npc_peyj",
+                "relacion": "Mantenimiento, adaptaciones de ingeniería y reparaciones"
+            },
+            {
+                "id_destino": "lugar_taller_mammago",
+                "relacion": "Lugar de instalación de armamento pesado y propulsores"
+            },
+            {
+                "id_destino": "objeto_nave_beluga",
+                "relacion": "Módulo acoplable para maniobras en superficie acuática"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Vehículo anfibio de alta velocidad",
+            "propulsion": "Turbinas dobles MecaImpulso",
+            "equipamiento": "Cañón neutralizador, saltador de rampa y radar de navegación"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nEl Hovercraft es el principal medio de transporte utilizado por Jade y Pey'j para desplazarse por la extensa red de canales y mares del planeta Hillys. Diseñado originalmente como un deslizador marinero civil, la astucia técnica de Pey'j lo transformó en una nave rápida, maniobrable y perfectamente equipada para sobrevivir en un entorno amenazado por monstruos alienígenas y patrullas militares hostiles.\nEl vehículo cuenta con un fuselaje reforzado capaz de absorber impactos pesados y dos turbinas MecaImpulso laterales que le confieren una aceleración envidiable. A medida que progresa la investigación periodística de Jade, el Hovercraft recibe mejoras críticas adquiridas en el Taller Mammago, tales como un cañón neutralizador para defenderse de la fauna DomZ, propulsores de salto para superar barricadas navales y un escáner de terreno para localizar secretos.\nAdemás de su funcionalidad como vehículo de exploración y carreras, el Hovercraft cumple un papel estratégico indispensable: actúa como la lanzadera de abordaje que se acopla en el vientre de la nave espacial Beluga, permitiendo a los miembros de la resistencia desplegarse tanto en el agua como en instalaciones terrestres enemigas.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531281045624848434"
+    },
+    {
+        "id": "objeto_nave_beluga",
+        "tipo": "objeto",
+        "nombre": "Nave Espacial Beluga",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Nave capitana para la travesía estelar hacia Selene"
+            },
+            {
+                "id_destino": "npc_peyj",
+                "relacion": "Proyecto secreto de restauración y montaje en el Faro"
+            },
+            {
+                "id_destino": "lugar_refugio_orfanato",
+                "relacion": "Oculta en la bahía de mantenimiento bajo la estructura"
+            },
+            {
+                "id_destino": "lugar_luna_selene",
+                "relacion": "Vehículo capaz de romper la atmósfera para el asalto final"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Fragata ligera de transporte espacial",
+            "propulsion": "Propulsores Estelares MecaImpulso impulsados por Perlas",
+            "capacidad": "Tripulación completa y bahía de acople para el Hovercraft"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLa Beluga es una impresionante nave espacial ligera de diseño aerodinámico que perteneció originalmente a los padres de Jade. Tras la desaparición de estos, Pey'j ocultó la nave en una bahía subterránea secreta construida bajo las cimientos del Refugio del Faro, manteniéndola desmontada y fuera de los radares de las Secciones Alfa durante años.\nPara conseguir que la Beluga vuelva a ser funcional y capaz de romper la atmósfera de Hillys, Jade debe reunir componentes raros y propulsores de grado estelar que solo los Hermanos Mammago pueden ensamblar. La nave requiere una inmensa cantidad de energía MecaImpulso alimentada por Perlas Azules DomZ para activar su reactor principal y sus estabilizadores de vuelo espacial.\nUna vez totalmente restaurada, la Beluga se convierte en la pieza clave para la victoria de la resistencia. Con el Hovercraft acoplado en su zona inferior y capacidad para transportar a los agentes de la Red IRIS, la Beluga permite a Jade volar hacia la Luna Selene, desafiando el bloqueo espacial del ejército Alfa para llevar la lucha directamente al trono del enemigo.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531281150276927661"
+    },
+    {
+        "id": "objeto_baston_dai_jo",
+        "tipo": "objeto",
+        "nombre": "Bastón de Combate Dai-Jo",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Arma personal reglamentaria de combate cuerpo a cuerpo"
+            },
+            {
+                "id_destino": "npc_double_h",
+                "relacion": "Sinergia en tácticas y remates combinados de aturdimiento"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Arma marcial de energía y contacto",
+            "material": "Aleación de titanio ligero con núcleo de resonancia",
+            "funciones": "Cadencias de barrido, aturdimiento e integración de energía espiritual"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nEl Bastón Dai-Jo es la tradicional y mortífera arma de combate cuerpo a cuerpo utilizada por Jade. Forjado en una aleación de titanio ligero pero extremadamente resistente, este bastón combina las artes marciales ancestrales de Hillys con emisores de energía MecaImpulso en sus extremos para asestar golpes rápidos y contundentes.\nEn manos de una experta como Jade, el bastón permite ejecutar complejas cadenas de combos, esquivas ágiles y barridos de área capaces de desestabilizar a múltiples enemigos simultáneamente. Cuando se utiliza en combinación con compañeros como Doble H, el Dai-Jo puede canalizar ondas de choque que proyectan a los soldados Alfa pesados por el aire o rompen las armaduras más duras.\nA medida que el poder espiritual interno de Jade despierta, el Bastón Dai-Jo se convierte en el conductor físico de su energía \"Shauni\". En los momentos críticos, el bastón brilla con un aura mística capaz de purificar criaturas alienígenas corruptas y repeler los ataques de energía oscura del Gran Sacerdote DomZ.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531281226500149278"
+    },
+    {
+        "id": "objeto_camara_fotografica",
+        "tipo": "objeto",
+        "nombre": "Cámara Fotográfica MecaImpulso",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Herramienta principal de trabajo, investigación y defensa"
+            },
+            {
+                "id_destino": "npc_secundo",
+                "relacion": "Unidad donde está alojada la IA y el escáner de datos"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Instrumento para recopilar la verdad y exponer la censura"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Dispositivo óptico-digital de grado periodístico y militar",
+            "funciones": "Teleobjetivo zoom, escáner biológico y lanzador de discos Gyro",
+            "almacenamiento": "Holodiscos encriptados de alta capacidad"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLa Cámara Fotográfica MecaImpulso es el instrumento más valioso y versátil del equipo de Jade. Más que una simple herramienta periodística, este avanzado dispositivo óptico está equipado con un poderoso teleobjetivo zoom, filtros de visión espectral y el servidor donde habita Secundo, su asistente de inteligencia artificial.\nLa cámara cumple un doble propósito fundamental en la historia: en primer lugar, sirve como el arma de la verdad de la Red IRIS, permitiendo a Jade infiltrarse en bases enemigas para fotografiar documentos secretos, traiciones militares y cápsulas de prisioneros. En segundo lugar, su escáner biológico integrado permite catalogar especies animales para el Centro Científico, generando ingresos vitales para financiar la causa rebelde.\nAdemás de sus funciones ópticas, la cámara cuenta con un accesorio mecánico de combate denominado lanzador de discos Gyro. Este mecanismo permite a Jade disparar discos concentrados a distancia para activar interruptores lejanos, desarmar trampas o atacar los puntos débiles de enemigos y jefes alienígenas.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531281418267918459"
+    },
+    {
+        "id": "objeto_perlas_azules",
+        "tipo": "objeto",
+        "nombre": "Perlas Azules DomZ",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "faccion_domz",
+                "relacion": "Núcleos de poder condensados extraídos de bestias y jefes"
+            },
+            {
+                "id_destino": "lugar_taller_mammago",
+                "relacion": "Divisa exclusiva exigida para adquirir tecnología militar"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Esferas de energía orgánica purificada",
+            "valor": "Incalculable en el mercado negro y la ingeniería avanzada",
+            "usos": "Combustible de alta densidad MecaImpulso y compras especiales"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLas Perlas Azules son esferas de energía condensada de un intenso color carmesí o azulado que se forman en el interior de las criaturas y líderes guerreros de la raza DomZ. Estas esferas contienen una concentración masiva de energía vital purificada, lo que las convierte en la fuente de potencia más codiciada de todo el planeta Hillys.\nDado que las Secciones Alfa prohíben la circulación de tecnología de combate para civiles, los circuitos comerciales clandestinos como el Taller Mammago rechazan las monedas estatales y exigen Perlas Azules como única forma de pago para instalar mejoras pesadas en los vehículos de Jade.\nDerrotar a los monstruos gigantescos que azotan las islas o ganar las peligrosas carreras del circuito urbano son las únicas vías para recolectar estas perlas. Cada perla obtenida acerca a Jade a la adquisición de motores de salto, cañones pesados y, finalmente, los propulsores estelares indispensables para que la nave Beluga alcance el espacio exterior.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531281496122589194"
+    },
+    {
+        "id": "objeto_discos_iris",
+        "tipo": "objeto",
+        "nombre": "Discos de Datos e Informes IRIS",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Formato oficial de publicación y reportes periodísticos"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Pruebas compiladas durante sus misiones de infiltración"
+            },
+            {
+                "id_destino": "faccion_secciones_alfa",
+                "relacion": "Evidencia fotográfica que destruye su propaganda militar"
+            }
+        ],
+        "detalles": {
+            "tipo_objeto": "Discos ópticos de datos holográficos blindados",
+            "seguridad": "Encriptación militar antibloqueo",
+            "contenido": "Fotografías de alta resolución, audios y documentos de traición"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLos Discos de Datos IRIS son dispositivos de almacenamiento holográfico blindados donde la Red IRIS compila, encripta y edita los reportajes fotográficos enviados por sus agentes de campo. Diseñados para resistir el rastreo electrónico y el pirateo de las Secciones Alfa, representan el bien informativo más valioso de la resistencia.\nCada disco contiene una entrega completa del reportaje de la verdad enfocado en una instalación militar específica: desde los laboratorios clandestinos de la Antigua Fábrica de Nutripills hasta el tráfico masivo de seres humanos en el Matadero de Cuarentena.\nCuando un Disco IRIS es completado por Jade y transmitido a través de la red de repetidores del gobierno, la información se proyecta simultáneamente en las pantallas públicas de todas las ciudades de Hillys. Esto provoca un impacto demoledor sobre la opinión pública, desmontando las mentiras del General Keyl e impulsando la rebelión ciudadana.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531281592583065720"
+    },
+    {
+        "id": "faccion_red_iris",
+        "tipo": "faccion",
+        "nombre": "Red IRIS",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Reportera de investigación estrella (Shauni)"
+            },
+            {
+                "id_destino": "npc_peyj",
+                "relacion": "Cofundador e ingeniero de logística clandestino"
+            },
+            {
+                "id_destino": "npc_double_h",
+                "relacion": "Soldado y especialista en operaciones de asalto"
+            },
+            {
+                "id_destino": "lugar_akuda_bar",
+                "relacion": "Cuartel general secreto oculto en el piso superior"
+            },
+            {
+                "id_destino": "faccion_secciones_alfa",
+                "relacion": "Enemigo político y objetivo de desenmascaramiento"
+            }
+        ],
+        "detalles": {
+            "liderazgo": "Cúpula secreta de periodistas, intelectuales y disidentes",
+            "ideologia": "Libertad de información, periodismo de verdad y liberación civil",
+            "metodos": "Infiltración sin violencia letal, fotografía de pruebas y radiodifusión pirata"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLa Red IRIS es una organización periodística y de resistencia clandestina formada por ciudadanos, intelectuales y militares disidentes que se niegan a aceptar la dictadura de facto impuesta por las Secciones Alfa. Operando desde las sombras, su filosofía se basa en la convicción de que la verdad es el arma más poderosa para liberar al planeta Hillys de la opresión.\nLa red funciona mediante una estructura de células independientes para evitar que la caída de un agente comprometa a toda la organización. Utilizan el piso superior del Akuda Bar como su centro de operaciones principal en la ciudad, desde donde interceptan las comunicaciones del ejército, desencriptan holodiscos e imponen un férreo protocolo de seguridad mediante contraseñas cambiantes.\nA diferencia de un grupo armado convencional, el objetivo principal de la Red IRIS no es la destrucción militar directa, sino la captura de evidencia fotográfica irrefutable. Al publicar sus reportajes en la red pública de noticias, la Red IRIS logra despertar la conciencia de la población y del gobierno civil, desencadenando la revolución que finalmente derroca al régimen corrupto.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531281744408608808"
+    },
+    {
+        "id": "faccion_secciones_alfa",
+        "tipo": "faccion",
+        "nombre": "Las Secciones Alfa",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_general_keyl",
+                "relacion": "Comandante Supremo y líder de la organización"
+            },
+            {
+                "id_destino": "faccion_domz",
+                "relacion": "Aliados secretos en la conspiración de tráfico de personas"
+            },
+            {
+                "id_destino": "lugar_matadero_cuarentena",
+                "relacion": "Centro de operaciones militares y procesamiento de cautivos"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Organización enemiga a censurar y erradicar"
+            }
+        ],
+        "detalles": {
+            "fuerza_militar": "Soldados pesados blindados, robots de asalto y cañoneras",
+            "estatus": "Ejército privado que ejerce la ley marcial en Hillys",
+            "proposito_oficial": "Protección planetaria frente a la amenaza DomZ"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLas Secciones Alfa son un ejército fuertemente armado e industrializado que asumió el control de la seguridad planetaria en Hillys tras el estallido de la invasión alienígena. Equipados con trajes de asalto pesados, campos de fuerza gigantescos y una abrumadora presencia de robots patrulla, imponen un régimen de ley marcial y censura mediática bajo el pretexto de proteger a la población.\nA través de programas de televisión estatales y pantallas gigantes en las plazas urbanas, las Secciones Alfa proyectan una imagen de héroes incansables. Sin embargo, esta fachada oculta un oscuro secreto: su alto mando, liderado por el General Keyl, ha vendido a los ciudadanos de Hillys, entregándolos a las fuerzas DomZ a cambio de poder absoluto y energía alienígena.\nSus tropas patrullan las calles, los canales y las zonas industriales con orden de disparar a matar contra cualquier civil que viole la cuarentena o intente fotografiar sus instalaciones. La caída de las Secciones Alfa ocurre cuando los reportajes de la Red IRIS exponen su traición a la vista de todo el planeta, provocando que la guardia civil y la población se rebelen contra ellos.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531281876793430207"
+    },
+    {
+        "id": "faccion_domz",
+        "tipo": "faccion",
+        "nombre": "La Raza Alienígena DomZ",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_gran_sacerdote_domz",
+                "relacion": "Líder supremo, deidad mística y fuente de poder ancestral"
+            },
+            {
+                "id_destino": "faccion_secciones_alfa",
+                "relacion": "Pacto secreto de colaboración para la recolección de almas"
+            },
+            {
+                "id_destino": "lugar_luna_selene",
+                "relacion": "Base central de operaciones en la órbita del planeta"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Objetivo prioritario para la captura de la energía Shauni"
+            }
+        ],
+        "detalles": {
+            "origen": "Raza extraterrestre parasitaria de origen desconocido",
+            "proposito": "Drenar la energía vital de Hillys y secuestrar sus habitantes",
+            "unidades": "Sacerdotes de estasis, monstruos marinos, parásitos y naves orgánicas"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLos DomZ son una antigua y letal raza de depredadores estelares de naturaleza parasitaria que viajan por el cosmos consumiendo la energía vital de mundos prósperos. Su sociedad se articula en torno a un culto místico-religioso dirigido por el Gran Sacerdote DomZ, quien utiliza el alma de los seres vivos capturados para prolongar la existencia de su imperio moribundo.\nSus fuerzas de invasión están compuestas por una terrorífica variedad de criaturas biológicas y naves orgánicas que van desde pequeños parásitos voladores hasta calamares gigantescos que emergen de los océanos de Hillys. Poseen la capacidad de infectar la mente de otras especies y transformar a sus víctimas en sirvientes sin voluntad.\nAl llegar a Hillys, los DomZ comprendieron que un ataque frontal prolongado sería costoso, por lo que establecieron un pacto de complicidad con las Secciones Alfa. A cambio de permitir la dominación militar del General Keyl, los DomZ recibieron miles de prisioneros humanos e híbridos para alimentar su matriz energética en la Luna Selene.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531281957504290816"
+    },
+    {
+        "id": "faccion_gobierno_hillys",
+        "tipo": "faccion",
+        "nombre": "Gobierno Planetario de Hillys",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_gobernadora_hillys",
+                "relacion": "Jefa de Estado y máxima representante constitucional"
+            },
+            {
+                "id_destino": "faccion_secciones_alfa",
+                "relacion": "Fuerza militar delegada que ha usurpado el control efectivo"
+            },
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Receptora legítima de la evidencia que permite restablecer el orden"
+            }
+        ],
+        "detalles": {
+            "estructura": "Democracia parlamentaria representativa",
+            "estatus": "Institución marginada por los decretos de emergencia militar",
+            "objetivo": "Proteger a la población civil y restaurar el orden constitucional"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nEl Gobierno Planetario de Hillys es la institución constitucional y democrática encargada de velar por el bienestar, la administración y la convivencia pacífica entre los habitantes del archipiélago. Antes de la crisis alienígena, gobernaba un mundo próspero basado en el comercio marítimo, las ciencias naturales y la integración armónica de especies.\nCon el estallido del conflicto DomZ, el Gobierno se vio forzado a delegar las competencias de defensa en las Secciones Alfa. Esta situación redujo drásticamente el margen de maniobra de la administración civil, dejando a la Gobernadora y al senado atrapados bajo una trampa de leyes marciales y censura informativa impuesta por el General Keyl.\nA pesar de ser sistemáticamente desinformados por el alto mando militar, los funcionarios del Gobierno Planetario mantuvieron su lealtad a los ciudadanos. Cuando la Red IRIS logra transmitir las pruebas de la conspiración, el Gobierno reasume inmediatamente su autoridad, movilizando a las fuerzas policiales civiles para arrestar a los colaboradores Alfa y restaurar la libertad en Hillys.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531282050055934072"
+    },
+    {
+        "id": "trama_defensa_faro",
+        "tipo": "trama",
+        "nombre": "La Protección del Faro y los Huérfanos",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "lugar_refugio_orfanato",
+                "relacion": "Escenario principal amenzado por la pérdida del escudo"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Protagonista impulsada a conseguir fondos para la energía"
+            },
+            {
+                "id_destino": "npc_peyj",
+                "relacion": "Encargado de reparar el generador MecaImpulso"
+            }
+        ],
+        "detalles": {
+            "estado": "Completada / Detonante inicial de la aventura",
+            "recompensa": "Contrato periodístico inicial y primer contacto con IRIS",
+            "enemigos": "Criaturas DomZ de superficie y apéndices alienígenas gigantes"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLa trama comienza en el Refugio del Faro, donde Jade y Pey'j cuidan de los niños huérfanos de la guerra. Debido al impago de las facturas de electricidad a la compañía de energía estatal, el escudo protector MecaImpulso del orfanato se apaga repentinamente, dejando la isla completamente desprotegida ante un bombardeo inminente de meteoritos y criaturas DomZ.\nJade debe reaccionar de inmediato, utilizando su Bastón Dai-Jo para repeler el ataque de los monstruos alienígenas que emergen del suelo y salvar a los niños. Tras derrotar a la bestia principal con la ayuda de Pey'j, la falta de fondos para reactivar el escudo obliga a Jade a buscar trabajo de manera urgente como fotógrafa de fauna para el centro de ciencias planetario.\nEsta necesidad económica desesperada actúa como el detonante de toda la aventura: al buscar encargos de fotografía en las islas cercanas, Jade llama la atención de un intermediario secreto que le ofrece un contrato de infiltración de alto riesgo, conectándola directamente con la lucha clandestina de la Red IRIS.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531282155244748831"
+    },
+    {
+        "id": "trama_reportaje_iris",
+        "tipo": "trama",
+        "nombre": "Destapando la Conspiración Alfa (Reportaje Fotográfico)",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "faccion_red_iris",
+                "relacion": "Organización que encarga y emite las transmisiones de verdad"
+            },
+            {
+                "id_destino": "lugar_fabrica_nutripills",
+                "relacion": "Primera instalación infiltrada para obtener el Informe 1"
+            },
+            {
+                "id_destino": "lugar_matadero_cuarentena",
+                "relacion": "Segunda instalación infiltrada para obtener el Informe 2"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Reportera a cargo de tomar las fotografías incriminatorias"
+            }
+        ],
+        "detalles": {
+            "objetivo": "Obtener 3 evidencias fotográficas de la complicidad Alfa-DomZ",
+            "mecanica": "Infiltración de alto riesgo, sigilo y fotografía documental",
+            "impacto": "Emisión pública que desencadena la revolución popular en la ciudad"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nEsta trama representa la columna vertebral de la investigación periodística en Hillys. Contratada por la Red IRIS bajo el nombre en clave \"Shauni\", Jade debe infiltrarse en los complejos industriales más custodiados del planeta para obtener pruebas fotográficas irrefutables del acuerdo secreto entre las Secciones Alfa y los alienígenas DomZ.\nLa misión exige un dominio absoluto del sigilo y la astucia: Jade debe esquivar patrullas de soldados pesados, burlar campos de láseres y acceder a salas de control prohibidas. A lo largo de sus incursiones en la Antigua Fábrica de Nutripills y el Matadero de Cuarentena, fotografía cápsulas de estasis con humanos secuestrados y a los propios oficiales Alfa colaborando con los sacerdotes alienígenas.\nCada prueba fotografiada se compila en un Disco de Datos IRIS que es enviado a las torres de transmisión de la ciudad. Al emitirse estos reportajes, la población de Hillys descubre la aterradora verdad, destruyendo el mito de las Secciones Alfa como protectores y uniendo a los ciudadanos en una gran rebelión para derrocar al General Keyl.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531282323222298655"
+    },
+    {
+        "id": "trama_rescate_peyj",
+        "tipo": "trama",
+        "nombre": "El Rescate de Pey'j y la Infiltración Alfa",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "npc_peyj",
+                "relacion": "Objetivo de rescate tras ser capturado por tropas Alfa"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Líder de la incursión de asalto junto a Doble H"
+            },
+            {
+                "id_destino": "lugar_matadero_cuarentena",
+                "relacion": "Escenario de máxima seguridad donde retienen a los prisioneros"
+            },
+            {
+                "id_destino": "objeto_nave_beluga",
+                "relacion": "Vehículo reparado para trasladar la persecución al espacio"
+            }
+        ],
+        "detalles": {
+            "fase": "Arco dramático intermedio de alta intensidad",
+            "desafio": "Combates contra la élite Alfa y desactivación de sistemas pesados",
+            "resultado": "Descubrimiento de la ruta a la Luna y reacondicionamiento estelar"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nEl curso de la historia da un giro dramático cuando las Secciones Alfa asaltan la Fábrica de Nutripills y capturan a Pey'j, llevándolo en calidad de prisionero al recinto de alta seguridad conocido como El Matadero. Devastada pero decidida a no perder a su familia adoptiva, Jade organiza una arriesgada misión de asalto con el apoyo militar de Doble H.\nLa infiltración en El Matadero enfrenta a los agentes contra la fuerza bruta del ejército enemigo. Jade y Doble H deben coordinar sus habilidades para superar zonas minadas, inactivar torretas automáticas y derrotar a los escuadrones de élite de las Secciones Alfa en intensos combates cuerpo a cuerpo.\nAunque Jade logra alcanzar el centro de procesamiento y encontrar la cápsula de Pey'j, descubre que los prisioneros están siendo embarcados en naves de transporte hacia la Luna Selene. Este dramático suceso impulsa a Jade a regresar al Faro, restaurar por completo la nave espacial Beluga y emprender un viaje interplanetario para rescatar a su tío y acabar con la amenaza desde su origen.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531282405808410797"
+    },
+    {
+        "id": "trama_amenaza_domz",
+        "tipo": "trama",
+        "nombre": "La Liberación de Hillys y la Batalla Final en la Luna",
+        "mundo_id": "mundo_hillys",
+        "relaciones": [
+            {
+                "id_destino": "lugar_luna_selene",
+                "relacion": "Escenario del enfrentamiento definitivo en el trono alienígena"
+            },
+            {
+                "id_destino": "npc_gran_sacerdote_domz",
+                "relacion": "Antagonista supremo a derrotar para romper el control místico"
+            },
+            {
+                "id_destino": "npc_jade",
+                "relacion": "Despertar definitivo de la energía Shauni y salvadora del mundo"
+            },
+            {
+                "id_destino": "faccion_gobierno_hillys",
+                "relacion": "Instauración de la paz y restauración de la democracia civil"
+            }
+        ],
+        "detalles": {
+            "fase": "Clímax final de la campaña",
+            "exigencias": "Combate espacial con la Beluga y duelo espiritual de alta dificultad",
+            "resultado": "Destrucción del imperio DomZ y liberación de todas las almas"
+        },
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLa trama final se desarrolla en la órbita de Hillys y en la superficie desolada de la Luna Selene. Tras romper el bloqueo espacial de las Secciones Alfa a bordo de la nave Beluga, Jade y su equipo aterrizan en la fortaleza central de los DomZ para llevar a cabo la batalla definitiva por la libertad de su mundo.\nEn el corazón de la fortaleza lunar, Jade enfrenta las ilusiones psicológicas y los ataques místicos desplegados por el Gran Sacerdote DomZ. Durante este combate final, la joven comprende el verdadero significado de su origen y despierta plenamente el poder espiritual \"Shauni\", utilizando esta energía ancestral no para dominar, sino para purificar la oscuridad alienígena y romper el hechizo de control mental.\nCon la derrota del Gran Sacerdote, la matriz de almas robadas se rompe, liberando a todos los prisioneros capturados —incluido Pey'j— y devolviendo la vida a Hillys. La caída de la base lunar destruye el poder de los DomZ y de las Secciones Alfa, permitiendo que el Gobierno civil restaure la paz, la verdad y la libertad en un planeta finalmente unificado.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1531282484166398013"
+    }
+]
