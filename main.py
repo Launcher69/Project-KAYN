@@ -8,10 +8,11 @@ from modules.exporter import save_to_json
 from modules.scanner import scan_guild_forums
 
 
-# Servidor web en segundo plano para activar el plan GRATIS ($0) de Render
+# Servidor web en segundo plano para que Render no dé error de puerto
 def run_dummy_server():
     port = int(os.environ.get("PORT", 10000))
     server = HTTPServer(("0.0.0.0", port), SimpleHTTPRequestHandler)
+    print(f"🌐 Servidor web abierto en el puerto {port}", flush=True)
     server.serve_forever()
 
 
@@ -27,9 +28,9 @@ bot = commands.Bot(command_prefix=config.PREFIX, intents=intents)
 
 @bot.event
 async def on_ready():
-    print("--------------------------------------------------")
-    print(f"🤖 Bot en la nube iniciado como: {bot.user}")
-    print("--------------------------------------------------")
+    print("--------------------------------------------------", flush=True)
+    print(f"🤖 Bot en la nube iniciado como: {bot.user}", flush=True)
+    print("--------------------------------------------------", flush=True)
 
 
 @bot.command(name="sync")
@@ -42,7 +43,7 @@ async def sync_wiki(ctx):
     if success:
         response = f"✅ **¡Wiki en la nube actualizada!**\nSe procesaron **{len(database)} elementos**."
     else:
-        response = "❌ Hubo un error al actualizar GitHub."
+        response = "❌ Hubo un error al actualizar GitHub por API."
 
     if errors:
         response += f"\n\n⚠️ **Avisos ({len(errors)}):**\n" + "\n".join(
