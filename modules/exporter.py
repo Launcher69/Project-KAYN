@@ -23,7 +23,7 @@ def save_to_json(data: list, filepath: str) -> bool:
             print("🚀 Enviando actualización a GitHub por API...")
             success = update_github_file(
                 repo=GITHUB_REPO,
-                path="web/wiki_database.json",
+                path="Web/wiki_database.json",
                 content=json_str,
                 token=GITHUB_TOKEN,
             )
