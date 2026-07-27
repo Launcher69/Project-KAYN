@@ -1,0 +1,56 @@
+---
+
+## 🚀 Paso 1: Pega las Reglas e Índice de IDs (Primer mensaje)
+
+Pega el siguiente texto en tu chat de Google AI Studio con la partida cargada:
+
+```text
+Actúa como un Asistente Experto en Organización de Rol Multiversal. 
+Vas a analizar esta partida para crear fichas organizadas con formato YAML Frontmatter para Discord.
+
+REGLAS DE FORMATO PARA CADA FICHA:
+1. Comienza con --- y termina con ---.
+2. Cabecera YAML con: id, tipo, nombre, mundo_id, relaciones, detalles.
+3. Después del ---, usa '### Biografía y Trasfondo' (para NPCs/PCs) o '### Descripción' (para lo demás) y redacta varios párrafos completos con la historia y detalles.
+
+PASO 1:
+Por ahora, NO generes las fichas todavía. Únicamente analiza toda la partida y dame una LISTA/ÍNDICE con todos los IDs y nombres que hayas encontrado clasificados por: Mundos, Lugares, NPCs, Objetos, Facciones y Tramas. Esto asegurará que todos los IDs coincidan antes de empezar.
+
+PASO 2
+¡Perfecto! Ahora genera ÚNICAMENTE las publicaciones completas para los canales:
+- 🌌 #foro-mundos
+- 📍 #foro-lugares
+
+Asegúrate de incluir todos los atributos en 'detalles:' y redactar las descripciones completas en varios párrafos.
+
+PASO 3
+Excelente. Ahora genera ÚNICAMENTE las publicaciones completas para el canal:
+- 👥 #foro-npcs
+
+Incluye sus relaciones con los mundos/lugares anteriores y redacta biografías extensas con su personalidad, cómo conocieron al protagonista y su rol en la historia.
+
+PASO 4
+Para terminar, genera las publicaciones completas para los canales restantes:
+- 🎒 #foro-objetos
+- 🛡️ #foro-facciones
+- 📜 #foro-tramas
+
+Recuerda mantener la consistencia con los IDs anteriores.
+
+
+Formato de Referencia (Para que recuerdes cómo debe salir)
+---
+id: npc_elena
+tipo: npc
+nombre: "Elena"
+mundo_id: world_contemporaneo
+relaciones:
+  - id_destino: lugar_atico
+    relacion: "Residente"
+detalles:
+  rol: "Co-Protagonista / Pareja de Kayn"
+  estado: "Embarazada"
+---
+
+### Biografía y Trasfondo
+Texto detallado de la historia de Elena...

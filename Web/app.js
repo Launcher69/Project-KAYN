@@ -2,10 +2,10 @@ let wikiData = [];
 let networkInstance = null;
 let currentCategory = "todos";
 
-// Cargar los datos desde el JSON
+// Cargar los datos desde el JSON dentro de la misma carpeta web
 async function loadWikiData() {
     try {
-        const response = await fetch('../wiki_database.json');
+        const response = await fetch('wiki_database.json');
         wikiData = await response.json();
         
         initFilters();
@@ -17,14 +17,13 @@ async function loadWikiData() {
     }
 }
 
-// Helper: Formatea y limpia nombres y textos de forma correcta
+// Helper: Formatea y limpia nombres de forma segura
 function cleanText(text) {
     if (!text) return "";
     let str = text.toString()
         .replace(/^(world_|npc_|lugar_|obj_|objeto_|faccion_|trama_)/i, '')
         .replace(/_/g, ' ');
     
-    // Capitaliza la primera letra del texto sin romper eñes ni tildes internas
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
@@ -40,13 +39,13 @@ function initFilters() {
     const worldSelect = document.getElementById('filter-world');
     const tabsNav = document.getElementById('category-tabs');
 
-    const mundos = [...new Set(wikiData.map(item => item.mundo_id))];
+    const mundos = [...new Set(wikiData.map(item => item.mundo_id).filter(Boolean))];
     worldSelect.innerHTML = `<option value="all">🌍 Todos los Mundos</option>`;
     mundos.forEach(m => {
         worldSelect.innerHTML += `<option value="${m}">${getDisplayName(m)}</option>`;
     });
 
-    const tipos = ["todos", ...new Set(wikiData.map(item => item.tipo))];
+    const tipos = ["todos", ...new Set(wikiData.map(item => item.tipo).filter(Boolean))];
     tabsNav.innerHTML = tipos.map(t => 
         `<button class="tab-btn ${t === 'todos' ? 'active' : ''}" onclick="setCategory('${t}', this)">${t.toUpperCase()}</button>`
     ).join('');
@@ -68,17 +67,18 @@ function renderCards() {
     const filtered = wikiData.filter(item => {
         const matchesCategory = currentCategory === 'todos' || item.tipo === currentCategory;
         const matchesWorld = selectedWorld === 'all' || item.mundo_id === selectedWorld;
-        const matchesSearch = item.nombre.toLowerCase().includes(searchText) || 
-                              item.id.toLowerCase().includes(searchText);
+        const matchesSearch = (item.nombre || '').toLowerCase().includes(searchText) || 
+                              (item.id || '').toLowerCase().includes(searchText);
         return matchesCategory && matchesWorld && matchesSearch;
     });
 
     grid.innerHTML = filtered.map(item => `
         <div class="card" onclick="openModal('${item.id}')">
-            ${item.imagenes && item.imagenes.length > 0 ? `<img src="${item.imagenes[0]}" class="card-img">` : ''}
+            ${item.imagenes && item.imagenes.length > 0 ? 
+                `<img src="${item.imagenes[0]}" class="card-img" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
             <div class="card-body">
-                <span class="card-type">${item.tipo}</span>
-                <h3 class="card-title">${item.nombre}</h3>
+                <span class="card-type">${item.tipo || 'entidad'}</span>
+                <h3 class="card-title">${item.nombre || item.id}</h3>
                 <div class="card-world">🌍 ${getDisplayName(item.mundo_id)}</div>
                 <div class="tags">
                     ${item.etiquetas_discord ? item.etiquetas_discord.map(t => `<span class="tag">${t}</span>`).join('') : ''}
@@ -94,23 +94,35 @@ function initGraph() {
 
     const nodes = wikiData.map(item => ({
         id: item.id,
-        label: item.nombre,
-        group: item.tipo,
+        label: item.nombre || item.id,
+        group: item.tipo || 'desconocido',
         shape: 'dot',
         size: item.tipo === 'mundo' ? 25 : 15
     }));
 
     const edges = [];
     wikiData.forEach(item => {
-        if (item.relaciones && Array.isArray(item.relaciones)) {
-            item.relaciones.forEach(rel => {
-                edges.push({
-                    from: item.id,
-                    to: rel.id_destino,
-                    label: rel.relacion || '',
-                    arrows: 'to',
-                    color: { color: '#89b4fa' }
+        if (item.relaciones) {
+            let relList = [];
+            if (Array.isArray(item.relaciones)) {
+                relList = item.relaciones;
+            } else if (typeof item.relaciones === 'object') {
+                Object.values(item.relaciones).forEach(v => {
+                    if (Array.isArray(v)) relList.push(...v);
                 });
+            }
+
+            relList.forEach(rel => {
+                const targetId = typeof rel === 'string' ? rel : (rel.id_destino || '');
+                if (targetId) {
+                    edges.push({
+                        from: item.id,
+                        to: targetId,
+                        label: cleanText(rel.relacion || ''),
+                        arrows: 'to',
+                        color: { color: '#89b4fa' }
+                    });
+                }
             });
         }
     });
@@ -135,7 +147,7 @@ function setMainImage(url) {
     if (mainImg) mainImg.src = url;
 }
 
-// Modal de detalles LIMPIO, CON DESPLEGABLE DE TRAMAS Y TÍTULO DINÁMICO
+// Modal de detalles
 function openModal(id) {
     const item = wikiData.find(i => i.id === id);
     if (!item) return;
@@ -145,35 +157,69 @@ function openModal(id) {
 
     const hasImage = item.imagenes && item.imagenes.length > 0;
 
-    // Título dinámico (Biografía para Personajes, Descripción para lo demás)
-    const isCharacter = ['npc', 'pc', 'personaje'].includes(item.tipo.toLowerCase());
+    // Título dinámico
+    const itemType = (item.tipo || 'entidad').toLowerCase();
+    const isCharacter = ['npc', 'pc', 'personaje'].includes(itemType);
     const sectionTitle = isCharacter ? '📖 Biografía' : '📖 Descripción';
 
-    // Recopilar Relaciones Directas e Inversas sin duplicados
-    const directRelations = (item.relaciones || []).map(r => ({
-        targetId: r.id_destino,
-        label: cleanText(r.relacion),
-        name: getDisplayName(r.id_destino)
-    }));
+    // 1. Limpiar imágenes del markdown
+    let cleanLoreText = (item.contenido_lore || '').replace(/!\[.*?\]\(.*?\)/g, '');
+
+    // 2. ELIMINAR TÍTULOS REPETIDOS AL PRINCIPIO (Ej: "Descripción", "### Descripción", "Biografía", etc.)
+    cleanLoreText = cleanLoreText.replace(/^\s*(?:#+\s*)?(?:Biograf[ií]a(?:\s+y\s+[Tr|tr]asfondo)?|Descripci[oó]n)\s*\n+/i, '');
+
+    // NORMALIZAR RELACIONES
+    let rawRelaciones = [];
+    if (Array.isArray(item.relaciones)) {
+        rawRelaciones = item.relaciones;
+    } else if (item.relaciones && typeof item.relaciones === 'object') {
+        Object.entries(item.relaciones).forEach(([key, val]) => {
+            if (Array.isArray(val)) {
+                val.forEach(v => {
+                    if (typeof v === 'object' && v.id_destino) rawRelaciones.push(v);
+                    else if (typeof v === 'string') rawRelaciones.push({ id_destino: v, relacion: key });
+                });
+            } else if (typeof val === 'string') {
+                rawRelaciones.push({ id_destino: val, relacion: key });
+            }
+        });
+    }
+
+    const directRelations = rawRelaciones.map(r => {
+        if (typeof r === 'string') {
+            return { targetId: r, label: 'Relacionado', name: getDisplayName(r) };
+        }
+        const tId = r.id_destino || r.target_id || '';
+        return {
+            targetId: tId,
+            label: cleanText(r.relacion || 'Vínculo'),
+            name: getDisplayName(tId)
+        };
+    }).filter(r => r.targetId !== '');
 
     const directTargetIds = new Set(directRelations.map(r => r.targetId));
 
+    // Menciones inversas seguras
     const backlinks = wikiData
-        .filter(other => 
-            other.id !== item.id && 
-            other.relaciones && 
-            other.relaciones.some(r => r.id_destino === item.id) &&
-            !directTargetIds.has(other.id)
-        )
+        .filter(other => {
+            if (other.id === item.id || !other.relaciones) return false;
+            if (directTargetIds.has(other.id)) return false;
+            
+            if (Array.isArray(other.relaciones)) {
+                return other.relaciones.some(r => (r.id_destino || r) === item.id);
+            } else if (typeof other.relaciones === 'object') {
+                return JSON.stringify(other.relaciones).includes(item.id);
+            }
+            return false;
+        })
         .map(other => ({
             targetId: other.id,
-            label: `Mencionado en ${cleanText(other.tipo)}`,
-            name: other.nombre
+            label: `Mencionado en ${cleanText(other.tipo || 'Ficha')}`,
+            name: other.nombre || other.id
         }));
 
     const allConnections = [...directRelations, ...backlinks];
 
-    // Separar conexiones generales de las Tramas
     const directConnections = [];
     const tramaConnections = [];
 
@@ -192,10 +238,10 @@ function openModal(id) {
         <div class="modal-grid" style="${!hasImage ? 'grid-template-columns: 1fr;' : ''}">
             ${hasImage ? `
                 <div class="modal-media">
-                    <img id="main-modal-img" src="${item.imagenes[0]}" class="modal-img-large">
+                    <img id="main-modal-img" src="${item.imagenes[0]}" class="modal-img-large" referrerpolicy="no-referrer" onerror="this.style.display='none'">
                     ${item.imagenes.length > 1 ? `
                         <div class="gallery-thumbs">
-                            ${item.imagenes.map(img => `<img src="${img}" class="thumb-img" onclick="setMainImage('${img}')">`).join('')}
+                            ${item.imagenes.map(img => `<img src="${img}" class="thumb-img" referrerpolicy="no-referrer" onclick="setMainImage('${img}')">`).join('')}
                         </div>
                     ` : ''}
                 </div>
@@ -203,14 +249,14 @@ function openModal(id) {
 
             <div class="modal-info">
                 <div class="modal-header">
-                    <h2>${item.nombre}</h2>
+                    <h2>${item.nombre || item.id}</h2>
                     <div class="modal-subtitle">
-                        <span>📌 ${item.tipo.toUpperCase()}</span>
+                        <span>📌 ${(item.tipo || 'ENTIDAD').toUpperCase()}</span>
                         <span>🌍 ${getDisplayName(item.mundo_id)}</span>
                     </div>
                 </div>
 
-                <!-- Atributos del YAML -->
+                <!-- Atributos -->
                 ${item.detalles && Object.keys(item.detalles).length > 0 ? `
                     <div class="attributes-row">
                         ${Object.entries(item.detalles).map(([k, v]) => `
@@ -222,13 +268,13 @@ function openModal(id) {
                     </div>
                 ` : ''}
 
-                <!-- Título Dinámico: Biografía o Descripción -->
+                <!-- Lore / Biografía limpia sin título duplicado -->
                 <div class="lore-section">
                     <h3>${sectionTitle}</h3>
-                    ${item.contenido_lore ? marked.parse(item.contenido_lore) : '<p class="empty-lore">Sin información detallada registrada aún.</p>'}
+                    ${cleanLoreText.trim() ? marked.parse(cleanLoreText) : '<p class="empty-lore">Sin información detallada registrada aún.</p>'}
                 </div>
 
-                <!-- Conexiones Directas (NPCs, Lugares, Objetos, Facciones) -->
+                <!-- Conexiones Directas -->
                 ${directConnections.length > 0 ? `
                     <div class="connections-section">
                         <h3>🔗 Conexiones y Vínculos (${directConnections.length})</h3>
@@ -243,7 +289,7 @@ function openModal(id) {
                     </div>
                 ` : ''}
 
-                <!-- Desplegable para Tramas asociadas -->
+                <!-- Desplegable para Tramas -->
                 ${tramaConnections.length > 0 ? `
                     <details class="tramas-details">
                         <summary>📜 Ver Tramas asociadas (${tramaConnections.length})</summary>
