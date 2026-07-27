@@ -1,3 +1,4 @@
+import asyncio
 import discord
 from config import IMGBB_API_KEY, TARGET_FORUMS
 from modules.image_uploader import upload_to_imgbb
@@ -5,15 +6,15 @@ from modules.parser import extract_yaml_from_markdown
 
 
 async def scan_guild_forums(guild: discord.Guild):
-    """Escanea los foros objetivo unificando todos los mensajes de cada hilo"""
+    """Escanea los foros procesando las imágenes en hilos secundarios para no congelar Discord"""
     database = []
     errors = []
 
-    print("\n🔍 Escaneando canales de foro...")
+    print("\n🔍 Escaneando canales de foro...", flush=True)
 
     for channel in guild.forums:
         if channel.name.lower() in TARGET_FORUMS:
-            print(f"📂 Escaneando foro: #{channel.name}")
+            print(f"📂 Escaneando foro: #{channel.name}", flush=True)
 
             threads = list(channel.threads)
             async for archived in channel.archived_threads(limit=None):
@@ -21,7 +22,6 @@ async def scan_guild_forums(guild: discord.Guild):
 
             for thread in threads:
                 try:
-                    # Obtener TODOS los mensajes del hilo en orden cronológico
                     messages = []
                     async for msg in thread.history(
                         limit=None, oldest_first=True
@@ -35,7 +35,6 @@ async def scan_guild_forums(guild: discord.Guild):
                     if not starter_msg.content:
                         continue
 
-                    # Extraer YAML del primer mensaje
                     yaml_data, starter_markdown = extract_yaml_from_markdown(
                         starter_msg.content
                     )
@@ -43,7 +42,7 @@ async def scan_guild_forums(guild: discord.Guild):
                     if yaml_data and "id" in yaml_data:
                         element_id = str(yaml_data.get("id")).strip()
 
-                        # 1. Unificar el texto de TODOS los mensajes del hilo (Mensaje 1 + Mensaje 2 + Mensaje 3...)
+                        # Unificar textos
                         lore_parts = []
                         if starter_markdown:
                             lore_parts.append(starter_markdown)
@@ -57,7 +56,7 @@ async def scan_guild_forums(guild: discord.Guild):
 
                         full_lore_body = "\n\n".join(lore_parts)
 
-                        # 2. Recopilar imágenes de TODOS los mensajes del hilo
+                        # SUBIR IMÁGENES EN SEGUNDO PLANO (Sin congelar Discord)
                         permanent_image_urls = []
                         for msg in messages:
                             if msg.attachments:
@@ -75,10 +74,15 @@ async def scan_guild_forums(guild: discord.Guild):
                                         ]
                                     ):
                                         print(
-                                            f"  └─ ☁️ Subiendo imagen de [{element_id}]..."
+                                            f"  └─ ☁️ Subiendo imagen de [{element_id}] en segundo plano...",
+                                            flush=True,
                                         )
-                                        perm_url = upload_to_imgbb(
-                                            attachment.url, IMGBB_API_KEY
+
+                                        # Ejecuta la subida en un hilo separado
+                                        perm_url = await asyncio.to_thread(
+                                            upload_to_imgbb,
+                                            attachment.url,
+                                            IMGBB_API_KEY,
                                         )
                                         permanent_image_urls.append(perm_url)
 
@@ -96,13 +100,13 @@ async def scan_guild_forums(guild: discord.Guild):
                             "etiquetas_discord": [
                                 tag.name for tag in thread.applied_tags
                             ],
-                            "contenido_lore": full_lore_body,  # <--- Unifica todos los mensajes
-                            "imagenes": permanent_image_urls,  # <--- Fotos de mensajes 1, 2, 3...
+                            "contenido_lore": full_lore_body,
+                            "imagenes": permanent_image_urls,
                             "url_discord": thread.jump_url,
                         }
                         database.append(element)
                         print(
-                            f"  └─ ✅ Registrado [{element['id']}] ({len(messages)} mensajes leídos)"
+                            f"  └─ ✅ Registrado [{element['id']}]", flush=True
                         )
                     else:
                         errors.append(
@@ -111,7 +115,8 @@ async def scan_guild_forums(guild: discord.Guild):
 
                 except Exception as e:
                     print(
-                        f"  └─ ⚠️ Error procesando el hilo '{thread.name}': {e}"
+                        f"  └─ ⚠️ Error procesando el hilo '{thread.name}': {e}",
+                        flush=True,
                     )
 
     return database, errors

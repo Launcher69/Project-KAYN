@@ -1,3 +1,4 @@
+import asyncio
 import os
 import threading
 from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -8,7 +9,6 @@ from modules.exporter import save_to_json
 from modules.scanner import scan_guild_forums
 
 
-# Servidor web en segundo plano para que Render no dé error de puerto
 def run_dummy_server():
     port = int(os.environ.get("PORT", 10000))
     server = HTTPServer(("0.0.0.0", port), SimpleHTTPRequestHandler)
@@ -18,7 +18,6 @@ def run_dummy_server():
 
 threading.Thread(target=run_dummy_server, daemon=True).start()
 
-# Configuración del Bot
 intents = discord.Intents.default()
 intents.message_content = True
 intents.guilds = True
@@ -35,15 +34,19 @@ async def on_ready():
 
 @bot.command(name="sync")
 async def sync_wiki(ctx):
-    status_msg = await ctx.send("🔄 Escaneando foros y subiendo a la nube...")
+    status_msg = await ctx.send(
+        "🔄 Escaneando foros y procesando imágenes en la nube..."
+    )
 
     database, errors = await scan_guild_forums(ctx.guild)
-    success = save_to_json(database, config.JSON_FILE)
+
+    # Exportar a GitHub por API en hilo secundario
+    success = await asyncio.to_thread(save_to_json, database, config.JSON_FILE)
 
     if success:
         response = f"✅ **¡Wiki en la nube actualizada!**\nSe procesaron **{len(database)} elementos**."
     else:
-        response = "❌ Hubo un error al actualizar GitHub por API."
+        response = "❌ Hubo un error al actualizar GitHub."
 
     if errors:
         response += f"\n\n⚠️ **Avisos ({len(errors)}):**\n" + "\n".join(
