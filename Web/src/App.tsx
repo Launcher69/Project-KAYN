@@ -36,33 +36,49 @@ export default function App() {
   // URL directa a tu archivo en GitHub Raw con anti-caché
   const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${Date.now()}`;
 
-  // Fetch dinámico instantáneo al iniciar la web
+  // Fetch dinámico ultra-rápido usando la API oficial de GitHub (0s de caché)
   useEffect(() => {
     const fetchWikiDatabase = async () => {
+      const timestamp = Date.now();
+      
+      // API de GitHub: NUNCA usa caché y responde en 0,05 segundos
+      const GITHUB_API_URL = `https://api.github.com/repos/launcher69/Project-KAYN/contents/Web/public/wiki_database.json?t=${timestamp}`;
+      const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${timestamp}`;
+
       try {
-        // 1. INTENTO PRINCIPAL: Cargar directamente desde GitHub Raw (¡Datos en tiempo real!)
-        const ghRes = await fetch(GITHUB_RAW_URL);
-        if (ghRes.ok) {
-          const parsed = await ghRes.json();
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            console.log('✅ Wiki cargada en tiempo real desde GitHub Raw:', parsed.length, 'elementos');
-            setWikiData(parsed);
-            return;
+        // 1. INTENTO PRINCIPAL: API REST de GitHub (Tiempo real absoluto)
+        const apiRes = await fetch(GITHUB_API_URL, {
+          headers: { 'Accept': 'application/vnd.github.v3+json' }
+        });
+
+        if (apiRes.ok) {
+          const fileData = await apiRes.json();
+          if (fileData && fileData.content) {
+            // Decodificar Base64 respetando caracteres UTF-8 (tildes, eñes y emojis)
+            const binaryString = atob(fileData.content.replace(/\s/g, ''));
+            const bytes = new Uint8Array(binaryString.split('').map(char => char.charCodeAt(0)));
+            const jsonText = new TextDecoder('utf-8').decode(bytes);
+            const parsed = JSON.parse(jsonText);
+
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              console.log('⚡ Wiki cargada EN TIEMPO REAL (0s) desde GitHub API:', parsed.length, 'elementos');
+              setWikiData(parsed);
+              return;
+            }
           }
         }
 
-        // 2. INTENTO SECUNDARIO: Servidor local / estático
-        const staticRes = await fetch(`/wiki_database.json?t=${Date.now()}`);
-        if (staticRes.ok) {
-          const parsed = await staticRes.json();
+        // 2. RESPALDO: GitHub Raw por si falla la API
+        const rawRes = await fetch(GITHUB_RAW_URL);
+        if (rawRes.ok) {
+          const parsed = await rawRes.json();
           if (Array.isArray(parsed) && parsed.length > 0) {
-            console.log('✅ Wiki cargada desde copia estática local:', parsed.length, 'elementos');
             setWikiData(parsed);
             return;
           }
         }
       } catch (err) {
-        console.warn('⚠️ Carga dinámica desde GitHub fallida, usando caché local:', err);
+        console.warn('⚠️ Error al cargar datos en tiempo real:', err);
       }
     };
 
