@@ -1,0 +1,1370 @@
+import { WikiItem } from '../types';
+
+export const INITIAL_WIKI_DATA: WikiItem[] = [
+  {
+    "id": "mundo_contemporaneo",
+    "tipo": "mundo",
+    "nombre": "Mundo Contemporáneo",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "lugar_primer_atico",
+        "relacion": "Ubicación inicial de la partida"
+      },
+      {
+        "id_destino": "lugar_nuevo_atico",
+        "relacion": "Ubicación actual del hogar familiar"
+      }
+    ],
+    "detalles": {
+      "tematica": "Realismo cotidiano / Drama personal y de convivencia",
+      "nivel_tecnologico": "Moderno",
+      "amenaza": "Baja (conflictos estrictamente interpersonales y familiares)"
+    },
+    "etiquetas_discord": ["Contemporáneo", "Drama", "Cotidiano"],
+    "contenido_lore": "### Descripción\nEl Mundo Contemporáneo representa una realidad urbana moderna enfocada en las relaciones humanas, los dilemas éticos, la superación personal y la protección de la familia. Sin magia ni alienígenas, cada decisión tiene peso emocional directo sobre la convivencia.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529942050248593420"
+  },
+  {
+    "id": "lugar_primer_atico",
+    "tipo": "lugar",
+    "nombre": "Primer Ático de Kayn",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "pc_kayn",
+        "relacion": "Antiguo propietario"
+      },
+      {
+        "id_destino": "npc_elena",
+        "relacion": "Antigua residente temporal"
+      },
+      {
+        "id_destino": "trama_cambio_hogar",
+        "relacion": "Escenario de partida"
+      }
+    ],
+    "detalles": {
+      "tipo_lugar": "Apartamento urbano",
+      "ubicacion": "Centro de la ciudad",
+      "ambiente": "Cálido, íntimo y acogedor"
+    },
+    "etiquetas_discord": ["Hogar", "Ático"],
+    "contenido_lore": "### Descripción\nUn acogedor apartamento en el centro urbano que sirvió como refugio inicial para Kayn y Elena. Lleno de recuerdos de sus primeros pasos juntos antes de dar el salto hacia su nuevo proyecto de vida familiar.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529942120058851418"
+  },
+  {
+    "id": "lugar_casa_sierra",
+    "tipo": "lugar",
+    "nombre": "Casa de la Sierra de Julián",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "npc_julian",
+        "relacion": "Propietario / Residencia habitual"
+      },
+      {
+        "id_destino": "trama_confrontacion_julian",
+        "relacion": "Escenario del desenlace"
+      }
+    ],
+    "detalles": {
+      "tipo_lugar": "Vivienda unifamiliar",
+      "ubicacion": "Pueblo de montaña",
+      "ambiente": "Rústico, tradicional y silencioso"
+    },
+    "etiquetas_discord": ["Montaña", "Retiro"],
+    "contenido_lore": "### Descripción\nUna gran casa de piedra y madera situada en las laderas de la sierra. Aquí es donde Julián se retiró para aislarse del mundo tras sus fracasos empresariales, convirtiéndola en el escenario final de la difícil confrontación familiar.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529942183724060712"
+  },
+  {
+    "id": "lugar_nuevo_atico",
+    "tipo": "lugar",
+    "nombre": "El Nuevo Ático",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "pc_kayn",
+        "relacion": "Co-propietario"
+      },
+      {
+        "id_destino": "npc_elena",
+        "relacion": "Co-propietaria"
+      },
+      {
+        "id_destino": "trama_paternidad",
+        "relacion": "Hogar de la futura familia"
+      }
+    ],
+    "detalles": {
+      "tipo_lugar": "Ático con gran terraza",
+      "ubicacion": "Barrio residencial silencioso",
+      "ambiente": "Luminoso, amplio y lleno de paz"
+    },
+    "etiquetas_discord": ["Familia", "Residencial"],
+    "contenido_lore": "### Descripción\nEspacioso hogar diseñado con amplias ventanas y una gran terraza donde entra la luz natural durante todo el día. Es el símbolo del esfuerzo conjunto de Kayn y Elena para criar a su futuro hijo.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529950281729835078"
+  },
+  {
+    "id": "pc_kayn",
+    "tipo": "npc",
+    "nombre": "Kayn",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "npc_elena",
+        "relacion": "Pareja y compañera de vida"
+      },
+      {
+        "id_destino": "lugar_nuevo_atico",
+        "relacion": "Co-propietario del nuevo hogar"
+      },
+      {
+        "id_destino": "trama_paternidad",
+        "relacion": "Futuro padre"
+      },
+      {
+        "id_destino": "npc_julian",
+        "relacion": "Superó los chantajes del ex-cliente"
+      }
+    ],
+    "detalles": {
+      "rol": "Protagonista Principal",
+      "estado": "Acompañando a Elena en el parto",
+      "personalidad": "Protector, resolutivo, empático y leal",
+      "ocupacion": "Profesional independiente"
+    },
+    "etiquetas_discord": ["Protagonista", "Padre"],
+    "contenido_lore": "### Biografía\nKayn es el pilar fundamental del grupo familiar. Tras enfrentar complicadas situaciones en el pasado con antiguos socios y clientes como Víctor y Julián, ha canalizado todas sus energías en construir una vida pacífica y segura para Elena y su futuro bebé.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"
+    ]
+  },
+  {
+    "id": "npc_elena",
+    "tipo": "npc",
+    "nombre": "Elena",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "pc_kayn",
+        "relacion": "Pareja y compañera de vida"
+      },
+      {
+        "id_destino": "npc_julian",
+        "relacion": "Hija (actualmente distanciada)"
+      },
+      {
+        "id_destino": "lugar_nuevo_atico",
+        "relacion": "Residente y co-propietaria"
+      },
+      {
+        "id_destino": "trama_paternidad",
+        "relacion": "Madre gestante"
+      }
+    ],
+    "detalles": {
+      "rol": "Co-protagonista",
+      "estado": "En proceso de parto",
+      "personalidad": "Cariñosa, leal, resuelta y protectora",
+      "ocupacion": "Vida civil activa"
+    },
+    "etiquetas_discord": ["Protagonista", "Madre"],
+    "contenido_lore": "### Biografía\nElena es una mujer de carácter fuerte y corazón compasivo. A pesar de los intentos de su padre Julián por controlar su vida y distanciarla de Kayn, Elena se mantuvo firme al lado de su pareja, protegiendo su amor y preparando con ilusión la llegada de su hijo.",
+    "imagenes": [
+      "https://i.ibb.co/PvxQjBm9/descarga-1.jpg"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529942245526999110"
+  },
+  {
+    "id": "npc_julian",
+    "tipo": "npc",
+    "nombre": "Julián",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "npc_elena",
+        "relacion": "Padre (distanciado)"
+      },
+      {
+        "id_destino": "pc_kayn",
+        "relacion": "Ex-cliente y extorsionador"
+      },
+      {
+        "id_destino": "lugar_casa_sierra",
+        "relacion": "Residente"
+      },
+      {
+        "id_destino": "trama_confrontacion_julian",
+        "relacion": "Instigador principal"
+      }
+    ],
+    "detalles": {
+      "rol": "Antagonista relacional / Padre de Elena",
+      "estado": "Aislado en su residencia de montaña",
+      "personalidad": "Sobrio, posesivo, reservado y obstinado",
+      "ocupacion": "Ex-empresario de logística / Retirado"
+    },
+    "etiquetas_discord": ["Antagonista", "Padre"],
+    "contenido_lore": "### Biografía\nJulián es un hombre dominante acostumbrado a imponer su voluntad tanto en los negocios como en su hogar. Tras su retiro empresarial, intentó usar a Víctor para sembrar dudas sobre Kayn, pero la verdad salió a la luz dejando a Julián aislado en su finca de la sierra.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529942331338522755"
+  },
+  {
+    "id": "npc_victor",
+    "tipo": "npc",
+    "nombre": "Víctor",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "npc_julian",
+        "relacion": "Cómplice y ex-socio"
+      },
+      {
+        "id_destino": "pc_kayn",
+        "relacion": "Contacto de negocios turbios del pasado"
+      }
+    ],
+    "detalles": {
+      "rol": "Antagonista menor",
+      "estado": "Activo",
+      "personalidad": "Cínico, codicioso, manipulador y pragmático",
+      "ocupacion": "Intermediario de logística en mercados grises"
+    },
+    "etiquetas_discord": ["Intermediario", "Chantajista"],
+    "contenido_lore": "### Biografía\nUn oportuno intermediario que trató de vender falsos informes incriminatorios sobre Kayn. Su codicia terminó provocando su propio descrédito cuando Kayn y Elena descubrieron la manipulación de los documentos.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529942385025486848"
+  },
+  {
+    "id": "objeto_test_embarazo",
+    "tipo": "objeto",
+    "nombre": "Test de Embarazo Positivo",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "npc_elena",
+        "relacion": "Confirmante"
+      },
+      {
+        "id_destino": "pc_kayn",
+        "relacion": "Receptor"
+      },
+      {
+        "id_destino": "trama_paternidad",
+        "relacion": "Catalizador inicial"
+      }
+    ],
+    "detalles": {
+      "tipo_objeto": "Dispositivo de diagnóstico médico",
+      "rareza": "Común",
+      "funcion": "Confirmación de embarazo"
+    },
+    "etiquetas_discord": ["Médico", "Hito"],
+    "contenido_lore": "### Descripción\nEl pequeño objeto con dos líneas rosas que marcó el inicio de la etapa más emotiva y trascendental para Kayn y Elena.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529942457381425153"
+  },
+  {
+    "id": "objeto_carpeta_victor",
+    "tipo": "objeto",
+    "nombre": "Carpeta de Pruebas Falsas de Víctor",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "npc_victor",
+        "relacion": "Creador"
+      },
+      {
+        "id_destino": "npc_julian",
+        "relacion": "Propietario temporal"
+      },
+      {
+        "id_destino": "trama_confrontacion_julian",
+        "relacion": "Instrumento fallido de extorsión"
+      }
+    ],
+    "detalles": {
+      "tipo_objeto": "Documentación impresa",
+      "rareza": "Única",
+      "funcion": "Evidencia circumstantial para chantaje"
+    },
+    "etiquetas_discord": ["Documento", "Extorsión"],
+    "contenido_lore": "### Descripción\nUn legajo de documentos alterados y extractos bancarios manipulados con los que Víctor intentó extorsionar a Julián y destruir la reputación de Kayn.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529942514520559667"
+  },
+  {
+    "id": "trama_confrontacion_julian",
+    "tipo": "trama",
+    "nombre": "La Encerrona de Julián",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "npc_julian",
+        "relacion": "Instigador"
+      },
+      {
+        "id_destino": "npc_victor",
+        "relacion": "Cómplice"
+      },
+      {
+        "id_destino": "npc_elena",
+        "relacion": "Víctima y aliada de Kayn"
+      },
+      {
+        "id_destino": "lugar_casa_sierra",
+        "relacion": "Escenario del clímax"
+      }
+    ],
+    "detalles": {
+      "estado_trama": "Concluida con victoria de la pareja",
+      "importancia": "Crítica (Unión inquebrantable de Elena y Kayn)"
+    },
+    "etiquetas_discord": ["Conflicto", "Familiar"],
+    "contenido_lore": "### Descripción\nArco dramático donde Julián convoca a su casa de la sierra a Kayn para acorralarlo con las falsas acusaciones de Víctor. Sin embargo, la sorpresiva llegada de Elena desmanteló el chantaje y consolidó definitivamente la pareja.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529950727814905856"
+  },
+  {
+    "id": "trama_cambio_hogar",
+    "tipo": "trama",
+    "nombre": "Un Nuevo Comienzo en el Ático",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "lugar_primer_atico",
+        "relacion": "Punto de partida"
+      },
+      {
+        "id_destino": "lugar_nuevo_atico",
+        "relacion": "Destino y nuevo hogar"
+      }
+    ],
+    "detalles": {
+      "estado_trama": "Completada",
+      "importancia": "Alta (Establecimiento de la independencia familiar)"
+    },
+    "etiquetas_discord": ["Mudanza", "Independencia"],
+    "contenido_lore": "### Descripción\nProceso de búsqueda, reforma y traslado desde el primer apartamento hacia el luminoso nuevo ático con terraza, sellando la independencia de la joven pareja.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529950792088555622"
+  },
+  {
+    "id": "trama_paternidad",
+    "tipo": "trama",
+    "nombre": "El Camino a la Paternidad",
+    "mundo_id": "mundo_contemporaneo",
+    "relaciones": [
+      {
+        "id_destino": "npc_elena",
+        "relacion": "Madre gestante"
+      },
+      {
+        "id_destino": "pc_kayn",
+        "relacion": "Padre"
+      },
+      {
+        "id_destino": "lugar_nuevo_atico",
+        "relacion": "Lugar de crianza"
+      }
+    ],
+    "detalles": {
+      "estado_trama": "En curso (Comienzo del parto)",
+      "importancia": "Máxima (Arco vital de la partida)"
+    },
+    "etiquetas_discord": ["Nacimiento", "Familia"],
+    "contenido_lore": "### Descripción\nEl emotivo recorrido a lo largo de los nueve meses de gestación, las ecografías, la preparación del cuarto del bebé y la llegada inminente al hospital para dar la bienvenida a la nueva vida.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1529950842097107194"
+  },
+  {
+    "id": "Beyond_Good_Evil",
+    "tipo": "mundo",
+    "nombre": "Beyond Good & Evil - Planeta Hillys",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": {
+      "facciones_presentes": [
+        "faccion_gobierno_hillys",
+        "faccion_secciones_alfa",
+        "faccion_red_iris",
+        "faccion_domz"
+      ],
+      "lugares_destacados": [
+        "lugar_refugio_orfanato",
+        "lugar_akuda_bar",
+        "lugar_taller_mammago",
+        "lugar_fabrica_nutripills",
+        "lugar_matadero_cuarentena",
+        "lugar_luna_selene"
+      ]
+    },
+    "detalles": {
+      "clima": "Oceánico costero, templado con humedad elevada y tormentas periódicas",
+      "poblacion": "Sociedad híbrida (Humanos y antropomorfos como porcinos, caprinos y aquiles)",
+      "tecnologia": "Ciencia ficción retro-futurista (Tecnología MecaImpulso, holodisco, naves anfibias)",
+      "estatus": "Bajo asedio alienígena constante y ley marcial impuesta por las Secciones Alfa"
+    },
+    "etiquetas_discord": ["Sci-Fi", "Hillys", "MecaImpulso"],
+    "contenido_lore": "### Descripción\nEl planeta Hillys es un mundo pacífico y predominantemente acuático compuesto por un gran archipiélago de islas volcánicas, una extensa red de canales transitables y vastos océanos. Su ecosistema es sumamente próspero y alberga una biodiversidad fascinante donde conviven en armonía seres humanos y razas híbridas antropomórficas.\n\nLa arquitectura de sus asentamientos combina estética costera tradicional con infraestructuras futuristas impulsadas por la tecnología MecaImpulso, dando a las ciudades y poblados un ambiente dinámico y cercano a la naturaleza.\n\nLamentablemente, la tranquilidad de Hillys se ha visto trágicamente interrumpida por las continuas invasiones de los DomZ, una despiadada raza alienígena que busca drenar la energía vital del planeta y secuestrar a sus habitantes. Para contrarrestar esta amenaza constante, las Secciones Alfa han tomado el control militar del planeta.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531271747599339530"
+  },
+  {
+    "id": "lugar_luna_selene",
+    "tipo": "lugar",
+    "nombre": "Base DomZ en la Luna Selene",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_gran_sacerdote_domz",
+        "relacion": "Centro de mando supremo del líder alienígena"
+      },
+      {
+        "id_destino": "npc_general_keyl",
+        "relacion": "Lugar de reunión para pactos y conspiraciones secretas"
+      },
+      {
+        "id_destino": "faccion_domz",
+        "relacion": "Fortaleza principal y reactor de almas robadas"
+      },
+      {
+        "id_destino": "faccion_secciones_alfa",
+        "relacion": "Punto de destino final de los cargamentos humanos robados"
+      }
+    ],
+    "detalles": {
+      "ubicacion": "Satélite natural Selene en la órbita de Hillys",
+      "atmosfera": "Artificial / Controlada por magia espiritual y biotecnología DomZ",
+      "estatus": "Fortalezas centrales de la raza alienígena y origen del conflicto"
+    },
+    "etiquetas_discord": ["Órbita", "Fortaleza"],
+    "contenido_lore": "### Descripción\nSelene es la luna desolada y pálida que orbita el planeta Hillys. Desde la superficie del planeta se aprecia como un astro tranquilo e inofensivo en el firmamento nocturno, pero en su cara oculta alberga la colosal estructura orgánica y metálica que sirve como la fortaleza central de la invasión DomZ en todo el sistema.\n\nLa base lunar es un santuario alienígena oscuro y retorcido, donde la biotecnología extraterrestre se fusiona con salas de energía mística y recámaras de almacenamiento de almas. Llegar a la Luna Selene requiere reacondicionar por completo la nave Beluga con propulsores estelares MecaImpulso de gran potencia.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531273157334405160"
+  },
+  {
+    "id": "lugar_refugio_orfanato",
+    "tipo": "lugar",
+    "nombre": "Refugio del Orfanato (El Faro)",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Hogar, estudio fotográfico y base de operaciones"
+      },
+      {
+        "id_destino": "npc_peyj",
+        "relacion": "Residencia habitual y taller de mantenimiento"
+      },
+      {
+        "id_destino": "npc_secundo",
+        "relacion": "Servidor local y sistema de inteligencia"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Centro neurálgico clandestino de transmisiones"
+      }
+    ],
+    "detalles": {
+      "ubicacion": "Isla costera aislada en el archipiélago de Hillys",
+      "funcion": "Orfanato para víctimas del conflicto DomZ y base operacional de Jade",
+      "sistema_defensa": "Generador de escudo MecaImpulso propulsado localmente"
+    },
+    "etiquetas_discord": ["Faro", "Orfanato", "Base"],
+    "contenido_lore": "### Descripción\nEl Faro es una estructura imponente construida sobre una prominente formación rocosa en medio del océano de Hillys. Antiguamente una baliza de navegación para las embarcaciones de los canales, el edificio fue reconvertido por Jade y su tío Pey'j en un cálido refugio y orfanato para cuidar a los niños cuyos padres han sido víctimas de las incursiones DomZ.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531276329746698341"
+  },
+  {
+    "id": "lugar_akuda_bar",
+    "tipo": "lugar",
+    "nombre": "Bar Akuda",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_ming_tzu",
+        "relacion": "Comercio de información e intercambios en secreto"
+      },
+      {
+        "id_destino": "npc_double_h",
+        "relacion": "Punto de contacto y reunión clandestina"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Cuartel general secreto en la planta superior"
+      }
+    ],
+    "detalles": {
+      "ubicacion": "Zona peatonal principal de la Ciudad de Hillys",
+      "ambiente": "Taberna clandestina, centro de información y ocio nocturno",
+      "seguridad": "Clave de acceso secreta requerida para ingresar al piso superior"
+    },
+    "etiquetas_discord": ["Bar", "Clandestino", "IRIS"],
+    "contenido_lore": "### Descripción\nUbicado en el corazón de la zona urbana de la Ciudad de Hillys, el Bar Akuda es la taberna más célebre de todo el archipiélago. Sus salones iluminados por letreros de neón son el punto de encuentro predilecto para marineros, comerciantes y viajeros. Su piso superior oculta el cuartel general de la Red IRIS.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531276461963477115"
+  },
+  {
+    "id": "lugar_taller_mammago",
+    "tipo": "lugar",
+    "nombre": "Taller Mecánico de los Hermanos Mammago",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_hermanos_mammago",
+        "relacion": "Propietarios, mecánicos y gestores del taller"
+      },
+      {
+        "id_destino": "objeto_hovercraft",
+        "relacion": "Taller principal para reparaciones y mejoras MecaImpulso"
+      },
+      {
+        "id_destino": "objeto_nave_beluga",
+        "relacion": "Lugar de ensamblaje y reacondicionamiento estelar"
+      }
+    ],
+    "detalles": {
+      "ubicacion": "Atolón flotante en las aguas exteriores del océano",
+      "especialidad": "Ingeniería náutica avanzada, motores MecaImpulso y piezas de combate",
+      "moneda_aceptada": "Perlas Azules DomZ"
+    },
+    "etiquetas_discord": ["Taller", "MecaImpulso"],
+    "contenido_lore": "### Descripción\nEl Taller Mammago es una impresionante estación flotante de inspiración náutica y jamaicana levantada sobre un atolón artificial. Regentado por los peculiares Hermanos Mammago —híbridos rinoceronte amables y melómanos—, es la meca para tunear vehículos navales y espaciales.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531276615538180136"
+  },
+  {
+    "id": "lugar_fabrica_nutripills",
+    "tipo": "lugar",
+    "nombre": "Antigua Fábrica de Nutripills",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_double_h",
+        "relacion": "Lugar de captura y rescate durante la investigación"
+      },
+      {
+        "id_destino": "npc_general_keyl",
+        "relacion": "Instalación supervisada bajo órdenes militares directas"
+      },
+      {
+        "id_destino": "faccion_secciones_alfa",
+        "relacion": "Base industrial de patrulla y resguardo militar"
+      },
+      {
+        "id_destino": "faccion_domz",
+        "relacion": "Zona de experimentación y transferencia biológica"
+      }
+    ],
+    "detalles": {
+      "ubicacion": "Periferia industrial de la Ciudad de Hillys",
+      "estado": "Oficialmente clausurada / Operativa en secreto",
+      "peligro": "Alto (Patrullas de Soldados Alfa pesados, robots de seguridad)"
+    },
+    "etiquetas_discord": ["Fábrica", "Peligro"],
+    "contenido_lore": "### Descripción\nUn complejo industrial lúgubre que supuestamente procesaba alimentos pero fue clausurado por supuesta contaminación biológica. En realidad, sirve como laboratorio militar clandestino donde las Secciones Alfa ocultan tecnología alienígena.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531276735725961398"
+  },
+  {
+    "id": "lugar_matadero_cuarentena",
+    "tipo": "lugar",
+    "nombre": "El Matadero (Centro de Cuarentena Alfa)",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "faccion_secciones_alfa",
+        "relacion": "Instalación de máxima seguridad militar y control de acceso"
+      },
+      {
+        "id_destino": "faccion_domz",
+        "relacion": "Centro encubierto de recolección y embarque de prisioneros"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Objetivo prioritario de infiltración para reportaje fotográfico"
+      }
+    ],
+    "detalles": {
+      "ubicacion": "Red de canales del sector este de Hillys",
+      "nivel_seguridad": "Extremo (Barricadas de minas, campos de fuerza y vigilancia)",
+      "proposito_oculto": "Centro de procesamiento y embarque de prisioneros civiles secuestrados"
+    },
+    "etiquetas_discord": ["Prisión", "Máxima Seguridad"],
+    "contenido_lore": "### Descripción\nConocido popularmente como 'El Matadero', es la instalación militar más fuertemente custodiada de Hillys. Bajo la fachada de centro de cuarentena médica, oculta el terrible embarcadero donde miles de ciudadanos son metidos en cápsulas de estasis hacia el espacio.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531276915296571514"
+  },
+  {
+    "id": "npc_jade",
+    "tipo": "npc",
+    "nombre": "Jade",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "lugar_refugio_orfanato",
+        "relacion": "Hogar, estudio fotográfico y centro de cuidado infantil"
+      },
+      {
+        "id_destino": "npc_peyj",
+        "relacion": "Tío adoptivo, mentor técnico y compañero de equipo"
+      },
+      {
+        "id_destino": "npc_secundo",
+        "relacion": "IA asistente integrada en su equipamiento"
+      },
+      {
+        "id_destino": "npc_double_h",
+        "relacion": "Compañero de armas y colega en la Red IRIS"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Reportera investigadora estrella (nombre en clave Shauni)"
+      }
+    ],
+    "detalles": {
+      "edad": "20 años aprox.",
+      "ocupacion": "Fotoperiodista, instructora de artes marciales y cuidadora de huérfanos",
+      "armamento": "Bastón de combate Dai-Jo y Cámara MecaImpulso",
+      "origen": "Misterioso (Vinculado a la energía ancestral DomZ 'Shauni')"
+    },
+    "etiquetas_discord": ["Shauni", "Reportera", "Heroína"],
+    "contenido_lore": "### Biografía\nJade es una joven independiente, empática y de tenacidad inquebrantable. Criada en el Refugio del Faro junto a su tío Pey'j, combina una profunda calidez humana con una destreza física envidiable en el combate con bastón Dai-Jo.\n\nTras la pérdida de los padres de varios niños de la isla a manos de las tropas alienígenas, Jade asumió la responsabilidad de mantener el orfanato con escasos recursos. Asumiendo el pseudónimo de **Shauni**, utiliza su cámara fotográfica para atravesar la censura militar y revelar la verdad.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531277990686621826"
+  },
+  {
+    "id": "npc_peyj",
+    "tipo": "npc",
+    "nombre": "Pey'j",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Tío adoptivo, tutor legal y protector incondicional"
+      },
+      {
+        "id_destino": "lugar_refugio_orfanato",
+        "relacion": "Cofundador y jefe del taller de mantenimiento del faro"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Miembro cofundador histórico en secreto"
+      },
+      {
+        "id_destino": "lugar_taller_mammago",
+        "relacion": "Aliados mecánicos y colegas de profesión"
+      }
+    ],
+    "detalles": {
+      "especie": "Híbrido Porcino (Jabalí antropomórfico)",
+      "ocupacion": "Mecánico jefe, inventor y tutor",
+      "equipo": "Cortador de Jet-Boots (Botas Propulsoras) y llave inglesa pesada"
+    },
+    "etiquetas_discord": ["Mecánico", "Inventor", "Tío"],
+    "contenido_lore": "### Biografía\nPey'j es un híbrido porcino de carácter cascarrabias pero corazón de oro. Experto absoluto en mecánica, soldadura e ingeniería improvisada, es capaz de construir o reparar cualquier máquina a partir de chatarra militar. Detrás de sus constantes quejas se esconde una devoción total hacia su sobrina adoptiva Jade.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531279296876904608"
+  },
+  {
+    "id": "npc_double_h",
+    "tipo": "npc",
+    "nombre": "Doble H (Hubert)",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Camarada de combate y reportera asignada en el campo"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Agente veterano de asalto y ejecutor militar"
+      },
+      {
+        "id_destino": "lugar_fabrica_nutripills",
+        "relacion": "Lugar donde fue apresado y torturado con toxina DomZ"
+      },
+      {
+        "id_destino": "lugar_akuda_bar",
+        "relacion": "Punto de reunión con los mandos de la resistencia"
+      }
+    ],
+    "detalles": {
+      "especie": "Humano",
+      "ocupacion": "Ex-militar y agente de campo de la Red IRIS",
+      "equipo": "Armadura pesada de asalto y manual militar 'Optima Optimo'"
+    },
+    "etiquetas_discord": ["Soldado", "OptimaOptimo"],
+    "contenido_lore": "### Biografía\nHubert, conocido dentro de la resistencia bajo el código **Doble H**, es un exmilitar de constitución imponente y lealtad absoluta. Cita constantemente el manual militar *Optima Optimo* y aporta fuerza bruta indispensable para derribar portones y proteger a Jade.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531279453664182353"
+  },
+  {
+    "id": "npc_secundo",
+    "tipo": "npc",
+    "nombre": "Secundo",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Inteligencia artificial asistente personal y gestor de datos"
+      },
+      {
+        "id_destino": "objeto_camara_fotografica",
+        "relacion": "Procesador integrado de escaneo y transferencia de datos"
+      }
+    ],
+    "detalles": {
+      "tipo_entidad": "Inteligencia Artificial Holográfica",
+      "apariencia": "Pequeño duendecillo holográfico de estética estilizada",
+      "funcion": "Gestión del Holodisco, almacenamiento de inventario y desencriptación"
+    },
+    "etiquetas_discord": ["IA", "Asistente"],
+    "contenido_lore": "### Biografía\nSecundo es la unidad de asistencia holográfica de Jade. Un pequeño ser digital con acento hispano extravagante y gran sentido del humor que administra las monedas, analiza flora/fauna y desencripta códigos de seguridad.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531279583028969544"
+  },
+  {
+    "id": "npc_gobernadora_hillys",
+    "tipo": "npc",
+    "nombre": "Gobernadora de Hillys",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "faccion_gobierno_hillys",
+        "relacion": "Máxima representante del poder ejecutivo civil"
+      },
+      {
+        "id_destino": "faccion_secciones_alfa",
+        "relacion": "Opositora política atada por decretos de ley marcial"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Aliada institucional secreta tras la recepción de pruebas"
+      }
+    ],
+    "detalles": {
+      "especie": "Humana",
+      "cargo": "Jefa de Estado del Gobierno Planetario de Hillys",
+      "posicion_politica": "Favorable a las libertades civiles y contraria al régimen militar"
+    },
+    "etiquetas_discord": ["Líder", "Gobierno"],
+    "contenido_lore": "### Biografía\nDiplomática de principios firmes que ostenta el liderazgo civil de Hillys. Atada por las leyes de emergencia de las Secciones Alfa, usa su poder constitucional en cuanto recibe los informes IRIS para autorizar la rebelión de la guardia civil.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531279699400196157"
+  },
+  {
+    "id": "npc_general_keyl",
+    "tipo": "npc",
+    "nombre": "General Keyl",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "faccion_secciones_alfa",
+        "relacion": "Comandante Supremo e ideólogo del régimen militar"
+      },
+      {
+        "id_destino": "faccion_domz",
+        "relacion": "Socio traidor en el pacto de captura de civiles"
+      },
+      {
+        "id_destino": "npc_gran_sacerdote_domz",
+        "relacion": "Subordinado terrenal al servicio de la entidad alienígena"
+      },
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Enemigo mortal y perseguidor de las transmisiones IRIS"
+      }
+    ],
+    "detalles": {
+      "especie": "Humano",
+      "cargo": "Comandante en Jefe de las Secciones Alfa",
+      "estatus": "Antagonista militar principal de Hillys"
+    },
+    "etiquetas_discord": ["Tirano", "Militar"],
+    "contenido_lore": "### Biografía\nComandante en Jefe de las Secciones Alfa. Tras una máscara de héroe protector, pactó en secreto entregar prisioneros humanos a los DomZ a cambio de tecnología armamentística y control absoluto del planeta.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531279825195503716"
+  },
+  {
+    "id": "npc_gran_sacerdote_domz",
+    "tipo": "npc",
+    "nombre": "Gran Sacerdote DomZ",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "faccion_domz",
+        "relacion": "Líder supremo, deidad mística y fuente de poder"
+      },
+      {
+        "id_destino": "npc_general_keyl",
+        "relacion": "Manipulador cósmico y beneficiario del pacto de almas"
+      },
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Némesis mística y obsesión milenaria (Búsqueda de Shauni)"
+      },
+      {
+        "id_destino": "lugar_luna_selene",
+        "relacion": "Soberano del trono central en la base lunar"
+      }
+    ],
+    "detalles": {
+      "especie": "Entidad Alienígena DomZ (Ser cósmico ancestral)",
+      "habilidades": "Manipulación de almas, telequinesis, control mental e ilusión",
+      "estatus": "Antagonista supremo del universo"
+    },
+    "etiquetas_discord": ["Alienígena", "Sacerdote", "Boss"],
+    "contenido_lore": "### Biografía\nEntidad ancestral que gobierna a la destructiva raza DomZ. Ha consumido la energía vital de mundos enteros a lo largo de eones. Obsesionado con la fuente mística **Shauni** dentro de Jade.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531279965277130793"
+  },
+  {
+    "id": "npc_hermanos_mammago",
+    "tipo": "npc",
+    "nombre": "Los Hermanos Mammago",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "lugar_taller_mammago",
+        "relacion": "Fundadores, mecánicos y gestores de la estación flotante"
+      },
+      {
+        "id_destino": "npc_peyj",
+        "relacion": "Colegas de profesión e ingenieros náuticos de confianza"
+      },
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Proveedores de tecnología avanzada para vehículos"
+      }
+    ],
+    "detalles": {
+      "especie": "Híbridos Rinoceronte",
+      "ocupacion": "Mecánicos navales, ingenieros pesados y comerciantes",
+      "estilo": "Excéntricos, melómanos (amantes del reggae) y amigables"
+    },
+    "etiquetas_discord": ["Rinocerontes", "Mecánicos"],
+    "contenido_lore": "### Biografía\nTres hermanos híbridos rinoceronte con ritmo caribeño y destreza mecánica formidable. Aceptan perlas azules para repotenciar los vehículos de Jade.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531280127084990576"
+  },
+  {
+    "id": "npc_ming_tzu",
+    "tipo": "npc",
+    "nombre": "Ming-Tzu",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "lugar_akuda_bar",
+        "relacion": "Cliente habitual e informante del piso confidencial"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Simpatizante, facilitador de claves y colaborador clandestino"
+      },
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Comerciante de confianza y mentor de información urbana"
+      }
+    ],
+    "detalles": {
+      "especie": "Híbrido Morsá",
+      "ocupacion": "Mercader de antigüedades, historiador y conector de la resistencia",
+      "ubicacion": "Tienda de curiosidades de Ming-Tzu en la Ciudad de Hillys"
+    },
+    "etiquetas_discord": ["Morsá", "Informante"],
+    "contenido_lore": "### Biografía\nAnciano e ilustrado híbrido morsá que regenta una tienda de antigüedades. Le da a Jade las claves secretas para el piso clandestino del Bar Akuda.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531280265572515840"
+  },
+  {
+    "id": "objeto_hovercraft",
+    "tipo": "objeto",
+    "nombre": "Deslizador / Hovercraft MecaImpulso",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Vehículo principal de transporte, exploración y combate"
+      },
+      {
+        "id_destino": "npc_peyj",
+        "relacion": "Mantenimiento, adaptaciones de ingeniería y reparaciones"
+      },
+      {
+        "id_destino": "lugar_taller_mammago",
+        "relacion": "Lugar de instalación de armamento pesado y propulsores"
+      },
+      {
+        "id_destino": "objeto_nave_beluga",
+        "relacion": "Módulo acoplable para maniobras en superficie acuática"
+      }
+    ],
+    "detalles": {
+      "tipo_objeto": "Vehículo anfibio de alta velocidad",
+      "propulsion": "Turbinas dobles MecaImpulso",
+      "equipamiento": "Cañón neutralizador, saltador de rampa y radar de navegación"
+    },
+    "etiquetas_discord": ["Deslizador", "Vehículo"],
+    "contenido_lore": "### Descripción\nLa veloz embarcación anfibia con la que Jade se desplaza por los mares y canales. Puede ser mejorada con cañones neutralizadores, saltadores de rampa y acoplarse dentro de la Beluga.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531281045624848434"
+  },
+  {
+    "id": "objeto_nave_beluga",
+    "tipo": "objeto",
+    "nombre": "Nave Espacial Beluga",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Nave capitana para la travesía estelar hacia Selene"
+      },
+      {
+        "id_destino": "npc_peyj",
+        "relacion": "Proyecto secreto de restauración y montaje en el Faro"
+      },
+      {
+        "id_destino": "lugar_refugio_orfanato",
+        "relacion": "Oculta en la bahía de mantenimiento bajo la estructura"
+      },
+      {
+        "id_destino": "lugar_luna_selene",
+        "relacion": "Vehículo capaz de romper la atmósfera para el asalto final"
+      }
+    ],
+    "detalles": {
+      "tipo_objeto": "Fragata ligera de transporte espacial",
+      "propulsion": "Propulsores Estelares MecaImpulso impulsados por Perlas",
+      "capacidad": "Tripulación completa y bahía de acople para el Hovercraft"
+    },
+    "etiquetas_discord": ["NaveEspacial", "Beluga"],
+    "contenido_lore": "### Descripción\nLa legendaria nave construida por los padres de Jade y escondida bajo el Faro por Pey'j. Una vez repotenciada con perlas, permite volar libremente por el espacio hacia la Luna Selene.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531281150276927661"
+  },
+  {
+    "id": "objeto_baston_dai_jo",
+    "tipo": "objeto",
+    "nombre": "Bastón de Combate Dai-Jo",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Arma personal reglamentaria de combate cuerpo a cuerpo"
+      },
+      {
+        "id_destino": "npc_double_h",
+        "relacion": "Sinergia en tácticas y remates combinados de aturdimiento"
+      }
+    ],
+    "detalles": {
+      "tipo_objeto": "Arma marcial de energía y contacto",
+      "material": "Aleación de titanio ligero con núcleo de resonancia",
+      "funciones": "Cadencias de barrido, aturdimiento e integración de energía espiritual"
+    },
+    "etiquetas_discord": ["Arma", "DaiJo"],
+    "contenido_lore": "### Descripción\nEl bastón de titanio con resonadores MecaImpulso que Jade utiliza con maestría marcial. Conecta con su poder interior para purificar la materia alienígena.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1595590424283-b8f17842773f?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531281226500149278"
+  },
+  {
+    "id": "objeto_camara_fotografica",
+    "tipo": "objeto",
+    "nombre": "Cámara Fotográfica MecaImpulso",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Herramienta principal de trabajo, investigación y defensa"
+      },
+      {
+        "id_destino": "npc_secundo",
+        "relacion": "Unidad donde está alojada la IA y el escáner de datos"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Instrumento para recopilar la verdad y exponer la censura"
+      }
+    ],
+    "detalles": {
+      "tipo_objeto": "Dispositivo óptico-digital de grado periodístico y militar",
+      "funciones": "Teleobjetivo zoom, escáner biológico y lanzador de discos Gyro",
+      "almacenamiento": "Holodiscos encriptados de alta capacidad"
+    },
+    "etiquetas_discord": ["Cámara", "Infiltración"],
+    "contenido_lore": "### Descripción\nEl arma periodística definitiva. Incorpora la IA Secundo, escáneres de flora y fauna, lanzador de discos Gyro y teleobjetivos de alta fidelidad.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531281418267918459"
+  },
+  {
+    "id": "objeto_perlas_azules",
+    "tipo": "objeto",
+    "nombre": "Perlas Azules DomZ",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "faccion_domz",
+        "relacion": "Núcleos de poder condensados extraídos de bestias y jefes"
+      },
+      {
+        "id_destino": "lugar_taller_mammago",
+        "relacion": "Divisa exclusiva exigida para adquirir tecnología militar"
+      }
+    ],
+    "detalles": {
+      "tipo_objeto": "Esferas de energía orgánica purificada",
+      "valor": "Incalculable en el mercado negro y la ingeniería avanzada",
+      "usos": "Combustible de alta densidad MecaImpulso y compras especiales"
+    },
+    "etiquetas_discord": ["Perla", "Energía"],
+    "contenido_lore": "### Descripción\nEsferas de pura potencia biológica arrojadas por los jefes y criaturas DomZ. Indispensables para pagar las piezas pesadas del Taller Mammago.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531281496122589194"
+  },
+  {
+    "id": "faccion_red_iris",
+    "tipo": "faccion",
+    "nombre": "Red IRIS",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Reportera de investigación estrella (Shauni)"
+      },
+      {
+        "id_destino": "npc_peyj",
+        "relacion": "Cofundador e ingeniero de logística clandestino"
+      },
+      {
+        "id_destino": "npc_double_h",
+        "relacion": "Soldado y especialista en operaciones de asalto"
+      },
+      {
+        "id_destino": "lugar_akuda_bar",
+        "relacion": "Cuartel general secreto oculto en el piso superior"
+      },
+      {
+        "id_destino": "faccion_secciones_alfa",
+        "relacion": "Enemigo político y objetivo de desenmascaramiento"
+      }
+    ],
+    "detalles": {
+      "liderazgo": "Cúpula secreta de periodistas, intelectuales y disidentes",
+      "ideologia": "Libertad de información, periodismo de verdad y liberación civil",
+      "metodos": "Infiltración sin violencia letal, fotografía de pruebas y radiodifusión pirata"
+    },
+    "etiquetas_discord": ["Resistencia", "Periodismo"],
+    "contenido_lore": "### Descripción\nOrganización clandestina de periodistas y combatientes que usan la verdad como arma contra el régimen militar. Publican la revista digital IRIS en las pantallas de la ciudad.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531281744408608808"
+  },
+  {
+    "id": "faccion_secciones_alfa",
+    "tipo": "faccion",
+    "nombre": "Las Secciones Alfa",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_general_keyl",
+        "relacion": "Comandante Supremo y líder de la organización"
+      },
+      {
+        "id_destino": "faccion_domz",
+        "relacion": "Aliados secretos en la conspiración de tráfico de personas"
+      },
+      {
+        "id_destino": "lugar_matadero_cuarentena",
+        "relacion": "Centro de operaciones militares y procesamiento de cautivos"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Organización enemiga a censurar y erradicar"
+      }
+    ],
+    "detalles": {
+      "fuerza_militar": "Soldados pesados blindados, robots de asalto y cañoneras",
+      "estatus": "Ejército privado que ejerce la ley marcial en Hillys",
+      "proposito_oficial": "Protección planetaria frente a la amenaza DomZ"
+    },
+    "etiquetas_discord": ["Ejército", "Dictadura"],
+    "contenido_lore": "### Descripción\nFuerza militar fuertemente blindada que proclama defender Hillys pero esconde un aberrante pacto de tráfico de personas con los DomZ.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1579912437766-788133379208?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531281876793430207"
+  },
+  {
+    "id": "faccion_domz",
+    "tipo": "faccion",
+    "nombre": "La Raza Alienígena DomZ",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_gran_sacerdote_domz",
+        "relacion": "Líder supremo, deidad mística y fuente de poder ancestral"
+      },
+      {
+        "id_destino": "faccion_secciones_alfa",
+        "relacion": "Pacto secreto de colaboración para la recolección de almas"
+      },
+      {
+        "id_destino": "lugar_luna_selene",
+        "relacion": "Base central de operaciones en la órbita del planeta"
+      },
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Objetivo prioritario para la captura de la energía Shauni"
+      }
+    ],
+    "detalles": {
+      "origen": "Raza extraterrestre parasitaria de origen desconocido",
+      "proposito": "Drenar la energía vital de Hillys y secuestrar sus habitantes",
+      "unidades": "Sacerdotes de estasis, monstruos marinos, parásitos y naves orgánicas"
+    },
+    "etiquetas_discord": ["Alienígenas", "Invasores"],
+    "contenido_lore": "### Descripción\nRaza parasitaria estelar que drena almas para sostener su imperio moribundo. Liderados desde las sombras de la Luna Selene.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531281957504290816"
+  },
+  {
+    "id": "faccion_gobierno_hillys",
+    "tipo": "faccion",
+    "nombre": "Gobierno Planetario de Hillys",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_gobernadora_hillys",
+        "relacion": "Jefa de Estado y máxima representante constitucional"
+      },
+      {
+        "id_destino": "faccion_secciones_alfa",
+        "relacion": "Fuerza militar delegada que ha usurpado el control efectivo"
+      },
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Receptora legítima de la evidencia que permite restablecer el orden"
+      }
+    ],
+    "detalles": {
+      "estructura": "Democracia parlamentaria representativa",
+      "estatus": "Institución marginada por los decretos de emergencia militar",
+      "objetivo": "Proteger a la población civil y restaurar el orden constitucional"
+    },
+    "etiquetas_discord": ["Democracia", "Civil"],
+    "contenido_lore": "### Descripción\nInstitución legítima y democrática recortada por el ejército. Restablece la ley civil en cuanto la verdad sale a las calles.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531282050055934072"
+  },
+  {
+    "id": "trama_defensa_faro",
+    "tipo": "trama",
+    "nombre": "La Protección del Faro y los Huérfanos",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "lugar_refugio_orfanato",
+        "relacion": "Escenario principal amenazado por la pérdida del escudo"
+      },
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Protagonista impulsada a conseguir fondos para la energía"
+      },
+      {
+        "id_destino": "npc_peyj",
+        "relacion": "Encargado de reparar el generador MecaImpulso"
+      }
+    ],
+    "detalles": {
+      "estado": "Completada / Detonante inicial de la aventura",
+      "recompensa": "Contrato periodístico inicial y primer contacto con IRIS",
+      "enemigos": "Criaturas DomZ de superficie y apéndices alienígenas gigantes"
+    },
+    "etiquetas_discord": ["Aventura", "Inicio"],
+    "contenido_lore": "### Descripción\nInvasión sorpresiva cuando el escudo protector del Faro se apaga por falta de pago. Jade repele las bestias y acepta el encargo fotográfico para salvar el hogar.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531282155244748831"
+  },
+  {
+    "id": "trama_reportaje_iris",
+    "tipo": "trama",
+    "nombre": "Destapando la Conspiración Alfa (Reportaje Fotográfico)",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "faccion_red_iris",
+        "relacion": "Organización que encarga y emite las transmisiones de verdad"
+      },
+      {
+        "id_destino": "lugar_fabrica_nutripills",
+        "relacion": "Primera instalación infiltrada para obtener el Informe 1"
+      },
+      {
+        "id_destino": "lugar_matadero_cuarentena",
+        "relacion": "Segunda instalación infiltrada para obtener el Informe 2"
+      },
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Reportera a cargo de tomar las fotografías incriminatorias"
+      }
+    ],
+    "detalles": {
+      "objetivo": "Obtener 3 evidencias fotográficas de la complicidad Alfa-DomZ",
+      "mecanica": "Infiltración de alto riesgo, sigilo y fotografía documental",
+      "impacto": "Emisión pública que desencadena la revolución popular en la ciudad"
+    },
+    "etiquetas_discord": ["Infiltración", "Prensa"],
+    "contenido_lore": "### Descripción\nCadena de infiltraciones sigilosas en la Fábrica y el Matadero. Cada foto capturada se convierte en una emisión holográfica revolucionaria.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531282323222298655"
+  },
+  {
+    "id": "trama_rescate_peyj",
+    "tipo": "trama",
+    "nombre": "El Rescate de Pey'j y la Infiltración Alfa",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "npc_peyj",
+        "relacion": "Objetivo de rescate tras ser capturado por tropas Alfa"
+      },
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Líder de la incursión de asalto junto a Doble H"
+      },
+      {
+        "id_destino": "lugar_matadero_cuarentena",
+        "relacion": "Escenario de máxima seguridad donde retienen a los prisioneros"
+      },
+      {
+        "id_destino": "objeto_nave_beluga",
+        "relacion": "Vehículo reparado para trasladar la persecución al espacio"
+      }
+    ],
+    "detalles": {
+      "fase": "Arco dramático intermedio de alta intensidad",
+      "desafio": "Combates contra la élite Alfa y desactivación de sistemas pesados",
+      "resultado": "Descubrimiento de la ruta a la Luna y reacondicionamiento estelar"
+    },
+    "etiquetas_discord": ["Rescate", "Peyj"],
+    "contenido_lore": "### Descripción\nTras la captura de Pey'j, Jade y Doble H asaltan las entrañas del Matadero. Al descubrir que lo trasladan a la luna, preparan el vuelo interplanetario.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531282405808410797"
+  },
+  {
+    "id": "trama_amenaza_domz",
+    "tipo": "trama",
+    "nombre": "La Liberación de Hillys y la Batalla Final en la Luna",
+    "mundo_id": "Beyond_Good_Evil",
+    "relaciones": [
+      {
+        "id_destino": "lugar_luna_selene",
+        "relacion": "Escenario del enfrentamiento definitivo en el trono alienígena"
+      },
+      {
+        "id_destino": "npc_gran_sacerdote_domz",
+        "relacion": "Antagonista supremo a derrotar para romper el control místico"
+      },
+      {
+        "id_destino": "npc_jade",
+        "relacion": "Despertar definitivo de la energía Shauni y salvadora del mundo"
+      },
+      {
+        "id_destino": "faccion_gobierno_hillys",
+        "relacion": "Instauración de la paz y restauración de la democracia civil"
+      }
+    ],
+    "detalles": {
+      "fase": "Clímax final de la campaña",
+      "exigencias": "Combate espacial con la Beluga y duelo espiritual de alta dificultad",
+      "resultado": "Destrucción del imperio DomZ y liberación de todas las almas"
+    },
+    "etiquetas_discord": ["Clímax", "BatallaFinal"],
+    "contenido_lore": "### Descripción\nTravesía estelar hacia la Luna Selene y épica confrontación con el Gran Sacerdote. Jade despierta la energía Shauni para liberar todas las almas secuestradas.",
+    "imagenes": [
+      "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "url_discord": "https://discord.com/channels/1525578054330482688/1531282484166398013"
+  }
+];

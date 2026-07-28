@@ -1,61 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiverse Wiki & Lore Network</title>
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Librerías desde CDN (Grafo visual y Markdown) -->
-    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-</head>
-<body>
-
-    <!-- BARRA SUPERIOR -->
-    <header>
-        <div class="logo">🌌 Multiverse Wiki</div>
-        <div class="controls">
-            <!-- Buscador -->
-            <input type="text" id="search-input" placeholder="Buscar NPC, lugar, objeto...">
-            
-            <!-- Filtro por Mundo -->
-            <select id="filter-world">
-                <option value="all">🌍 Todos los Mundos</option>
-            </select>
-
-            <!-- Cambiador de Vista -->
-            <div class="view-toggle">
-                <button id="btn-cards" class="active">📱 Fichas</button>
-                <button id="btn-graph">🕸️ Mapa de Relaciones</button>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- VISTA 1: TARJETAS / FICHAS -->
-        <section id="view-cards" class="view-section active">
-            <!-- Pestañas de categorías dinámicas -->
-            <nav id="category-tabs" class="tabs"></nav>
-            
-            <!-- Grid de Tarjetas -->
-            <div id="cards-grid" class="grid"></div>
-        </section>
-
-        <!-- VISTA 2: GRAFO INTERACTIVO DE RELACIONES -->
-        <section id="view-graph" class="view-section">
-            <div id="network-graph"></div>
-        </section>
-    </main>
-
-    <!-- MODAL PARA VER DETALLES DE UN ELEMENTO -->
-    <div id="detail-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div id="modal-body"></div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
+

@@ -1,0 +1,6 @@
+{
+  "name": "Multiverse Wiki & Lore Network",
+  "description": "Explorador interactivo de lore, personajes, mundos y red de relaciones multiversales con animaciones fluidas y grafos interactivos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
