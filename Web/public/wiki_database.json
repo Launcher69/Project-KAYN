@@ -94,7 +94,9 @@
         },
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nEl Faro es una estructura imponente construida sobre una prominente formación rocosa en medio del océano de Hillys. Antiguamente una baliza de navegación para las embarcaciones de los canales, el edificio fue reconvertido por Jade y su tío Pey'j en un cálido refugio y orfanato para cuidar a los niños cuyos padres han sido víctimas o secuestrados por las destructivas incursiones de las tropas DomZ.\nEl interior del Faro está adaptado para la vida cotidiana y el trabajo técnico: cuenta con dormitorios infantiles, una cocina comunitaria, la habitación de Jade con sus monitores de noticias y un completo taller en el hangar donde Pey'j realiza constantes labores de mantenimiento a su equipo. En la parte superior, la lente principal del faro ha sido modificada con un emisor de escudo protector MecaImpulso que protege toda la propiedad frente a bombardeos o meteoritos alienígenas.\nA pesar de ser un remanso de paz y un símbolo de esperanza en medio de la crisis planetaria, la constante escasez de energía para mantener activo el escudo obligará a sus residentes a adentrarse en arriesgadas misiones, convirtiendo al Faro en el centro neurálgico desde donde se orquestan los primeros pasos de la verdad periodística.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/bgK3cfSr/380ba8924730.jpg"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531276329746698341"
     },
     {
@@ -380,7 +382,9 @@
         },
         "etiquetas_discord": [],
         "contenido_lore": "### Biografía\nEl General Keyl es el Comandante Supremo de las Secciones Alfa y la figura pública más poderosa de Hillys. Se presenta ante la población golpeada por la guerra como un líder fuerte, incansable y protector, utilizando sofisticadas campañas de propaganda mediática para proyectar la imagen de que solo sus tropas fuertemente blindadas pueden salvar el planeta de la erradicación alienígena.\nDetrás de su imponente uniforme y sus discursos patrióticos se esconde un tirano desprovisto de escrúpulos. Años atrás, Keyl pactó en secreto con el Gran Sacerdote DomZ: las Secciones Alfa permitirían y facilitarían el secuestro masivo de ciudadanos hillyanos para alimentar la energía de los alienígenas a cambio de tecnología armamentística y la garantía de mantener el poder absoluto sobre el planeta.\nKeyl se convierte en el gran antagonista militar al que Jade debe desenmascarar. Despliega todos los recursos del ejército —incluyendo comandos de élite, cañoneras pesadas y bloqueo de noticias— para cazar a \"Shauni\" y destruir a la Red IRIS antes de que sus fotografías salgan a la luz, enfrentándose finalmente a la resistencia cuando el pueblo de Hillys se alza en su contra.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/PGW4jsmS/23219e5a5da9.jpg"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531279825195503716"
     },
     {
