@@ -37,44 +37,45 @@ export default function App() {
   const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${Date.now()}`;
 
 
-  // Fetch ultra-rápido compatible con la política CORS de GitHub
+  // Fetch ultra-rápido invirtiendo el orden (API de GitHub PRIMERO)
   useEffect(() => {
     const fetchWikiDatabase = async () => {
       const timestamp = Date.now();
       
-      // URLs con parámetro único de versión
-      const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?v=${timestamp}`;
+      // API de GitHub primero (0s de caché)
       const GITHUB_API_URL = `https://api.github.com/repos/launcher69/Project-KAYN/contents/Web/public/wiki_database.json?v=${timestamp}`;
+      const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?v=${timestamp}`;
 
       try {
-        console.log('🔄 Solicitando datos en tiempo real...');
+        console.log('🔄 Solicitando datos frescos en tiempo real...');
 
-        // 1. Intento principal: GitHub Raw (petición simple sin cabeceras extra para evitar error CORS)
-        const response = await fetch(GITHUB_RAW_URL);
-        if (response.ok) {
-          const parsed = await response.json();
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            console.log('✨ ¡Wiki cargada con éxito desde GitHub Raw!', parsed.length, 'elementos');
-            setWikiData(parsed);
-            return;
-          }
-        }
-
-        // 2. Intento de respaldo: API REST de GitHub
+        // 🥇 INTENTO 1 (PRIMERO): API REST de GitHub (Cero caché, 0s de espera)
         const apiRes = await fetch(GITHUB_API_URL);
         if (apiRes.ok) {
           const fileData = await apiRes.json();
           if (fileData && fileData.content) {
+            // Decodificar Base64 respetando caracteres UTF-8
             const binaryString = atob(fileData.content.replace(/\s/g, ''));
             const bytes = new Uint8Array(binaryString.split('').map(c => c.charCodeAt(0)));
             const jsonText = new TextDecoder('utf-8').decode(bytes);
             const parsed = JSON.parse(jsonText);
 
             if (Array.isArray(parsed) && parsed.length > 0) {
-              console.log('⚡ Wiki cargada desde la API de GitHub:', parsed.length, 'elementos');
+              console.log('⚡ Wiki cargada EN TIEMPO REAL (0s) desde API de GitHub:', parsed.length, 'elementos');
               setWikiData(parsed);
-              return;
+              return; // ¡Éxito inmediato sin esperar a la CDN!
             }
+          }
+        }
+
+        // 🥈 INTENTO 2 (Solo si falla la API): GitHub Raw
+        const response = await fetch(GITHUB_RAW_URL);
+        if (response.ok) {
+          const parsed = await response.json();
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            console.log('✨ Wiki cargada desde GitHub Raw:', parsed.length, 'elementos');
+            setWikiData(parsed);
+            return;
           }
         }
       } catch (err) {
