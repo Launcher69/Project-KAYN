@@ -189,7 +189,9 @@
         },
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nLa Antigua Fábrica de Nutripills es un complejo industrial lúgubre y masivo situado en las afueras de la urbe principal. En el pasado, estas instalaciones estaban dedicadas a la producción en masa de suplementos alimenticios para la población, pero tras un supuesto accidente de contaminación, el edificio fue declarado en cuarentena permanente y cerrado al público por las Secciones Alfa.\nSin embargo, detrás de sus fachadas oxidadas y sus letreros de peligro biológico se oculta una escalofriante realidad. La fábrica ha sido reequipada clandestinamente como un laboratorio militar de alta seguridad vigilado celosamente por guardias pesadamente blindados, torretas automáticas y un enjambre de robots de patrulla. Sus cintas transportadoras ya no procesan alimentos, sino contenedores sospechosos y tecnología alienígena de origen DomZ.\nAdentrarse en la Fábrica de Nutripills representa uno de los mayores desafíos de infiltración en Hillys. Es un entorno claustrofóbico de tuberías de vapor, pasillos oscuros y salas de control donde cualquier error de sigilo puede activar alarmas planetarias, pero donde se custodian las primeras pruebas irrefutables de la conspiración que envuelve al régimen.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/8gz1tXSz/049d64c09b93.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531276735725961398"
     },
     {
