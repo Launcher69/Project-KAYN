@@ -745,7 +745,10 @@
         },
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nLas Secciones Alfa son un ejército fuertemente armado e industrializado que asumió el control de la seguridad planetaria en Hillys tras el estallido de la invasión alienígena. Equipados con trajes de asalto pesados, campos de fuerza gigantescos y una abrumadora presencia de robots patrulla, imponen un régimen de ley marcial y censura mediática bajo el pretexto de proteger a la población.\nA través de programas de televisión estatales y pantallas gigantes en las plazas urbanas, las Secciones Alfa proyectan una imagen de héroes incansables. Sin embargo, esta fachada oculta un oscuro secreto: su alto mando, liderado por el General Keyl, ha vendido a los ciudadanos de Hillys, entregándolos a las fuerzas DomZ a cambio de poder absoluto y energía alienígena.\nSus tropas patrullan las calles, los canales y las zonas industriales con orden de disparar a matar contra cualquier civil que viole la cuarentena o intente fotografiar sus instalaciones. La caída de las Secciones Alfa ocurre cuando los reportajes de la Red IRIS exponen su traición a la vista de todo el planeta, provocando que la guardia civil y la población se rebelen contra ellos.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/KxZrKY9Y/2549d6710f2e.webp",
+            "https://i.ibb.co/KxmVcYh7/e83d84689810.jpg"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531281876793430207"
     },
     {
