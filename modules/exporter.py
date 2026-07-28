@@ -1,38 +1,58 @@
 import base64
 import json
+import urllib.error
 import urllib.request
 from config import GITHUB_REPO, GITHUB_TOKEN
 
 
 def save_to_json(data: list, filepath: str) -> bool:
-    """Guarda localmente y actualiza el archivo en GitHub usando su API"""
+    """Guarda localmente y actualiza el archivo en GitHub usando la ruta exacta configurada"""
     try:
-        # Convertir datos a JSON formateado
         json_str = json.dumps(data, ensure_ascii=False, indent=4)
 
-        # 1. Intentar guardar copia local si estamos en local
+        # Normalizar la ruta del archivo (convertir \ en /)
+        clean_path = filepath.replace("\\", "/").strip("/")
+        if clean_path.startswith("./"):
+            clean_path = clean_path[2:]
+
+        # 1. Guardar copia local en Render/PC
         try:
-            with open(filepath, "w", encoding="utf-8") as f:
+            with open(clean_path, "w", encoding="utf-8") as f:
                 f.write(json_str)
-            print(f"✅ Guardado archivo local en {filepath}")
         except Exception:
             pass
 
-        # 2. Si hay token de GitHub, actualizar en la nube directamente por API
+        # 2. Subir a GitHub por API usando exactamente la ruta configurada (Web/public/wiki_database.json)
         if GITHUB_TOKEN and GITHUB_REPO:
-            print("🚀 Enviando actualización a GitHub por API...")
+            print(
+                f"🚀 Enviando actualización a GitHub por API en: '{clean_path}'...",
+                flush=True,
+            )
+
+            clean_repo = (
+                GITHUB_REPO.replace("https://github.com/", "")
+                .strip()
+                .strip("/")
+            )
+
             success = update_github_file(
-                repo=GITHUB_REPO,
-                path="Web/public/wiki_database.json",
+                repo=clean_repo,
+                path=clean_path,  # Usa la ruta dinámica de la variable
                 content=json_str,
-                token=GITHUB_TOKEN,
+                token=GITHUB_TOKEN.strip(),
             )
             if success:
-                print("✨ ¡Web en la nube actualizada con éxito!")
+                print(
+                    f"✨ ¡Web actualizada con éxito en '{clean_path}'!",
+                    flush=True,
+                )
+                return True
+            else:
+                print("⚠️ Falló la actualización en GitHub por API.", flush=True)
 
         return True
     except Exception as e:
-        print(f"❌ Error al exportar: {e}")
+        print(f"❌ Error al exportar: {e}", flush=True)
         return False
 
 
@@ -46,7 +66,7 @@ def update_github_file(repo: str, path: str, content: str, token: str) -> bool:
             "User-Agent": "DiscordWikiBot",
         }
 
-        # Obtener el SHA actual del archivo si existe (requerido por GitHub)
+        # Obtener el SHA actual del archivo si ya existe en esa ruta
         sha = None
         try:
             req_get = urllib.request.Request(url, headers=headers)
@@ -59,7 +79,7 @@ def update_github_file(repo: str, path: str, content: str, token: str) -> bool:
         content_b64 = base64.b64encode(content.encode("utf-8")).decode("utf-8")
 
         payload = {
-            "message": "Auto-sync Wiki desde Discord (Bot en la Nube)",
+            "message": f"Auto-sync Wiki desde Discord en {path}",
             "content": content_b64,
         }
         if sha:
@@ -73,6 +93,14 @@ def update_github_file(repo: str, path: str, content: str, token: str) -> bool:
         with urllib.request.urlopen(req_put) as resp:
             return resp.status in [200, 201]
 
+    except urllib.error.HTTPError as e:
+        print(
+            f"  └─ ⚠️ Error API GitHub ({e.code}) al intentar escribir en '{path}'.",
+            flush=True,
+        )
+        return False
     except Exception as e:
-        print(f"  └─ ⚠️ Error al conectar con la API de GitHub: {e}")
+        print(
+            f"  └─ ⚠️ Error inesperado al conectar con GitHub: {e}", flush=True
+        )
         return False
