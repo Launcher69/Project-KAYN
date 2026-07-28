@@ -6,13 +6,22 @@ from modules.parser import extract_yaml_from_markdown
 
 
 async def scan_guild_forums(guild: discord.Guild):
-    """Escanea los foros procesando las imágenes en hilos secundarios para no congelar Discord"""
+    """Escanea los foros ignorando las categorías que contengan '(Pri)' en su nombre"""
     database = []
     errors = []
 
     print("\n🔍 Escaneando canales de foro...", flush=True)
 
     for channel in guild.forums:
+        # 1. FILTRO DE PRIVACIDAD: Ignorar si la categoría contiene "(Pri)"
+        if channel.category and "(pri)" in channel.category.name.lower():
+            print(
+                f"⏩ Ignorando foro #{channel.name} por estar en la categoría privada: '{channel.category.name}'",
+                flush=True,
+            )
+            continue
+
+        # 2. Escanear solo si el canal es un foro objetivo
         if channel.name.lower() in TARGET_FORUMS:
             print(f"📂 Escaneando foro: #{channel.name}", flush=True)
 
@@ -42,7 +51,6 @@ async def scan_guild_forums(guild: discord.Guild):
                     if yaml_data and "id" in yaml_data:
                         element_id = str(yaml_data.get("id")).strip()
 
-                        # Unificar textos
                         lore_parts = []
                         if starter_markdown:
                             lore_parts.append(starter_markdown)
@@ -56,7 +64,7 @@ async def scan_guild_forums(guild: discord.Guild):
 
                         full_lore_body = "\n\n".join(lore_parts)
 
-                        # SUBIR IMÁGENES EN SEGUNDO PLANO (Sin congelar Discord)
+                        # Procesar imágenes
                         permanent_image_urls = []
                         for msg in messages:
                             if msg.attachments:
@@ -74,11 +82,9 @@ async def scan_guild_forums(guild: discord.Guild):
                                         ]
                                     ):
                                         print(
-                                            f"  └─ ☁️ Subiendo imagen de [{element_id}] en segundo plano...",
+                                            f"  └─ ☁️ Subiendo imagen de [{element_id}]...",
                                             flush=True,
                                         )
-
-                                        # Ejecuta la subida en un hilo separado
                                         perm_url = await asyncio.to_thread(
                                             upload_to_imgbb,
                                             attachment.url,
