@@ -36,54 +36,66 @@ export default function App() {
   // URL directa a tu archivo en GitHub Raw con anti-caché
   const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${Date.now()}`;
 
-  // Fetch dinámico ultra-rápido usando la API oficial de GitHub (0s de caché)
+
+  // Fetch ultra-rápido forzando a la red a no guardar caché
   useEffect(() => {
     const fetchWikiDatabase = async () => {
       const timestamp = Date.now();
       
-      // API de GitHub: NUNCA usa caché y responde en 0,05 segundos
-      const GITHUB_API_URL = `https://api.github.com/repos/launcher69/Project-KAYN/contents/Web/public/wiki_database.json?t=${timestamp}`;
-      const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${timestamp}`;
+      // URLs con parámetro de versión único
+      const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?v=${timestamp}`;
+      const GITHUB_API_URL = `https://api.github.com/repos/launcher69/Project-KAYN/contents/Web/public/wiki_database.json?v=${timestamp}`;
 
       try {
-        // 1. INTENTO PRINCIPAL: API REST de GitHub (Tiempo real absoluto)
-        const apiRes = await fetch(GITHUB_API_URL, {
+        console.log('🔄 Solicitando datos en tiempo real...');
+
+        // 1. Petición directa desactivando caché de navegador y CDN
+        let response = await fetch(GITHUB_RAW_URL, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache'
+          }
+        });
+
+        if (response.ok) {
+          const parsed = await response.json();
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            console.log('✨ ¡Wiki cargada al instante desde GitHub Raw!', parsed.length, 'elementos');
+            setWikiData(parsed);
+            return;
+          }
+        }
+
+        // 2. Respaldo por la API REST de GitHub
+        response = await fetch(GITHUB_API_URL, {
+          cache: 'no-store',
           headers: { 'Accept': 'application/vnd.github.v3+json' }
         });
 
-        if (apiRes.ok) {
-          const fileData = await apiRes.json();
+        if (response.ok) {
+          const fileData = await response.json();
           if (fileData && fileData.content) {
-            // Decodificar Base64 respetando caracteres UTF-8 (tildes, eñes y emojis)
             const binaryString = atob(fileData.content.replace(/\s/g, ''));
-            const bytes = new Uint8Array(binaryString.split('').map(char => char.charCodeAt(0)));
+            const bytes = new Uint8Array(binaryString.split('').map(c => c.charCodeAt(0)));
             const jsonText = new TextDecoder('utf-8').decode(bytes);
             const parsed = JSON.parse(jsonText);
 
             if (Array.isArray(parsed) && parsed.length > 0) {
-              console.log('⚡ Wiki cargada EN TIEMPO REAL (0s) desde GitHub API:', parsed.length, 'elementos');
+              console.log('⚡ Wiki cargada al instante desde API GitHub:', parsed.length, 'elementos');
               setWikiData(parsed);
               return;
             }
           }
         }
-
-        // 2. RESPALDO: GitHub Raw por si falla la API
-        const rawRes = await fetch(GITHUB_RAW_URL);
-        if (rawRes.ok) {
-          const parsed = await rawRes.json();
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            setWikiData(parsed);
-            return;
-          }
-        }
       } catch (err) {
-        console.warn('⚠️ Error al cargar datos en tiempo real:', err);
+        console.error('❌ Error al cargar datos dinámicos:', err);
       }
     };
 
     fetchWikiDatabase();
   }, []);
+
 
   // Guardar en localStorage cuando wikiData cambie
   useEffect(() => {
