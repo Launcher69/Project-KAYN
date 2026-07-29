@@ -63,12 +63,30 @@ export function getItemTypeBadgeColor(tipo: string): { bg: string; text: string;
         border: 'border-cyan-500/30',
         glow: 'shadow-cyan-500/20',
       };
+    case 'magia':
+    case 'magias':
+    case 'hechizo':
+      return {
+        bg: 'bg-fuchsia-500/15',
+        text: 'text-fuchsia-400',
+        border: 'border-fuchsia-500/30',
+        glow: 'shadow-fuchsia-500/20',
+      };
+    case 'habilidad':
+    case 'habilidades':
+    case 'poder':
+      return {
+        bg: 'bg-teal-500/15',
+        text: 'text-teal-400',
+        border: 'border-teal-500/30',
+        glow: 'shadow-teal-500/20',
+      };
     default:
       return {
-        bg: 'bg-slate-500/15',
-        text: 'text-slate-400',
-        border: 'border-slate-500/30',
-        glow: 'shadow-slate-500/20',
+        bg: 'bg-indigo-500/15',
+        text: 'text-indigo-400',
+        border: 'border-indigo-500/30',
+        glow: 'shadow-indigo-500/20',
       };
   }
 }

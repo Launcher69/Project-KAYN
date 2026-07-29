@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { CategoryType, FilterState, WikiItem } from '../types';
-import { User, MapPin, Package, Shield, Scroll, Globe, Layers, Tag, X } from 'lucide-react';
+import { User, MapPin, Package, Shield, Scroll, Globe, Layers, Tag, X, Sparkles, BookOpen, Zap } from 'lucide-react';
 import { playSound } from '../utils/soundEffects';
 
 interface CategoryBarProps {
@@ -10,7 +10,8 @@ interface CategoryBarProps {
 }
 
 export const CategoryBar: React.FC<CategoryBarProps> = ({ filter, setFilter, items }) => {
-  const categories: { type: CategoryType; label: string; icon: React.ReactNode }[] = [
+  // Base default categories
+  const baseCategories: { type: CategoryType; label: string; icon: React.ReactNode }[] = [
     { type: 'todos', label: 'Todos', icon: <Layers className="w-3.5 h-3.5" /> },
     { type: 'npc', label: 'Personajes', icon: <User className="w-3.5 h-3.5" /> },
     { type: 'lugar', label: 'Lugares', icon: <MapPin className="w-3.5 h-3.5" /> },
@@ -19,6 +20,44 @@ export const CategoryBar: React.FC<CategoryBarProps> = ({ filter, setFilter, ite
     { type: 'trama', label: 'Tramas', icon: <Scroll className="w-3.5 h-3.5" /> },
     { type: 'mundo', label: 'Mundos', icon: <Globe className="w-3.5 h-3.5" /> },
   ];
+
+  // Dynamically discover any custom "tipo" present in the items array (e.g. "magias", "vehiculos", etc.)
+  const categories = useMemo(() => {
+    const knownTypes = new Set(['todos', 'npc', 'pc', 'personaje', 'lugar', 'objeto', 'faccion', 'trama', 'mundo']);
+    const customTypes = new Set<string>();
+
+    items.forEach((item) => {
+      const type = (item.tipo || '').toLowerCase().trim();
+      if (type && !knownTypes.has(type)) {
+        customTypes.add(type);
+      }
+    });
+
+    const dynamicCats: { type: CategoryType; label: string; icon: React.ReactNode }[] = Array.from(customTypes).map((customType) => {
+      // Format pretty label (e.g., "magias" -> "Magias", "hechizo_magico" -> "Hechizo Magico")
+      const formattedLabel = customType
+        .replace(/_/g, ' ')
+        .replace(/\b\w/g, (l) => l.toUpperCase());
+
+      // Assign icon based on name hints or fallback
+      let icon = <Sparkles className="w-3.5 h-3.5 text-amber-400" />;
+      if (customType.includes('magia') || customType.includes('hechizo') || customType.includes('encantamiento')) {
+        icon = <Sparkles className="w-3.5 h-3.5 text-purple-400" />;
+      } else if (customType.includes('libro') || customType.includes('lore') || customType.includes('documento')) {
+        icon = <BookOpen className="w-3.5 h-3.5 text-cyan-400" />;
+      } else if (customType.includes('habilidad') || customType.includes('poder') || customType.includes('tecnologia')) {
+        icon = <Zap className="w-3.5 h-3.5 text-emerald-400" />;
+      }
+
+      return {
+        type: customType,
+        label: formattedLabel,
+        icon,
+      };
+    });
+
+    return [...baseCategories, ...dynamicCats];
+  }, [items]);
 
   const getItemCountForCategory = (cat: CategoryType) => {
     if (cat === 'todos') return items.length;

@@ -1,4 +1,4 @@
-export type CategoryType = 'todos' | 'npc' | 'lugar' | 'objeto' | 'faccion' | 'trama' | 'mundo';
+export type CategoryType = 'todos' | 'npc' | 'lugar' | 'objeto' | 'faccion' | 'trama' | 'mundo' | string;
 
 export interface RelationItem {
   id_destino?: string;
