@@ -11,8 +11,17 @@ export function cleanText(text: string): string {
 
 export function getDisplayName(idOrName: string, wikiData: WikiItem[]): string {
   if (!idOrName) return '';
-  const found = wikiData.find((i) => i.id === idOrName);
-  if (found && found.nombre) return found.nombre;
+  
+  // 1. Direct match by item ID
+  const foundById = wikiData.find((i) => i.id === idOrName);
+  if (foundById && foundById.nombre) return foundById.nombre;
+
+  // 2. Look up by world item matching mundo_id or id
+  const foundWorld = wikiData.find(
+    (i) => (i.tipo === 'mundo' || i.tipo === 'world') && (i.mundo_id === idOrName || i.id === idOrName)
+  );
+  if (foundWorld && foundWorld.nombre) return foundWorld.nombre;
+
   return cleanText(idOrName);
 }
 
