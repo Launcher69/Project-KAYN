@@ -22,6 +22,7 @@ import {
   Copy,
   Check,
   Compass,
+  Sparkles,
 } from 'lucide-react';
 import { playSound } from '../utils/soundEffects';
 
@@ -347,8 +348,78 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             </h3>
 
             {cleanLoreText.trim() ? (
-              <div className="text-xs text-slate-300 leading-relaxed space-y-2 prose prose-invert max-w-none">
-                <ReactMarkdown>{cleanLoreText}</ReactMarkdown>
+              <div className="text-xs text-slate-300 leading-relaxed max-w-none">
+                <ReactMarkdown
+                  components={{
+                    h1: ({ children }) => (
+                      <div className="mt-6 mb-3 pt-3 border-t border-slate-800/80">
+                        <h1 className="text-sm sm:text-base font-bold text-indigo-300 border-l-4 border-indigo-500 pl-3 py-1 flex items-center gap-2 bg-gradient-to-r from-indigo-950/40 via-purple-950/20 to-transparent rounded-r-xl">
+                          <Sparkles className="w-4 h-4 text-indigo-400 shrink-0" />
+                          <span>{children}</span>
+                        </h1>
+                      </div>
+                    ),
+                    h2: ({ children }) => (
+                      <div className="mt-6 mb-3 pt-3 border-t border-slate-800/80">
+                        <h2 className="text-sm sm:text-base font-bold text-indigo-300 border-l-4 border-indigo-500 pl-3 py-1 flex items-center gap-2 bg-gradient-to-r from-indigo-950/40 via-purple-950/20 to-transparent rounded-r-xl">
+                          <Sparkles className="w-4 h-4 text-indigo-400 shrink-0" />
+                          <span>{children}</span>
+                        </h2>
+                      </div>
+                    ),
+                    h3: ({ children }) => (
+                      <div className="mt-6 mb-3 pt-3 border-t border-slate-800/80">
+                        <h3 className="text-xs sm:text-sm font-bold text-indigo-300 border-l-4 border-indigo-500 pl-3 py-1 flex items-center gap-2 bg-gradient-to-r from-indigo-950/40 via-purple-950/20 to-transparent rounded-r-xl shadow-sm">
+                          <Sparkles className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                          <span>{children}</span>
+                        </h3>
+                      </div>
+                    ),
+                    h4: ({ children }) => (
+                      <h4 className="text-xs font-bold text-purple-300 border-l-2 border-purple-400 pl-2.5 py-0.5 mt-4 mb-2 bg-slate-900/50 rounded-r-md">
+                        {children}
+                      </h4>
+                    ),
+                    p: ({ children }) => (
+                      <p className="mb-3 text-xs text-slate-300 leading-relaxed font-normal">
+                        {children}
+                      </p>
+                    ),
+                    ul: ({ children }) => (
+                      <ul className="space-y-1.5 my-3 pl-0">
+                        {children}
+                      </ul>
+                    ),
+                    ol: ({ children }) => (
+                      <ol className="list-decimal list-inside space-y-1.5 my-3 text-slate-300 pl-1">
+                        {children}
+                      </ol>
+                    ),
+                    li: ({ children }) => (
+                      <li className="flex items-start gap-2 text-xs text-slate-300 bg-slate-900/50 border border-slate-800/70 px-3 py-1.5 rounded-xl">
+                        <span className="text-indigo-400 font-bold mt-0.5">•</span>
+                        <div className="flex-1">{children}</div>
+                      </li>
+                    ),
+                    strong: ({ children }) => (
+                      <strong className="font-semibold text-indigo-200 bg-indigo-500/10 px-1 py-0.5 rounded border border-indigo-500/20">
+                        {children}
+                      </strong>
+                    ),
+                    blockquote: ({ children }) => (
+                      <blockquote className="border-l-4 border-purple-500/60 pl-3 italic text-purple-200/90 bg-purple-950/20 p-3 rounded-r-xl my-3 text-xs">
+                        {children}
+                      </blockquote>
+                    ),
+                    code: ({ children }) => (
+                      <code className="bg-slate-900 border border-slate-800 text-indigo-300 font-mono text-[11px] px-1.5 py-0.5 rounded">
+                        {children}
+                      </code>
+                    ),
+                  }}
+                >
+                  {cleanLoreText}
+                </ReactMarkdown>
               </div>
             ) : (
               <p className="text-xs italic text-slate-500 bg-slate-900/60 p-3 rounded-xl">
@@ -434,4 +505,3 @@ export const DetailModal: React.FC<DetailModalProps> = ({
     </div>
   );
 };
-
