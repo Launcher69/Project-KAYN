@@ -1,29 +1,104 @@
 import asyncio
+import json
+import os
 import discord
-from config import IMGBB_API_KEY, TARGET_FORUMS
+from config import IMGBB_API_KEY, JSON_FILE, TARGET_FORUMS
 from modules.image_uploader import upload_to_imgbb
 from modules.parser import extract_yaml_from_markdown
 
 
+def is_category_private(cat_name: str) -> bool:
+    """Comprueba si una categoría es privada (borrador)"""
+    if not cat_name:
+        return False
+    name_lower = cat_name.lower()
+    return "(pri)" in name_lower or "(privado)" in name_lower
+
+
+def is_category_frozen(cat_name: str) -> bool:
+    """Comprueba si una categoría está terminada/congelada"""
+    if not cat_name:
+        return False
+    name_lower = cat_name.lower()
+    return any(
+        tag in name_lower
+        for tag in ["(terminado)", "(fin)", "(archivado)", "[terminado]"]
+    )
+
+
+def load_existing_db(filepath: str) -> list:
+    """Carga la base de datos JSON previa si existe"""
+    try:
+        if os.path.exists(filepath):
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, list):
+                    return data
+    except Exception as e:
+        print(f"  └─ ⚠️ No se pudo cargar el JSON previo: {e}", flush=True)
+    return []
+
+
 async def scan_guild_forums(guild: discord.Guild):
-    """Escanea los foros ignorando las categorías que contengan '(Pri)' en su nombre"""
-    database = []
+    """Escanea solo canales activos y conserva intactas las fichas de categorías congeladas"""
+
+    # 1. Cargar la base de datos previa de la Wiki
+    existing_db = load_existing_db(JSON_FILE)
+
+    # 2. Identificar nombres de categorías que actualmente están congeladas en Discord
+    frozen_category_names = set()
+    for cat in guild.categories:
+        if is_category_frozen(cat.name):
+            frozen_category_names.add(cat.name.lower())
+
+    # 3. Conservar únicamente las fichas que pertenecen a categorías congeladas
+    preserved_items = []
+    if existing_db:
+        for item in existing_db:
+            item_cat = (item.get("categoria_discord") or "").lower()
+            # Si la ficha pertenece a una categoría que actualmente está congelada, se conserva
+            if any(
+                frozen_tag in item_cat for frozen_tag in frozen_category_names
+            ):
+                preserved_items.append(item)
+
+        if preserved_items:
+            print(
+                f"❄️ Conservando {len(preserved_items)} fichas congeladas de historias terminadas.",
+                flush=True,
+            )
+
+    # 4. Escanear categorías activas en Discord
+    new_scanned_items = []
     errors = []
 
-    print("\n🔍 Escaneando canales de foro...", flush=True)
+    print("\n🔍 Escaneando canales de foro activos...", flush=True)
 
     for channel in guild.forums:
-        # 1. FILTRO DE PRIVACIDAD: Ignorar si la categoría contiene "(Pri)"
-        if channel.category and "(pri)" in channel.category.name.lower():
+        cat_name = channel.category.name if channel.category else ""
+
+        # Filtro A: Ignorar categorías privadas (Pri)
+        if is_category_private(cat_name):
             print(
-                f"⏩ Ignorando foro #{channel.name} por estar en la categoría privada: '{channel.category.name}'",
+                f"⏩ Ignorando foro #{channel.name} por estar en la categoría privada '{cat_name}'",
                 flush=True,
             )
             continue
 
-        # 2. Escanear solo si el canal es un foro objetivo
+        # Filtro B: Saltar el escaneo de categorías terminadas/congeladas
+        if is_category_frozen(cat_name):
+            print(
+                f"❄️ Saltando escaneo de foro #{channel.name} (Categoría congelada: '{cat_name}')",
+                flush=True,
+            )
+            continue
+
+        # Escanear solo si el foro pertenece a nuestra lista de foros objetivo
         if channel.name.lower() in TARGET_FORUMS:
-            print(f"📂 Escaneando foro: #{channel.name}", flush=True)
+            print(
+                f"📂 Escaneando foro activo: #{channel.name} (Categoría: '{cat_name}')",
+                flush=True,
+            )
 
             threads = list(channel.threads)
             async for archived in channel.archived_threads(limit=None):
@@ -64,7 +139,7 @@ async def scan_guild_forums(guild: discord.Guild):
 
                         full_lore_body = "\n\n".join(lore_parts)
 
-                        # Procesar imágenes
+                        # Subir imágenes a ImgBB
                         permanent_image_urls = []
                         for msg in messages:
                             if msg.attachments:
@@ -103,6 +178,7 @@ async def scan_guild_forums(guild: discord.Guild):
                             ).strip(),
                             "relaciones": yaml_data.get("relaciones", []),
                             "detalles": yaml_data.get("detalles", {}),
+                            "categoria_discord": cat_name,  # <--- Guarda el nombre de la categoría
                             "etiquetas_discord": [
                                 tag.name for tag in thread.applied_tags
                             ],
@@ -110,7 +186,7 @@ async def scan_guild_forums(guild: discord.Guild):
                             "imagenes": permanent_image_urls,
                             "url_discord": thread.jump_url,
                         }
-                        database.append(element)
+                        new_scanned_items.append(element)
                         print(
                             f"  └─ ✅ Registrado [{element['id']}]", flush=True
                         )
@@ -125,4 +201,11 @@ async def scan_guild_forums(guild: discord.Guild):
                         flush=True,
                     )
 
-    return database, errors
+    # 5. Fusionar fichas congeladas conservadas + fichas activas recién escaneadas
+    final_database = preserved_items + new_scanned_items
+    print(
+        f"\n✨ Sincronización completada: {len(preserved_items)} fichas congeladas + {len(new_scanned_items)} fichas activas = {len(final_database)} total en la Wiki.",
+        flush=True,
+    )
+
+    return final_database, errors
