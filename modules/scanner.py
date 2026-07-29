@@ -1,8 +1,10 @@
 import asyncio
 import json
 import os
+import time
+import urllib.request
 import discord
-from config import IMGBB_API_KEY, JSON_FILE, TARGET_FORUMS
+from config import GITHUB_REPO, IMGBB_API_KEY, JSON_FILE, TARGET_FORUMS
 from modules.image_uploader import upload_to_imgbb
 from modules.parser import extract_yaml_from_markdown
 
@@ -27,22 +29,55 @@ def is_category_frozen(cat_name: str) -> bool:
 
 
 def load_existing_db(filepath: str) -> list:
-    """Carga la base de datos JSON previa si existe"""
+    """Descarga la base de datos JSON actual directamente desde GitHub para no perder fichas en la nube"""
+    # 1. Intentar descargar desde GitHub Raw (Copia en vivo)
+    if GITHUB_REPO:
+        try:
+            clean_repo = (
+                GITHUB_REPO.replace("https://github.com/", "")
+                .strip()
+                .strip("/")
+            )
+            clean_path = filepath.replace("\\", "/").strip("/")
+            if clean_path.startswith("./"):
+                clean_path = clean_path[2:]
+
+            raw_url = f"https://raw.githubusercontent.com/{clean_repo}/main/{clean_path}?t={int(time.time())}"
+            req = urllib.request.Request(
+                raw_url, headers={"User-Agent": "DiscordWikiBot"}
+            )
+
+            with urllib.request.urlopen(req) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                if isinstance(data, list) and len(data) > 0:
+                    print(
+                        f"📥 Descargada base de datos previa desde GitHub ({len(data)} elementos conservados).",
+                        flush=True,
+                    )
+                    return data
+        except Exception as e:
+            print(
+                f"  └─ ⚠️ No se pudo descargar el JSON previo desde GitHub: {e}",
+                flush=True,
+            )
+
+    # 2. Respaldo: Intentar archivo local
     try:
         if os.path.exists(filepath):
             with open(filepath, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 if isinstance(data, list):
                     return data
-    except Exception as e:
-        print(f"  └─ ⚠️ No se pudo cargar el JSON previo: {e}", flush=True)
+    except Exception:
+        pass
+
     return []
 
 
 async def scan_guild_forums(guild: discord.Guild):
-    """Escanea solo canales activos y conserva intactas las fichas de categorías congeladas"""
+    """Escanea los foros activos y conserva las fichas de categorías congeladas descargadas de GitHub"""
 
-    # 1. Cargar la base de datos previa de la Wiki
+    # 1. Descargar la base de datos previa de GitHub
     existing_db = load_existing_db(JSON_FILE)
 
     # 2. Identificar nombres de categorías que actualmente están congeladas en Discord
@@ -51,12 +86,11 @@ async def scan_guild_forums(guild: discord.Guild):
         if is_category_frozen(cat.name):
             frozen_category_names.add(cat.name.lower())
 
-    # 3. Conservar únicamente las fichas que pertenecen a categorías congeladas
+    # 3. Preservar fichas cuyo 'categoria_discord' esté en una categoría congelada
     preserved_items = []
     if existing_db:
         for item in existing_db:
             item_cat = (item.get("categoria_discord") or "").lower()
-            # Si la ficha pertenece a una categoría que actualmente está congelada, se conserva
             if any(
                 frozen_tag in item_cat for frozen_tag in frozen_category_names
             ):
@@ -64,7 +98,7 @@ async def scan_guild_forums(guild: discord.Guild):
 
         if preserved_items:
             print(
-                f"❄️ Conservando {len(preserved_items)} fichas congeladas de historias terminadas.",
+                f"❄️ Conservando {len(preserved_items)} fichas congeladas de mundos terminados.",
                 flush=True,
             )
 
@@ -93,7 +127,6 @@ async def scan_guild_forums(guild: discord.Guild):
             )
             continue
 
-        # Escanear solo si el foro pertenece a nuestra lista de foros objetivo
         if channel.name.lower() in TARGET_FORUMS:
             print(
                 f"📂 Escaneando foro activo: #{channel.name} (Categoría: '{cat_name}')",
@@ -139,7 +172,7 @@ async def scan_guild_forums(guild: discord.Guild):
 
                         full_lore_body = "\n\n".join(lore_parts)
 
-                        # Subir imágenes a ImgBB
+                        # Subir imágenes a ImgBB en hilo secundario
                         permanent_image_urls = []
                         for msg in messages:
                             if msg.attachments:
@@ -179,7 +212,7 @@ async def scan_guild_forums(guild: discord.Guild):
                             ).strip(),
                             "relaciones": yaml_data.get("relaciones", []),
                             "detalles": yaml_data.get("detalles", {}),
-                            "categoria_discord": cat_name,  # <--- Guarda el nombre de la categoría
+                            "categoria_discord": cat_name,
                             "etiquetas_discord": [
                                 tag.name for tag in thread.applied_tags
                             ],
@@ -202,10 +235,10 @@ async def scan_guild_forums(guild: discord.Guild):
                         flush=True,
                     )
 
-    # 5. Fusionar fichas congeladas conservadas + fichas activas recién escaneadas
+    # 5. Fusionar fichas congeladas descargadas de GitHub + fichas activas escaneadas
     final_database = preserved_items + new_scanned_items
     print(
-        f"\n✨ Sincronización completada: {len(preserved_items)} fichas congeladas + {len(new_scanned_items)} fichas activas = {len(final_database)} total en la Wiki.",
+        f"\n✨ Sincronización completada: {len(preserved_items)} fichas congeladas conservadas + {len(new_scanned_items)} fichas activas = {len(final_database)} total.",
         flush=True,
     )
 
