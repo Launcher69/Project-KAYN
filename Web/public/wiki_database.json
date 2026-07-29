@@ -63,7 +63,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nSelene es la luna desolada y pálida que orbita el planeta Hillys. Desde la superficie del planeta se aprecia como un astro tranquilo e inofensivo en el firmamento nocturno, pero en su cara oculta alberga la colosal estructura orgánica y metálica que sirve como la fortaleza central de la invasión DomZ en todo el sistema.\nLa base lunar es un santuario alienígena oscuro y retorcido, donde la biotecnología extraterrestre se fusiona con salas de energía mística y recámaras de almacenamiento de almas. Es aquí donde se transfieren los contenedores de energía vital absorbidos de las víctimas de Hillys y donde el Gran Sacerdote DomZ canaliza su poder para someter la voluntad de los altos mandos militares que han traicionado a la población civil.\nLlegar a la Luna Selene requiere reacondicionar por completo la nave Beluga con propulsores estelares MecaImpulso de gran potencia. Este escenario lunar representa el frente final de la guerra: un territorio inhóspito y sobrecogedor donde se decidirá no solo la liberación de todos los prisioneros secuestrados, sino el destino definitivo de toda la civilización de Hillys.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/PS57Mxc/2e2afafaa903.jpg"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531273157334405160"
     },
     {
@@ -229,7 +231,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nConocido popularmente como \"El Matadero\", este vasto y tenebroso recinto industrial en desuso es la instalación militar más fuertemente custodiada de todo el planeta Hillys. Rodeado por aguas infestadas de minas magnéticas, campos de energía infranqueables y torretas láser de largo alcance, el acceso no autorizado a este sector es castigado con la muerte inmediata.\nBajo la excusa de ser un centro médico de confinamiento y desinfección para víctimas infectadas por los ataques alienígenas, las Secciones Alfa han convertido el Matadero en una gigantesca prisión de paso y centro de logística encubierto. En su interior, miles de ciudadanos secuestrados son retenidos en cápsulas de estasis a la espera de ser transportados hacia destinos desconocidos fuera del planeta.\nEl aire dentro del Matadero es denso y frío, marcado por el eco de maquinaria pesada y la presencia perturbadora de materia orgánica DomZ entrelazada con la arquitectura metálica. Descubrir los secretos ocultos en las entrañas de este complejo es la misión más arriesgada de la resistencia, pues expone de manera definitiva el pacto secreto entre los invasores alienígenas y el alto mando militar.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/Fk4pY616/6d314a57804f.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531276915296571514"
     },
     {
@@ -304,7 +308,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Biografía\nHubert, conocido dentro de la resistencia bajo el código \"Doble H\", es un exmilitar de constitución imponente, sentido del honor inquebrantable y una lealtad absoluta hacia la causa de la libertad. Educado bajo la disciplina más estricta, cita constantemente el libro de doctrina militar \"Optima Optimo\" para guiar cada una de sus decisiones tácticas, lo que aporta una mezcla de rigor y alivio cómico en los momentos de mayor tensión.\nDoble H conoce a Jade cuando esta se infiltra en las profundidades de la Antigua Fábrica de Nutripills. Jade lo encuentra al borde de la muerte, atrapado en un dispositivo de tortura alienígena e infectado con materia DomZ. Tras ser rescatado y curado gracias a la valentía de la joven reportera, Doble H la reconoce inmediatamente como una líder nata y jura protegerla con su vida en cada misión posterior.\nDentro del grupo, Doble H actúa como el tanque del equipo: su pesada armadura le permite embestir puertas blindadas, absorber fuego enemigo y servir de cobertura pesada mientras Jade toma las fotografías incriminatorias. Su testimonio como antiguo soldado confiere una validez irrefutable a las transmisiones que la Red IRIS emite para desenmascarar al alto mando de las Secciones Alfa.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/Xfjpdc5P/957fd2dea681.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531279453664182353"
     },
     {
@@ -330,7 +336,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Biografía\nSecundo es la unidad de asistencia holográfica personalizada de Jade. Presentado como una pequeña figura digital flotante con una voz expresiva y un marcado acento dramático, Secundo combina una eficiencia informática extraordinaria con una personalidad extrovertida, vanidosa y sarcástica que añade dinamismo a las exploraciones de Jade.\nFue programado e instalado en el equipamiento fotográfico de Jade para gestionar sus transacciones monetarias, organizar el inventario de recursos y procesar las instantáneas biológicas que la joven envía al Centro Científico de Hillys a cambio de recompensas monetarias. Aunque técnicamente es una inteligencia artificial, demuestra un verdadero apego y preocupación por la seguridad de Jade y sus compañeros.\nDurante las misiones de infiltración, Secundo cumple un papel vital: se encarga de desencriptar códigos de acceso para abrir puertas selladas, almacenar la evidencia fotográfica de la Red IRIS en holodiscos seguros y ofrecer valiosos consejos tácticos sobre las debilidades biológicas de la fauna y las tropas enemigas.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/wZPQzfC6/4ccafd3018a2.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531279583028969544"
     },
     {
@@ -360,7 +368,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Biografía\nLa Gobernadora de Hillys es una diplomática respetada y de principios firmes que ostenta el liderazgo civil del planeta. Durante los primeros años de su mandato buscó mantener la prosperidad y el desarrollo armónico entre humanos e híbridos. Sin embargo, la llegada del conflicto DomZ la dejó en una posición extremadamente frágil, viendo cómo las Secciones Alfa asumían el control total de la seguridad planetaria mediante decretos de emergencia.\nA pesar de aparecer públicamente junto a los generales militares en los comunicados oficiales para evitar el pánico social, la Gobernadora siempre albergó profundas sospechas sobre la veracidad de los informes militares y los misteriosos secuestros de ciudadanos. Su contacto indirecto con la Red IRIS se produce cuando Jade comienza a transmitir imágenes irrefutables desde los recintos secretos del gobierno.\nAl recibir las pruebas fotográficas presentadas por Jade sobre el tráfico de prisioneros en el Matadero, la Gobernadora toma la valiente decisión de romper su silencio. Utiliza los canales de emergencia estatales para autorizar la rebelión civil, desmovilizar a las Fuerzas Regulares contra las Secciones Alfa y dar respaldo institucional completo a la misión espacial de la Beluga.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/zWhfMXkc/ea33c33b9aeb.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531279699400196157"
     },
     {
@@ -462,7 +472,11 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Biografía\nLos Hermanos Mammago son una simpática y estrafalaria trinidad de híbridos rinoceronte que regentan el garaje flotante más famoso de las aguas de Hillys. Vestudos con petos mecánicos y caracterizados por su actitud relajada y pacífica, pasan los días trabajando en motores pesados mientras disfrutan de buena música en sus altavoces de taller.\nConocen a Jade a través de Pey'j, quien mantiene desde hace años una excelente relación profesional con ellos. Cuando el hovercraft de Jade necesita mejoras cruciales para adentrarse en zonas de combate o cruzar barreras de minas, los Mammago ofrecen sus servicios con entusiasmo, demostrando un dominio único de la tecnología MecaImpulso.\nA pesar del ambiente festivo de su taller, son mecánicos de una lealtad a toda prueba. Aceptan negociar exclusivamente con Perlas Azules DomZ para eludir el control fiscal y las prohibiciones de armas de las Secciones Alfa, convirtiéndose en aliados clave para armar el deslizador de Jade con cañones de disparo y reacondicionar la Beluga para la travesía espacial.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/qM77nHTZ/c9e28935f4a1.webp",
+            "https://i.ibb.co/wZshnyqN/ff928a3bb14b.webp",
+            "https://i.ibb.co/DgLt3NVd/456aa48edaaf.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531280127084990576"
     },
     {
@@ -492,7 +506,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Biografía\nMing-Tzu es un anciano e ilustrado híbrido morsá de maneras refinadas que regenta una tienda de antigüedades y objetos raros en la zona peatonal de la Ciudad de Hillys. Detrás de sus grandes gafas y su aspecto de modesto comerciante de libros viejos se encuentra uno de los hombres más informados y cultos de toda la urbe.\nMing-Tzu conoce a Jade cuando esta visita su tienda en busca de mapas náuticos e instrumental de exploración. Admirado por el espíritu noble de la joven y cansado del acoso del ejército sobre los comerciantes locales, Ming-Tzu decide ayudarla discretamente. Es él quien le proporciona las primeras contraseñas secretas para acceder a la trastienda del Akuda Bar y contactar con la cúpula de la Red IRIS.\nAdemás de su papel como conector clandestino, Ming-Tzu actúa como un valioso comerciante en el juego: vende a Jade componentes esenciales como detectores de fauna y perlas para el mapa del holodisco, sirviendo como una guía constante para la recolección de pruebas y el avance de la causa rebelde.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/QjNCcK2k/6309765385ec.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531280265572515840"
     },
     {
@@ -563,7 +579,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nEl Hovercraft es el principal medio de transporte utilizado por Jade y Pey'j para desplazarse por la extensa red de canales y mares del planeta Hillys. Diseñado originalmente como un deslizador marinero civil, la astucia técnica de Pey'j lo transformó en una nave rápida, maniobrable y perfectamente equipada para sobrevivir en un entorno amenazado por monstruos alienígenas y patrullas militares hostiles.\nEl vehículo cuenta con un fuselaje reforzado capaz de absorber impactos pesados y dos turbinas MecaImpulso laterales que le confieren una aceleración envidiable. A medida que progresa la investigación periodística de Jade, el Hovercraft recibe mejoras críticas adquiridas en el Taller Mammago, tales como un cañón neutralizador para defenderse de la fauna DomZ, propulsores de salto para superar barricadas navales y un escáner de terreno para localizar secretos.\nAdemás de su funcionalidad como vehículo de exploración y carreras, el Hovercraft cumple un papel estratégico indispensable: actúa como la lanzadera de abordaje que se acopla en el vientre de la nave espacial Beluga, permitiendo a los miembros de la resistencia desplegarse tanto en el agua como en instalaciones terrestres enemigas.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/zWKYTKMT/5ec52235cff4.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531281045624848434"
     },
     {
@@ -597,7 +615,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nLa Beluga es una impresionante nave espacial ligera de diseño aerodinámico que perteneció originalmente a los padres de Jade. Tras la desaparición de estos, Pey'j ocultó la nave en una bahía subterránea secreta construida bajo las cimientos del Refugio del Faro, manteniéndola desmontada y fuera de los radares de las Secciones Alfa durante años.\nPara conseguir que la Beluga vuelva a ser funcional y capaz de romper la atmósfera de Hillys, Jade debe reunir componentes raros y propulsores de grado estelar que solo los Hermanos Mammago pueden ensamblar. La nave requiere una inmensa cantidad de energía MecaImpulso alimentada por Perlas Azules DomZ para activar su reactor principal y sus estabilizadores de vuelo espacial.\nUna vez totalmente restaurada, la Beluga se convierte en la pieza clave para la victoria de la resistencia. Con el Hovercraft acoplado en su zona inferior y capacidad para transportar a los agentes de la Red IRIS, la Beluga permite a Jade volar hacia la Luna Selene, desafiando el bloqueo espacial del ejército Alfa para llevar la lucha directamente al trono del enemigo.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/338Y5rV/f80c7e80f14c.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531281150276927661"
     },
     {
@@ -623,7 +643,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nEl Bastón Dai-Jo es la tradicional y mortífera arma de combate cuerpo a cuerpo utilizada por Jade. Forjado en una aleación de titanio ligero pero extremadamente resistente, este bastón combina las artes marciales ancestrales de Hillys con emisores de energía MecaImpulso en sus extremos para asestar golpes rápidos y contundentes.\nEn manos de una experta como Jade, el bastón permite ejecutar complejas cadenas de combos, esquivas ágiles y barridos de área capaces de desestabilizar a múltiples enemigos simultáneamente. Cuando se utiliza en combinación con compañeros como Doble H, el Dai-Jo puede canalizar ondas de choque que proyectan a los soldados Alfa pesados por el aire o rompen las armaduras más duras.\nA medida que el poder espiritual interno de Jade despierta, el Bastón Dai-Jo se convierte en el conductor físico de su energía \"Shauni\". En los momentos críticos, el bastón brilla con un aura mística capaz de purificar criaturas alienígenas corruptas y repeler los ataques de energía oscura del Gran Sacerdote DomZ.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/bjfdxhVm/80056fc1a843.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531281226500149278"
     },
     {
@@ -653,7 +675,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nLa Cámara Fotográfica MecaImpulso es el instrumento más valioso y versátil del equipo de Jade. Más que una simple herramienta periodística, este avanzado dispositivo óptico está equipado con un poderoso teleobjetivo zoom, filtros de visión espectral y el servidor donde habita Secundo, su asistente de inteligencia artificial.\nLa cámara cumple un doble propósito fundamental en la historia: en primer lugar, sirve como el arma de la verdad de la Red IRIS, permitiendo a Jade infiltrarse en bases enemigas para fotografiar documentos secretos, traiciones militares y cápsulas de prisioneros. En segundo lugar, su escáner biológico integrado permite catalogar especies animales para el Centro Científico, generando ingresos vitales para financiar la causa rebelde.\nAdemás de sus funciones ópticas, la cámara cuenta con un accesorio mecánico de combate denominado lanzador de discos Gyro. Este mecanismo permite a Jade disparar discos concentrados a distancia para activar interruptores lejanos, desarmar trampas o atacar los puntos débiles de enemigos y jefes alienígenas.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/CpK2FJF9/ecbc25fcc2b4.jpg"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531281418267918459"
     },
     {
@@ -679,7 +703,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nLas Perlas Azules son esferas de energía condensada de un intenso color carmesí o azulado que se forman en el interior de las criaturas y líderes guerreros de la raza DomZ. Estas esferas contienen una concentración masiva de energía vital purificada, lo que las convierte en la fuente de potencia más codiciada de todo el planeta Hillys.\nDado que las Secciones Alfa prohíben la circulación de tecnología de combate para civiles, los circuitos comerciales clandestinos como el Taller Mammago rechazan las monedas estatales y exigen Perlas Azules como única forma de pago para instalar mejoras pesadas en los vehículos de Jade.\nDerrotar a los monstruos gigantescos que azotan las islas o ganar las peligrosas carreras del circuito urbano son las únicas vías para recolectar estas perlas. Cada perla obtenida acerca a Jade a la adquisición de motores de salto, cañones pesados y, finalmente, los propulsores estelares indispensables para que la nave Beluga alcance el espacio exterior.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/C3Z2pTP2/320764b0549a.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531281496122589194"
     },
     {
@@ -709,7 +735,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nLos Discos de Datos IRIS son dispositivos de almacenamiento holográfico blindados donde la Red IRIS compila, encripta y edita los reportajes fotográficos enviados por sus agentes de campo. Diseñados para resistir el rastreo electrónico y el pirateo de las Secciones Alfa, representan el bien informativo más valioso de la resistencia.\nCada disco contiene una entrega completa del reportaje de la verdad enfocado en una instalación militar específica: desde los laboratorios clandestinos de la Antigua Fábrica de Nutripills hasta el tráfico masivo de seres humanos en el Matadero de Cuarentena.\nCuando un Disco IRIS es completado por Jade y transmitido a través de la red de repetidores del gobierno, la información se proyecta simultáneamente en las pantallas públicas de todas las ciudades de Hillys. Esto provoca un impacto demoledor sobre la opinión pública, desmontando las mentiras del General Keyl e impulsando la rebelión ciudadana.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/Pv3tsj0V/c072cc58234e.jpg"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531281592583065720"
     },
     {
@@ -747,7 +775,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nLa Red IRIS es una organización periodística y de resistencia clandestina formada por ciudadanos, intelectuales y militares disidentes que se niegan a aceptar la dictadura de facto impuesta por las Secciones Alfa. Operando desde las sombras, su filosofía se basa en la convicción de que la verdad es el arma más poderosa para liberar al planeta Hillys de la opresión.\nLa red funciona mediante una estructura de células independientes para evitar que la caída de un agente comprometa a toda la organización. Utilizan el piso superior del Akuda Bar como su centro de operaciones principal en la ciudad, desde donde interceptan las comunicaciones del ejército, desencriptan holodiscos e imponen un férreo protocolo de seguridad mediante contraseñas cambiantes.\nA diferencia de un grupo armado convencional, el objetivo principal de la Red IRIS no es la destrucción militar directa, sino la captura de evidencia fotográfica irrefutable. Al publicar sus reportajes en la red pública de noticias, la Red IRIS logra despertar la conciencia de la población y del gobierno civil, desencadenando la revolución que finalmente derroca al régimen corrupto.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/N2GyKBhK/f6905d8de037.jpg"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531281744408608808"
     },
     {
@@ -818,7 +848,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nLos DomZ son una antigua y letal raza de depredadores estelares de naturaleza parasitaria que viajan por el cosmos consumiendo la energía vital de mundos prósperos. Su sociedad se articula en torno a un culto místico-religioso dirigido por el Gran Sacerdote DomZ, quien utiliza el alma de los seres vivos capturados para prolongar la existencia de su imperio moribundo.\nSus fuerzas de invasión están compuestas por una terrorífica variedad de criaturas biológicas y naves orgánicas que van desde pequeños parásitos voladores hasta calamares gigantescos que emergen de los océanos de Hillys. Poseen la capacidad de infectar la mente de otras especies y transformar a sus víctimas en sirvientes sin voluntad.\nAl llegar a Hillys, los DomZ comprendieron que un ataque frontal prolongado sería costoso, por lo que establecieron un pacto de complicidad con las Secciones Alfa. A cambio de permitir la dominación militar del General Keyl, los DomZ recibieron miles de prisioneros humanos e híbridos para alimentar su matriz energética en la Luna Selene.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/Gf5M9jWB/8d555114fcb1.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531281957504290816"
     },
     {
@@ -848,7 +880,9 @@
         "categoria_discord": "Beyond Good And Evil",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nEl Gobierno Planetario de Hillys es la institución constitucional y democrática encargada de velar por el bienestar, la administración y la convivencia pacífica entre los habitantes del archipiélago. Antes de la crisis alienígena, gobernaba un mundo próspero basado en el comercio marítimo, las ciencias naturales y la integración armónica de especies.\nCon el estallido del conflicto DomZ, el Gobierno se vio forzado a delegar las competencias de defensa en las Secciones Alfa. Esta situación redujo drásticamente el margen de maniobra de la administración civil, dejando a la Gobernadora y al senado atrapados bajo una trampa de leyes marciales y censura informativa impuesta por el General Keyl.\nA pesar de ser sistemáticamente desinformados por el alto mando militar, los funcionarios del Gobierno Planetario mantuvieron su lealtad a los ciudadanos. Cuando la Red IRIS logra transmitir las pruebas de la conspiración, el Gobierno reasume inmediatamente su autoridad, movilizando a las fuerzas policiales civiles para arrestar a los colaboradores Alfa y restaurar la libertad en Hillys.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/zWhfMXkc/ea33c33b9aeb.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531282050055934072"
     },
     {
