@@ -154,6 +154,7 @@ async def scan_guild_forums(guild: discord.Guild):
                                             ".jpeg",
                                             ".gif",
                                             ".webp",
+                                            ".avif",
                                         ]
                                     ):
                                         print(
