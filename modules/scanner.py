@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+import re
 import time
 import urllib.request
 import discord
@@ -9,28 +10,36 @@ from modules.image_uploader import upload_to_imgbb
 from modules.parser import extract_yaml_from_markdown
 
 
+def clean_category_name(cat_name: str) -> str:
+    """Limpia el nombre de la categoría eliminando etiquetas como (Terminado), (Fin), (Pri)"""
+    if not cat_name:
+        return ""
+    cleaned = re.sub(
+        r"\s*[\(\[][^\)\]]*(terminado|fin|archivado|pri|privado)[^\)\]]*[\)\]]",
+        "",
+        cat_name,
+        flags=re.IGNORECASE,
+    )
+    return cleaned.strip().lower()
+
+
 def is_category_private(cat_name: str) -> bool:
-    """Comprueba si una categoría es privada (borrador)"""
     if not cat_name:
         return False
-    name_lower = cat_name.lower()
-    return "(pri)" in name_lower or "(privado)" in name_lower
+    return any(t in cat_name.lower() for t in ["(pri)", "(privado)", "[pri]"])
 
 
 def is_category_frozen(cat_name: str) -> bool:
-    """Comprueba si una categoría está terminada/congelada"""
     if not cat_name:
         return False
-    name_lower = cat_name.lower()
     return any(
-        tag in name_lower
-        for tag in ["(terminado)", "(fin)", "(archivado)", "[terminado]"]
+        t in cat_name.lower()
+        for t in ["(terminado)", "(fin)", "(archivado)", "[terminado]"]
     )
 
 
 def load_existing_db(filepath: str) -> list:
-    """Descarga la base de datos JSON actual directamente desde GitHub para no perder fichas en la nube"""
-    # 1. Intentar descargar desde GitHub Raw (Copia en vivo)
+    """Carga la base de datos previa directamente desde GitHub Raw o archivo local"""
     if GITHUB_REPO:
         try:
             clean_repo = (
@@ -42,16 +51,19 @@ def load_existing_db(filepath: str) -> list:
             if clean_path.startswith("./"):
                 clean_path = clean_path[2:]
 
-            raw_url = f"https://raw.githubusercontent.com/{clean_repo}/main/{clean_path}?t={int(time.time())}"
+            raw_url = f"https://raw.githubusercontent.com/{clean_repo}/main/{clean_path}?v={int(time.time())}"
             req = urllib.request.Request(
-                raw_url, headers={"User-Agent": "DiscordWikiBot"}
+                raw_url,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+                },
             )
 
             with urllib.request.urlopen(req) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
                 if isinstance(data, list) and len(data) > 0:
                     print(
-                        f"📥 Descargada base de datos previa desde GitHub ({len(data)} elementos conservados).",
+                        f"📥 Base de datos previa descargada de GitHub ({len(data)} fichas encontradas).",
                         flush=True,
                     )
                     return data
@@ -61,7 +73,6 @@ def load_existing_db(filepath: str) -> list:
                 flush=True,
             )
 
-    # 2. Respaldo: Intentar archivo local
     try:
         if os.path.exists(filepath):
             with open(filepath, "r", encoding="utf-8") as f:
@@ -75,24 +86,35 @@ def load_existing_db(filepath: str) -> list:
 
 
 async def scan_guild_forums(guild: discord.Guild):
-    """Escanea los foros activos y conserva las fichas de categorías congeladas descargadas de GitHub"""
+    """Escanea los foros activos y conserva las fichas congeladas comparando nombres base limpios"""
 
-    # 1. Descargar la base de datos previa de GitHub
+    # 1. Cargar la base de datos previa de GitHub
     existing_db = load_existing_db(JSON_FILE)
 
-    # 2. Identificar nombres de categorías que actualmente están congeladas en Discord
-    frozen_category_names = set()
+    # 2. Identificar nombres BASE limpios de las categorías congeladas en Discord
+    frozen_base_names = set()
     for cat in guild.categories:
         if is_category_frozen(cat.name):
-            frozen_category_names.add(cat.name.lower())
+            base_name = clean_category_name(cat.name)
+            frozen_base_names.add(base_name)
+            print(
+                f"❄️ Categoría congelada detectada: '{cat.name}' (Nombre Base: '{base_name}')",
+                flush=True,
+            )
 
-    # 3. Preservar fichas cuyo 'categoria_discord' esté en una categoría congelada
+    # 3. Preservar fichas cuya categoría limpia coincida con las categorías congeladas
     preserved_items = []
     if existing_db:
         for item in existing_db:
-            item_cat = (item.get("categoria_discord") or "").lower()
-            if any(
-                frozen_tag in item_cat for frozen_tag in frozen_category_names
+            item_cat_base = clean_category_name(
+                item.get("categoria_discord", "")
+            )
+            item_mundo_base = clean_category_name(item.get("mundo_id", ""))
+
+            # Si el nombre base coincide con una categoría congelada, SE CONSERVA
+            if (
+                item_cat_base in frozen_base_names
+                or item_mundo_base in frozen_base_names
             ):
                 preserved_items.append(item)
 
@@ -111,7 +133,6 @@ async def scan_guild_forums(guild: discord.Guild):
     for channel in guild.forums:
         cat_name = channel.category.name if channel.category else ""
 
-        # Filtro A: Ignorar categorías privadas (Pri)
         if is_category_private(cat_name):
             print(
                 f"⏩ Ignorando foro #{channel.name} por estar en la categoría privada '{cat_name}'",
@@ -119,10 +140,9 @@ async def scan_guild_forums(guild: discord.Guild):
             )
             continue
 
-        # Filtro B: Saltar el escaneo de categorías terminadas/congeladas
         if is_category_frozen(cat_name):
             print(
-                f"❄️ Saltando escaneo de foro #{channel.name} (Categoría congelada: '{cat_name}')",
+                f"❄️ Saltando escaneo de foro #{channel.name} por estar en la categoría terminada '{cat_name}'",
                 flush=True,
             )
             continue
@@ -172,7 +192,6 @@ async def scan_guild_forums(guild: discord.Guild):
 
                         full_lore_body = "\n\n".join(lore_parts)
 
-                        # Subir imágenes a ImgBB en hilo secundario
                         permanent_image_urls = []
                         for msg in messages:
                             if msg.attachments:
@@ -235,10 +254,10 @@ async def scan_guild_forums(guild: discord.Guild):
                         flush=True,
                     )
 
-    # 5. Fusionar fichas congeladas descargadas de GitHub + fichas activas escaneadas
+    # 5. Fusionar fichas congeladas conservadas + fichas activas escaneadas
     final_database = preserved_items + new_scanned_items
     print(
-        f"\n✨ Sincronización completada: {len(preserved_items)} fichas congeladas conservadas + {len(new_scanned_items)} fichas activas = {len(final_database)} total.",
+        f"\n✨ Sincronización completada: {len(preserved_items)} fichas congeladas conservadas + {len(new_scanned_items)} fichas activas = {len(final_database)} total en la Wiki.",
         flush=True,
     )
 
