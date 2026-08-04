@@ -1028,5 +1028,740 @@
             "https://i.ibb.co/nWtscc1/258a37a09487.jpg"
         ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1531282484166398013"
+    },
+    {
+        "id": "world_the_originals",
+        "tipo": "mundo",
+        "nombre": "Universo de The Originals (Praga Sobrenatural)",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_familia_mikaelson",
+                "relacion": "Escenario marcado por la sombra, deudas de honor e influencia histórica de los Vampiros Originales."
+            },
+            {
+                "id_destino": "faccion_consejo_de_praga",
+                "relacion": "Sede del gobierno y la diplomacia entre las facciones inmortales de Bohemia."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Escenario principal donde Kayn ejecuta su contrato de seguridad y protección profesional."
+            }
+        ],
+        "detalles": {
+            "epoca": "Contemporánea / Era Moderna",
+            "ubicacion_principal": "Praga, República Checa",
+            "especies_presentes": "Vampiros, Brujos / Hemomantes, Humanos, Híbridos",
+            "atmosfera": "Gótica, oscura, fría, aristocrática y de alta tensión política"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nEl universo de *The Originals* se despliega en las sombras de las grandes capitales europeas, donde la alta sociedad inmortal, los círculos de brujería de sangre y los clanes milenarios conviven en un frágil equilibrio diplomático bajo el conocimiento de unos pocos mortales. En este entorno, las calles empedradas, la arquitectura gótica y las nieblas perpetuas de la ciudad de Praga sirven como escenario para conspiraciones aristocráticas, golpes de estado silenciosos y guerras de poder encubiertas.\r\n\r\nLa geopolítica de Praga está dominada por el Consejo de Inmortales de Bohemia, un organismo compuesto por las familias más antiguas de la región. Sin embargo, la presencia e influencia histórica de la familia Mikaelson —en especial de Rebekah Mikaelson— actúa como un constante disuasorio y eje de alianzas. Mientras las facciones rivales intentan aprovechar cualquier vacío de poder mediante el uso de magias prohibidas como la hemomancia, las calles de la Ciudad Vieja y los subterráneos medievales continúan albergando secretos de siglos de antigüedad.\r\n\r\n\r\n# 📍 Canal: #foro-lugares",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297725967794337"
+    },
+    {
+        "id": "lugar_loft_mala_strana",
+        "tipo": "lugar",
+        "nombre": "Loft Privado de Valeria en Malá Strana",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Residencia privada y refugio urbano de Valeria en el centro de Praga."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Escenario del primer encuentro cara a cara entre Kayn y Valeria."
+            }
+        ],
+        "detalles": {
+            "distrito": "Malá Strana, Praga",
+            "arquitectura": "Gótico-contemporánea con vigas de roble y ventanales blindados",
+            "nivel_seguridad": "Alto (Seguridad privada mortal y cerraduras electrónicas militares)",
+            "acceso": "Exclusivo y privado"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nUbicado en el histórico y distinguido distrito de Malá Strana, bajo la imponente silueta del Castillo de Praga, este loft privado combina la majestuosidad de la arquitectura bohemia del siglo XVII con sistemas de seguridad contemporáneos de nivel militar. La estancia cuenta con techos altos atravesados por vigas de roble místico oscurecido, ventanales de cristal tintado blindado con vistas a los tejados góticos, chimenea de mármol negro y una decoración dominada por mobiliario de terciopelo burdeos y retratos al óleo antiguos.\r\n\r\nA pesar de contar con controles de seguridad privada en la planta baja y puertas de roble reforzadas internamente con marcos de acero, la orientación de sus grandes ventanales hacia las estrechas calles del distrito supone una vulnerabilidad táctica ante posibles tiradores o hechizos de alcance desde los tejados colindantes. Fue el punto de encuentro inicial donde Kayn se presentó formalmente para asumir la protección de Valeria tras ser contratado por Rebekah Mikaelson.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297739096100979"
+    },
+    {
+        "id": "lugar_el_santuario",
+        "tipo": "lugar",
+        "nombre": "El Santuario (Club Subterráneo)",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_consejo_de_praga",
+                "relacion": "Terreno neutral reconocido oficialmente por el Consejo para reuniones e intercambios."
+            },
+            {
+                "id_destino": "npc_viktor_von_staufen",
+                "relacion": "Punto de encuentro y frecuentación diplomática de Viktor y sus aliados."
+            },
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Local nocturno exclusivo utilizado por Valeria para tomar el pulso social a la ciudad."
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Distrito Viejo (Staré Město), Praga",
+            "estilo": "Bóveda subterránea medieval del siglo XIV",
+            "estatus": "Terreno Neutral por Ley del Consejo",
+            "clientela": "Élite mortal, vampiros aristócratas y figuras del inframundo"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nOculto bajo las calles empedradas de la Ciudad Vieja (*Staré Město*), *El Santuario* es un club nocturno y lounge de altísimo nivel construido sobre una antigua bóveda subterránea del siglo XIV. Su arquitectura destaca por los arcos de piedra medievales, una iluminación ambiental tenue en tonos rojos y dorados, reservados de terciopelo, barra de mármol negro y lámparas de araña de cristal antiguo. El ambiente está impregnado de fragancias exclusivas, humo dulce y el matiz metálico de sangre tratada servida en copas de cristal fino.\r\n\r\nBajo la estricta ley del Consejo de Praga, *El Santuario* opera como terreno neutral sagrado donde la violencia está terminantemente prohibida. Sirve como el centro neurálgico de la vida social e inmortal de la ciudad, donde políticos mortales, aristócratas vampiros y negociantes del inframundo cierran tratos y comercian con información. Fue en su barra donde Kayn y Valeria confrontaron verbalmente por primera vez a Viktor Von Staufen.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297746654367774"
+    },
+    {
+        "id": "lugar_callejon_el_santuario",
+        "tipo": "lugar",
+        "nombre": "Callejón Trasero de El Santuario",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "lugar_el_santuario",
+                "relacion": "Vía de acceso posterior y evacuación del club nocturno."
+            },
+            {
+                "id_destino": "npc_viktor_von_staufen",
+                "relacion": "Lugar elegido por Viktor para apostar a sus matones y tender la emboscada."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Escenario donde Kayn redujo a los cinco vampiros de Viktor mediante su habilidad táctica."
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Detrás de la Plaza de la Ciudad Vieja",
+            "iluminacion": "Farola de hierro antigua con luz dorada tenue",
+            "visibilidad": "Aislada y sombría (Supervisada por cámaras de seguridad del club)",
+            "clima_habitual": "Lluvia fina, humedad y empedrado resbaladizo"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nUn pasaje estrecho, sombrío y empedrado que discurre por la parte posterior de la estructura medieval que alberga *El Santuario*. Flanqueado por altas fachadas de piedra y bañado por la luz tenue de una única farola de hierro forjado, este callejón se encuentra apartado del tránsito de los transeúntes mortales de la Plaza de la Ciudad Vieja, convirtiéndolo en un punto ciego idóneo para operaciones discretas al margen del protocolo.\r\n\r\nAl estar fuera de los muros del club, el callejón no queda amparado por las leyes de terreno neutral. Fue el escenario del enfrentamiento físico donde cinco matones vampíricos enviados por Viktor Von Staufen intentaron emboscar a Kayn y Valeria. En este lugar, Kayn ejecutó su técnica de colapso psicológico al contacto, neutralizando a los cinco agresores y dejando el mensaje de Viktor destruido en el barro.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297754480672778"
+    },
+    {
+        "id": "lugar_finca_familiar",
+        "tipo": "lugar",
+        "nombre": "Finca Ancestral de la Familia de Valeria",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_clan_valeria",
+                "relacion": "Sede principal, bastión y residencia histórica de la familia de Valeria."
+            },
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Hogar y centro de operaciones de Valeria."
+            },
+            {
+                "id_destino": "npc_anciano_clan",
+                "relacion": "Lugar de traslado y recuperación del anciano tras su rescate."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Lugar de alojamiento de Kayn en la Suite del Ala Este durante el contrato."
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Afueras residenciales / Colinas sobre el río Moldava, Praga",
+            "estilo_arquitectonico": "Neoclásico Bohemio del siglo XVIII",
+            "proteccion_mistica": "Barreras de propiedad antiguas (Imposibilidad de acceso a vampiros no invitados)",
+            "instalaciones": "Ala Este (Suites VIP), Ala Oeste, Gran Vestíbulo, Ala Médica Privada, Bosque Privado"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nUbicada en las colinas arboladas que dominan el río Moldava a las afueras de Praga, esta imponente mansión de piedra oscura del siglo XVIII es el bastión histórico del clan de Valeria. La propiedad se encuentra protegida por altos muros de piedra, robles centenarios y unas monumentales verjas de hierro forjado con el blasón familiar. Su interior destaca por un vestíbulo de triple altura con lámpara de araña de cristal de Bohemia, escalinata doble de caoba, chimeneas de mármol y retratos al óleo de siglos de antigüedad.\r\n\r\nMás allá de su lujo aristocrático, la finca cuenta con antiguas barreras de protección mística de propiedad, lo que impide que cualquier vampiro no invitado pueda cruzar el umbral sin el permiso explícito de la linaje. Dispone de un ala médica privada equipada con reservas de sangre para emergencias, así como suites independientes en el Ala Este donde Kayn se alojó durante la resolución del conflicto.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297761971699763"
+    },
+    {
+        "id": "lugar_palacio_de_la_rosa",
+        "tipo": "lugar",
+        "nombre": "Palacio de la Rosa",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_consejo_de_praga",
+                "relacion": "Sede oficial de las asambleas y votaciones del Consejo de Inmortales."
+            },
+            {
+                "id_destino": "npc_viktor_von_staufen",
+                "relacion": "Lugar donde Viktor intentó consumar la expropiación territorial y su golpe de estado."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Escenario donde Kayn custodió la puerta de salida y detuvo a Viktor con una zancadilla."
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Distrito Diplomático, Praga",
+            "siglo": "Siglo XV (Complejo Gótico)",
+            "camara_principal": "Sala del Consejo Abovedada con Mesa Circular de Caoba",
+            "estatus": "Sede Política Sobrenatural de Bohemia"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nUn monumental palacio de piedra oscura construido en el siglo XV cerca del río Moldava, que ha funcionado como la sede central del Consejo de Inmortales de Praga durante más de trescientos años. Su arquitectura abovedada alberga la gran Sala del Consejo, presidida por una masiva mesa circular de caoba pulida iluminada por pesadas arañas de hierro, donde los líderes de los clanes locales debaten y votan la política de Bohemia.\r\n\r\nEste recinto fue el escenario de la resolución política del conflicto. En su cámara principal, Viktor Von Staufen intentó utilizar la ausencia del anciano para arrebatar los territorios a la familia de Valeria. La irrupción de Valeria, el anciano recuperado y Kayn expuso la traición de Viktor y la prueba del Nexo de Sangre ante toda la asamblea. Cuando Viktor intentó huir desesperadamente utilizando su velocidad vampírica, Kayn le hizo una zancadilla junto a las puertas de roble, estrellándolo contra la madera antes de ser arrastrado a las mazmorras.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297769756459079"
+    },
+    {
+        "id": "lugar_cripta_san_nicolas",
+        "tipo": "lugar",
+        "nombre": "Cripta Subterránea bajo la Iglesia de San Nicolás",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_circulo_de_sangre_bohemia",
+                "relacion": "Guarida y centro de ritos oscuros del Círculo de Sangre."
+            },
+            {
+                "id_destino": "npc_corvin_vane",
+                "relacion": "Lugar donde Corvin Vane canalizaba el ritual del Nexo de Sangre."
+            },
+            {
+                "id_destino": "npc_anciano_clan",
+                "relacion": "Lugar donde permanecía encadenado y desecado el anciano del clan."
+            },
+            {
+                "id_destino": "objeto_talisman_nexo_sangre",
+                "relacion": "Ubicación del cáliz de plata que contenía el fragmento de obsidiana del talismán."
+            }
+        ],
+        "detalles": {
+            "ubicacion": "Subterráneo de la Iglesia de San Nicolás, Ciudad Vieja, Praga",
+            "siglo": "Siglo XIV (Antiguo Osario Románico)",
+            "proteccion_mistica": "Sello de Repulsión de Sangre (Barrera anti-vampiros activa)",
+            "elementos_interiores": "Paredes de nichos con calaveras, altar de mármol negro, velas rojas rituales, pilares de piedra"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nSituada en las profundidades subterráneas de la histórica Iglesia de San Nicolás en la Ciudad Vieja, esta vasta sala abovedada de estilo románico del siglo XIV funcionó originalmente como un osario secreto. Las paredes de piedra están recubiertas por nichos repletos de calaveras y huesos humanos apilados con precisión. El centro de la estancia alberga un altar de mármol negro rodeado por decenas de velas rojas rituales y marcado con glifos hemománticos.\r\n\r\nLa cripta fue elegida por el Sumo Hemomante Corvin Vane como el centro de operaciones clandestino para drenar al anciano del clan de Valeria y canalizar el ritual del Nexo de Sangre. Estaba protegida exteriormente por una runa de repulsión de sangre que impedía el acceso a vampiros. Tras neutralizar la barrera y la magia del Círculo, Kayn y Valeria rescataron al anciano, incautaron la mitad del talismán de obsidiana y desmantelaron el núcleo de la conspiración de Viktor.\n\n# 👥 Canal: #foro-npcs",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297777562058932"
+    },
+    {
+        "id": "npc_valeria",
+        "tipo": "npc",
+        "nombre": "Valeria",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Protegida y aliada de Kayn; admira profundamente su frialdad, pragmatismo y eficacia."
+            },
+            {
+                "id_destino": "npc_rebekah_mikaelson",
+                "relacion": "Aliada histórica y beneficiaria del apoyo de la familia Mikaelson."
+            },
+            {
+                "id_destino": "lugar_finca_familiar",
+                "relacion": "Residencia principal y base operativa de su clan."
+            },
+            {
+                "id_destino": "npc_viktor_von_staufen",
+                "relacion": "Rival político al que desmanteló su golpe de estado en el Consejo."
+            },
+            {
+                "id_destino": "faccion_clan_valeria",
+                "relacion": "Heredera aristocrática y figura visible del clan en Praga."
+            }
+        ],
+        "detalles": {
+            "especie": "Vampiresa",
+            "edad_aparente": "25 años",
+            "edad_real": "Siglos de antigüedad",
+            "afiliacion": "Clan de Valeria / Consejo de Praga",
+            "estatus": "Viva / Activa"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\n\r\nValeria es una vampiresa aristócrata de apariencia joven pero de siglos de antigüedad, perteneciente a una de las familias fundadoras más influyentes del Consejo de Inmortales de Praga. Orgullosa, rebelde y de una elegancia afilada, se niega a vivir encerrada o a ceder ante la intimidación política de las facciones rivales. Posee una belleza alabastrina y un ingenio cínico, prefiriendo la acción directa y el sarcasmo antes que el protocolo sofocante de la alta sociedad nocturna de Bohemia.\r\n\r\nConoció a Kayn cuando Rebekah Mikaelson lo recomendó y contrató directamente para actuar como su protector personal durante una grave crisis política en Praga tras la desaparición del patriarca de su clan. Aunque inicialmente se mostró insolente y escéptica ante la idea de tener un \"niñero\" mortal, Valeria no tardó en quedar fascinada por la absoluta falta de miedo de Kayn, su humor seco y su devastadora capacidad operativa. Juntos enfrentaron la emboscada en *El Santuario*, inva\n\ndieron la cripta de San Nicolás, rescataron a su padre encadenado y desmantelaron el golpe de estado de Viktor Von Staufen en el Consejo.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297790090444915"
+    },
+    {
+        "id": "npc_rebekah_mikaelson",
+        "tipo": "npc",
+        "nombre": "Rebekah Mikaelson",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Empleadora directa de Kayn; confía plenamente en su profesionalidad e inmunidad diplomática."
+            },
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Aliada histórica de su familia y valedora de la protección de su casa en Bohemia."
+            },
+            {
+                "id_destino": "faccion_familia_mikaelson",
+                "relacion": "Miembro fundadora de la estirpe de Vampiros Originales."
+            }
+        ],
+        "detalles": {
+            "especie": "Vampiresa Original",
+            "edad_real": "Más de 1000 años",
+            "afiliacion": "Familia Mikaelson",
+            "estatus": "Viva / Activa en el trasfondo"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\n\r\nRebekah Mikaelson es una de las Vampiresas Originales, una criatura milenaria cuya estirpe y nombre infunden temor y respeto en todo el mundo sobrenatural. Ligada a la familia de Valeria por viejas deudas de honor y alianzas que se remontan a varios siglos atrás, Rebekah actuó como la valedora de la casa de Valeria cuando las facciones rebeldes de Praga intentaron desestabilizar la ciudad. Consciente de que su presencia física en Bohemia desataría una guerra internacional entre clanes, prefirió enviar a un operativo mortal de élite como escudo discreto.\r\n\r\nHabiendo sido testigo directo de los recursos y la cabeza fría de Kayn en los bajos fondos, Rebekah lo contrató personalmente para asumir la seguridad de Valeria. Le describió a Kayn como el operativo más imperturbable, eficiente y pragmático que había conocido en el último siglo, alguien insensible al terror que causan los vampiros. La firma y el respaldo del nombre Mikaelson que ostentaba Kayn fue la herramienta diplomática definitiva que permitió desarmar la conspiración del Consejo.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297802740338759"
+    },
+    {
+        "id": "npc_viktor_von_staufen",
+        "tipo": "npc",
+        "nombre": "Viktor Von Staufen",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_clan_de_la_rosa",
+                "relacion": "Brazo derecho y líder político de la facción en el Consejo."
+            },
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Enemigo político al que intentó arrebatar sus territorios mediante chantaje."
+            },
+            {
+                "id_destino": "npc_corvin_vane",
+                "relacion": "Cliente clandestino que financió el ritual del Nexo de Sangre."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Humillado repetidamente por Kayn hasta su arresto final."
+            }
+        ],
+        "detalles": {
+            "especie": "Vampiro",
+            "afiliacion": "Clan de la Rosa / Consejo de Praga",
+            "estatus": "Encarcelado en las Mazmorras del Moldava"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\n\r\nViktor Von Staufen era un vampiro aristócrata de modales pulidos, arrogancia desmedida y una ambición despiadada dentro del Consejo de Praga. Como líder operativo del Clan de la Rosa, ideó un plan para aprovechar la desaparición del anciano del clan de Valeria, expropiar los territorios de su familia y tomar el control absoluto de Bohemia. Para evitar la interferencia de los Mikaelson, financió en secreto al brujo Corvin Vane para crear un talismán de sellado territorial llamado el Nexo de Sangre.\r\n\r\nConoció a Kayn en el club *El Santuario*, donde intentó intimidarle sin éxito ante el absoluto desprecio del operativo mortal. Tras ver cómo sus cinco matones eran derrotados en un callejón, su conspiración colapsó por completo cuando Kayn, Valeria y el anciano rescatado irrumpieron en el *Palacio de la Rosa* con la prueba de la obsidiana. Desesperado, Viktor intentó huir a velocidad vampírica cargando con una daga, pero Kayn le esquivó y le hizo una zancadilla que lo estrelló cara contra la puerta de roble, terminando encarcelado por traición.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297810319577191"
+    },
+    {
+        "id": "npc_corvin_vane",
+        "tipo": "npc",
+        "nombre": "Corvin Vane",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_circulo_de_sangre_bohemia",
+                "relacion": "Sumo Hemomante y líder de la secta de brujos de sangre."
+            },
+            {
+                "id_destino": "npc_viktor_von_staufen",
+                "relacion": "Contratado para secuestrar al anciano y canalizar el Nexo de Sangre."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Aterrorizado por Kayn; convertido en mozo forzoso y rastreado mentalmente."
+            },
+            {
+                "id_destino": "lugar_cripta_san_nicolas",
+                "relacion": "Guarida subterránea y laboratorio místico."
+            }
+        ],
+        "detalles": {
+            "especie": "Brujo / Sumo Hemomante",
+            "afiliacion": "Círculo de Sangre de Bohemia",
+            "estatus": "Vivo / En fuga fuera de Praga (Rastreado por Kayn)"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\n\r\nCorvin Vane era el brujo de alquiler más peligroso de Europa Central, experto en hemomancia oscura y líder del Círculo de Sangre de Bohemia. Operando desde un osario subterráneo del siglo XIV bajo la Iglesia de San Nicolás, Corvin mantenía encadenado y desecado al anciano del clan de Valeria para utilizar su sangre ancestral como combustible místico en la creación del talismán del Nexo de Sangre encargado por Viktor.\r\n\r\nSu puesta en escena teatral se vino abajo cuando Kayn e irrumpió en su cripta. Corvin vio cómo su hechizo de cuchillas de sangre era atrapado a mano desnuda por Kayn como si fuera un estorbo menor. Paralizado por el terror ante la absoluta falta de miedo de Kayn, entregó el artefacto de obsidiana, confesó la trama de Viktor y fue obligado por Kayn a llevar al anciano en hombros hasta el sedán. Antes de huir de Praga, Kayn le colocó una marca de rastreo mental indetectable en el hombro durante una despectiva palmada de despedida.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297817915461816"
+    },
+    {
+        "id": "npc_anciano_clan",
+        "tipo": "npc",
+        "nombre": "Anciano del Clan de Valeria",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_clan_valeria",
+                "relacion": "Patriarca y máximo líder político del clan en el Consejo."
+            },
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Padre de Valeria."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Rescatado por Kayn; se encuentra en deuda de vida con el enviado."
+            }
+        ],
+        "detalles": {
+            "especie": "Vampiro",
+            "edad_real": "Más de 500 años",
+            "afiliacion": "Clan de Valeria / Consejo de Praga",
+            "estatus": "Vivo / Restablecido"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\n\r\nUn veneradamente antiguo vampiro de más de quinientos años, líder del clan de Valeria y pilar de estabilidad en el Consejo de Inmortales de Praga. Su repentina desaparición sumió a su familia en una vulnerabilidad extrema, siendo víctima de un ataque combinado por parte de Viktor Von Staufen y la magia de sangre de Corvin Vane, quienes lo mantuvieron prisionero y maniatado con verbena en la cripta de San Nicolás para drenar su poderosa sangre ancestral.\r\n\r\nTras ser rescatado en estado de desecación por Kayn y Valeria, fue trasladado a la ala médica de la finca familiar, donde las reservas de sangre le devolvieron la plenitud de sus facultades overnight. Su reaparición triunfal en el *Palacio de la Rosa* al día siguiente destruyó por completo los argumentos de Viktor, reafirmando el dominio absoluto de su estirpe sobre Praga y ordenando el encarcelamiento del conspirador en las mazmorras subterráneas.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297825557352508"
+    },
+    {
+        "id": "npc_jan_chofer",
+        "tipo": "npc",
+        "nombre": "Jan",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_clan_valeria",
+                "relacion": "Servidor y chófer privado de confianza de la linaje."
+            },
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Chófer personal de Valeria."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Transportó a Kayn a lo largo de todas las intervenciones operativas en Praga."
+            }
+        ],
+        "detalles": {
+            "especie": "Humano / Servidor de Sangre (Thrall)",
+            "afiliacion": "Familia de Valeria",
+            "estatus": "Vivo / Activo"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\n\r\nJan es el chófer privado, impasible y profesional de la familia de Valeria. Acostumbrado desde hace años a convivir con la realidad de los inmortales y las dinámicas del inframundo de Praga, Jan conduce el sedán negro blindado de la familia con una destreza impecable y una discreción absoluta, ejecutando sus tareas sin hacer preguntas ni inmutarse ante la violencia sobrenatural.\r\n\r\nJan fue la pieza logística clave que trasladó a Kayn y Valeria a través de todos los escenarios del conflicto: desde el loft de Malá Strana hasta el club *El Santuario*, la mansión ancestral, el callejón de San Nicolás y la sede del Consejo. Tras la resolución de la crisis, Jan permaneció a disposición de Kayn durante sus días de descanso y turismo por las calles de la ciudad.\n\n# 🎒 Canal: #foro-objetos",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297834109796434"
+    },
+    {
+        "id": "objeto_talisman_nexo_sangre",
+        "tipo": "objeto",
+        "nombre": "Fragmento de Obsidiana del Nexo de Sangre",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "npc_corvin_vane",
+                "relacion": "Canalizado mísiticamente por Corvin en el osario de la cripta."
+            },
+            {
+                "id_destino": "npc_viktor_von_staufen",
+                "relacion": "Parte clave del artefacto con el que planeaba aislar Praga."
+            },
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Incautado por Valeria como prueba incriminatoria contra Viktor."
+            }
+        ],
+        "detalles": {
+            "material": "Obsidiana milenaria grabada con aristas afiladas",
+            "propiedad_mistica": "Canalizador hemomántico de sellado territorial",
+            "estado_actual": "En posesión del Clan de Valeria (Inactivo)"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nEl fragmento del Nexo de Sangre es una pieza tallada en obsidiana antigua, reconocible por sus aristas afiladas y por finas vetas rojas que latían internamente con una luz sombría cuando recibían energía mística. Diseñado por los antiguos practicantes de la hemomancia en Europa Central, este objeto actúa como la mitad de un catalizador mayor proyectado para aislar territorios enteros de cualquier influencia sobrenatural externa.\r\n\r\nSu función principal requería la canalización prolongada de la sangre de un vampiro milenario o de gran antigüedad. Una vez activado junto a su contraparte en un ritual conducido por un Sumo Hemomante, el artefacto era capaz de cerrar las líneas místicas de Praga, erigiendo una barrera infranqueable que habría impedido la entrada a cualquier Vampiro Original. Tras la incursión en la cripta de San Nicolás, Valeria incautó el fragmento, exhibiéndolo posteriormente sobre la mesa del Consejo como la prueba definitiva del intento de golpe de estado de Viktor.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297848449863823"
+    },
+    {
+        "id": "objeto_anillo_dia_valeria",
+        "tipo": "objeto",
+        "nombre": "Anillo de Día de Valeria (Lapislázuli)",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Amuleto personal e indispensable perteneciente a Valeria."
+            },
+            {
+                "id_destino": "faccion_familia_mikaelson",
+                "relacion": "Encantado por la magia tradicional vinculada a las viejas alianzas de la familia."
+            }
+        ],
+        "detalles": {
+            "material": "Plata antigua y piedra de Lapislázuli tallada",
+            "propiedad_mistica": "Protección contra la combustión por luz solar",
+            "detalles_visuales": "Tallado con el blasón aristocrático del clan de Valeria"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nEste anillo de día es una joya antigua de plata tallada a mano que sostiene una piedra de lapislázuli azul profundo. El metal lleva grabado en relieve el blasón de la linaje de Valeria, sirviendo tanto de distintivo aristocrático dentro de la nobleza de Bohemia como de herramienta de supervivencia biológica.\r\n\r\nAl estar encantado con la magia tradicional de protección solar, el anillo le permite a Valeria caminar libremente bajo la luz del sol sin sufrir la abrasión y combustión inherentes a su condición vampírica. Valeria lo viste de forma permanente en su mano izquierda, siendo uno de los pocos objetos personales que conserva como símbolo del estatus y la antigüedad de su linaje.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297855924244621"
+    },
+    {
+        "id": "objeto_daga_hueso",
+        "tipo": "objeto",
+        "nombre": "Daga Ritual de Hueso Tallado",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "faccion_circulo_de_sangre_bohemia",
+                "relacion": "Arma mística empleada por los guardianes y seguidores de Corvin Vane."
+            },
+            {
+                "id_destino": "lugar_cripta_san_nicolas",
+                "relacion": "Utilizada durante los ritos de extracción y en la guardia de la cripta."
+            }
+        ],
+        "detalles": {
+            "material": "Hueso humano tallado y canalizado con magia de sangre",
+            "propiedad": "Facilitador de sangrado místico y cortes rituales"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nUna daga ceremonial de hoja larga y curva, tallada íntegramente a partir de un hueso humano antiguo y tratada con alquimia de sangre. Carece de adornos metálicos, luciendo en su lugar inscripciones hemománticas grabadas a lo largo del filo que canalizan la energía vital de los cortes hacia rituales mayores.\r\n\r\nUtilizada por los acólitos y guardias del Círculo de Sangre de Bohemia, la arma estaba diseñada no solo para el combate cuerpo a cuerpo, sino como herramienta para realizar sacrificios y extraer fluidos vitales rápidamente. Durante la incursión a la cripta de San Nicolás, el matón principal de la guardia empuñó esta daga antes de que el pánico provocado por Kayn hiciera que el arma rodara inútilmente por las baldosas de piedra.\r\n\r\n\r\n# 🛡️ Canal: #foro-facciones",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297863964594440"
+    },
+    {
+        "id": "faccion_familia_mikaelson",
+        "tipo": "faccion",
+        "nombre": "La Familia Mikaelson (Vampiros Originales)",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "npc_rebekah_mikaelson",
+                "relacion": "Miembro fundadora que contrató a Kayn para la misión en Praga."
+            },
+            {
+                "id_destino": "faccion_clan_valeria",
+                "relacion": "Aliados históricos que mantienen una deuda de honor centenaria."
+            },
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Empleadores que enviaron a Kayn como su representante en el conflicto."
+            }
+        ],
+        "detalles": {
+            "lideres": "Klaus, Elijah, Rebekah Mikaelson",
+            "naturaleza": "Primera estirpe de vampiros de la historia (Originales)",
+            "influencia": "Global / Hegemónica"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nLa Familia Mikaelson representa la primera estirpe de vampiros que existió en la historia, una dinastía milenaria cuya sombra, riqueza y poder se extienden a lo largo de todos los continentes. Conocidos como los Vampiros Originales, su sola mención en las asambleas de los clanes locales es capaz de frenar guerras o desatar el pánico entre las facciones menores.\r\n\r\nAunque la familia no reside en Bohemia, mantiene pactos de honor y alianzas históricas con clanes aristocráticos clave, como la linaje de Valeria. En el conflicto de Praga, la influencia de la familia se manifestó a través de Rebekah Mikaelson, quien prefirió contratar a Kayn como su enviado personal en lugar de intervenir presencialmente, evitando así un conflicto internacional pero asegurando la total protección de sus aliados.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297877034041525"
+    },
+    {
+        "id": "faccion_consejo_de_praga",
+        "tipo": "faccion",
+        "nombre": "El Consejo de Inmortales de Praga",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "lugar_palacio_de_la_rosa",
+                "relacion": "Sede central de asambleas, juicios y votaciones de los clanes."
+            },
+            {
+                "id_destino": "faccion_clan_valeria",
+                "relacion": "Familia fundadora con derecho a voto y asiento permanente."
+            },
+            {
+                "id_destino": "faccion_clan_de_la_rosa",
+                "relacion": "Facción integrante hasta la destitución y arresto de Viktor Von Staufen."
+            }
+        ],
+        "detalles": {
+            "naturaleza": "Gobierno oligárquico de inmortales de Bohemia",
+            "sede": "Palacio de la Rosa",
+            "estatus_actual": "Estabilizado bajo la hegemonía del clan de Valeria"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nEl Consejo de Inmortales de Praga es el organismo oligárquico que gobierna en las sombras la política y los territorios de Bohemia desde hace más de trescientos años. Compuesto por los líderes y patriarcas de las familias vampíricas más antiguas de la región, el Consejo administra la ley nocturna, distribuye distritos y vela por el cumplimiento del secreto ante el mundo mortal.\r\n\r\nLa dinámica del Consejo es un nido de intrigas, donde la aristocracia inmortal compite por territorio e influencia. Tras el intento de golpe de estado orquestado por Viktor Von Staufen mediante brujería de sangre prohibida, el Consejo reaccionó condenando unánimemente la traición y reafirmando el liderazgo del clan de Valeria tras la intervención de Kayn en la asamblea del Palacio de la Rosa.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297884487319702"
+    },
+    {
+        "id": "faccion_clan_valeria",
+        "tipo": "faccion",
+        "nombre": "Clan Aristocrático de Valeria",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Heredera e influyente figura operativa del clan."
+            },
+            {
+                "id_destino": "npc_anciano_clan",
+                "relacion": "Patriarca y máximo representante político."
+            },
+            {
+                "id_destino": "lugar_finca_familiar",
+                "relacion": "Sede principal y mansión ancestral de la linaje."
+            },
+            {
+                "id_destino": "faccion_familia_mikaelson",
+                "relacion": "Aliados de honor amparados por el respaldo de los Originales."
+            }
+        ],
+        "detalles": {
+            "lider": "Anciano del Clan / Valeria",
+            "antiguedad": "Más de 500 años en Bohemia",
+            "estatus_actual": "Victorioso / Reafirmado en el control del Consejo"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nUna de las familias inmortales fundadoras más respetadas y antiguas de la República Checa. Con más de cinco siglos de presencia continua en Praga, este clan aristocrático posee vastos territorios en el centro urbano, propiedades históricas y un peso político determinante dentro del Consejo de Inmortales.\r\n\r\nSu posición se vio gravemente amenazada cuando el patriarca del clan fue secuestrado en secreto por las facciones rivales. Gracias a la firmeza de Valeria, el apoyo de Rebekah Mikaelson y la impecable ejecución de Kayn, la linaje logró rescatar a su anciano, desactivar la conspiración de Viktor y consolidar su hegemonía sobre Praga con más poder que antes del conflicto.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297892142190818"
+    },
+    {
+        "id": "faccion_clan_de_la_rosa",
+        "tipo": "faccion",
+        "nombre": "Clan de la Rosa",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "npc_viktor_von_staufen",
+                "relacion": "Brazo derecho y líder político que llevó a la facción a la ruina."
+            },
+            {
+                "id_destino": "faccion_consejo_de_praga",
+                "relacion": "Facción deshonrada y privada de poder tras la sentencia de traición."
+            }
+        ],
+        "detalles": {
+            "lider": "Viktor Von Staufen (Encarcelado)",
+            "orientacion": "Conspiradora / Ambiciosa / Anti-Mikaelson",
+            "estatus_actual": "Desarticulado y despojado de influencia"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nEl Clan de la Rosa fue una de las facciones vampíricas más ambiciosas y conspiradoras del Consejo de Praga. Bajo la dirección operativa de Viktor Von Staufen, este clan buscaba desplazar a las familias tradicionales y romper la influencia de la familia Mikaelson en Europa Central para erigirse como los gobernantes absolutos de Bohemia.\r\n\r\nPara lograr sus fines, el clan no dudó en recurrir a alianzas clandestinas con brujos de sangre y financiar la creación del Nexo de Sangre. Con la exposición pública de la trama, la incautación de su talismán y el encarcelamiento de Viktor en las mazmorras subterráneas del Moldava, el Clan de la Rosa ha quedado completamente desarticulado y privado de todo poder político.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297900077678685"
+    },
+    {
+        "id": "faccion_circulo_de_sangre_bohemia",
+        "tipo": "faccion",
+        "nombre": "Círculo de Sangre de Bohemia",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "npc_corvin_vane",
+                "relacion": "Sumo Hemomante y líder de la secta."
+            },
+            {
+                "id_destino": "lugar_cripta_san_nicolas",
+                "relacion": "Santuario subterráneo y centro de rituales oscuros."
+            }
+        ],
+        "detalles": {
+            "especialidad": "Magia de Sangre / Hemomancia / Sellos de Repulsión",
+            "lider": "Corvin Vane (En fuga)",
+            "estatus_actual": "Desmantelado en Praga"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nUna secta clandestina de brujos mercenarios especializada en la hemomancia, la alquimia oscura y la creación de sellos místicos de repulsión. Operando en secreto desde las catacumbas y osarios medievales de la Ciudad Vieja, el Círculo vendía sus servicios místicos al mejor postor entre las facciones de inmortales de Bohemia.\r\n\r\nLiderados por el Sumo Hemomante Corvin Vane, el Círculo fue contratado por Viktor para drenar la sangre del anciano secuestrado y canalizar el talismán del Nexo de Sangre. La secta quedó destruida cuando Kayn repelió la magia de sus practicantes en la cripta de San Nicolás, lo que provocó la muerte de sus guardianes y la huida aterrorizada de Corvin fuera de las fronteras de Praga.\r\n\r\n\r\n# 📜 Canal: #foro-tramas",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297921330217191"
+    },
+    {
+        "id": "trama_proteccion_de_valeria",
+        "tipo": "trama",
+        "nombre": "Misión de Protección de Valeria en Praga",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "pc_kayn",
+                "relacion": "Operativo principal encargado de ejecutar el contrato de seguridad."
+            },
+            {
+                "id_destino": "npc_valeria",
+                "relacion": "Protegida e interlocutora a lo largo de la intervención."
+            },
+            {
+                "id_destino": "npc_rebekah_mikaelson",
+                "relacion": "Contratante original que encomendó la misión a Kayn."
+            }
+        ],
+        "detalles": {
+            "estado": "Completada con Éxito",
+            "resultado": "Protegida a salvo, vínculo de confianza establecido, contrato cumplido impecablemente"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nLa trama principal que dio inicio a la intervención de Kayn en Europa. Contratado directamente por Rebekah Mikaelson para velar por la vida de Valeria —una vampiresa aristócrata amenazada por las tensiones internas del Consejo de Praga—, Kayn asumió el encargo no como un simple escolta mortal, sino como un enviado imperturbable y resolutivo.\r\n\r\nA lo largo de la misión, Kayn acompañó a Valeria a través de los escenarios más peligrosos de la ciudad, desmantelando emboscadas en terrenos neutrales, protegiendo a la heredera ante brujos de sangre y sirviendo como el escudo operativo que permitió a su familia recuperar el control absoluto de Praga. La trama concluyó con la misión cumplida con éxito y con Kayn disfrutando de unos días de descanso en la ciudad.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297935762686073"
+    },
+    {
+        "id": "trama_golpe_de_estado_viktor",
+        "tipo": "trama",
+        "nombre": "La Conspiración del Nexo de Sangre y el Golpe de Estado",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "npc_viktor_von_staufen",
+                "relacion": "Instigador y cerebro político de la conspiración."
+            },
+            {
+                "id_destino": "faccion_consejo_de_praga",
+                "relacion": "Escenario donde se pretendía votar la destitución de la familia de Valeria."
+            },
+            {
+                "id_destino": "objeto_talisman_nexo_sangre",
+                "relacion": "Artefacto hemomántico central de la conspiración."
+            }
+        ],
+        "detalles": {
+            "estado": "Frustrada / Desarticulada",
+            "resultado": "Encarcelamiento de Viktor por traición y deshonra del Clan de la Rosa"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nUna intriga política orquestada por Viktor Von Staufen con el objetivo de derrocar la influencia de la linaje de Valeria y sellar Praga contra la familia Mikaelson. La conspiración combinaba maniobras parlamentarias en el Consejo con el uso de magia prohibida para crear un artefacto de sellado territorial denominado el Nexo de Sangre.\r\n\r\nLa trama fue completamente desbaratada cuando Kayn e irrumpió en la cripta donde se canalizaba el ritual, incautando la mitad del artefacto de obsidiana. Al día siguiente, la presentación de la prueba en la Sala del Consejo del *Palacio de la Rosa* expuso a Viktor ante toda la nobleza inmortal. Cuando el conspirador intentó huir a la desesperada, una zancadilla de Kayn lo dejó sin sentido en la puerta antes de ser conducido a las mazmorras subterráneas.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297943408902278"
+    },
+    {
+        "id": "trama_rescate_del_anciano",
+        "tipo": "trama",
+        "nombre": "El Rescate del Anciano en la Cripta de San Nicolás",
+        "mundo_id": "world_the_originals",
+        "relaciones": [
+            {
+                "id_destino": "npc_anciano_clan",
+                "relacion": "Objetivo de rescate secuestrado por los hemomantes."
+            },
+            {
+                "id_destino": "npc_corvin_vane",
+                "relacion": "Enemigo y captor sometido durante la incursión."
+            },
+            {
+                "id_destino": "lugar_cripta_san_nicolas",
+                "relacion": "Escenario subterráneo del enfrentamiento y la liberación."
+            }
+        ],
+        "detalles": {
+            "estado": "Completada con Éxito",
+            "resultado": "Anciano liberado y restablecido, Corvin sometido y rastreado mentalmente por Kayn"
+        },
+        "categoria_discord": "El Mercenario",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n\r\nUna operación de asalto e infiltración motivada por el hallazgo de la ubicación clandestina donde el Círculo de Sangre mantenía cautivo al patriarca del clan de Valeria. El anciano se encontraba amarrado a un pilar de piedra en un osario del siglo XIV bajo la Iglesia de San Nicolás, siendo desangrado lentamente mediante runas de verbena.\r\n\r\nKayn superó la barrera anti-vampiros que impedía el paso a Valeria, reflejó los hechizos del Círculo sobre los propios brujos y sometió al Sumo Hemomante Corvin Vane mediante una absoluta demostración de dominio psicológico. Tras obligar a Corvin a llevar al anciano al coche e incautar el talismán, Kayn le colocó una marca de rastreo indetectable antes de dejarlo marchar. El anciano fue restablecido esa misma noche en la finca familiar, permitiéndole reaparecer al día siguiente en el Consejo para reclamar su puesto.\n\n⏳ Leyendo datos y preparando la generación automática del mundo...",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534297950837145671"
     }
 ]
