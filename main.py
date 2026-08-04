@@ -39,6 +39,70 @@ async def generar_mundo_cmd(ctx):
     # Ejecuta la sincronización hacia GitHub/Web al terminar
     await sync_wiki(ctx)
 
+@bot.command(
+    name="borrar_categoria",
+    aliases=["eliminar_categoria", "borrar_mundo", "eliminar_mundo"],
+)
+@commands.has_permissions(administrator=True)
+async def borrar_categoria_cmd(ctx):
+    """Elimina todos los canales y la categoría completa con confirmación"""
+    category = ctx.channel.category
+    if not category:
+        await ctx.send(
+            "❌ Este comando debe ejecutarse dentro de un canal perteneciente a una Categoría."
+        )
+        return
+
+    canales_count = len(category.channels)
+    cat_name = category.name
+
+    # 1. Mensaje de advertencia
+    await ctx.send(
+        f"⚠️ **¡ATENCIÓN!** Vas a eliminar la categoría **'{cat_name}'** con todos sus **{canales_count} canales y publicaciones**.\n\n"
+        f"⚠️ *Esta acción NO se puede deshacer.* Responde a este mensaje escribiendo **CONFIRMAR** en los próximos 30 segundos para proceder."
+    )
+
+    # 2. Esperar confirmación exacta
+    def check(m):
+        return (
+            m.author == ctx.author
+            and m.channel == ctx.channel
+            and m.content.strip().upper() == "CONFIRMAR"
+        )
+
+    try:
+        await bot.wait_for("message", check=check, timeout=30.0)
+    except asyncio.TimeoutError:
+        await ctx.send(
+            "❌ **Operación cancelada.** Tiempo de espera agotado sin confirmación."
+        )
+        return
+
+    await ctx.send(
+        f"🗑️ Eliminando categoría **'{cat_name}'** y sus canales..."
+    )
+
+    # 3. Borrar canales dentro de la categoría
+    channels_to_delete = list(category.channels)
+    for channel in channels_to_delete:
+        if channel != ctx.channel:  # Borrar los demás canales primero
+            try:
+                await channel.delete()
+                await asyncio.sleep(0.5)
+            except Exception as e:
+                print(f"Error borrando canal {channel.name}: {e}", flush=True)
+
+    # 4. Borrar el canal actual y la categoría
+    try:
+        await ctx.channel.delete()
+        await category.delete()
+        print(f"🗑️ Categoría '{cat_name}' eliminada con éxito.", flush=True)
+    except Exception as e:
+        print(f"Error borrando la categoría: {e}", flush=True)
+
+    # 5. Sincronizar automáticamente para actualizar la Web
+    await sync_wiki(ctx)
+
 @bot.command(name="sync")
 async def sync_wiki(ctx):
     status_msg = await ctx.send(

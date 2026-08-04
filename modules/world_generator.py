@@ -20,19 +20,34 @@ TIPO_A_FORO = {
 
 
 def parse_master_text(full_text: str) -> list:
-    """Extrae cada ficha buscando los bloques delimitados por ---"""
+    """Extrae cada ficha eliminando guiones dobles --- y encabezados de canal sobrantes"""
     entities = []
 
     pattern = r"---\s*\n(.*?)\n---\s*\n?(.*?)(?=(?:---\s*\n|\Z))"
     matches = re.findall(pattern, full_text, re.DOTALL | re.MULTILINE)
 
     for yaml_str, markdown_lore in matches:
+        # 1. Limpiar el YAML para evitar el '---' doble al principio
+        clean_yaml = re.sub(r"^---\s*", "", yaml_str.strip(), flags=re.M)
+        clean_yaml = re.sub(r"---\s*$", "", clean_yaml.strip(), flags=re.M)
+
+        if not clean_yaml.strip():
+            continue
+
         try:
-            yaml_data = yaml.safe_load(yaml_str)
+            yaml_data = yaml.safe_load(clean_yaml)
             if isinstance(yaml_data, dict) and "id" in yaml_data:
-                full_content = (
-                    f"---\n{yaml_str.strip()}\n---\n\n{markdown_lore.strip()}"
-                )
+
+                # 2. Limpiar la lore eliminando las líneas tipo "# Canal: #foro-..." o "📌 Canal: #foro-..." al final
+                clean_lore = re.sub(
+                    r"(?i)\n*#*\s*(?:📌|📍|👤|🎒|🛡️|📜)?\s*(?:CANAL|Canal):\s*#?foro-[\w-]+\s*$",
+                    "",
+                    markdown_lore.strip(),
+                ).strip()
+
+                # 3. Reconstruir el post limpio con UN SOLO '---' arriba y abajo
+                full_content = f"---\n{clean_yaml.strip()}\n---\n\n{clean_lore}"
+
                 entities.append(
                     {
                         "id": str(yaml_data.get("id")).strip(),
@@ -62,7 +77,7 @@ async def process_world_generation(ctx):
         "⏳ Leyendo datos y preparando la generación automática del mundo..."
     )
 
-    # 1. Recopilar texto (de mensajes de texto o de un archivo .txt adjunto)
+    # 1. Recopilar texto
     full_text = ""
 
     async for msg in ctx.channel.history(limit=100, oldest_first=True):
@@ -93,7 +108,7 @@ async def process_world_generation(ctx):
         content=f"🔍 Se detectaron **{len(entities)} fichas**. Comprobando foros en '{category.name}'..."
     )
 
-    # 3. Obtener o crear los canales de foro necesarios dentro de la categoría
+    # 3. Obtener o crear canales de foro necesarios
     existing_forums = {
         c.name.lower(): c
         for c in category.channels
@@ -106,12 +121,9 @@ async def process_world_generation(ctx):
         tipo = entity["tipo"]
         target_forum_name = TIPO_A_FORO.get(tipo, "foro-tramas")
 
-        # Si el canal de foro no existe en la categoría, el bot lo crea (Usa create_forum)
         if target_forum_name not in existing_forums:
             try:
-                new_forum = await category.create_forum(
-                    name=target_forum_name
-                )  # <--- CORREGIDO AQUÍ
+                new_forum = await category.create_forum(name=target_forum_name)
                 existing_forums[target_forum_name] = new_forum
                 print(
                     f"✨ Foro Creado: #{target_forum_name} en '{category.name}'",
@@ -127,10 +139,10 @@ async def process_world_generation(ctx):
 
         forum = existing_forums[target_forum_name]
         content = entity["full_content"]
-        title = entity["nombre"][:100]  # Límite de 100 caracteres en título
+        title = entity["nombre"][:100]
 
         try:
-            # 4. Crear el hilo respetando el límite de 2000 caracteres
+            # 4. Crear el hilo
             if len(content) <= 2000:
                 await forum.create_thread(name=title, content=content)
             else:
@@ -150,12 +162,10 @@ async def process_world_generation(ctx):
 
             created_threads_count += 1
             print(f"  └─ Hilo Creado: '{title}' en #{forum.name}", flush=True)
-            await asyncio.sleep(1.5)  # Pausa anti-rate-limit
+            await asyncio.sleep(1.5)
 
         except Exception as e:
-            print(
-                f"❌ Error creando hilo para '{title}': {e}", flush=True
-            )
+            print(f"❌ Error creando hilo para '{title}': {e}", flush=True)
 
     await status_msg.edit(
         content=f"🎉 **¡Mundo Generado con Éxito!**\nSe han creado los foros e instalado **{created_threads_count} fichas** en la categoría **'{category.name}'**.\n\nSincronizando con la web..."
