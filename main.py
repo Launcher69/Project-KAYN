@@ -7,6 +7,7 @@ from discord.ext import commands
 import config
 from modules.exporter import save_to_json
 from modules.scanner import scan_guild_forums
+from modules.world_generator import process_world_generation
 
 
 def run_dummy_server():
@@ -31,6 +32,12 @@ async def on_ready():
     print(f"🤖 Bot en la nube iniciado como: {bot.user}", flush=True)
     print("--------------------------------------------------", flush=True)
 
+@bot.command(name="generar_mundo", aliases=["crear_mundo", "auto_foro"])
+async def generar_mundo_cmd(ctx):
+    """Genera automáticamente foros e hilos a partir de texto pegado o archivo .txt"""
+    await process_world_generation(ctx)
+    # Ejecuta la sincronización hacia GitHub/Web al terminar
+    await sync_wiki(ctx)
 
 @bot.command(name="sync")
 async def sync_wiki(ctx):

@@ -23,7 +23,7 @@ PASO 2:
 - 📍 #foro-lugares
 
 Asegúrate de incluir todos los atributos en 'detalles:' y redactar las descripciones completas en varios párrafos.
-
+Da todo para copiar en un bloque
 ---
 
 PASO 3:
@@ -31,6 +31,7 @@ Excelente. Ahora genera ÚNICAMENTE las publicaciones completas para el canal:
 - 👥 #foro-npcs
 
 Incluye sus relaciones con los mundos/lugares anteriores y redacta biografías extensas con su personalidad, cómo conocieron al protagonista y su rol en la historia.
+Da todo para copiar en un bloque
 
 "Opcional: Si la entidad tiene poderes, habilidades, secretos o equipamiento relevante, puedes añadir subtítulos H3 como ### Habilidades, ### Equipamiento o ### Secretos debajo de la descripción."
 
@@ -38,8 +39,9 @@ Incluye sus relaciones con los mundos/lugares anteriores y redacta biografías e
 
 PASO 4:
 Para terminar, genera las publicaciones completas para los canales restantes:
-- 🎒 #foro-objetos
+- 🎒 #foro-objetos (Si no hay objetos importantes omitelo)
 - 🛡️ #foro-facciones
 - 📜 #foro-tramas
+Da todo para copiar en un bloque
 
 Recuerda mantener la consistencia con los IDs anteriores.
