@@ -23,7 +23,6 @@ def parse_master_text(full_text: str) -> list:
     """Extrae cada ficha buscando los bloques delimitados por ---"""
     entities = []
 
-    # Expresión regular que busca desde el primer --- hasta el cierre y su contenido
     pattern = r"---\s*\n(.*?)\n---\s*\n?(.*?)(?=(?:---\s*\n|\Z))"
     matches = re.findall(pattern, full_text, re.DOTALL | re.MULTILINE)
 
@@ -67,14 +66,12 @@ async def process_world_generation(ctx):
     full_text = ""
 
     async for msg in ctx.channel.history(limit=100, oldest_first=True):
-        # Si el usuario subió un archivo .txt, lo leemos
         if msg.attachments:
             for att in msg.attachments:
                 if att.filename.endswith(".txt"):
                     file_bytes = await att.read()
                     full_text += file_bytes.decode("utf-8") + "\n\n"
 
-        # Si el usuario pegó el texto directamente en mensajes
         if msg.content and not msg.content.startswith(ctx.prefix):
             full_text += msg.content + "\n\n"
 
@@ -109,12 +106,12 @@ async def process_world_generation(ctx):
         tipo = entity["tipo"]
         target_forum_name = TIPO_A_FORO.get(tipo, "foro-tramas")
 
-        # Si el canal de foro no existe en la categoría, el bot lo crea
+        # Si el canal de foro no existe en la categoría, el bot lo crea (Usa create_forum)
         if target_forum_name not in existing_forums:
             try:
-                new_forum = await category.create_forum_channel(
+                new_forum = await category.create_forum(
                     name=target_forum_name
-                )
+                )  # <--- CORREGIDO AQUÍ
                 existing_forums[target_forum_name] = new_forum
                 print(
                     f"✨ Foro Creado: #{target_forum_name} en '{category.name}'",
@@ -133,11 +130,10 @@ async def process_world_generation(ctx):
         title = entity["nombre"][:100]  # Límite de 100 caracteres en título
 
         try:
-            # 4. Crear el hilo respetando el límite de 2000 caracteres de Discord
+            # 4. Crear el hilo respetando el límite de 2000 caracteres
             if len(content) <= 2000:
                 await forum.create_thread(name=title, content=content)
             else:
-                # Si supera 2000 caracteres, lo divide en varios mensajes dentro del hilo
                 first_part = content[:1900]
                 second_part = content[1900:]
 
