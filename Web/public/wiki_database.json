@@ -2527,7 +2527,9 @@
         "categoria_discord": "A Pound Of Flesh",
         "etiquetas_discord": [],
         "contenido_lore": "### Descripción\nLa Estación Sueño de Próspero es una gigantesca infraestructura espacial que ha pasado de ser un próspero centro minero a una pesadilla industrial en decadencia. Se encuentra dividida por una estratificación social brutal: mientras los niveles superiores mantienen una fachada de lujo tecnológico y comercio activo, las profundidades se desmoronan bajo la falta de recursos y la radiación. La estación no tiene un gobierno central fuerte, sino que su control se disputa entre la fuerza paramilitar Tempest CO y la organización criminal Golionovo II Bratva.\n\nActualmente, la estación se enfrenta a una crisis existencial debido al brote del virus ACMD, que fusiona la carne con el acero, y a una revolución inminente en los niveles inferiores. Los habitantes de \"El Ahogo\" han lanzado un ultimátum exigiendo el pago de la \"deuda de oxígeno\", amenazando con hacer arder la estación si no se cumplen sus demandas. Es un lugar de neones sucios, pasillos metálicos infinitos y una atmósfera cargada de tensión donde la supervivencia es el único objetivo diario.",
-        "imagenes": [],
+        "imagenes": [
+            "https://i.ibb.co/nMP4BzYB/84e2ed9042de.webp"
+        ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1534505132627202130"
     },
     {
