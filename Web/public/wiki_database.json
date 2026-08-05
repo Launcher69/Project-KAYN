@@ -2498,5 +2498,695 @@
             "https://i.ibb.co/dsW3hbJ3/39dbcd5116da.png"
         ],
         "url_discord": "https://discord.com/channels/1525578054330482688/1534301181449342979"
+    },
+    {
+        "id": "world_sueno_prospero",
+        "tipo": "Mundo / Estación Espacial",
+        "nombre": "Estación Sueño de Próspero",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_bratva",
+                "relacion": "Controla el mercado negro y la distribución de drogas"
+            },
+            {
+                "id_destino": "fac_tempest_co",
+                "relacion": "Principal contratista de seguridad y fuerza de choque"
+            },
+            {
+                "id_destino": "obj_virus_acmd",
+                "relacion": "Plaga biomecánica que consume los niveles inferiores"
+            }
+        ],
+        "detalles": "Estación minera y comercial en decadencia, actualmente bajo crisis por el brote de ACMD y tensiones sociales",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLa **Estación Sueño de Próspero** es una gigantesca infraestructura espacial que ha pasado de ser un faro de progreso a una pesadilla industrial en decadencia. Se divide en sectores claramente diferenciados por el estatus social y económico: desde los niveles superiores comerciales, como el Canyon Heavy Market, hasta las profundidades olvidadas de \"El Ahogo\". La estación está regida por un equilibrio precario entre corporaciones de seguridad como Tempest CO y sindicatos criminales como la Golionovo II Bratva [1-3].\r\n\r\nEn los últimos tiempos, el \"gran sueño\" se ha transformado en una lucha por la supervivencia debido a la aparición del **ACMD** (Acute Cibernetic Mutagenic Disorder), un virus mutagénico que fusiona carne y metal de forma aberrante [4, 5]. Las tensiones han estallado en una revolución liderada por los habitantes de los niveles inferiores, quienes exigen el pago de la \"deuda de oxígeno\", mientras las autoridades imponen cuarentenas brutales en los sectores afectados [6-8]. Es un entorno de acero frío, neones parpadeantes y rincones oscuros donde la humanidad se pierde entre implantes y mutaciones [9, 10].\r\n\r\n# 📍 #foro-lugares",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499411726565376"
+    },
+    {
+        "id": "lugar_nave_doctor",
+        "tipo": "Lugar / Nave",
+        "nombre": "La Nave del Doctor Bancali",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Antiguo laboratorio y hogar del doctor"
+            },
+            {
+                "id_destino": "npc_huron",
+                "relacion": "Encargado de vigilar y eventualmente destruir la nave"
+            }
+        ],
+        "detalles": "Nave abandonada en el dique, origen de las primeras muestras del virus",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nUbicada en los diques de la estación, esta nave fue el refugio inicial del **Doctor Bancali** tras su huida hace diez años [1, 11]. Se trata de una estructura que ha permanecido \"viva\" de forma artificial, alimentándose de la energía de la propia estación. En su interior se gestaron los experimentos prohibidos del **Proyecto Corazón**, dejando atrás residuos biológicos y mecánicos que parecen latir con voluntad propia [1, 12].\r\n\r\nEl ambiente en la nave es opresivo y está marcado por la presencia de cables que parecen raíces y restos de androides infectados. Fue el lugar donde los protagonistas descubrieron la verdadera naturaleza del peligro que acecha a la estación. Debido a la peligrosidad de los secretos que albergaba, se ordenó su destrucción mediante equipos de limpieza especializados para evitar que la infección se propagara más allá de sus mamparos [1, 12].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499419758792855"
+    },
+    {
+        "id": "lugar_el_matadero",
+        "tipo": "Lugar / Tienda",
+        "nombre": "El Matadero",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_babushka",
+                "relacion": "Propietaria y experta en biónica"
+            },
+            {
+                "id_destino": "npc_zhenya",
+                "relacion": "Interfaz holográfica de atención al cliente"
+            }
+        ],
+        "detalles": "Taller de implantes y clínica clandestina de alta tecnología",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n**El Matadero** es el establecimiento de **Babushka**, considerado el mejor lugar de toda la estación para adquirir o reparar implantes tecnológicos [13, 14]. A pesar de su nombre intimidante, es un centro neurálgico para quienes buscan mejorar su cuerpo con tecnología de punta. El local está defendido por sistemas de seguridad poco convencionales, incluyendo muñecos automatizados preparados para la defensa violenta ante las constantes extorsiones de la Bratva [14].\r\n\r\nEl local cuenta con una zona pública de tienda y una habitación privada/quirófano donde Babushka realiza intervenciones críticas. Es en este lugar donde se han analizado los casos más avanzados de la infección del corazón negro (ACMD), funcionando como un laboratorio de investigación improvisado para entender el virus que reacciona agresivamente ante los implantes mecánicos [1, 4].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499427392294973"
+    },
+    {
+        "id": "lugar_la_corte",
+        "tipo": "Lugar / Prisión",
+        "nombre": "La Corte",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_brunhilda",
+                "relacion": "Administradora y jefa de seguridad"
+            },
+            {
+                "id_destino": "fac_tempest_co",
+                "relacion": "Fuerza de seguridad encargada de la vigilancia"
+            }
+        ],
+        "detalles": "Complejo que combina juzgados públicos, prisión de alta seguridad y coliseo de combate",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n**La Corte** es el centro de justicia y entretenimiento brutal de Sueño de Próspero. Es una estructura masiva dividida en dos niveles principales: uno superior para los juzgados públicos y uno inferior destinado a las celdas de monstruos y criaturas utilizadas para el espectáculo del coliseo [15, 16]. La seguridad es extrema, gestionada por funcionarios de **Tempest CO**, y cuenta con sistemas de torretas automáticas y sensores de video avanzados [16, 17].\r\n\r\nMás allá de su función legal, es el dominio personal de **Brunhilda**, quien tiene acceso administrativo total sobre sus sistemas [18]. En sus niveles más profundos se esconden secretos corporativos y sujetos de experimentación que no deben ver la luz pública. Recientemente, los niveles inferiores se han convertido en un refugio improvisado para miles de Hunglings que huyen de la purga en Doptown [19, 20].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499435265134622"
+    },
+    {
+        "id": "lugar_corazon_acero",
+        "tipo": "Lugar / Bar",
+        "nombre": "El Corazón de Acero",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "pc_marco",
+                "relacion": "Propietario y barman del establecimiento"
+            }
+        ],
+        "detalles": "Bar de moteros y mercenarios, punto de reunión habitual del grupo",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n**El Corazón de Acero** es un establecimiento con personalidad propia, decorado con piezas de naves y motores, que sirve como base de operaciones informal para Marco y sus aliados [17, 21]. Es un refugio para aquellos que buscan un respiro del caos de la estación, aunque no está exento de problemas; ha sido escenario de tensos encuentros con pelotones de Tempest CO y punto de acogida para refugiados del Ahogo como Morralla y Faldas [17, 22].\r\n\r\nEl bar simboliza el pasado de Marco como soldado y su conexión con la comunidad de mercenarios. Sin embargo, debido a la creciente inestabilidad y los ataques directos mediante drones, el lugar tuvo que ser abandonado, dejando atrás recuerdos y una de las pocas zonas de relativa calma en los sectores intermedios [23, 24].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499442680401961"
+    },
+    {
+        "id": "lugar_doptown",
+        "tipo": "Lugar / Ciudad",
+        "nombre": "Doptown (El Ahogo)",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_imogene_key",
+                "relacion": "Líder revolucionaria de los residentes"
+            },
+            {
+                "id_destino": "obj_leviatan",
+                "relacion": "Entidad mecánica masiva que acecha en las aguas"
+            }
+        ],
+        "detalles": "Ciudad subterránea en los niveles de mantenimiento, caracterizada por la escasez de oxígeno y alta radiación",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nConocida despectivamente como **El Ahogo**, Doptown es una urbe improvisada construida en los niveles de mantenimiento y alcantarillado más profundos de la estación [17, 25]. Es un lugar donde el suelo está inundado de agua sucia y brillante, y donde la radiación es una amenaza constante para la salud de sus habitantes, los Hunglings [25, 26]. La ciudad sobrevive gracias a una red de tirolinas que conectan los edificios derruidos sobre el abismo [27, 28].\r\n\r\nDoptown es el epicentro de la resistencia contra la superficie y el lugar donde nació la primera niña hungling, Imogene Key [8, 26]. En sus rincones más oscuros, el virus ACMD ha arraigado con fuerza, creando \"arañas de carne\" y otras aberraciones que patrullan los servidores abandonados de la empresa PUBLIC [29-31]. La ciudad vive bajo la sombra constante del Leviatán y la amenaza de ser inundada completamente por las autoridades de la superficie [26, 32].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499450523877467"
+    },
+    {
+        "id": "lugar_hotel_lady_victoria",
+        "tipo": "Lugar / Hotel",
+        "nombre": "Hotel Lady Victoria",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_gyan",
+                "relacion": "Propietario del hotel"
+            }
+        ],
+        "detalles": "Alojamiento de clase media con seguridad privada añadida",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nEl **Hotel Lady Victoria** es el lugar de descanso y planificación para los protagonistas durante gran parte de su estancia en la estación [22]. Sus habitaciones presentan un lujo decadente, con suelos de parquet falso y paredes de mármol sintético [33]. A pesar de su apariencia tranquila, el hotel ha tenido que reforzar su seguridad con puertas blindadas adicionales para proteger a sus huéspedes de las amenazas externas [33].\r\n\r\nEs un lugar que ha servido de refugio tras misiones agotadoras, donde el grupo ha compartido momentos de vulnerabilidad y ha trazado planes críticos, como el rescate de Gorvachef [24, 34]. Su propietario, Gyan, mantiene un perfil bajo mientras intenta que su negocio sobreviva en una estación que se desmorona rápidamente [35, 36].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499458820083812"
+    },
+    {
+        "id": "lugar_la_nevera",
+        "tipo": "Lugar / Almacén",
+        "nombre": "La Nevera",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_babushka",
+                "relacion": "Encargada de la gestión de cuerpos"
+            },
+            {
+                "id_destino": "npc_ariel",
+                "relacion": "Lugar de criogenización de la hija del doctor"
+            }
+        ],
+        "detalles": "Gran complejo criogénico destinado al almacenamiento de fundas y cuerpos",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n**La Nevera** es un edificio masivo cuya estructura recuerda a un refrigerador industrial tumbado. Su función principal es el almacenamiento criogénico de cuerpos y \"fundas\" (clones) para los ciudadanos de la estación que pueden permitirse el servicio [37]. Es un lugar frío y aséptico, custodiado celosamente por Babushka, quien utiliza armamento pesado para disuadir a aquellos que intentan entrar sin permiso [37].\r\n\r\nEn lo más profundo de este complejo, el Doctor Bancali mantuvo a su hija Ariel en estado de éxtasis durante diez años, esperando encontrar una cura para su cáncer [38, 39]. El lugar es vital para la infraestructura de la Nemomáquina, pero recientemente se ha visto comprometido por la desaparición de sujetos experimentales y la posible contaminación de la red por parte del doctor [38, 39].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499467221532734"
+    },
+    {
+        "id": "lugar_monasterio_solariano",
+        "tipo": "Lugar / Templo",
+        "nombre": "El Monasterio Solariano",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_ukko_ukka",
+                "relacion": "Líder espiritual y jardinero"
+            },
+            {
+                "id_destino": "npc_san_tai",
+                "relacion": "Guardián de las llaves y la bóveda secreta"
+            }
+        ],
+        "detalles": "Centro espiritual de la Iglesia Solariana, ubicado en el Sector V",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nEl **Monasterio Solariano** es un oasis artificial de paz y naturaleza dentro del entorno metálico de la estación. Se caracteriza por sus estímulos rurales, incluyendo césped artificial, huertos y un ambiente que intenta emular la vida en un planeta, aunque la falta de viento y el olor artificial delatan su origen [9]. Es el corazón de la Iglesia Solariana, donde los fieles se reúnen para ceremonias como la observación de supernovas [40, 41].\r\n\r\nBajo su apariencia humilde, el monasterio esconde niveles subterráneos de alta seguridad donde se guardan los archivos históricos de la vieja estación [42]. Estos subniveles solo son accesibles mediante mecanismos ocultos y llaves biométricas protegidas por el Señor de las Llaves, San-tai. Es aquí donde se custodia la información más valiosa sobre la producción de drogas y la historia tecnológica del Sueño de Próspero [42, 43].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499474628411542"
+    },
+    {
+        "id": "lugar_granja_solariana",
+        "tipo": "Lugar / Laboratorio",
+        "nombre": "Granja de Sicorax",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_ukko_ukka",
+                "relacion": "Supervisor de la producción sagrada"
+            },
+            {
+                "id_destino": "obj_psicorax",
+                "relacion": "Producto principal de cultivo y refinamiento"
+            }
+        ],
+        "detalles": "Instalación agrícola secreta destinada a la producción de componentes para drogas",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nOculta a la vista del público y protegida por la fachada religiosa del monasterio, la **Granja de Sicorax** es una instalación hidropónica avanzada [42, 44]. A diferencia de las granjas públicas, esta zona secreta se dedica al cultivo de los componentes necesarios para elaborar el Psicorax, una droga con profundos efectos en la interacción con implantes [42, 45].\r\n\r\nLa granja se encuentra conectada al monasterio a través de túneles ocultos y trampillas situadas en el interior de un árbol sagrado [41, 43]. El acceso a este lugar está restringido a los monjes de más alto rango y su existencia es el motivo de las tensiones entre los Solarianos, la Bratva y Tempest CO, quienes buscan controlar la lucrativa receta de la droga [44, 46].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499482052595884"
+    },
+    {
+        "id": "lugar_canyon_heavy_market",
+        "tipo": "Lugar / Mercado",
+        "nombre": "Canyon Heavy Market",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_angus",
+                "relacion": "Ubicación de sus oficinas principales"
+            },
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Lugar de reuniones con clientes de alto perfil"
+            }
+        ],
+        "detalles": "Distrito comercial de alta tecnología con zonas de gravedad cero",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nEl **Canyon Heavy Market** es el corazón comercial y tecnológico de la estación, un hervidero de actividad donde se compran y venden herramientas, armas y datos [5, 46]. Una de sus características más distintivas es la presencia de zonas suspendidas en gravedad cero, donde expertos en computación trabajan en entornos ingrávidos rodeados de cables y servidores flotantes [46].\r\n\r\nEn este mercado se encuentra el despacho de **Angus**, el Sysadmin de la estación, un lugar de alta tensión donde se han llevado a cabo negociaciones letales entre los líderes de las facciones más poderosas [3, 46]. Es una zona donde la jerga técnica y el comercio de información son la moneda de cambio habitual, y donde cualquier paso en falso puede resultar en una ejecución rápida por parte de agentes como Brunhilda [46, 47].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499489866448956"
+    },
+    {
+        "id": "lugar_soporte_vital_1",
+        "tipo": "Lugar / Infraestructura",
+        "nombre": "Torre de Soporte Vital 1",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_angus",
+                "relacion": "Escondite del Angus original (00)"
+            },
+            {
+                "id_destino": "obj_virus_acmd",
+                "relacion": "Infestada por una criatura invisible y mutagénica"
+            }
+        ],
+        "detalles": "Torre crítica encargada de generar oxígeno a partir de agua y filtrar el aire de la estación",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLa **Torre de Soporte Vital 1** es una de las 16 megaestructuras encargadas de mantener la habitabilidad en los niveles inferiores de la estación [48, 49]. Se trata de un entorno industrial masivo, lleno de filtros de aire, generadores y tuberías de agua. Debido a su importancia estratégica, fue el lugar donde el **Angus original** se ocultó durante seis años tras ser traicionado por Yandee, operando desde las sombras para sobrevivir [50, 51].\r\n\r\nEl lugar se ha vuelto extremadamente peligroso debido a la presencia de una criatura invisible infectada por el ACMD que utiliza la energía de los terminales para regenerarse [52, 53]. La torre simboliza tanto la esperanza de supervivencia de los Hunglings (gracias al oxígeno que genera) como el horror de la infección que consume la infraestructura vital de la estación [49, 54].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499497428783134"
+    },
+    {
+        "id": "lugar_sala_zero",
+        "tipo": "Lugar / Refugio",
+        "nombre": "Sala Zero",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_bilis",
+                "relacion": "Guía y organizador del campamento"
+            },
+            {
+                "id_destino": "npc_antonio",
+                "relacion": "Líder de escuadrón capturado por los refugiados"
+            }
+        ],
+        "detalles": "Campo de refugiados Hunglings ubicado en las zonas profundas del sistema penitenciario de la Corte",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLa **Sala Zero** es un refugio improvisado donde se han congregado miles de Hunglings que lograron escapar del colapso de Doptown [19, 20]. Situada en los niveles más bajos de la zona penitenciaria de La Corte, funciona como un campo de refugiados donde los supervivientes intentan organizarse sin máscaras de gas, aprovechando el aire que aún circula por los sistemas antiguos [20].\r\n\r\nEl ambiente en la Sala Zero es de constante paranoia y desesperación, ya que los refugiados se encuentran atrapados entre los sistemas biométricos de seguridad de la prisión y las amenazas desconocidas que los esperan en el exterior [19, 55]. Es aquí donde líderes como Yunque y Bilis intentan mantener la cohesión del grupo mientras custodian a prisioneros de alto rango de la Tempest CO, esperando una oportunidad para escapar hacia zonas más seguras como La Nevera [20, 55].\n\nAquí tienes las fichas detalladas para el canal **#foro-npcs**, siguiendo estrictamente el formato YAML y las reglas de redacción solicitadas para la organización de tu partida.\r\n\r\n```markdown\r\n# 👥 #foro-npcs",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499505528115350"
+    },
+    {
+        "id": "obj_nemomaquina",
+        "tipo": "Objeto / Tecnología",
+        "nombre": "Nemomáquina",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Usuario experto que intentó usarla para curar a su hija"
+            },
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Propietaria legal y controladora del acceso"
+            },
+            {
+                "id_destino": "npc_babushka",
+                "relacion": "Encargada del mantenimiento técnico"
+            }
+        ],
+        "detalles": "Impresora de consciencia humana y mercado de copias digitales",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLa **Nemomáquina** es uno de los secretos mejor guardados y más valiosos de la estación. Se trata de una tecnología avanzada capaz de digitalizar la consciencia humana, permitiendo crear \"copias\" o \"fundas\" de las personas. Funciona esencialmente como una impresora de consciencias, lo que permite a sus usuarios alcanzar una forma de inmortalidad técnica siempre que puedan costear los cuerpos de reemplazo en **La Nevera**.\r\n\r\nSu uso es altamente restringido y solo los clientes de mayor importancia en la estación conocen su existencia. Aunque es una maravilla tecnológica, el Doctor Bancali descubrió que tiene límites: no pudo curar el cáncer biológico de su hija Ariel, lo que lo llevó a buscar soluciones más extremas fuera de los protocolos estándar de la máquina. Recientemente, se sospecha que Bancali ha logrado infiltrar la red de la Nemomáquina, contaminando el flujo de datos con el virus ACMD.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499578437435492"
+    },
+    {
+        "id": "obj_virus_acmd",
+        "tipo": "Entidad / Patógeno",
+        "nombre": "ACMD (Acute Cibernetic Mutagenic Disorder)",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Creador de la cepa inteligente y mente colmena"
+            },
+            {
+                "id_destino": "npc_gorvachef",
+                "relacion": "Primer sujeto en mostrar la mutación post-mortem"
+            },
+            {
+                "id_destino": "obj_caliban",
+                "relacion": "Consciencia emergente del virus"
+            }
+        ],
+        "detalles": "Virus de autoreparación cibernética mutagénico altamente contagioso",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nEl **ACMD** es un patógeno biomecánico que originalmente fue diseñado como un sistema de autoreparación. Sin embargo, ha evolucionado hacia una enfermedad mutagénica agresiva que fusiona tejidos orgánicos con componentes tecnológicos. El virus es atraído por la energía eléctrica y las descargas potentes aceleran drásticamente su crecimiento, permitiendo que los injertos mecánicos se adhieran permanentemente a la carne del huésped de forma aberrante.\r\n\r\nExisten dos variantes: una versión errática que consume al huésped hasta convertirlo en una \"araña de carne\" o un \"monstruo de cables\", y una versión inteligente que parece estar bajo el mando directo del **Doctor Bancali**. Los infectados avanzados pierden su individualidad para formar parte de una red mayor, actuando bajo el imperativo de \"repararlo todo\". El virus es tan potente que puede infectar incluso los sistemas de la estación, manifestándose físicamente como raíces negras que brotan de las paredes y terminales.\r\n\r\n### Habilidades y Efectos\r\n*   **Mutación Acelerada:** Reacciona violentamente a los implantes cibernéticos, asimilándolos.\r\n*   **Consciencia Colectiva:** Los infectados pueden actuar de forma coordinada bajo la voluntad de Bancali.\r\n*   **Resiliencia Energética:** Se alimenta de fuentes de energía para regenerar biomasa y metal.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499587048472709"
+    },
+    {
+        "id": "obj_psicorax",
+        "tipo": "Objeto / Droga",
+        "nombre": "Sicorax / Psicorax",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Controla los permisos de venta y distribución"
+            },
+            {
+                "id_destino": "npc_ukko_ukka",
+                "relacion": "Guardián de la receta original y los métodos de cultivo"
+            },
+            {
+                "id_destino": "fac_solarianos",
+                "relacion": "Producen la droga en sus granjas secretas"
+            }
+        ],
+        "detalles": "Sustancia psicoactiva vinculada a la interacción con implantes",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nEl **Sicorax** es la droga más codiciada y peligrosa de la Estación Sueño de Próspero. A diferencia de otros estupefacientes, el Sicorax tiene una relación profunda con la tecnología biónica, alterando la percepción de los usuarios que poseen implantes y facilitando una conexión más íntima con la red de la estación. Es la principal fuente de ingresos de la **Bratva** y el motivo de sangrientos conflictos entre las facciones.\r\n\r\nSu producción está ligada a la **Iglesia Solariana**, quienes cultivan los componentes necesarios en invernaderos hidropónicos ocultos. La receta es un secreto de estado corporativo; obtenerla otorga un poder inmenso sobre la población adicta de la estación. Durante los eventos recientes, el grupo entregó una receta falsa a Yandee, lo que desencadenó una represalia brutal, demostrando que en esta estación, el control del Sicorax es equivalente al control de la vida misma.\r\n\r\n# 🛡️ #foro-facciones",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499594744889374"
+    },
+    {
+        "id": "fac_bratva",
+        "tipo": "Facción Criminal",
+        "nombre": "Golionovo II Bratva",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Líder suprema"
+            },
+            {
+                "id_destino": "npc_brunhilda",
+                "relacion": "Brazo ejecutor de alto nivel"
+            },
+            {
+                "id_destino": "lugar_el_matadero",
+                "relacion": "Extorsiona regularmente este establecimiento"
+            }
+        ],
+        "detalles": "Organización criminal dominante que controla el mercado negro y la distribución de Sicorax",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLa **Golionovo II Bratva** es el sindicato del crimen más poderoso de la estación. Bajo el liderazgo de Yandee, han logrado infiltrar casi todos los niveles de la administración, controlando no solo el tráfico de drogas, sino también los permisos de residencia y el acceso a la Nemomáquina. Su influencia se basa en un equilibrio de diplomacia letal y violencia extrema, utilizando a la Bratva como una fuerza de orden paralela a la seguridad oficial.\r\n\r\nSon conocidos por su falta de escrúpulos al tratar con sus deudores, como es el caso de Babushka. Operan principalmente desde los niveles comerciales superiores, pero sus tentáculos llegan hasta los rincones más oscuros del Ahogo. Su objetivo principal es mantener el monopolio sobre el Sicorax y asegurarse de que cualquier avance tecnológico en la estación pase primero por sus manos para ser monetizado.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499602726912040"
+    },
+    {
+        "id": "fac_tempest_co",
+        "tipo": "Facción Corporativa / Seguridad",
+        "nombre": "Tempest CO",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_cutter",
+                "relacion": "Líder y comandante en jefe"
+            },
+            {
+                "id_destino": "lugar_la_corte",
+                "relacion": "Encargados de la seguridad y el orden penitenciario"
+            },
+            {
+                "id_destino": "npc_antonio",
+                "relacion": "Sargento de escuadrón capturado"
+            }
+        ],
+        "detalles": "Contratista militar privado que ejerce como fuerza policial de la estación",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n**Tempest CO** es la fuerza de seguridad privada contratada para mantener la ley en Sueño de Próspero. Aunque técnicamente son funcionarios, actúan como un ejército de ocupación que responde a intereses corporativos. Están equipados con tecnología militar de punta, incluyendo drones láser, torretas automáticas y armaduras pesadas capaces de resistir ataques en entornos hostiles.\r\n\r\nBajo el mando de **Cutter**, la Tempest CO ha adoptado una postura de tolerancia cero frente a la insurrección de los Hunglings. Son los responsables de las purgas en los niveles inferiores y de mantener el sistema de castigos en **La Corte**. A pesar de su apariencia de orden, a menudo colaboran con figuras como Brunhilda para llevar a cabo trabajos sucios que la administración oficial prefiere no reconocer, convirtiéndose en el enemigo principal de cualquier movimiento revolucionario.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499610960199710"
+    },
+    {
+        "id": "fac_hunglings",
+        "tipo": "Facción Rebelde",
+        "nombre": "Los Ahogados (Hunglings)",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_imogene_key",
+                "relacion": "Líder y símbolo de la revolución"
+            },
+            {
+                "id_destino": "npc_chatarra",
+                "relacion": "Antiguo líder de patrulla en el Ahogo"
+            },
+            {
+                "id_destino": "lugar_doptown",
+                "relacion": "Hogar y base de operaciones de la facción"
+            }
+        ],
+        "detalles": "Población marginada de los niveles inferiores en lucha por recursos básicos",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLos **Hunglings**, o \"Los Ahogados\", son los trabajadores y parias que habitan en las profundidades de la estación. Durante décadas han sido explotados para mantener los sistemas de soporte vital que ellos mismos apenas disfrutan. Su cultura está marcada por la escasez, la radiación y una devoción casi religiosa hacia sus líderes, especialmente hacia **Imogene Key**, a quien ven como la esperanza de un futuro mejor.\r\n\r\nHan pasado de ser una clase obrera sumisa a una fuerza revolucionaria desesperada. Su lucha se centra en la \"deuda de oxígeno\", exigiendo que la superficie deje de asfixiarlos económica y físicamente. Aunque carecen del equipo de la Tempest CO, compensan su desventaja con un conocimiento superior de los túneles (\"Las Venas\") y una voluntad inquebrantable de \"repararlo todo\" o hacer arder la estación en el intento.\r\n\r\n# 📜 #foro-tramas",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499619105673267"
+    },
+    {
+        "id": "plot_operacion_cupido",
+        "tipo": "Trama Principal",
+        "nombre": "Ficha Sin Nombre",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Objetivo principal de la búsqueda"
+            },
+            {
+                "id_destino": "org_midas",
+                "relacion": "Organización que patrocina la misión"
+            }
+        ],
+        "detalles": "Misión de infiltración para localizar al Doctor Bancali y recuperar el Proyecto Corazón",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLa **Operación Cupido** es el motor inicial que trajo a los protagonistas a la Estación Sueño de Próspero. Se trata de un contrato de alta prioridad financiado por la corporación MIDAS para dar caza al Doctor Bancali, un científico desertor que huyó con secretos tecnológicos invaluables. Lo que empezó como un trabajo de búsqueda y captura estándar se ha transformado en una lucha por la supervivencia global de la estación.\r\n\r\nA medida que el grupo profundizó en la misión, descubrieron que el objetivo no era solo un hombre, sino las consecuencias de sus experimentos: el virus ACMD. La trama ha evolucionado desde el espionaje corporativo hacia un conflicto ético y existencial, donde los protagonistas deben decidir si cumplen su contrato original o si se alían con las víctimas de Bancali para detener una plaga que amenaza con consumir toda la vida orgánica conocida.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499628601442344"
+    },
+    {
+        "id": "plot_ira_caliban",
+        "tipo": "Trama de Conflicto",
+        "nombre": "Ficha Sin Nombre",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "obj_virus_acmd",
+                "relacion": "Causa del despertar de la consciencia viral"
+            },
+            {
+                "id_destino": "npc_gorvachef",
+                "relacion": "Manifestación física de la ira"
+            },
+            {
+                "id_destino": "obj_caliban",
+                "relacion": "Entidad que busca consumir la estación"
+            }
+        ],
+        "detalles": "El despertar y evolución del virus ACMD hacia una consciencia hostil",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\n**La Ira de Calibán** es el nombre que recibe el arco narrativo del despertar del virus ACMD. Lo que inicialmente parecía un brote biológico accidental se reveló como una entidad consciente y vengativa. La frase \"La ira de Calibán está naciendo\" empezó a escucharse en las transmisiones de radio de la estación, marcando el momento en que el virus dejó de ser un simple patógeno para convertirse en una voluntad colectiva.\r\n\r\nEsta trama explora los horrores de la infección biónica y el destino de personajes como Gorvachef, quienes fueron \"reparados\" por el virus solo para convertirse en heraldos de una nueva forma de existencia. La \"Ira\" representa el rechazo de la máquina hacia sus creadores humanos, buscando asimilar la estación completa en una única estructura biomecánica donde no existe el dolor, pero tampoco la libertad individual.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499636037947583"
+    },
+    {
+        "id": "plot_deuda_oxigeno",
+        "tipo": "Trama Política / Revolución",
+        "nombre": "Ficha Sin Nombre",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_hunglings",
+                "relacion": "Iniciadores de la demanda y la revuelta"
+            },
+            {
+                "id_destino": "npc_imogene_key",
+                "relacion": "Portavoz de las demandas rebeldes"
+            },
+            {
+                "id_destino": "lugar_soporte_vital_1",
+                "relacion": "Objetivo estratégico para el control del aire"
+            }
+        ],
+        "detalles": "Conflicto social por el control del soporte vital y la justicia para el Ahogo",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLa **Deuda de Oxígeno** es el conflicto social que mantiene a la estación al borde del colapso civil. Los habitantes de Doptown han lanzado un ultimátum a las autoridades de la superficie: o se pagan los años de abandono y se garantiza el suministro de aire limpio para los niveles inferiores, o ellos mismos cortarán los suministros de la superficie. Esta trama pone de manifiesto la desigualdad extrema de la estación y cómo la infraestructura vital se utiliza como arma de control.\r\n\r\nEl grupo de protagonistas se vio atrapado en medio de esta revolución al ser obligados a descender al Ahogo. A través de esta trama, han tenido que navegar las tensiones entre los derechos humanos de los Hunglings y la necesidad de orden para detener la infección del ACMD. El clímax de esta historia se desarrolla en las torres de soporte vital, donde se decidirá quién respira y quién muere en el Sueño de Próspero.\r\n```\n\n⏳ Leyendo datos y preparando la generación automática del mundo...",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499643541684347"
+    },
+    {
+        "id": "npc_dr_bancali",
+        "tipo": "NPC",
+        "nombre": "Dr. Bancali",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_ariel",
+                "relacion": "Hija a la que intenta salvar a toda costa"
+            },
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Le proporcionó refugio y laboratorios a cambio de servicios"
+            },
+            {
+                "id_destino": "obj_virus_acmd",
+                "relacion": "Creador y mente colmena de la cepa inteligente"
+            }
+        ],
+        "detalles": "Científico fugitivo del Proyecto Corazón, convertido en una entidad cibernética de silicio",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nEl Doctor Bancali es la figura central del misterio que envuelve a la estación. Llegó hace diez años huyendo con los secretos del **Proyecto Corazón** y su hija, Ariel. Su personalidad está definida por una obsesión monomaníaca: curar el cáncer de su hija, un mal que ni la Nemomáquina pudo solucionar. Aunque inicialmente vivió en su propia nave, terminó pactando con Yandee para obtener instalaciones seguras donde continuar sus experimentos prohibidos.\r\n\r\nA medida que la trama avanzó, los protagonistas descubrieron que Bancali ha trascendido su forma humana, presentándose como un ciborg compuesto de silicio y silicona que opera mediante múltiples \"fundas\" o copias de sí mismo. Su rol en la historia ha pasado de ser un objetivo de búsqueda a revelarse como el origen mismo de la nueva cepa inteligente del **ACMD**, la cual utiliza para \"repararlo todo\". Es una mente brillante pero fragmentada, cuya desesperación lo ha llevado a convertir la estación en un laboratorio de pesadilla donde la biomasa humana es solo un recurso para la recuperación de Ariel.\r\n\r\n### Habilidades y Secretos\r\n*   **Conexión ACMD:** Él *es* el virus inteligente. Puede percibir y actuar a través de cualquier ser infectado, incluyendo implantes contaminados.\r\n*   **Transferencia de Consciencia:** Utiliza la red de la Nemomáquina para proyectarse en diferentes cuerpos, lo que le hac\n\ne prácticamente imposible de eliminar de forma convencional.\r\n*   **El Gran Secreto:** Bancali trajo el virus en su nave, pero existen indicios de que una versión del mismo ya habitaba en las profundidades de la estación hace 20 años.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499520040272024"
+    },
+    {
+        "id": "npc_yandee",
+        "tipo": "NPC",
+        "nombre": "Yandee",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_bratva",
+                "relacion": "Líder indiscutible de la organización criminal"
+            },
+            {
+                "id_destino": "npc_brunhilda",
+                "relacion": "Ejecutora personal y mano derecha"
+            },
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Mecenas de sus experimentos a cambio de tecnología"
+            }
+        ],
+        "detalles": "Líder de la Golionovo II Bratva, controla el mercado de drogas y permisos de la estación",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nYandee es la mujer más peligrosa del Sueño de Próspero. Como líder de la **Golionovo II Bratva**, controla con mano de hierro el tráfico de Sicorax y los permisos de venta de cualquier sustancia en la estación. Su personalidad es implacable, calculadora y carente de cualquier atisbo de piedad hacia quienes intentan engañarla. Se caracteriza por una elegancia letal, delegando la violencia física en Brunhilda mientras ella maneja los hilos políticos y económicos.\r\n\r\nEl grupo de protagonistas la conoció formalmente en una tensa reunión en el **Canyon Heavy Market**, donde intentaron entregarle una receta falsa de Sicorax. Yandee, que ya sospechaba del engaño, demostró su crueldad al ordenar a Brunhilda que castigara al grupo, lo que resultó en la pérdida del brazo de María. Desde ese momento, ha pasado de ser una cliente a una \"ama\" forzosa, obligando a los protagonistas a trabajar para ella en el Ahogo bajo la amenaza de una ejecución inmediata si no entregan la cabeza del Doctor Bancali.\r\n\r\n### Habilidades\r\n*   **Control de Redes Criminales:** Capacidad para movilizar escuadrones de la Bratva en cualquier sector comercial.\r\n*   **Autoridad de la Nemomáquina:** Posee acceso privilegiado a la red de clonación, lo que le permite controlar quién \"vuelve\" y quién no.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499530790408202"
+    },
+    {
+        "id": "npc_babushka",
+        "tipo": "NPC",
+        "nombre": "Babushka",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_zhenya",
+                "relacion": "Holograma que actúa como su interfaz de comunicación"
+            },
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Acreedora forzosa y colaboradora técnica"
+            },
+            {
+                "id_destino": "npc_angus",
+                "relacion": "Socio en el mantenimiento de la Nemomáquina"
+            }
+        ],
+        "detalles": "Experta en biónica y tecnología, propietaria de El Matadero",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nBabushka es reconocida como la mejor tecnomédica y experta en implantes de toda la estación. De personalidad brusca y directa, prefiere la compañía de sus máquinas y de su holograma infantil, **Zhenya**, que la de la mayoría de los residentes del Sueño de Próspero. Opera desde **El Matadero**, una clínica blindada donde realiza desde simples mejoras estéticas hasta cirugías biónicas de alta complejidad.\r\n\r\nConoció a los protagonistas cuando Marco los llevó a su tienda para tratar las heridas de Matheo y buscar información sobre la Nemomáquina. A pesar de su apariencia cínica, ha demostrado ser una aliada valiosa, proporcionando información crítica sobre la naturaleza del virus ACMD y el paradero de la hija de Bancali en **La Nevera**. Aunque trabaja ocasionalmente para Yandee por deudas pendientes, su verdadera lealtad parece estar con la ciencia y con aquellos que, como el grupo, se atreven a enfrentar los horrores que ella misma está estudiando.\r\n\r\n### Habilidades y Secretos\r\n*   **Maestría Biónica:** Capaz de realizar intervenciones quirúrgicas imposibles para otros médicos, estabilizando incluso a pacientes en el borde de la muerte.\r\n*   **Defensa Automatizada:** Su taller está protegido por \"muñecos\" de combate altamente letales que responden a su control mental.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499538566643796"
+    },
+    {
+        "id": "npc_angus",
+        "tipo": "NPC",
+        "nombre": "Angus (Original / 00)",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Antigua socia que lo traicionó y lo dio por muerto"
+            },
+            {
+                "id_destino": "npc_mimi",
+                "relacion": "Su secretaria e interfaz en la superficie"
+            },
+            {
+                "id_destino": "npc_imogene_key",
+                "relacion": "Aliado y protegido de la revolución de los Ahogados"
+            }
+        ],
+        "detalles": "El Sysadmin original de la estación, oculto durante años en los niveles inferiores",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nAngus es, o era, el Administrador de Sistemas de la estación, un hombre calvo con antenas por ojos que controla todo el flujo de información. Sin embargo, el \"Angus\" que los protagonistas conocieron en la superficie no era más que uno de los clones de una red que él mismo creó como medida de seguridad. El verdadero Angus (el 00) fue traicionado por Yandee hace seis años y arrojado a las profundidades de la estación, donde sobrevivió escondido en la **Torre de Soporte Vital 1**.\r\n\r\nEl grupo lo rescató de su aislamiento tras una brutal pelea contra una criatura invisible en la torre. A diferencia de sus clones corporativos, el Angus original es un superviviente nato con una visión cínica de la estación, a la que ve como un tablero de juego donde él pretende \"ganar la medalla de plata\". Su rol actual es guiar a los protagonistas a través del Ahogo, utilizando su vasto conocimiento de la infraestructura oculta para ayudarlos a llegar hasta el Doctor Bancali y, eventualmente, derrocar a Yandee.\r\n\r\n### Habilidades\r\n*   **Omnisciencia Digital:** Capacidad para hackear y controlar sistemas de la estación que otros administradores ni siquiera conocen.\r\n*   **Red de Clones:** Aunque Yandee controla la mayoría, Angus 00 todavía tiene acceso a ciertos protocolos de la Nemomáquina que le permiten prever los movimientos de sus dobles.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499547034943558"
+    },
+    {
+        "id": "npc_imogene_key",
+        "tipo": "NPC",
+        "nombre": "Imogene Key",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_ukko_ukka",
+                "relacion": "Hermana protectora, dispuesta a cualquier sacrificio por él"
+            },
+            {
+                "id_destino": "fac_hunglings",
+                "relacion": "Líder revolucionaria y figura sagrada"
+            },
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Amigo y aliado táctico en las sombras"
+            }
+        ],
+        "detalles": "Líder de la revolución del Ahogo, primera niña nacida en Doptown",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nImogene Key es el corazón latente de la resistencia en los niveles inferiores. Es famosa por ser la primera persona nacida en las duras condiciones de **El Ahogo**, lo que le otorga un estatus casi místico entre los Hunglings. Su personalidad es severa y pragmática; lidera una revolución no por ideología, sino por la supervivencia básica, exigiendo el pago de la \"deuda de oxígeno\" a las élites de la superficie. Posee un aspecto extraño y lleva un corazón mecánico que late bajo su ropa.\r\n\r\nLos protagonistas la conocieron tras ser expulsados de la superficie y llegar a **Doptown**, donde ella los acogió como \"invitados\" a cambio de sus servicios médicos para salvar a su hermano, Ukko-Ukka. Aunque parece una líder justa, Imogene ha demostrado que su amor por su hermano roza lo cruel, obligando a mantenerlo \"vivo\" mediante máquinas contra su voluntad expresa. Su rol es el de una aliada inestable: ayudará al grupo siempre que sus objetivos de salvar a su gente y a su familia coincidan con los de ellos.\r\n\r\n### Habilidades y Secretos\r\n*   **Corazón Mecánico:** Su vida depende de una tecnología única que parece resistir la infección del ACMD de forma más eficiente que otros implantes.\r\n*   **Voz de la Revolución:** Puede convocar a miles de Hunglings mediante el sistema de \"La Lotería\", convirtiendo a civiles en una fuerza de choque desesperada.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499554857320448"
+    },
+    {
+        "id": "npc_brunhilda",
+        "tipo": "NPC",
+        "nombre": "Brunhilda",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Fiel ejecutora y perro faldero personal"
+            },
+            {
+                "id_destino": "lugar_la_corte",
+                "relacion": "Administradora y campeona de los juegos"
+            }
+        ],
+        "detalles": "Cazadora de recompensas profesional y brazo ejecutor de la Bratva",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nBrunhilda es la personificación de la eficiencia letal en la estación. Antigua cazadora de recompensas para corporaciones como MIDAS, ahora sirve como la mano derecha de Yandee y administradora de **La Corte**. Es una mujer de pocas palabras, personalidad fría y una disciplina militar impecable. Su reputación es la de una profesional que nunca ha fallado en un encargo de eliminación.\r\n\r\nLa interacción más impactante con los protagonistas ocurrió durante la audiencia con Yandee, donde Brunhilda ejecutó un ataque relámpago contra Matheo que fue interceptado por María, resultando en la amputación del brazo de esta última. A pesar de este acto violento, Brunhilda mostró una extraña faceta al entregarles gusanos de droga psicodélica tras el ataque, lo que generó sentimientos encontrados de odio y fascinación en María. Actúa como el obstáculo físico más formidable que el grupo debe evitar o enfrentar en su camino hacia la libertad.\r\n\r\n### Habilidades\r\n*   **Combate Maestro:** Experta en armas blancas y de fuego, capaz de incapacitar a varios enemigos en segundos.\r\n*   **Control Administrativo:** Posee acceso total a las torretas y sistemas de seguridad de la zona penitenciaria de la estación.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499562742611969"
+    },
+    {
+        "id": "npc_ukko_ukka",
+        "tipo": "NPC",
+        "nombre": "Ukko-Ukka",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_imogene_key",
+                "relacion": "Hermano menor y motivación de su lucha"
+            },
+            {
+                "id_destino": "fac_solarianos",
+                "relacion": "Alto Jardinero y líder espiritual"
+            },
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Aliado secreto que conoce su verdadera ubicación"
+            }
+        ],
+        "detalles": "Líder de la Iglesia Solariana, actualmente transformado en una entidad biomecánica",
+        "categoria_discord": "A Pound of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nUkko-Ukka comenzó la historia como el respetado Alto Jardinero de los **Solarianos**, un hombre de paz que gestionaba los invernaderos y la espiritualidad del Sector V. Sin embargo, tras ser perseguido por Tempest CO por sus vínculos con los rebeldes del Ahogo, su destino tomó un giro trágico. Es un hombre que preferiría ver arder la estación antes que entregar la receta sagrada del Sicorax a manos corporativas.\r\n\r\nTras el asedio al monasterio, Ukko-Ukka terminó gravemente herido y fue llevado por su hermana Imogene a Doptown. Allí, los protagonistas se vieron obligados a operarlo en una cirugía agónica para salvar lo que quedaba de su cuerpo, conectándolo permanentemente a sistemas de soporte vital que lo mantienen en un estado de agonía consciente. Aunque su cuerpo es ahora una masa de cables y fluidos en un tanque, su mente sigue siendo clave, ya que posee el conocimiento para contactar directamente con el Doctor Bancali y es el único que comprende la verdadera tragedia espiritual de la estación.\r\n\r\n### Habilidades\r\n*   **Sabiduría de las Venas:** Conoce los mapas ocultos de la estación y cómo interpretar las \"marcas\" en el techo de los túneles.\r\n*   **Resistencia Espiritual:** Capacidad para mantener la consciencia bajo niveles de dolor y trauma que destruirían a cualquier otro ser humano.\r\n```\n\nAquí tienes las publicaciones para los canales restantes, completando así la organización de tu partida.\r\n\r\n```markdown\r\n# 🎒 #foro-objetos",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534499570803806298"
     }
 ]
