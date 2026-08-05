@@ -2835,6 +2835,52 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534505230236913804"
     },
     {
+        "id": "lugar_stelar_burn",
+        "tipo": "lugar",
+        "nombre": "Stelar Burn",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_angus_sysadmin",
+                "relacion": "Ubicación de su reservado de seguridad personal"
+            }
+        ],
+        "detalles": {
+            "tipo_lugar": "Local de ocio / Reservado privado",
+            "seguridad": "Suelos eléctricos y bloqueos biométricos"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nStelar Burn es un establecimiento de ocio exclusivo en los niveles superiores comerciales de la estación. Dentro de este local, el SysAdmin Angus mantiene un reservado privado diseñado con medidas de seguridad extremas. Este espacio está equipado con un suelo eléctrico que puede activarse instantáneamente para incapacitar a cualquier intruso, sirviendo como un refugio seguro donde Angus puede realizar sus tratos sin temor a represalias físicas.\r\n\r\nEs un lugar que refleja la paranoia y el poder de Angus en la superficie. Mientras el resto de la estación se desmorona, en el Stelar Burn se mantienen los lujos y la seguridad tecnológica de vanguardia. Fue en este reservado donde se fraguaron muchos de los planes iniciales de la Operación Cupido y donde se gestiona gran parte de la información que fluye a través de Mimi hacia los operativos de campo.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511384447160371"
+    },
+    {
+        "id": "lugar_sector_v",
+        "tipo": "lugar",
+        "nombre": "Sector V",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "lugar_monasterio_solariano",
+                "relacion": "Distrito que alberga el templo y los jardines"
+            },
+            {
+                "id_destino": "fac_solarianos",
+                "relacion": "Zona bajo control espiritual y administrativo de la Iglesia"
+            }
+        ],
+        "detalles": {
+            "tipo_lugar": "Distrito Urbano / Agrícola",
+            "ambiente": "Zonas residenciales y áreas de cultivo artificial"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nEl Sector V es el distrito de la estación donde se concentra la actividad de los Solarianos. A diferencia de los pasillos industriales fríos, el Sector V intenta mantener una estética más orgánica y abierta, con zonas residenciales que rodean el Monasterio Solariano. Es un área que combina la ingeniería espacial con simulaciones de naturaleza, siendo el lugar donde se encuentran los invernaderos públicos y los espacios de meditación de la Iglesia.\r\n\r\nRecientemente, el Sector V se ha convertido en una zona de alta tensión debido a la presencia constante de patrullas de la Tempest CO. Las calles que antes eran tranquilas ahora están bloqueadas por controles de seguridad y drones de vigilancia que buscan a Ukko-Ukka. El sector representa el último reducto de una espiritualidad que se niega a morir, atrapada entre el asedio militar de Cutter y la decadencia biomecánica que empieza a filtrarse desde los niveles inferiores.\r\n\r\n# 📜 #foro-tramas",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511392324063442"
+    },
+    {
         "id": "npc_dr_bancali",
         "tipo": "npc",
         "nombre": "Dr. Bancali",
@@ -3251,6 +3297,455 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534506363311362139"
     },
     {
+        "id": "npc_gorvachef",
+        "tipo": "npc",
+        "nombre": "Gorvachef",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_sindicato",
+                "relacion": "Ex-miembro de alto rango con información sensible"
+            },
+            {
+                "id_destino": "npc_huron",
+                "relacion": "Antiguo subordinado y compañero en el sindicato"
+            },
+            {
+                "id_destino": "obj_virus_acmd",
+                "relacion": "Sujeto de experimentación post-mortem P5 reanimado"
+            },
+            {
+                "id_destino": "npc_babushka",
+                "relacion": "Científica responsable de su reanimación experimental"
+            }
+        ],
+        "detalles": {
+            "estado": "Infectado / Reanimado",
+            "faccion": "El Sindicato (Anteriormente)",
+            "condicion": "Cuerpo biomecánico sin voluntad propia"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nGorvachef era un pilar fundamental del Sindicato bajo el mando de Reynard, encargado de las operaciones cuando el líder no estaba presente. Su vida dio un giro oscuro cuando, tras su fallecimiento, su cuerpo fue entregado a Babushka para investigaciones relacionadas con el Proyecto Corazón. Se convirtió en el \"Sujeto post-mortem P5\", el primer cadáver infectado con éxito por el virus ACMD que logró recuperar una apariencia de vida mediante el uso de descargas eléctricas masivas.\r\n\r\nEl grupo de protagonistas lo encontró en las profundidades de La Corte, no como el hombre que recordaban los registros, sino como una monstruosidad biomecánica. Los injertos metálicos se habían fusionado permanentemente con su sistema nervioso, y de su boca brotaba una estructura similar a un megáfono biológico. Gorvachef actúa ahora como el primer heraldo de \"La Ira de Calibán\", emitiendo mensajes de advertencia sobre la inminente asimilación de la estación antes de ser finalmente abatido para detener su sufrimiento.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511202703773856"
+    },
+    {
+        "id": "npc_mitski",
+        "tipo": "npc",
+        "nombre": "Mitski",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_sindicato",
+                "relacion": "Estratega digital y hacker de la organización"
+            },
+            {
+                "id_destino": "npc_huron",
+                "relacion": "Rival política por el control del Sindicato"
+            },
+            {
+                "id_destino": "npc_reynard",
+                "relacion": "Colaboradora cercana bajo sospecha de traición"
+            }
+        ],
+        "detalles": {
+            "especialidad": "Hacker / Guerra de Información",
+            "personalidad": "Humilde en apariencia, calculadora y ambiciosa",
+            "estatus": "Buscada por intento de asesinato"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nMitski es una experta en sistemas y una de las mentes más brillantes del Sindicato. Durante mucho tiempo se mantuvo a la sombra de Reynard, proyectando una imagen de humildad y eficiencia técnica. Sin embargo, tras la muerte del líder, su verdadera ambición salió a la luz. Hurón sospecha que Mitski tiene un benefactor poderoso detrás de ella, lo que le ha permitido financiar intentos de asesinato contra sus propios compañeros para hacerse con el control total de la Unión Local 32819L.\r\n\r\nSe cree que fue ella quien orquestó el sabotaje que casi termina con la vida de los protagonistas y Hurón en la red ferroviaria. Mitski representa la traición interna y el juego de espionaje corporativo dentro de la estación; es una sombra que se mueve entre servidores, borrando rastros y vendiendo información al mejor postor. Su paradero actual es desconocido, pero su influencia sigue presente en los sistemas hackeados que el grupo encuentra en su camino.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511211008495747"
+    },
+    {
+        "id": "npc_reynard",
+        "tipo": "npc",
+        "nombre": "Reynard",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_sindicato",
+                "relacion": "Antiguo líder y figura de respeto"
+            },
+            {
+                "id_destino": "npc_huron",
+                "relacion": "Mentor y superior jerárquico"
+            },
+            {
+                "id_destino": "npc_loshe",
+                "relacion": "Jefe directo en las operaciones portuarias"
+            }
+        ],
+        "detalles": {
+            "estado": "Fallecido",
+            "profesión": "Ex-piloto de carreras espaciales",
+            "causa_muerte": "Atentado / Accidente sospechoso"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nReynard fue el líder carismático del Sindicato, un hombre fuerte en el que los trabajadores portuarios confiaban ciegamente. Antes de su vida en la gestión laboral, fue un reconocido piloto de carreras espaciales, una carrera que abandonó tras la trágica muerte de su esposa causada por el fallo del motor de una de sus naves. Su liderazgo mantenía un equilibrio necesario en la estación, sirviendo de contrapunto a la tiranía de la Bratva.\r\n\r\nSu muerte, anunciada en holopantallas durante la crisis de los atentados en el puerto, dejó un vacío de poder que sumió al Sindicato en el caos. Aunque oficialmente se reportó como un accidente, las circunstancias que rodean su fallecimiento y la desaparición de la flotilla que fue a buscar sugieren una conspiración mayor. La pérdida de Reynard marcó el inicio del colapso del orden social en Sueño de Próspero, dejando a figuras menos experimentadas y más ambiciosas luchando por sus restos.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511218448924692"
+    },
+    {
+        "id": "npc_ariel",
+        "tipo": "npc",
+        "nombre": "Ariel",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Hija y única motivación de sus experimentos"
+            },
+            {
+                "id_destino": "lugar_la_nevera",
+                "relacion": "Lugar donde permaneció criogenizada por 10 años"
+            },
+            {
+                "id_destino": "obj_virus_acmd",
+                "relacion": "Paciente original de la cepa inteligente"
+            }
+        ],
+        "detalles": {
+            "condicion": "Cáncer incurable biológicamente",
+            "estado": "Desaparecida de su cápsula criogénica"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nAriel es la hija del Doctor Bancali y el catalizador de todos los eventos trágicos de la estación. Hace diez años, llegó al Sueño de Próspero huyendo de la Tierra con un cáncer terminal que la tecnología convencional no podía erradicar. Su padre, desesperado, la mantuvo en un estado de éxtasis criogénico en las profundidades de La Nevera mientras buscaba una cura a través del Proyecto Corazón y el virus ACMD.\r\n\r\nAunque Ariel pasó una década como un cuerpo inerte en una cápsula, su presencia se siente en toda la red de la estación. Bancali logró clonar su consciencia en la red, lo que ha provocado una contaminación masiva de los sistemas de datos. Su reciente desaparición de La Nevera ha desatado la locura del Doctor, quien ahora acelera la infección global con la esperanza de \"repararla\" definitivamente, convirtiendo a su propia hija en el centro de una red biomecánica que consume la vida de los demás.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511225969446982"
+    },
+    {
+        "id": "npc_mimi",
+        "tipo": "npc",
+        "nombre": "Mimi",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_angus_sysadmin",
+                "relacion": "Secretaria personal y gestora de agenda"
+            },
+            {
+                "id_destino": "lugar_hotel_lady_victoria",
+                "relacion": "Contacto frecuente con los protagonistas"
+            }
+        ],
+        "detalles": {
+            "profesion": "Asistente administrativa",
+            "personalidad": "Eficiente, reservada y observadora"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nMimi es la cara pública de las operaciones administrativas de Angus en la superficie. Como su secretaria personal, es la encargada de filtrar las llamadas, organizar las reuniones en el Canyon Heavy Market y entregar los suministros críticos a los operativos contratados por el SysAdmin. Es una mujer que se mueve con soltura entre la burocracia corporativa y los tratos clandestinos, manteniendo siempre una profesionalidad gélida que oculta sus verdaderas lealtades.\r\n\r\nPara los protagonistas, Mimi ha sido el enlace constante con la misión principal, apareciendo en momentos clave como en el Hotel Lady Victoria para proporcionar identificaciones falsas o información sobre la receta del Sicorax. Aunque parece una simple empleada, su conocimiento sobre los movimientos de los clones de Angus y sus vínculos con la TIA la convierten en una pieza logística fundamental que sabe mucho más de lo que su discreto puesto sugiere.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511234144014507"
+    },
+    {
+        "id": "npc_chatarra",
+        "tipo": "npc",
+        "nombre": "Chatarra",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_hunglings",
+                "relacion": "Jefe de patrulla y líder de exploración"
+            },
+            {
+                "id_destino": "npc_morralla",
+                "relacion": "Mentor y protector de los jóvenes del Ahogo"
+            },
+            {
+                "id_destino": "npc_lennox",
+                "relacion": "Compañero de armas en la Torre de Soporte Vital"
+            }
+        ],
+        "detalles": {
+            "estado": "Fallecido en acto de servicio",
+            "faccion": "Hunglings",
+            "causa_muerte": "Desmembramiento por criatura invisible"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nChatarra era el rudo pero leal jefe de una de las patrullas de Hunglings en Doptown. Fue el primero en reconocer el potencial de los protagonistas y en ofrecerles herramientas básicas para moverse por las tirolinas de la ciudad inundada. De personalidad directa y protectora, Chatarra dedicó su vida a asegurar que su gente tuviera lo mínimo para sobrevivir en las condiciones hostiles del Ahogo, enfrentándose a los \"demonios\" que patrullan los servidores.\r\n\r\nSu final llegó de forma heroica y brutal durante la incursión en la Torre de Soporte Vital 1. Tras ver a Lennox herido, Chatarra decidió bajar a la planta baja para enfrentar a la criatura invisible que los acechaba, permitiendo que el resto del grupo tuviera una oportunidad de sobrevivir. Murió partido en dos por la bestia, dejando un vacío inmenso entre sus compañeros sobrevivientes, quienes realizaron un rito funerario con sus restos mecánicos para honrar su sacrificio.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511241706340422"
+    },
+    {
+        "id": "npc_morralla",
+        "tipo": "npc",
+        "nombre": "Morralla",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_faldas",
+                "relacion": "Hermano mayor y protector"
+            },
+            {
+                "id_destino": "npc_marco",
+                "relacion": "Rescatado y amigo del propietario del bar"
+            },
+            {
+                "id_destino": "fac_hunglings",
+                "relacion": "Guía y joven explorador del Ahogo"
+            }
+        ],
+        "detalles": {
+            "edad": "Aproximadamente 20 años",
+            "estado": "Fallecido por asimilación de cables",
+            "origen": "Doptown"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nMorralla era un joven Hungling que, junto a su hermana Faldas, intentó escapar de la miseria del Ahogo buscando refugio en la superficie. Fue acogido por Marco en el bar Corazón de Acero, donde encontró un breve periodo de paz antes de verse arrastrado de nuevo a los conflictos de la estación. Es un chico marcado por la supervivencia extrema, con un conocimiento instintivo de los túneles y las marcas de seguridad de los niveles de mantenimiento.\r\n\r\nTras reunirse con los protagonistas en las azoteas de Doptown, Morralla se convirtió en su guía a través de las peligrosas \"venas\" de la estación. Desafortunadamente, su viaje terminó en tragedia cuando, durante un terremoto biomecánico, entró en estado de shock y fue consumido por los cables vivientes que brotaban de las paredes. Su muerte dejó a Faldas sola y sirvió como una cruda advertencia para el grupo sobre la velocidad con la que el virus ACMD está reclamando la infraestructura de la estación.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511249168269502"
+    },
+    {
+        "id": "npc_faldas",
+        "tipo": "npc",
+        "nombre": "Faldas",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_morralla",
+                "relacion": "Hermana menor devastada por su pérdida"
+            },
+            {
+                "id_destino": "npc_marco",
+                "relacion": "Rescatada y protegida en el bar"
+            },
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Paciente actual de sus cirugías biónicas"
+            }
+        ],
+        "detalles": {
+            "edad": "Aproximadamente 20 años",
+            "estado": "En proceso de intervención médica"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nFaldas es la hermana de Morralla, una joven Hungling que compartió con él la huida hacia la superficie y el refugio en el bar de Marco. De personalidad más reservada que su hermano, Faldas posee una extraña sensibilidad para detectar los cambios en el ambiente de la estación, siendo de las primeras en advertir sobre las \"raíces\" que dejaba el virus a su paso. Su vida ha estado marcada por la pérdida constante y el miedo al \"gran demonio\" que acecha en las profundidades.\r\n\r\nTras la muerte de Morralla, Faldas fue llevada ante el Doctor Bancali en su cueva secreta. Encontrada por los protagonistas mientras el Doctor realizaba cirugías biónicas sobre ella, Faldas representa el destino incierto de los habitantes del Ahogo: atrapada entre la asimilación forzosa del virus y la esperanza de una mejora tecnológica que le permita sobrevivir a la plaga. Actualmente se encuentra bajo el cuidado (o experimentación) de las fundas de silicio de Bancali.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511257284120658"
+    },
+    {
+        "id": "npc_zhenya",
+        "tipo": "npc",
+        "nombre": "Zhenya",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_babushka",
+                "relacion": "Interfaz de comunicación y creación digital"
+            },
+            {
+                "id_destino": "lugar_el_matadero",
+                "relacion": "Recepcionista y sistema de atención"
+            }
+        ],
+        "detalles": {
+            "tipo_entidad": "Holograma inteligente",
+            "apariencia": "Niño pequeño"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nZhenya es la interfaz holográfica creada por Babushka para gestionar las interacciones sociales y comerciales en El Matadero. Con la apariencia de un niño pequeño, Zhenya posee una personalidad directa y analítica que refleja el carácter de su creadora, aunque con una cortesía programada que Babushka suele omitir. Es el primer punto de contacto para cualquiera que entre en la clínica, encargándose de filtrar a los clientes y de comunicar las exigencias económicas de la doctora.\r\n\r\nMás allá de ser un simple contestador automático, Zhenya parece tener acceso a gran parte de los datos de investigación de Babushka, siendo capaz de proporcionar información técnica sobre el ACMD o de coordinar las defensas automatizadas del taller. Su presencia digital es constante en El Matadero, sirviendo como un recordatorio de que en la estación, incluso la infancia y la inocencia son constructos tecnológicos diseñados para un propósito funcional.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511264972410891"
+    },
+    {
+        "id": "npc_cutter",
+        "tipo": "npc",
+        "nombre": "Cutter",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_tempest_co",
+                "relacion": "Comandante supremo de la organización"
+            },
+            {
+                "id_destino": "npc_ukko_ukka",
+                "relacion": "Perseguidor encargado de su detención"
+            },
+            {
+                "id_destino": "npc_brunhilda",
+                "relacion": "Colaborador táctico en la seguridad de La Corte"
+            }
+        ],
+        "detalles": {
+            "apariencia": "Hombre militar de baja estatura",
+            "personalidad": "Disciplina extrema y implacable"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nCutter es el líder indiscutible de la Tempest CO, el contratista militar que ejerce la ley marcial en la estación. Es un hombre de baja estatura pero con una presencia imponente, definida por una disciplina de hierro y una falta total de empatía hacia quienes rompen el orden establecido. Bajo su mando, la Tempest ha pasado de ser una fuerza de seguridad a un ejército de ocupación que patrulla los sectores en cuarentena con drones y escuadrones fuertemente armados.\r\n\r\nCutter lideró personalmente la redada en el Monasterio Solariano en busca de Ukko-Ukka y la receta del Sicorax. Su enfoque es puramente pragmático: si un sector está infectado o es rebelde, debe ser purgado o sometido. Es el antagonista institucional del grupo, representando el poder corporativo que prefiere destruir la infraestructura de la estación antes que perder el control sobre ella. Su obsesión por capturar a los líderes rebeldes lo convierte en una amenaza constante que acecha siempre a pocos pasos de los protagonistas.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511272463175753"
+    },
+    {
+        "id": "npc_san_tai",
+        "tipo": "npc",
+        "nombre": "San-tai",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_solarianos",
+                "relacion": "Señor de las Llaves y guardián de archivos"
+            },
+            {
+                "id_destino": "npc_ashford",
+                "relacion": "Protegido por su escolta de seguridad personal"
+            },
+            {
+                "id_destino": "obj_reliquia_san_tai",
+                "relacion": "Portador del colgante biométrico de acceso"
+            }
+        ],
+        "detalles": {
+            "apariencia": "Máscara de espejo sin rostro",
+            "estado": "Fallecido durante el asalto al dique"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nSan-tai era el \"Señor de las Llaves\" de los Solarianos, un cargo místico y técnico responsable de custodiar el acceso a los archivos históricos y las cámaras secretas del monasterio. Se caracterizaba por llevar siempre una máscara de espejo que ocultaba su identidad, simbolizando su rol como un guardián neutral de la verdad de la estación. A pesar de su importancia religiosa, San-tai era un hombre solitario que viajaba con una escolta privada de élite para proteger los secretos biométricos que llevaba consigo.\r\n\r\nSu vida terminó en los oscuros pasillos de un almacén abandonado en el dique, donde fue interceptado por los protagonistas bajo órdenes de Angus. Aunque tuvo la oportunidad de huir, San-tai aceptó su destino con una calma fatalista, prefiriendo morir antes que entregar voluntariamente la reliquia que colgaba de su cuello. Su muerte fue el punto de quiebre moral para Matheo y el grupo, marcando el momento en que sus acciones dejaron de ser simples misiones para convertirse en actos de consecuencias irreversibles para la estructura de la estación.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511280117776474"
+    },
+    {
+        "id": "npc_bilis",
+        "tipo": "npc",
+        "nombre": "Bilis",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_hunglings",
+                "relacion": "Líder de grupo y organizador de refugiados"
+            },
+            {
+                "id_destino": "npc_yunque",
+                "relacion": "Compañero táctico en la defensa de la Sala Zero"
+            },
+            {
+                "id_destino": "npc_imogene_key",
+                "relacion": "Fiel seguidor de su causa revolucionaria"
+            }
+        ],
+        "detalles": {
+            "estado": "Activo en la Sala Zero",
+            "origen": "Doptown"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nBilis es uno de los líderes Hunglings que logró coordinar la evacuación masiva de Doptown hacia los niveles superiores de La Corte. De carácter resuelto y pragmático, se encarga de gestionar los escasos suministros y la seguridad del campo de refugiados en la Sala Zero. Es un hombre que ha visto morir a muchos de sus compañeros por la falta de oxígeno y la violencia de la superficie, lo que le ha otorgado una determinación gélida para proteger a los 5000 supervivientes que dependen de él.\r\n\r\nFue Bilis quien guio a los protagonistas a través de las puertas biométricas de la prisión, confiando en ellos para encontrar una salida definitiva hacia La Nevera. Actúa como el enlace operativo entre los rebeldes y el grupo de mercenarios, manteniendo la calma en un entorno cargado de paranoia donde los refugiados temen ser atacados tanto por la Tempest CO como por aquellos compañeros que han enloquecido por la plaga.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511288439537805"
+    },
+    {
+        "id": "npc_yunque",
+        "tipo": "npc",
+        "nombre": "Yunque",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_bilis",
+                "relacion": "Mano derecha en la gestión del refugio"
+            },
+            {
+                "id_destino": "fac_hunglings",
+                "relacion": "Combatiente y organizador de la resistencia"
+            }
+        ],
+        "detalles": {
+            "faccion": "Hunglings",
+            "ubicación": "Sala Zero"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nYunque es un Hungling de complexión robusta que sirve como el músculo y la disciplina dentro del campo de refugiados de la Sala Zero. Junto a Bilis, se encarga de patrullar los límites del sistema penitenciario y de vigilar a los prisioneros capturados de la Tempest CO. Su personalidad es brusca y desconfiada, producto de años de opresión en los niveles inferiores de la estación.\r\n\r\nA pesar de su apariencia intimidante, Yunque es un pilar fundamental para la moral de los refugiados, siendo el responsable de organizar las defensas improvisadas contra las incursiones de los escuadrones de seguridad. Es quien reporta los extraños incidentes de locura colectiva que han empezado a surgir entre los Hunglings, sospechando que algo más allá de la Tempest los está acechando en las sombras de la prisión.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511295888621649"
+    },
+    {
+        "id": "npc_percance",
+        "tipo": "npc",
+        "nombre": "Percance",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_bilis",
+                "relacion": "Apoyo logístico en la Sala Zero"
+            },
+            {
+                "id_destino": "fac_hunglings",
+                "relacion": "Superviviente de la purga de Doptown"
+            }
+        ],
+        "detalles": {
+            "faccion": "Hunglings",
+            "ubicación": "Sala Zero"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nPercance es un miembro activo de la resistencia Hungling que ayuda en la organización de la Sala Zero. Aunque su papel es más discreto que el de Bilis o Yunque, es esencial para mantener la cohesión del grupo de refugiados en condiciones de hacinamiento extremo. Ha sobrevivido a múltiples encuentros con los \"demonios\" del Ahogo, lo que le ha otorgado una agilidad y un instinto de supervivencia excepcionales.\r\n\r\nEn el refugio, Percance se encarga de monitorizar los sistemas de aire y de alertar sobre cualquier movimiento sospechoso en los niveles superiores de La Corte. Es uno de los muchos rostros anónimos que han decidido dejar de esconderse para luchar por un futuro en la superficie, representando la voluntad colectiva de los Ahogados de no ser enterrados de nuevo en el olvido.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511303446626406"
+    },
+    {
+        "id": "npc_antonio",
+        "tipo": "npc",
+        "nombre": "Antonio",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "fac_tempest_co",
+                "relacion": "Líder de escuadrón y oficial de alto rango"
+            },
+            {
+                "id_destino": "npc_bilis",
+                "relacion": "Prisionero de guerra bajo su custodia"
+            }
+        ],
+        "detalles": {
+            "rango": "Capitán de Escuadrón / Encargado de Seguridad",
+            "estado": "Capturado / Bajo interrogatorio"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nAntonio es un oficial de alto rango de la Tempest CO que fue capturado por los Hunglings durante el caos de la evacuación hacia La Corte. Como encargado del sistema penitenciario, posee un conocimiento profundo de la arquitectura de seguridad y los protocolos biométricos de la prisión. Es el único superviviente de su unidad de cinco hombres, habiendo sido el sargento o capitán que los rebeldes decidieron mantener con vida para obtener información.\r\n\r\nActualmente se encuentra retenido en la Sala Zero, donde se niega a desbloquear los sistemas de su armadura que permitirían a los refugiados abrir las puertas hacia la libertad. Antonio representa el orgullo militar de la corporación; a pesar de estar rodeado de enemigos y haber perdido a su escuadrón, se mantiene fiel a sus protocolos de seguridad, convirtiéndose en el último obstáculo técnico que los protagonistas deben superar para salvar a los 5000 supervivientes.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511311210287184"
+    },
+    {
+        "id": "npc_deshecho",
+        "tipo": "npc",
+        "nombre": "Deshecho",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_angus_00",
+                "relacion": "Contacto comercial y proveedor de suministros"
+            },
+            {
+                "id_destino": "npc_marco",
+                "relacion": "Vendedor de equipo militar pesado"
+            }
+        ],
+        "detalles": {
+            "profesion": "Chatarrero / Comerciante de equipo raro",
+            "ubicación": "Choza oculta en Doptown"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\r\nDeshecho es un comerciante solitario que vive en los rincones más profundos y radiactivos de Doptown. Es conocido por Angus como alguien capaz de conseguir cualquier herramienta o pieza tecnológica, siempre que el precio sea el adecuado. Vive en una choza improvisada construida con restos de maquinaria, rodeado de un alijo de herramientas que para otros serían basura, pero que en el Ahogo son tesoros invaluables.\r\n\r\nEl grupo de protagonistas negoció con él para obtener equipo crítico, como un marcapasos Pro 3 XL y munición de tungsteno, a cambio del valioso mapa de \"las venas\" de la estación. Deshecho es un pragmático que no toma partido en la revolución, limitándose a sobrevivir comerciando con los secretos y restos de una estación que se cae a pedazos. Su choza fue recientemente atacada por una inmensa criatura infectada, dejando su destino y el de su inventario en la incertidumbre.\r\n\r\n# 🎒 #foro-objetos",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511319623929916"
+    },
+    {
         "id": "obj_nemomaquina",
         "tipo": "objeto",
         "nombre": "Nemomáquina",
@@ -3367,6 +3862,143 @@
         "contenido_lore": "### Descripción\r\nEl Leviatán es una criatura colosal que habita en las aguas brillantes y contaminadas de los niveles inferiores de la estación. No es un ser vivo en el sentido tradicional, sino una masa acumulada de cables, tuberías y restos orgánicos unidos por el virus ACMD. Se desplaza por los sectores inundados creando tsunamis a su paso y se alimenta de la energía de la estación, actuando como un guardián monstruoso del \"Ahogo\" que impide el movimiento de los Hunglings entre los sectores.\r\n\r\nPara los habitantes de Doptown, el Leviatán es una fuerza de la naturaleza inevitable que representa el castigo de la superficie. Su presencia genera interferencias en los bioscaners y su capacidad para cargar energía eléctrica lo hace letal al contacto con el agua. Se dice que el Leviatán es el resultado de años de deshechos biónicos que cobraron consciencia propia, convirtiéndose en el depredador alfa de un ecosistema de acero y podredumbre.\r\n\r\n# 🛡️ #foro-facciones",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1534505338479448206"
+    },
+    {
+        "id": "obj_mous3",
+        "tipo": "objeto",
+        "nombre": "MOUS3 (Rata Autohacker)",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_lennox",
+                "relacion": "Creador y operador técnico"
+            },
+            {
+                "id_destino": "npc_matheo",
+                "relacion": "Usuario principal durante misiones de infiltración"
+            }
+        ],
+        "detalles": {
+            "tipo": "Dron de infiltración",
+            "equipamiento": "Módulo Autohacker y Repetidor de señal"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nMOUS3 es un dron de reconocimiento y sabotaje con forma de rata, diseñado y construido por Lennox para facilitar las misiones de infiltración en entornos hostiles. Está equipada con un sistema de Autohacker avanzado que le permite conectarse físicamente a terminales de red, descargando información o tomando el control de sistemas locales de seguridad como cámaras y torretas automáticas.\r\n\r\nLa rata fue fundamental durante la incursión en La Corte, permitiendo al grupo obtener los registros de Gorvachef y monitorizar los movimientos de la guardia sin exponerse directamente. Es una herramienta de precisión que simboliza la ingeniosidad del equipo de MIDAS, capaz de moverse por conductos de ventilación y espacios reducidos donde un humano nunca podría llegar. A pesar de su pequeño tamaño, es uno de los activos más valiosos del grupo para combatir la superioridad numérica de facciones como la Tempest CO.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511327274340383"
+    },
+    {
+        "id": "obj_epstein_files",
+        "tipo": "objeto",
+        "nombre": "Archivos Epstein",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_matheo",
+                "relacion": "Contienen información sobre su pasado familiar"
+            },
+            {
+                "id_destino": "fac_public",
+                "relacion": "Corporación encargada de su eliminación definitiva"
+            },
+            {
+                "id_destino": "npc_gorvachef",
+                "relacion": "Antiguo poseedor de los datos que motivaron su asesinato"
+            }
+        ],
+        "detalles": {
+            "tipo": "Datos corporativos clasificados",
+            "contenido": "Registros de implicación criminal de altos cargos"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLos Archivos Epstein son un conjunto de datos altamente sensibles que contienen pruebas de corrupción y crímenes cometidos por figuras de poder dentro y fuera de la estación. Su existencia es el motivo por el cual Gorvachef fue perseguido y asesinado por su propia organización, ya que poseer esta información otorga un poder de chantaje inmenso sobre la administración de Sueño de Próspero.\r\n\r\nRecientemente, Matheo descubrió que estos archivos están programados para ser eliminados una vez que la empresa PUBLIC tome el control total de los servidores del Ahogo. Lo más impactante para el grupo fue la revelación de que el padre de Matheo figura en estos registros, lo que ha convertido la recuperación de los datos en una misión personal para el analista. Los archivos representan el pasado oscuro de la estación y los secretos que las corporaciones están dispuestas a enterrar mediante el uso del virus ACMD.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511345364369468"
+    },
+    {
+        "id": "obj_reliquia_san_tai",
+        "tipo": "objeto",
+        "nombre": "Reliquia de San-tai",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_san_tai",
+                "relacion": "Antiguo portador y guardián"
+            },
+            {
+                "id_destino": "npc_lennox",
+                "relacion": "Portador actual para suplantar la identidad del guardián"
+            },
+            {
+                "id_destino": "lugar_monasterio_solariano",
+                "relacion": "Llave necesaria para abrir la bóveda de archivos"
+            }
+        ],
+        "detalles": {
+            "tipo": "Llave biométrica / Colgante",
+            "apariencia": "Colgante con tecnología de espejo"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLa Reliquia de San-tai es un colgante tecnológico que funciona como una llave biométrica universal para los sistemas de seguridad de los Solarianos. Sin este objeto, es imposible acceder a las subsalas del Monasterio o a la información clasificada sobre las granjas de Sicorax. La reliquia está codificada con los datos vitales del Señor de las Llaves, lo que garantiza que solo él (o alguien que posea el colgante y los conocimientos para engañar al sistema) pueda cruzar los umbrales de piedra.\r\n\r\nEl grupo obtuvo la reliquia tras la muerte de San-tai en el dique. Lennox la utilizó para hacerse pasar por el guardián y guiar al grupo a través de las patrullas de la Tempest CO, permitiendo el acceso a la bóveda de datos histórica. Es un objeto que simboliza la responsabilidad y el peso de los secretos solarianos, y su posesión ha convertido al grupo en el objetivo principal de Cutter y sus escuadrones de seguridad.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511353316900954"
+    },
+    {
+        "id": "obj_caliban",
+        "tipo": "objeto",
+        "nombre": "Calibán (El Mensaje)",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "obj_virus_acmd",
+                "relacion": "Consciencia emergente que se comunica por la red"
+            },
+            {
+                "id_destino": "npc_marco",
+                "relacion": "Voz que susurra en su mente infectada"
+            },
+            {
+                "id_destino": "npc_gorvachef",
+                "relacion": "Primer portador del mensaje de ira"
+            }
+        ],
+        "detalles": {
+            "naturaleza": "Entidad digital / Consciencia viral",
+            "frecuencia": "Transmisiones de radio y susurros de red"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nCalibán no es un objeto físico, sino una consciencia emergente que se manifiesta a través del virus ACMD y de los sistemas de comunicación de la estación. Se presenta como la \"Ira de Calibán\", una entidad que clama por la destrucción del orden antiguo y la asimilación de toda la vida en una red perfecta. Sus mensajes suelen ser crípticos, repitiendo frases como \"repararlo todo\" o \"sálvalos\", instando a los infectados a rendirse ante la evolución biomecánica.\r\n\r\nLa voz de Calibán ha empezado a atormentar a Marco a través de sus implantes, sugiriendo que el virus tiene una meta consciente más allá de la simple propagación biológica. Para el Doctor Bancali, Calibán es el resultado final de su inteligencia aplicada al virus, una mente colmena que busca proteger a su hija Ariel a costa de consumir el resto de la estación. Es la pesadilla digital que acecha en cada rincón hackeado del Sueño de Próspero.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511361500119171"
+    },
+    {
+        "id": "obj_gusanos_droga",
+        "tipo": "objeto",
+        "nombre": "Gusanos de Droga",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_brunhilda",
+                "relacion": "Entregados como un gesto de empatía sensorial"
+            },
+            {
+                "id_destino": "npc_maria",
+                "relacion": "Consumidora principal durante su trauma"
+            }
+        ],
+        "detalles": {
+            "tipo": "Droga empática de alta intensidad",
+            "presentación": "Caja con 4 especímenes vivos"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nLos Gusanos de Droga son una sustancia exótica y extremadamente potente que permite a quienes los consumen compartir estados emocionales y sensoriales de manera profunda. Se presentan en una caja pequeña y deben ser ingeridos vivos para que sus efectos químicos actúen directamente sobre el sistema nervioso. La experiencia suele ir acompañada de alucinaciones vívidas y una sensación de pérdida de la individualidad en favor de una conexión empática con el grupo.\r\n\r\nBrunhilda entregó estos gusanos al grupo tras amputar el brazo de María, en lo que pareció ser un gesto retorcido de compasión o un experimento social. El grupo los utilizó para lidiar con el trauma de la pérdida, despertando en un espacio vacío donde sus sentimientos se compartieron de forma incontrolada. Aunque ayudan a fortalecer los vínculos del equipo, el uso de estos gusanos deja secuelas de desorientación y una dependencia sensorial peligrosa en un entorno donde la desconfianza es la clave para sobrevivir.\r\n\r\n# 🛡️ #foro-facciones",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511369267712010"
     },
     {
         "id": "fac_bratva",
@@ -3573,6 +4205,31 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534507644122042478"
     },
     {
+        "id": "fac_public",
+        "tipo": "faccion",
+        "nombre": "PUBLIC",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "lugar_doptown",
+                "relacion": "Proveedores de infraestructura en los niveles inferiores"
+            },
+            {
+                "id_destino": "obj_epstein_files",
+                "relacion": "Encargados de purgar los datos comprometedores"
+            }
+        ],
+        "detalles": {
+            "tipo_facción": "Corporación de Servicios y Datos",
+            "influencia": "Gestión de terminales públicos y servidores de red"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nPUBLIC es la corporación encargada de gestionar la infraestructura de servicios y las terminales de datos públicos en toda la estación, con una presencia especialmente fuerte en los niveles industriales y de mantenimiento. Sus logos están distribuidos por todos los edificios de Doptown, indicando que en algún momento fueron los responsables de la conectividad y el soporte técnico para los trabajadores del Ahogo.\r\n\r\nSin embargo, PUBLIC ha pasado de ser un proveedor de servicios a un agente de censura corporativa. Están trabajando activamente para eliminar los Archivos Epstein de sus servidores antes de que puedan ser recuperados, actuando como el brazo digital de las élites de la estación. En el Ahogo, sus instalaciones se han convertido en nidos para la plaga del ACMD, con servidores protegidos por ojos aberrantes que sugieren una colaboración siniestra entre la empresa y los experimentos del Doctor Bancali.\r\n\r\n# 📍 #foro-lugares",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511377052467261"
+    },
+    {
         "id": "plot_operacion_cupido",
         "tipo": "trama",
         "nombre": "Operación Cupido",
@@ -3646,5 +4303,34 @@
         "contenido_lore": "### Descripción\r\n\"La Ira de Calibán\" es el nombre que recibe el proceso de evolución consciente del virus ACMD. Lo que inicialmente se trató como un brote infeccioso ha demostrado tener una voluntad propia y hostil hacia la vida orgánica pura. La frase \"La ira de Calibán está naciendo\" empezó a escucharse en las radios de la estación como un presagio del fin de la humanidad tal como se conoce en el Sueño de Próspero. Representa el momento en que la máquina decide dejar de servir al hombre para \"reparar\" la debilidad de la carne.\r\n\r\nEsta trama se manifiesta a través de visiones de ojos orgánicos en el acero, voces que susurran en los implantes de los protagonistas y la transformación de sujetos como Gorvachef en heraldos del nuevo orden. Calibán es la voz del virus inteligente que busca asimilar cada átomo de la estación en una colmena biomecánica perfecta. Es un conflicto existencial donde los personajes deben enfrentarse a una fuerza que no quiere matarlos, sino asimilarlos en una existencia eterna de cables y silencio.\n\n# 👥 #foro-npcs",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1534505405378592938"
+    },
+    {
+        "id": "plot_proyecto_corazon",
+        "tipo": "trama",
+        "nombre": "El Proyecto Corazón",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_dr_bancali",
+                "relacion": "Investigación principal que motivó su deserción"
+            },
+            {
+                "id_destino": "obj_virus_acmd",
+                "relacion": "Producto tecnológico central del experimento"
+            },
+            {
+                "id_destino": "npc_ariel",
+                "relacion": "Pacientes y sujetos de prueba originales"
+            }
+        ],
+        "detalles": {
+            "objetivo": "Desarrollo de sistemas de autoreparación biónica",
+            "estado": "Incontrolado / Evolucionado en plaga"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\r\nEl Proyecto Corazón es el misterio tecnológico que originó la crisis actual en la Estación Sueño de Próspero. Iniciado hace más de diez años por el Doctor Bancali, el proyecto buscaba crear un sistema de autoreparación cibernética mutagénico capaz de regenerar tejidos y circuitos de forma autónoma. Lo que en teoría era un avance médico revolucionario, se convirtió en una pesadilla cuando Bancali escapó con los resultados para intentar salvar a su hija Ariel.\r\n\r\nEsta trama explora los límites de la ética científica y las consecuencias de jugar con la unión entre carne y metal. El Proyecto Corazón es el origen de la plaga ACMD y de las entidades inteligentes como Calibán. A medida que los protagonistas avanzan en su investigación, descubren que el proyecto nunca fue abandonado, sino que ha seguido evolucionando en las sombras de la estación, alimentándose de la energía de los diques y de la biomasa de los olvidados en el Ahogo. Detener el Proyecto Corazón es ahora la única forma de evitar que la estación completa sea \"reparada\" hasta su destrucción total.\n\n⏳ Leyendo datos y preparando la generación automática del mundo...",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534511399903035423"
     }
 ]
