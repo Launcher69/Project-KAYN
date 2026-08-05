@@ -112,7 +112,6 @@ export const WikiCard: React.FC<WikiCardProps> = ({
 
       {/* Card Body */}
       <div className="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-2.5 sm:space-y-3">
-        
         <div>
           {/* Title */}
           <h3
@@ -147,7 +146,6 @@ export const WikiCard: React.FC<WikiCardProps> = ({
             </div>
           )}
         </div>
-
       </div>
     </div>
   );

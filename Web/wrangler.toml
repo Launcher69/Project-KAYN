@@ -1,0 +1,9 @@
+name = "multiverso-wiki"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "./dist"
+
+# Configuración de Base de Datos Cloudflare D1
+[[d1_databases]]
+binding = "DB"
+database_name = "multiverso_db"
+database_id = "e0819983-8546-40b7-a1c3-4df72c65d898"

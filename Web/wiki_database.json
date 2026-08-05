@@ -1,6 +1,4 @@
-import { WikiItem } from '../types';
-
-export const INITIAL_WIKI_DATA: WikiItem[] = [
+[
   {
     "id": "mundo_contemporaneo",
     "tipo": "mundo",
@@ -405,10 +403,10 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "url_discord": "https://discord.com/channels/1525578054330482688/1529950842097107194"
   },
   {
-    "id": "mundo_hillys",
+    "id": "Beyond_Good_Evil",
     "tipo": "mundo",
     "nombre": "Beyond Good & Evil - Planeta Hillys",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": {
       "facciones_presentes": [
         "faccion_gobierno_hillys",
@@ -442,7 +440,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "lugar_luna_selene",
     "tipo": "lugar",
     "nombre": "Base DomZ en la Luna Selene",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_gran_sacerdote_domz",
@@ -477,7 +475,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "lugar_refugio_orfanato",
     "tipo": "lugar",
     "nombre": "Refugio del Orfanato (El Faro)",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_jade",
@@ -512,7 +510,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "lugar_akuda_bar",
     "tipo": "lugar",
     "nombre": "Bar Akuda",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_ming_tzu",
@@ -543,7 +541,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "lugar_taller_mammago",
     "tipo": "lugar",
     "nombre": "Taller Mecánico de los Hermanos Mammago",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_hermanos_mammago",
@@ -574,7 +572,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "lugar_fabrica_nutripills",
     "tipo": "lugar",
     "nombre": "Antigua Fábrica de Nutripills",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_double_h",
@@ -609,7 +607,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "lugar_matadero_cuarentena",
     "tipo": "lugar",
     "nombre": "El Matadero (Centro de Cuarentena Alfa)",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "faccion_secciones_alfa",
@@ -640,7 +638,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "npc_jade",
     "tipo": "npc",
     "nombre": "Jade",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "lugar_refugio_orfanato",
@@ -670,7 +668,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
       "origen": "Misterioso (Vinculado a la energía ancestral DomZ 'Shauni')"
     },
     "etiquetas_discord": ["Shauni", "Reportera", "Heroína"],
-    "contenido_lore": "### Biografía\nJade es una joven independiente, empática y de tenacidad inquebrantable. Criada en el Refugio del Faro junto a su tío Pey'j, combina una profunda calidez humana con una destreza física envidiable en el combate con bastón Dai-Jo.\n\nTras la pérdida de los padres de varios niños de la isla a manos de las tropas alienígenas, Jade asumió la responsabilidad de mantener el orfanato con escasos recursos. Asumiendo el pseudónimo de **Shauni**, utiliza su cámara fotográfica para atravesar la censura militar y revelar la verdad.\n\n### Habilidades Clave\n- **Artes Marciales Dai-Jo:** Dominio excepcional del bastón de combate y técnicas de desvío de proyectiles.\n- **Fotoperiodismo de Investigación:** Infiltración sigilosa en instalaciones militares con la cámara fotográfica de alta resolución.\n- **Concentración Espiritual Shauni:** Capacidad para liberar ondas de energía purificadora contra entes DomZ.\n\n### Equipamiento Registrado\n- **Bastón de Titanio Dai-Jo:** Incorpora resonadores MecaImpulso para combate cercano.\n- **Cámara Digital IRIS:** Con IA Secundo integrada, escáner de flora/fauna y zoom óptico ultra-distante.",
+    "contenido_lore": "### Biografía\nJade es una joven independiente, empática y de tenacidad inquebrantable. Criada en el Refugio del Faro junto a su tío Pey'j, combina una profunda calidez humana con una destreza física envidiable en el combate con bastón Dai-Jo.\n\nTras la pérdida de los padres de varios niños de la isla a manos de las tropas alienígenas, Jade asumió la responsabilidad de mantener el orfanato con escasos recursos. Asumiendo el pseudónimo de **Shauni**, utiliza su cámara fotográfica para atravesar la censura militar y revelar la verdad.",
     "imagenes": [
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"
     ],
@@ -680,7 +678,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "npc_peyj",
     "tipo": "npc",
     "nombre": "Pey'j",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_jade",
@@ -705,7 +703,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
       "equipo": "Cortador de Jet-Boots (Botas Propulsoras) y llave inglesa pesada"
     },
     "etiquetas_discord": ["Mecánico", "Inventor", "Tío"],
-    "contenido_lore": "### Biografía\nPey'j es un híbrido porcino de carácter cascarrabias pero corazón de oro. Experto absoluto en mecánica, soldadura e ingeniería improvisada, es capaz de construir o reparar cualquier máquina a partir de chatarra militar. Detrás de sus constantes quejas se esconde una devoción total hacia su sobrina adoptiva Jade.\n\n### Habilidades y Equipamiento\n- **Ingeniería MecaImpulso:** Capaz de diseñar los propulsores estelares y las Botas Propulsoras a partir de chatarra.\n- **Super Pisotón:** Ataque destructivo con botas hidráulicas para hacer volar en el aire a los enemigos.\n\n### Secretos de la Resistencia\nPey'j conoció a los verdaderos padres de Jade durante los primeros días de la invasión DomZ. Construyó el refugio del Faro y mantuvo en absoluto secreto su propia implicación histórica en la creación clandestina de la Red IRIS para proteger a Jade.",
+    "contenido_lore": "### Biografía\nPey'j es un híbrido porcino de carácter cascarrabias pero corazón de oro. Experto absoluto en mecánica, soldadura e ingeniería improvisada, es capaz de construir o reparar cualquier máquina a partir de chatarra militar. Detrás de sus constantes quejas se esconde una devoción total hacia su sobrina adoptiva Jade.",
     "imagenes": [
       "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=1200&q=80"
     ],
@@ -715,7 +713,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "npc_double_h",
     "tipo": "npc",
     "nombre": "Doble H (Hubert)",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_jade",
@@ -750,7 +748,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "npc_secundo",
     "tipo": "npc",
     "nombre": "Secundo",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_jade",
@@ -777,7 +775,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "npc_gobernadora_hillys",
     "tipo": "npc",
     "nombre": "Gobernadora de Hillys",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "faccion_gobierno_hillys",
@@ -808,7 +806,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "npc_general_keyl",
     "tipo": "npc",
     "nombre": "General Keyl",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "faccion_secciones_alfa",
@@ -843,7 +841,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "npc_gran_sacerdote_domz",
     "tipo": "npc",
     "nombre": "Gran Sacerdote DomZ",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "faccion_domz",
@@ -878,7 +876,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "npc_hermanos_mammago",
     "tipo": "npc",
     "nombre": "Los Hermanos Mammago",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "lugar_taller_mammago",
@@ -909,7 +907,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "npc_ming_tzu",
     "tipo": "npc",
     "nombre": "Ming-Tzu",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "lugar_akuda_bar",
@@ -940,7 +938,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "objeto_hovercraft",
     "tipo": "objeto",
     "nombre": "Deslizador / Hovercraft MecaImpulso",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_jade",
@@ -975,7 +973,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "objeto_nave_beluga",
     "tipo": "objeto",
     "nombre": "Nave Espacial Beluga",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_jade",
@@ -1010,7 +1008,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "objeto_baston_dai_jo",
     "tipo": "objeto",
     "nombre": "Bastón de Combate Dai-Jo",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_jade",
@@ -1037,7 +1035,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "objeto_camara_fotografica",
     "tipo": "objeto",
     "nombre": "Cámara Fotográfica MecaImpulso",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_jade",
@@ -1068,7 +1066,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "objeto_perlas_azules",
     "tipo": "objeto",
     "nombre": "Perlas Azules DomZ",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "faccion_domz",
@@ -1095,7 +1093,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "faccion_red_iris",
     "tipo": "faccion",
     "nombre": "Red IRIS",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_jade",
@@ -1134,7 +1132,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "faccion_secciones_alfa",
     "tipo": "faccion",
     "nombre": "Las Secciones Alfa",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_general_keyl",
@@ -1169,7 +1167,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "faccion_domz",
     "tipo": "faccion",
     "nombre": "La Raza Alienígena DomZ",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_gran_sacerdote_domz",
@@ -1204,7 +1202,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "faccion_gobierno_hillys",
     "tipo": "faccion",
     "nombre": "Gobierno Planetario de Hillys",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_gobernadora_hillys",
@@ -1235,7 +1233,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "trama_defensa_faro",
     "tipo": "trama",
     "nombre": "La Protección del Faro y los Huérfanos",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "lugar_refugio_orfanato",
@@ -1266,7 +1264,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "trama_reportaje_iris",
     "tipo": "trama",
     "nombre": "Destapando la Conspiración Alfa (Reportaje Fotográfico)",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "faccion_red_iris",
@@ -1301,7 +1299,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "trama_rescate_peyj",
     "tipo": "trama",
     "nombre": "El Rescate de Pey'j y la Infiltración Alfa",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "npc_peyj",
@@ -1336,7 +1334,7 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     "id": "trama_amenaza_domz",
     "tipo": "trama",
     "nombre": "La Liberación de Hillys y la Batalla Final en la Luna",
-    "mundo_id": "mundo_hillys",
+    "mundo_id": "Beyond_Good_Evil",
     "relaciones": [
       {
         "id_destino": "lugar_luna_selene",
@@ -1367,4 +1365,4 @@ export const INITIAL_WIKI_DATA: WikiItem[] = [
     ],
     "url_discord": "https://discord.com/channels/1525578054330482688/1531282484166398013"
   }
-];
+]

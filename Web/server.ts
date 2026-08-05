@@ -61,6 +61,287 @@ async function startServer() {
     }
   });
 
+  // User persistence helpers
+  const getUsersFilePath = () => {
+    const publicPath = path.join(process.cwd(), "public", "users.json");
+    const rootPath = path.join(process.cwd(), "users.json");
+    if (!fs.existsSync(publicPath) && fs.existsSync(rootPath)) {
+      return rootPath;
+    }
+    return publicPath;
+  };
+
+  const saveUsersFile = (users: any[]) => {
+    try {
+      const jsonStr = JSON.stringify(users, null, 2);
+      const publicPath = path.join(process.cwd(), "public", "users.json");
+      const rootPath = path.join(process.cwd(), "users.json");
+      if (!fs.existsSync(path.dirname(publicPath))) {
+        fs.mkdirSync(path.dirname(publicPath), { recursive: true });
+      }
+      fs.writeFileSync(publicPath, jsonStr, "utf-8");
+      fs.writeFileSync(rootPath, jsonStr, "utf-8");
+    } catch (err) {
+      console.error("Error saving users.json:", err);
+    }
+  };
+
+  const loadUsersFile = (): any[] => {
+    try {
+      const filePath = getUsersFilePath();
+      if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, "utf-8");
+        const users = JSON.parse(fileContent);
+        if (Array.isArray(users)) {
+          let updated = false;
+          const adminExists = users.some(u => u.username.toLowerCase() === "admin");
+          if (!adminExists) {
+            users.unshift({
+              id: "user_admin",
+              username: "admin",
+              password: "admin",
+              role: "admin",
+              allowedWorldIds: null,
+              favorites: [],
+              avatarColor: "bg-indigo-600",
+              createdAt: new Date().toISOString()
+            });
+            updated = true;
+          }
+
+          const guestExists = users.some(u => u.username.toLowerCase() === "invitado");
+          if (!guestExists) {
+            users.push({
+              id: "user_invitado",
+              username: "Invitado",
+              password: "",
+              role: "guest",
+              allowedWorldIds: [], // Defaults to empty or configurable by admin
+              favorites: [],
+              avatarColor: "bg-slate-600",
+              createdAt: new Date().toISOString()
+            });
+            updated = true;
+          }
+
+          if (updated) {
+            saveUsersFile(users);
+          }
+          return users;
+        }
+      }
+    } catch (err) {
+      console.error("Error loading users.json:", err);
+    }
+
+    const defaultUsers = [
+      {
+        id: "user_admin",
+        username: "admin",
+        password: "admin",
+        role: "admin",
+        allowedWorldIds: null,
+        favorites: [],
+        avatarColor: "bg-indigo-600",
+        createdAt: new Date().toISOString()
+      },
+      {
+        id: "user_invitado",
+        username: "Invitado",
+        password: "",
+        role: "guest",
+        allowedWorldIds: [],
+        favorites: [],
+        avatarColor: "bg-slate-600",
+        createdAt: new Date().toISOString()
+      }
+    ];
+    saveUsersFile(defaultUsers);
+    return defaultUsers;
+  };
+
+  // API Users Endpoints
+  app.get("/api/users", (req, res) => {
+    const users = loadUsersFile();
+    return res.json({ success: true, users });
+  });
+
+  app.post("/api/users/login", (req, res) => {
+    const { username, password } = req.body;
+    if (!username) {
+      return res.status(400).json({ success: false, error: "Nombre de usuario requerido" });
+    }
+    const users = loadUsersFile();
+    const cleanUsername = String(username).trim().toLowerCase();
+    const user = users.find(u => u.username.toLowerCase() === cleanUsername);
+
+    if (!user) {
+      return res.status(404).json({ success: false, error: "Usuario no encontrado" });
+    }
+    // "Invitado" profile doesn't require password
+    if (user.role !== 'guest' && user.username.toLowerCase() !== 'invitado') {
+      if (user.password !== password) {
+        return res.status(401).json({ success: false, error: "Contraseña incorrecta" });
+      }
+    }
+    return res.json({ success: true, user });
+  });
+
+  app.post("/api/users/register", (req, res) => {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      return res.status(400).json({ success: false, error: "Nombre de usuario y contraseña requeridos" });
+    }
+    const cleanUsername = String(username).trim();
+    if (cleanUsername.toLowerCase() === 'invitado' || cleanUsername.toLowerCase() === 'admin') {
+      return res.status(400).json({ success: false, error: "Ese nombre de usuario está reservado por el sistema" });
+    }
+    const users = loadUsersFile();
+    const existing = users.find(u => u.username.toLowerCase() === cleanUsername.toLowerCase());
+    if (existing) {
+      return res.status(400).json({ success: false, error: "El nombre de usuario ya está registrado" });
+    }
+
+    const colors = ['bg-indigo-600', 'bg-purple-600', 'bg-emerald-600', 'bg-amber-600', 'bg-rose-600', 'bg-cyan-600'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+    const guestUser = users.find(u => u.username.toLowerCase() === 'invitado' || u.role === 'guest');
+    const guestAllowedWorlds = guestUser?.allowedWorldIds ? [...guestUser.allowedWorldIds] : [];
+
+    const newUser = {
+      id: `user_${Date.now()}`,
+      username: cleanUsername,
+      password,
+      role: "user",
+      allowedWorldIds: guestAllowedWorlds, // Default permissions copied from guest at creation
+      favorites: [],
+      avatarColor: randomColor,
+      createdAt: new Date().toISOString()
+    };
+
+    users.push(newUser);
+    saveUsersFile(users);
+    return res.json({ success: true, user: newUser });
+  });
+
+  app.put("/api/users/:id", (req, res) => {
+    const { id } = req.params;
+    const updates = req.body;
+    const users = loadUsersFile();
+    const index = users.findIndex(u => u.id === id);
+
+    if (index === -1) {
+      return res.status(404).json({ success: false, error: "Usuario no encontrado" });
+    }
+
+    const updatedUser = { ...users[index], ...updates };
+    users[index] = updatedUser;
+    saveUsersFile(users);
+    return res.json({ success: true, user: updatedUser });
+  });
+
+  app.delete("/api/users/:id", (req, res) => {
+    const { id } = req.params;
+    let users = loadUsersFile();
+    const userToDelete = users.find(u => u.id === id);
+
+    if (!userToDelete) {
+      return res.status(404).json({ success: false, error: "Usuario no encontrado" });
+    }
+    const lowerName = userToDelete.username.toLowerCase();
+    if (lowerName === "admin" || lowerName === "invitado") {
+      return res.status(400).json({ success: false, error: "No se pueden eliminar los usuarios especiales del sistema (admin e Invitado)" });
+    }
+
+    users = users.filter(u => u.id !== id);
+    saveUsersFile(users);
+    return res.json({ success: true });
+  });
+
+  // Export current JSON data as a SQL script for Cloudflare D1
+  app.get("/api/export-d1", (req, res) => {
+    try {
+      const users = loadUsersFile();
+      
+      let wikiItems: any[] = [];
+      const publicPath = path.join(process.cwd(), "public", "wiki_database.json");
+      const rootPath = path.join(process.cwd(), "wiki_database.json");
+      const wikiFile = fs.existsSync(publicPath) ? publicPath : (fs.existsSync(rootPath) ? rootPath : null);
+      if (wikiFile) {
+        wikiItems = JSON.parse(fs.readFileSync(wikiFile, "utf-8"));
+      }
+
+      let sql = `-- ESQUEMA E INSERCIÓN AUTOMÁTICA PARA CLOUDFLARE D1
+CREATE TABLE IF NOT EXISTS users (
+    id TEXT PRIMARY KEY,
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    role TEXT DEFAULT 'user',
+    avatar_url TEXT,
+    avatar_color TEXT DEFAULT 'bg-indigo-600',
+    allowed_world_ids TEXT,
+    favorites TEXT DEFAULT '[]',
+    created_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS wiki_items (
+    id TEXT PRIMARY KEY,
+    tipo TEXT NOT NULL,
+    nombre TEXT NOT NULL,
+    mundo_id TEXT NOT NULL,
+    relaciones TEXT,
+    detalles TEXT,
+    etiquetas_discord TEXT,
+    contenido_lore TEXT,
+    imagenes TEXT,
+    url_discord TEXT,
+    is_favorite INTEGER DEFAULT 0,
+    created_at TEXT
+);
+
+-- INSERCIÓN DE USUARIOS (${users.length}):
+`;
+
+      users.forEach((u: any) => {
+        const id = JSON.stringify(u.id || '');
+        const username = JSON.stringify(u.username || '');
+        const password = JSON.stringify(u.password || '');
+        const role = JSON.stringify(u.role || 'user');
+        const avatarUrl = u.avatarUrl ? JSON.stringify(u.avatarUrl) : 'NULL';
+        const avatarColor = JSON.stringify(u.avatarColor || 'bg-indigo-600');
+        const allowedWorldIds = u.allowedWorldIds !== undefined && u.allowedWorldIds !== null ? JSON.stringify(JSON.stringify(u.allowedWorldIds)) : 'NULL';
+        const favorites = JSON.stringify(JSON.stringify(u.favorites || []));
+        const createdAt = JSON.stringify(u.createdAt || new Date().toISOString());
+
+        sql += `INSERT OR REPLACE INTO users (id, username, password, role, avatar_url, avatar_color, allowed_world_ids, favorites, created_at) VALUES (${id}, ${username}, ${password}, ${role}, ${avatarUrl}, ${avatarColor}, ${allowedWorldIds}, ${favorites}, ${createdAt});\n`;
+      });
+
+      sql += `\n-- INSERCIÓN DE ARTÍCULOS WIKI (${wikiItems.length}):\n`;
+
+      wikiItems.forEach((w: any) => {
+        const id = JSON.stringify(w.id || '');
+        const tipo = JSON.stringify(w.tipo || '');
+        const nombre = JSON.stringify(w.nombre || '');
+        const mundoId = JSON.stringify(w.mundo_id || '');
+        const relaciones = w.relaciones ? JSON.stringify(JSON.stringify(w.relaciones)) : 'NULL';
+        const detalles = w.detalles ? JSON.stringify(JSON.stringify(w.detalles)) : 'NULL';
+        const etiquetas = w.etiquetas_discord ? JSON.stringify(JSON.stringify(w.etiquetas_discord)) : 'NULL';
+        const lore = w.contenido_lore ? JSON.stringify(w.contenido_lore) : 'NULL';
+        const imagenes = w.imagenes ? JSON.stringify(JSON.stringify(w.imagenes)) : 'NULL';
+        const urlDiscord = w.url_discord ? JSON.stringify(w.url_discord) : 'NULL';
+        const isFav = w.isFavorite ? 1 : 0;
+        const createdAt = JSON.stringify(w.createdAt || new Date().toISOString());
+
+        sql += `INSERT OR REPLACE INTO wiki_items (id, tipo, nombre, mundo_id, relaciones, detalles, etiquetas_discord, contenido_lore, imagenes, url_discord, is_favorite, created_at) VALUES (${id}, ${tipo}, ${nombre}, ${mundoId}, ${relaciones}, ${detalles}, ${etiquetas}, ${lore}, ${imagenes}, ${urlDiscord}, ${isFav}, ${createdAt});\n`;
+      });
+
+      res.setHeader("Content-Type", "text/plain; charset=utf-8");
+      return res.send(sql);
+    } catch (err: any) {
+      return res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

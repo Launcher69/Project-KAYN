@@ -26,12 +26,27 @@ export interface WikiItem {
 
 export type ViewMode = 'cards' | 'graph' | 'timeline' | 'table';
 
+export type SortOption = 'name_asc' | 'name_desc' | 'type' | 'relations_desc';
+
 export interface FilterState {
   search: string;
   world: string;
   category: CategoryType;
   tag: string;
   favoritesOnly: boolean;
+  sortBy: SortOption;
+}
+
+export interface User {
+  id: string;
+  username: string;
+  password: string;
+  role?: 'admin' | 'user' | 'guest';
+  avatarUrl?: string;
+  avatarColor?: string;
+  allowedWorldIds?: string[] | null; // null means all worlds allowed (e.g. admin or unrestricted)
+  favorites: string[]; // List of WikiItem IDs marked as favorites
+  createdAt: string;
 }
 
 export interface AiMessage {
