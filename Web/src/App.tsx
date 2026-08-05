@@ -32,31 +32,36 @@ export default function App() {
     return INITIAL_WIKI_DATA;
   });
 
-  // Fetch wiki_database.json dynamically on startup from server/static asset
+  // Fetch wiki_database.json dynamically on startup from GitHub (direct/raw & CDN) with local fallbacks
   useEffect(() => {
     const fetchWikiDatabase = async () => {
-      try {
-        // Try server API first
-        const apiRes = await fetch(`/api/wiki-data?t=${Date.now()}`);
-        if (apiRes.ok) {
-          const body = await apiRes.json();
-          if (body.success && Array.isArray(body.data)) {
-            setWikiData(body.data);
-            return;
-          }
-        }
+      const timestamp = Date.now();
+      const endpoints = [
+        // 1. Direct raw GitHub URL (updates immediately)
+        `https://raw.githubusercontent.com/Launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${timestamp}`,
+        // 2. jsDelivr CDN URL (GitHub mirror)
+        `https://cdn.jsdelivr.net/gh/Launcher69/Project-KAYN@main/Web/public/wiki_database.json?t=${timestamp}`,
+        // 3. Local server API
+        `/api/wiki-data?t=${timestamp}`,
+        // 4. Local static asset
+        `/wiki_database.json?t=${timestamp}`,
+      ];
 
-        // Direct static fetch of wiki_database.json
-        const staticRes = await fetch(`/wiki_database.json?t=${Date.now()}`);
-        if (staticRes.ok) {
-          const parsed = await staticRes.json();
-          if (Array.isArray(parsed)) {
-            setWikiData(parsed);
-            return;
+      for (const url of endpoints) {
+        try {
+          const res = await fetch(url);
+          if (res.ok) {
+            const body = await res.json();
+            const dataArray = Array.isArray(body) ? body : body?.data;
+            if (Array.isArray(dataArray) && dataArray.length > 0) {
+              setWikiData(dataArray);
+              console.log(`Wiki database loaded successfully from: ${url}`);
+              return;
+            }
           }
+        } catch (err) {
+          console.warn(`Attempt failed for ${url}:`, err);
         }
-      } catch (err) {
-        console.warn('Carga dinámica de wiki_database.json fallida, usando caché/datos base:', err);
       }
     };
 

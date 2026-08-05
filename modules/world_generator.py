@@ -3,31 +3,46 @@ import re
 import discord
 import yaml
 
-# Mapeo automático de 'tipo:' a su canal de foro
-TIPO_A_FORO = {
-    "mundo": "foro-mundos",
-    "lugar": "foro-lugares",
-    "npc": "foro-npcs",
-    "pc": "foro-npcs",
-    "personaje": "foro-npcs",
-    "faccion": "foro-facciones",
-    "organizacion": "foro-facciones",
-    "objeto": "foro-objetos",
-    "artefacto": "foro-objetos",
-    "trama": "foro-tramas",
-    "evento": "foro-tramas",
-}
+
+def get_target_forum_name(tipo: str) -> str:
+    """Calcula automáticamente el nombre del canal #foro-xxx de forma modular"""
+    tipo_clean = (tipo or "entidad").lower().strip()
+
+    # 1. Mapeos especiales conocidos
+    special_mappings = {
+        "npc": "foro-npcs",
+        "pc": "foro-npcs",
+        "personaje": "foro-npcs",
+        "organizacion": "foro-facciones",
+        "faccion": "foro-facciones",
+        "artefacto": "foro-objetos",
+        "objeto": "foro-objetos",
+        "evento": "foro-tramas",
+        "trama": "foro-tramas",
+        "lugar": "foro-lugares",
+        "mundo": "foro-mundos",
+    }
+
+    if tipo_clean in special_mappings:
+        return special_mappings[tipo_clean]
+
+    # 2. Generación dinámica de plurales para cualquier tipo nuevo (ej: poder -> foro-poderes)
+    if tipo_clean[-1] in "aeiouáéíóú":
+        plural = f"{tipo_clean}s"
+    else:
+        plural = f"{tipo_clean}es"
+
+    return f"foro-{plural}"
 
 
 def parse_master_text(full_text: str) -> list:
-    """Extrae cada ficha eliminando guiones dobles --- y encabezados de canal sobrantes"""
+    """Extrae cada ficha eliminando guiones dobles --- y cabeceras de canal sobrantes"""
     entities = []
 
     pattern = r"---\s*\n(.*?)\n---\s*\n?(.*?)(?=(?:---\s*\n|\Z))"
     matches = re.findall(pattern, full_text, re.DOTALL | re.MULTILINE)
 
     for yaml_str, markdown_lore in matches:
-        # 1. Limpiar el YAML para evitar el '---' doble al principio
         clean_yaml = re.sub(r"^---\s*", "", yaml_str.strip(), flags=re.M)
         clean_yaml = re.sub(r"---\s*$", "", clean_yaml.strip(), flags=re.M)
 
@@ -38,14 +53,12 @@ def parse_master_text(full_text: str) -> list:
             yaml_data = yaml.safe_load(clean_yaml)
             if isinstance(yaml_data, dict) and "id" in yaml_data:
 
-                # 2. Limpiar la lore eliminando las líneas tipo "# Canal: #foro-..." o "📌 Canal: #foro-..." al final
                 clean_lore = re.sub(
                     r"(?i)\n*#*\s*(?:📌|📍|👤|🎒|🛡️|📜)?\s*(?:CANAL|Canal):\s*#?foro-[\w-]+\s*$",
                     "",
                     markdown_lore.strip(),
                 ).strip()
 
-                # 3. Reconstruir el post limpio con UN SOLO '---' arriba y abajo
                 full_content = f"---\n{clean_yaml.strip()}\n---\n\n{clean_lore}"
 
                 entities.append(
@@ -65,7 +78,7 @@ def parse_master_text(full_text: str) -> list:
 
 
 async def process_world_generation(ctx):
-    """Lee mensajes o archivos .txt, crea foros faltantes y publica todos los hilos"""
+    """Lee mensajes o .txt, calcula el foro modularmente y publica todas las fichas"""
     category = ctx.channel.category
     if not category:
         await ctx.send(
@@ -77,9 +90,7 @@ async def process_world_generation(ctx):
         "⏳ Leyendo datos y preparando la generación automática del mundo..."
     )
 
-    # 1. Recopilar texto
     full_text = ""
-
     async for msg in ctx.channel.history(limit=100, oldest_first=True):
         if msg.attachments:
             for att in msg.attachments:
@@ -96,7 +107,6 @@ async def process_world_generation(ctx):
         )
         return
 
-    # 2. Parsear entidades individuales
     entities = parse_master_text(full_text)
     if not entities:
         await status_msg.edit(
@@ -105,10 +115,9 @@ async def process_world_generation(ctx):
         return
 
     await status_msg.edit(
-        content=f"🔍 Se detectaron **{len(entities)} fichas**. Comprobando foros en '{category.name}'..."
+        content=f"🔍 Se detectaron **{len(entities)} fichas**. Comprobando foros modulares en '{category.name}'..."
     )
 
-    # 3. Obtener o crear canales de foro necesarios
     existing_forums = {
         c.name.lower(): c
         for c in category.channels
@@ -119,14 +128,15 @@ async def process_world_generation(ctx):
 
     for entity in entities:
         tipo = entity["tipo"]
-        target_forum_name = TIPO_A_FORO.get(tipo, "foro-tramas")
+        # Obtener nombre de foro dinámico/modular (ej: poder -> foro-poderes)
+        target_forum_name = get_target_forum_name(tipo)
 
         if target_forum_name not in existing_forums:
             try:
                 new_forum = await category.create_forum(name=target_forum_name)
                 existing_forums[target_forum_name] = new_forum
                 print(
-                    f"✨ Foro Creado: #{target_forum_name} en '{category.name}'",
+                    f"✨ Foro Modular Creado: #{target_forum_name} en '{category.name}'",
                     flush=True,
                 )
                 await asyncio.sleep(1)
@@ -142,7 +152,6 @@ async def process_world_generation(ctx):
         title = entity["nombre"][:100]
 
         try:
-            # 4. Crear el hilo
             if len(content) <= 2000:
                 await forum.create_thread(name=title, content=content)
             else:

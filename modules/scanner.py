@@ -147,7 +147,10 @@ async def scan_guild_forums(guild: discord.Guild):
             )
             continue
 
-        if channel.name.lower() in TARGET_FORUMS:
+
+        # ANTES: if channel.name.lower() in TARGET_FORUMS:
+        # AHORA (MODULAR): Acepta cualquier canal de foro cuyo nombre empiece por "foro-"
+        if channel.name.lower().startswith("foro-"):
             print(
                 f"📂 Escaneando foro activo: #{channel.name} (Categoría: '{cat_name}')",
                 flush=True,
