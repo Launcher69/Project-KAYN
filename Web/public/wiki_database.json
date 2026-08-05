@@ -2903,36 +2903,6 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534505254337511556"
     },
     {
-        "id": "npc_angus_00",
-        "tipo": "npc",
-        "nombre": "Angus (Original / 00)",
-        "mundo_id": "world_sueno_prospero",
-        "relaciones": [
-            {
-                "id_destino": "npc_yandee",
-                "relacion": "Enemiga mortal que le dio por muerto"
-            },
-            {
-                "id_destino": "fac_hunglings",
-                "relacion": "Protegido y aliado estratégico"
-            },
-            {
-                "id_destino": "npc_mimi",
-                "relacion": "Antigua secretaria (su vínculo con la superficie)"
-            }
-        ],
-        "detalles": {
-            "ocupacion": "SysAdmin Original de la Estación",
-            "estado": "Superviviente en el exilio",
-            "objetivo": "Recuperar su puesto o ganar la medalla de plata"
-        },
-        "categoria_discord": "A Pound Of Flesh",
-        "etiquetas_discord": [],
-        "contenido_lore": "### Biografía y Trasfondo\r\nAngus es el Administrador de Sistemas original de la estación, un hombre calvo con antenas por ojos que una vez controló cada bit de información del Sueño de Próspero. Temiendo por su vida, creó una red de clones mediante la Nemomáquina, pero Yandee fue más astuta: utilizó sus propios clones para suplantarlo y lo arrojó a la Torre de Soporte Vital 1 hace seis años. Angus ha sobrevivido en el aislamiento más absoluto, operando desde las sombras para ayudar a la revolución del Ahogo mientras esperaba una oportunidad para \"volver a la partida\".\r\n\r\nFue rescatado por los protagonistas tras un brutal enfrentamiento con una criatura invisible en su torre. A pesar de sus años de soledad, Angus mantiene un intelecto afilado y una visión cínica de la realidad. Se ha unido al grupo como guía y soporte técnico, proporcionándoles acceso a las \"venas\" (los túneles ocultos) de la estación. Su objetivo no es el altruismo, sino el deseo egoísta de demostrar que es más listo que Yandee y recuperar su lugar en el tablero de control de la estación.",
-        "imagenes": [],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1534505262390444082"
-    },
-    {
         "id": "npc_imogene_key",
         "tipo": "npc",
         "nombre": "Imogene Key",
@@ -3211,6 +3181,76 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534505441260863610"
     },
     {
+        "id": "npc_angus_00",
+        "tipo": "npc",
+        "nombre": "Angus (Original / 00)",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Antigua socia que lo traicionó y suplantó con clones"
+            },
+            {
+                "id_destino": "fac_hunglings",
+                "relacion": "Aliado estratégico y protegido durante su exilio"
+            },
+            {
+                "id_destino": "obj_nemomaquina",
+                "relacion": "Creador de la red de clones que terminó siendo usada en su contra"
+            },
+            {
+                "id_destino": "lugar_soporte_vital_1",
+                "relacion": "Lugar donde permaneció oculto durante 6 años"
+            }
+        ],
+        "detalles": {
+            "identidad": "Sujeto original (00)",
+            "apariencia": "Calvo, antenas por ojos, sin los implantes de los clones",
+            "estado": "Exiliado / Pragmático",
+            "objetivo": "Recuperar el control de la red y vencer a Yandee"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\nAngus 00 es el Administrador de Sistemas original de la estación, el hombre que diseñó la infraestructura digital del Sueño de Próspero [3]. Temiendo por su seguridad, utilizó la **Nemomáquina** para crear una red de clones que sirvieran como medida preventiva, pero su plan se volvió en su contra cuando **Yandee** fue más astuta [1]. Hace seis años, ella lo traicionó, lo suplantó con uno de sus propios clones más dóciles y lo arrojó a las profundidades de la estación para que muriera en el olvido [1].\n\nSin embargo, el 00 sobrevivió en la **Torre de Soporte Vital 1**, operando desde las sombras para ayudar a la causa de los **Hunglings** y esperando el momento de su regreso [1, 4]. El grupo de protagonistas lo encontró por accidente mientras buscaban al \"ingeniero de Imogene\", descubriendo a un hombre que, aunque comparte el rostro de los clones de la superficie, carece de sus implantes y posee una visión mucho más cínica y ambiciosa de la realidad [2, 5]. Angus 00 no busca la justicia, sino \"ganar la partida\" a Yandee, aunque sea llevándose la \"medalla de plata\" al final",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534505854257074186"
+    },
+    {
+        "id": "npc_angus_sysadmin",
+        "tipo": "npc",
+        "nombre": "Angus SysAdmin",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_yandee",
+                "relacion": "Jefa y controladora de su red de clones"
+            },
+            {
+                "id_destino": "npc_mimi",
+                "relacion": "Secretaria personal y gestora de su agenda"
+            },
+            {
+                "id_destino": "npc_babushka",
+                "relacion": "Socia en el mantenimiento de la Nemomáquina"
+            },
+            {
+                "id_destino": "lugar_canyon_heavy_market",
+                "relacion": "Ubicación de sus oficinas principales"
+            }
+        ],
+        "detalles": {
+            "identidad": "Clones operativos de la superficie",
+            "apariencia": "Calvo, con antenas por ojos e implantes visibles",
+            "puesto": "Administrador de Sistemas de la Estación",
+            "seguridad": "Reserva en Stelar Burn con suelo eléctrico"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\nEste \"Angus\" es el que los protagonistas conocieron inicialmente en la superficie de la estación. Aunque tiene la misma apariencia física que el original (bajito, calvo y con antenas por ojos), se diferencia por poseer implantes tecnológicos que el original no tiene [2, 3]. En realidad, no es una sola persona, sino una red de clones creados mediante la **Nemomáquina**. Tras la traición sufrida por el Angus original hace seis años, **Yandee** tomó el control de esta red y utiliza al \"próximo Angus de la lista\" para mantener el control total de la información que fluye por la estación [1, 2].\n\nSu rol en la historia fue el de contratador principal durante la primera fase de vuestra estancia. A través de su secretaria, **Mimi**, os encargó la misión de infiltraros entre los Solarianos para conseguir la receta del Sicorax, ofreciéndoos a cambio 20 millones de créditos y una nave para abandonar el Sueño de Próspero [2, 4, 5]. Es una figura que proyecta una imagen de eficiencia burocrática y neutralidad, pero que en realidad es una herramienta de Yandee para vigilar a las facciones rebeldes como los Hunglings [5, 6].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534506363311362139"
+    },
+    {
         "id": "obj_nemomaquina",
         "tipo": "objeto",
         "nombre": "Nemomáquina",
@@ -3447,6 +3487,90 @@
         "contenido_lore": "### Descripción\r\nEl Sindicato es la unión de trabajadores del puerto y mantenimiento que, bajo el liderazgo de Reynard, funcionaba como un contrapoder necesario frente a la Bratva. Sin embargo, tras la muerte de Reynard, la organización ha caído en una lucha de facciones interna entre los seguidores de Hurón y los intereses ocultos de Mitski. Controlan los muelles, el tráfico de mercancías pequeñas y las redes de transporte ferroviario de la estación.\r\n\r\nA pesar de su fachada de unión laboral, el Sindicato opera como una mafia de cuello azul, cobrando por protección y gestionando el contrabando en los niveles medios. Actualmente se encuentran debilitados y divididos, lo que ha permitido que la Bratva y la Tempest CO ganen terreno en sus territorios. La supervivencia del Sindicato depende de si logran encontrar un nuevo líder capaz de unificar a los trabajadores antes de ser absorbidos por el caos del virus ACMD.\r\n\r\n# 📜 #foro-tramas",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1534505375791845396"
+    },
+    {
+        "id": "fac_midas",
+        "tipo": "faccion",
+        "nombre": "MIDAS",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_lennox",
+                "relacion": "Empleador del ingeniero y especialista en robótica"
+            },
+            {
+                "id_destino": "npc_marco",
+                "relacion": "Empleador del veterano de campo y operativo"
+            },
+            {
+                "id_destino": "npc_matheo",
+                "relacion": "Empleador del analista de datos e infiltración"
+            },
+            {
+                "id_destino": "npc_maria",
+                "relacion": "Empleador de la especialista médica y de apoyo"
+            },
+            {
+                "id_destino": "plot_operacion_cupido",
+                "relacion": "Socio capitalista y patrocinador de la investigación"
+            },
+            {
+                "id_destino": "npc_brunhilda",
+                "relacion": "Ha contratado sus servicios profesionales en el pasado"
+            }
+        ],
+        "detalles": {
+            "tipo_facción": "Mega-Corporación Interestelar",
+            "objetivo": "Recuperación de activos biotecnológicos y propiedad intelectual",
+            "estatus": "Externo / Patrocinador"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nMIDAS es la gigantesca entidad corporativa que mueve los hilos de los protagonistas desde fuera de la Estación Sueño de Próspero. Se trata de una organización con recursos casi ilimitados y un interés particular en la biotecnología avanzada y los sistemas de armamento experimental [1-3]. Son los responsables directos de haber reunido al equipo de mercenarios para ejecutar la \"Operación Cupido\", con el fin de localizar al Doctor Bancali y recuperar los resultados del Proyecto Corazón [3].\n\nAunque su presencia física en la estación es mínima, su influencia se siente a través del equipo que financian y las herramientas de alta tecnología que les proporcionan [2, 4-6]. Para MIDAS, la Estación Sueño de Próspero es simplemente un entorno hostil donde se encuentra un activo valioso que debe ser recuperado a toda costa, sin importar el colapso social o biológico que sufra la infraestructura. Su ética es puramente pragmática y basada en el beneficio, lo que a menudo pone a sus empleados en situaciones morales comprometidas [3, 7].",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534507520075239454"
+    },
+    {
+        "id": "fac_solarianos",
+        "tipo": "faccion",
+        "nombre": "Iglesia de los Solarianos",
+        "mundo_id": "world_sueno_prospero",
+        "relaciones": [
+            {
+                "id_destino": "npc_ukko_ukka",
+                "relacion": "Líder espiritual y Alto Jardinero de la congregación"
+            },
+            {
+                "id_destino": "lugar_monasterio_solariano",
+                "relacion": "Centro de culto y sede administrativa de la fe"
+            },
+            {
+                "id_destino": "lugar_granja_sicorax",
+                "relacion": "Productores secretos de la droga en laboratorios ocultos"
+            },
+            {
+                "id_destino": "fac_hunglings",
+                "relacion": "Principal donante financiero y aliado de su causa social"
+            },
+            {
+                "id_destino": "obj_psicorax",
+                "relacion": "Poseedores de la receta sagrada y el conocimiento de cultivo"
+            },
+            {
+                "id_destino": "fac_tempest_co",
+                "relacion": "Enemigos políticos bajo asedio por supuestas actividades terroristas"
+            }
+        ],
+        "detalles": {
+            "tipo_facción": "Organización Religiosa y Agrícola",
+            "ideología": "Conexión con la naturaleza y espiritualidad estelar",
+            "influencia": "Control del Sector V y de los archivos históricos de la estación"
+        },
+        "categoria_discord": "A Pound Of Flesh",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\nLa Iglesia de los Solarianos es una facción que busca preservar la esencia de la naturaleza en el entorno estéril y metálico de la estación. Liderados por Ukko-Ukka, se dedican al cuidado de jardines artificiales y a la celebración de ritos vinculados a los ciclos del cosmos, como la observación de supernovas [8-11]. Su sede, el Monasterio Solariano, es uno de los pocos lugares donde los ciudadanos pueden experimentar simulaciones rurales de un mundo perdido, aunque esto a menudo es solo un \"embrujo\" sensorial para ocultar la realidad industrial [12].\n\nA pesar de su apariencia pacífica y espiritual, los Solarianos son una de las facciones más políticamente activas y peligrosas para el orden establecido. Son los mayores donantes de la causa de los Hunglings, invirtiendo grandes sumas de dinero en intentar reducir las condenas de los marginados de Doptown [8, 13]. Además, custodian el secreto de la producción del Sicorax en granjas hidropónicas ocultas, lo que los pone en el punto de mira de la Tempest CO y de otras facciones que desean arrebatarles el monopolio tecnológico de la droga [8, 14]. Su seguridad no se basa en redes digitales, sino en sistemas analógicos de papel y llaves físicas, lo que los hace casi inmunes al hackeo convencional.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534507644122042478"
     },
     {
         "id": "plot_operacion_cupido",
