@@ -4334,5 +4334,166 @@
         "contenido_lore": "### Descripción\r\nEl Proyecto Corazón es el misterio tecnológico que originó la crisis actual en la Estación Sueño de Próspero. Iniciado hace más de diez años por el Doctor Bancali, el proyecto buscaba crear un sistema de autoreparación cibernética mutagénico capaz de regenerar tejidos y circuitos de forma autónoma. Lo que en teoría era un avance médico revolucionario, se convirtió en una pesadilla cuando Bancali escapó con los resultados para intentar salvar a su hija Ariel.\r\n\r\nEsta trama explora los límites de la ética científica y las consecuencias de jugar con la unión entre carne y metal. El Proyecto Corazón es el origen de la plaga ACMD y de las entidades inteligentes como Calibán. A medida que los protagonistas avanzan en su investigación, descubren que el proyecto nunca fue abandonado, sino que ha seguido evolucionando en las sombras de la estación, alimentándose de la energía de los diques y de la biomasa de los olvidados en el Ahogo. Detener el Proyecto Corazón es ahora la única forma de evitar que la estación completa sea \"reparada\" hasta su destrucción total.\n\n⏳ Leyendo datos y preparando la generación automática del mundo...",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1534511399903035423"
+    },
+    {
+        "id": "world_one_piece",
+        "tipo": "mundo",
+        "nombre": "El Mar de One Piece",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "lugar_going_merry",
+                "relacion": "Barco que navega por sus aguas"
+            },
+            {
+                "id_destino": "faccion_piratas_sombrero_paja",
+                "relacion": "Banda pirata que recorre este mundo"
+            }
+        ],
+        "detalles": {
+            "clima": "Variable y extremo según la región o la isla",
+            "tecnologia": "Anacrónica (Carabelas, Dials, Den Den Mushi)",
+            "amenazas": "Piratas, Marina, Reyes Marinos"
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nEl universo de One Piece es un vasto planeta compuesto predominantemente por agua, dividido en cuatro grandes océanos: East Blue, West Blue, North Blue y South Blue. Estos mares están separados por una gigantesca masa continental conocida como la Red Line y una peligrosa franja marítima conocida como la Grand Line, flanqueada a su vez por las peligrosas aguas calmadas del Calm Belt, hábitat natural de los letales Reyes Marinos.\n\nEs un mundo convulso marcado por la Gran Era Pirata, desencadenada tras la ejecución del Legendario Rey de los Piratas, Gol D. Roger. El Gobierno Mundial y su brazo militar, la Marina, intentan mantener un frágil control social bajo la premisa de la \"Justicia Absoluta\", mientras miles de tripulaciones se lanzan a la mar en busca del legendario tesoro final oculto en la última isla de la Grand Line.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534575428625236029"
+    },
+    {
+        "id": "lugar_going_merry",
+        "tipo": "lugar",
+        "nombre": "Going Merry",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "npc_monkey_d_luffy",
+                "relacion": "Capitán y protector de la nave"
+            },
+            {
+                "id_destino": "faccion_piratas_sombrero_paja",
+                "relacion": "Base móvil y hogar de la tripulación"
+            }
+        ],
+        "detalles": {
+            "tipo_lugar": "Carabela",
+            "ubicacion_actual": "East Blue / En ruta hacia la Grand Line",
+            "capacidad": "Tripulación pequeña"
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nEl Going Merry es una pequeña pero resistente carabela con aparejo de velamen mixto y un emblemático mascarón de proa con la forma de la cabeza de un carnero. Diseñado originalmente por Merry, el sirviente de la joven Kaya en la Villa Syrup, el barco fue regalado a la tripulación del Sombrero de Paja como agradecimiento por salvar la isla de las manos del Pirata Kuro.\n\nEl interior del barco cuenta con un camarote principal que sirve de comedor y sala de reuniones, un cañón frontal, una pequeña cocina y dormitorios para la tripulación. A pesar de no ser la embarcación más grande ni la más fuertemente armada del mar, posee un espíritu propio y resiste embates mortales gracias a la devoción y el cariño constante con el que sus tripulantes lo cuidan durante sus travesías.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534575442886135978"
+    },
+    {
+        "id": "npc_monkey_d_luffy",
+        "tipo": "npc",
+        "nombre": "Monkey D. Luffy",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "lugar_going_merry",
+                "relacion": "Capitán del barco"
+            },
+            {
+                "id_destino": "faccion_piratas_sombrero_paja",
+                "relacion": "Fundador y líder"
+            },
+            {
+                "id_destino": "objeto_sombrero_de_paja",
+                "relacion": "Propietario del tesoro sentimental"
+            }
+        ],
+        "detalles": {
+            "alias": "Luffy Sombrero de Paja",
+            "rol": "Capitán Pirata",
+            "recompensa": "30.000.000 Berries"
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía y Trasfondo\n\nNacido en la Villa Foosha en el East Blue, Luffy fue criado bajo la dura tutela de su abuelo, el Vicealmirante de la Marina Monkey D. Garp, y posteriormente por la familia de bandidos de Dadan junto a sus hermanos de juramento, Ace y Sabo. Desde muy niño sintió la llamada del mar tras entablar amistad con Shanks \"el Pelirrojo\", un poderoso capitán pirata que le salvó la vida a costa de su propio brazo y le confió su preciado sombrero de paja.\n\nInspirado por esa promesa y movido por un deseo inquebrantable de libertad absoluta, Luffy se hizo a la mar a los 17 años con la firme convicción de reclutar una tripulación leal y convertirse en el próximo Rey de los Piratas. Su personalidad es despreocupada, ingenua y extremadamente voraz cuando se trata de comida, pero muestra una determinación feroz e inquebrantable cuando sus amigos o camaradas están en peligro.\n\n### Habilidades\n\n- **Fruta Gomu Gomu:** Al haber ingerido accidentalmente una Fruta del Diablo de tipo Paramecia (o Zoan Mítica), su cuerpo adquirió las propiedades de la goma. Es inmune a los golpes físicos normales y a las descargas eléctricas, y puede estirar sus extremidades para atacar a larga distancia.\n- **Tácticas de Combate Improvistas:** Capaz de inventar técnicas creativas en el calor de la batalla para golpear con devastadora fuerza destructiva a sus rivales.\n\n### Equipamiento\n\n- **Sombrero de Paja de Shanks:** Su posesión más aprecia\n\nda. Protege el sombrero a toda costa en cada combate.\n\n### Secretos\n\n- Posee la mítica inicial \"D.\" en su nombre, vinculada al misterioso \"Voluntad de D.\" que desafía el orden del Gobierno Mundial.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534575455901057266"
+    },
+    {
+        "id": "objeto_sombrero_de_paja",
+        "tipo": "objeto",
+        "nombre": "Sombrero de Paja de Shanks",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "npc_monkey_d_luffy",
+                "relacion": "Pertenece actualmente a Luffy"
+            }
+        ],
+        "detalles": {
+            "rareza": "Único / Histórico",
+            "material": "Paja tejida con cinta de tela roja",
+            "resistencia": "Media (requiere costuras ocasionales)"
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nUn sombrero aparentemente común tejido en paja de color amarillo claro con una distintiva cinta roja alrededor de la copa. A pesar de su apariencia humilde y del desgaste natural por el paso del tiempo y las batallas, este objeto posee un valor sentimental e incalculable que trasciende su valor material.\n\nEl sombrero perteneció originalmente al mismísimo Rey de los Piratas, Gol D. Roger, quien más tarde se lo cedió a Shanks el Pelirrojo. Shanks, a su vez, se lo entregó al joven Monkey D. Luffy bajo el compromiso de que se lo devolviera una vez que se convirtiera en un gran pirata. Representa la promesa de la nueva generación y el símbolo de identidad de la banda pirata.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534575473282257090"
+    },
+    {
+        "id": "faccion_piratas_sombrero_paja",
+        "tipo": "faccion",
+        "nombre": "Piratas del Sombrero de Paja",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "npc_monkey_d_luffy",
+                "relacion": "Líder absoluto de la facción"
+            },
+            {
+                "id_destino": "lugar_going_merry",
+                "relacion": "Sede y transporte del grupo"
+            },
+            {
+                "id_destino": "trama_camino_a_grand_line",
+                "relacion": "Protagonistas principales de la trama"
+            }
+        ],
+        "detalles": {
+            "tipo_faccion": "Banda Pirata",
+            "alineacion": "Caótico Bueno",
+            "estatus": "En ascenso",
+            "base_operaciones": "Going Merry"
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nLos Piratas del Sombrero de Paja son una tripulación novata pero extraordinariamente capaz originaria del East Blue. Fundada por Monkey D. Luffy, la banda no busca conquistar territorios ni oprimir poblaciones; en su lugar, navegan motivados por las metas personales de cada uno de sus integrantes y por la búsqueda insaciable de libertad.\n\nA pesar de contar con muy pocos miembros en comparación con las grandes flotas del mar, cada integrante posee roles especializados indispensables (como espadachín, navegante, tirador o cocinero) y habilidades de combate temibles. Han demostrado ser capaces de desafiar a poderosos corsarios y a la propia Marina con tal de proteger a sus compañeros o liberar pueblos oprimidos.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534575487001694259"
+    },
+    {
+        "id": "trama_camino_a_grand_line",
+        "tipo": "trama",
+        "nombre": "El Camino a la Grand Line",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "faccion_piratas_sombrero_paja",
+                "relacion": "Banda que intenta cruzar la barrera"
+            },
+            {
+                "id_destino": "npc_monkey_d_luffy",
+                "relacion": "Impulsor del objetivo"
+            }
+        ],
+        "detalles": {
+            "estado": "En curso",
+            "nivel_prioridad": "Alta",
+            "objetivo_principal": "Navegar hacia la Reverse Mountain"
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nTras consolidar la tripulación básica en el East Blue y derrotar a los capitanes piratas más peligrosos de la región, el grupo del Sombrero de Paja ha puesto rumbo hacia la entrada de la Grand Line. El objetivo principal consiste en atravesar la peligrosa corriente ascendente de la Reverse Mountain para acceder al cementerio de piratas más letal del mundo.\n\nPara lograrlo, la tripulación debe asegurar suministros suficientes, superar las persecuciones de la Marina que busca cobrar sus recientes recompensas y evitar las destructivas tempestades que custodian el acceso a la montaña. Cruzar con éxito esta frontera marcará el verdadero inicio de la aventura en busca del legendario tesoro One Piece.\n\n⏳ Leyendo datos y preparando la generación automática del mundo...",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534575500712743014"
     }
 ]
