@@ -32,22 +32,44 @@ export default function App() {
     return INITIAL_WIKI_DATA;
   });
 
-  // Fetch wiki_database.json dynamically on startup from GitHub (direct/raw & CDN) with local fallbacks
+  // Fetch wiki_database.json dynamically on startup from GitHub API (instant live update), Raw GitHub, CDN, or Local
   useEffect(() => {
     const fetchWikiDatabase = async () => {
       const timestamp = Date.now();
-      const endpoints = [
-        // 1. Direct raw GitHub URL (updates immediately)
+
+      // 1. Try GitHub REST API first (No CDN caching, updates instantly upon commit)
+      try {
+        const ghApiRes = await fetch(
+          `https://api.github.com/repos/Launcher69/Project-KAYN/contents/Web/public/wiki_database.json?t=${timestamp}`
+        );
+        if (ghApiRes.ok) {
+          const ghJson = await ghApiRes.json();
+          if (ghJson.content && ghJson.encoding === 'base64') {
+            const cleanBase64 = ghJson.content.replace(/\n/g, '');
+            const binaryString = atob(cleanBase64);
+            const bytes = Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
+            const decodedText = new TextDecoder('utf-8').decode(bytes);
+            const parsedData = JSON.parse(decodedText);
+            if (Array.isArray(parsedData) && parsedData.length > 0) {
+              setWikiData(parsedData);
+              console.log('Wiki database loaded instantly from GitHub REST API');
+              return;
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('GitHub API fetch failed or rate limited, fallback to raw URLs:', err);
+      }
+
+      // 2. Fallbacks: Raw GitHub URL, CDN, Local API, Local File
+      const fallbackUrls = [
         `https://raw.githubusercontent.com/Launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${timestamp}`,
-        // 2. jsDelivr CDN URL (GitHub mirror)
         `https://cdn.jsdelivr.net/gh/Launcher69/Project-KAYN@main/Web/public/wiki_database.json?t=${timestamp}`,
-        // 3. Local server API
         `/api/wiki-data?t=${timestamp}`,
-        // 4. Local static asset
         `/wiki_database.json?t=${timestamp}`,
       ];
 
-      for (const url of endpoints) {
+      for (const url of fallbackUrls) {
         try {
           const res = await fetch(url);
           if (res.ok) {
@@ -55,12 +77,12 @@ export default function App() {
             const dataArray = Array.isArray(body) ? body : body?.data;
             if (Array.isArray(dataArray) && dataArray.length > 0) {
               setWikiData(dataArray);
-              console.log(`Wiki database loaded successfully from: ${url}`);
+              console.log(`Wiki database loaded successfully from fallback: ${url}`);
               return;
             }
           }
         } catch (err) {
-          console.warn(`Attempt failed for ${url}:`, err);
+          console.warn(`Fallback attempt failed for ${url}:`, err);
         }
       }
     };

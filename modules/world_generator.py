@@ -8,7 +8,6 @@ def get_target_forum_name(tipo: str) -> str:
     """Calcula automáticamente el nombre del canal #foro-xxx de forma modular"""
     tipo_clean = (tipo or "entidad").lower().strip()
 
-    # 1. Mapeos especiales conocidos
     special_mappings = {
         "npc": "foro-npcs",
         "pc": "foro-npcs",
@@ -26,7 +25,6 @@ def get_target_forum_name(tipo: str) -> str:
     if tipo_clean in special_mappings:
         return special_mappings[tipo_clean]
 
-    # 2. Generación dinámica de plurales para cualquier tipo nuevo (ej: poder -> foro-poderes)
     if tipo_clean[-1] in "aeiouáéíóú":
         plural = f"{tipo_clean}s"
     else:
@@ -78,7 +76,7 @@ def parse_master_text(full_text: str) -> list:
 
 
 async def process_world_generation(ctx):
-    """Lee mensajes o .txt, calcula el foro modularmente y publica todas las fichas"""
+    """Lee mensajes o .txt CREADOS ANTES del comando !generar_mundo"""
     category = ctx.channel.category
     if not category:
         await ctx.send(
@@ -86,24 +84,32 @@ async def process_world_generation(ctx):
         )
         return
 
+    # Mensaje de estado (se crea DESPUÉS del comando ctx.message)
     status_msg = await ctx.send(
         "⏳ Leyendo datos y preparando la generación automática del mundo..."
     )
 
     full_text = ""
-    async for msg in ctx.channel.history(limit=100, oldest_first=True):
+
+    # 🛡️ CORTE PERFECTO: 'before=ctx.message' ignora todo lo escrito DESPUÉS de lanzar el comando
+    async for msg in ctx.channel.history(
+        limit=100, before=ctx.message, oldest_first=True
+    ):
+        if msg.author.bot:
+            continue
+
         if msg.attachments:
             for att in msg.attachments:
                 if att.filename.endswith(".txt"):
                     file_bytes = await att.read()
                     full_text += file_bytes.decode("utf-8") + "\n\n"
 
-        if msg.content and not msg.content.startswith(ctx.prefix):
+        if msg.content:
             full_text += msg.content + "\n\n"
 
     if not full_text.strip():
         await status_msg.edit(
-            content="❌ No se encontró texto ni archivo `.txt` en este canal."
+            content="❌ No se encontró texto ni archivo `.txt` previo al comando en este canal."
         )
         return
 
@@ -128,7 +134,6 @@ async def process_world_generation(ctx):
 
     for entity in entities:
         tipo = entity["tipo"]
-        # Obtener nombre de foro dinámico/modular (ej: poder -> foro-poderes)
         target_forum_name = get_target_forum_name(tipo)
 
         if target_forum_name not in existing_forums:
