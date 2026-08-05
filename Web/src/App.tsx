@@ -60,23 +60,124 @@ export default function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
 
-  // Fetch users from server on mount to sync persistent permissions & admin changes
-  useEffect(() => {
-    const fetchServerUsers = async () => {
-      try {
-        const res = await fetch('/api/users');
-        if (res.ok) {
-          const data = await res.json();
-          if (data.success && Array.isArray(data.users)) {
-            setUsers(data.users);
+  // Fetch users from server to sync persistent permissions & admin changes
+  const fetchServerUsers = async () => {
+    try {
+      const res = await fetch(`/api/users?t=${Date.now()}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.users)) {
+          setUsers(data.users);
+        }
+      }
+    } catch (err) {
+      console.warn('Backend users API not available, using local cache:', err);
+    }
+  };
+
+  // Fetch wiki data: prioritize Cloudflare D1 /api/wiki-data first, then fallbacks
+  const fetchWikiDatabase = async () => {
+    const timestamp = Date.now();
+
+    // 1. Try local Cloudflare D1 API first
+    try {
+      const d1Res = await fetch(`/api/wiki-data?t=${timestamp}`);
+      if (d1Res.ok) {
+        const d1Data = await d1Res.json();
+        const items = Array.isArray(d1Data) ? d1Data : d1Data?.data;
+        if (Array.isArray(items) && items.length > 0) {
+          setWikiData(items);
+          return;
+        }
+      }
+    } catch (err) {
+      console.warn('Cloudflare D1 /api/wiki-data fetch error, trying fallbacks:', err);
+    }
+
+    // 2. Try GitHub REST API
+    try {
+      const ghApiRes = await fetch(
+        `https://api.github.com/repos/Launcher69/Project-KAYN/contents/Web/public/wiki_database.json?t=${timestamp}`
+      );
+      if (ghApiRes.ok) {
+        const ghJson = await ghApiRes.json();
+        if (ghJson.content && ghJson.encoding === 'base64') {
+          const cleanBase64 = ghJson.content.replace(/\n/g, '');
+          const binaryString = atob(cleanBase64);
+          const bytes = Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
+          const decodedText = new TextDecoder('utf-8').decode(bytes);
+          const parsedData = JSON.parse(decodedText);
+          if (Array.isArray(parsedData) && parsedData.length > 0) {
+            setWikiData(parsedData);
+            return;
           }
         }
-      } catch (err) {
-        console.warn('Backend users API not available, using local cache:', err);
+      }
+    } catch (err) {
+      console.warn('GitHub API fetch failed or rate limited:', err);
+    }
+
+    // 3. Fallbacks: Raw GitHub URL, CDN, Local File
+    const fallbackUrls = [
+      `https://raw.githubusercontent.com/Launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${timestamp}`,
+      `https://cdn.jsdelivr.net/gh/Launcher69/Project-KAYN@main/Web/public/wiki_database.json?t=${timestamp}`,
+      `/wiki_database.json?t=${timestamp}`,
+    ];
+
+    for (const url of fallbackUrls) {
+      try {
+        const res = await fetch(url);
+        if (res.ok) {
+          const body = await res.json();
+          const dataArray = Array.isArray(body) ? body : body?.data;
+          if (Array.isArray(dataArray) && dataArray.length > 0) {
+            setWikiData(dataArray);
+            return;
+          }
+        }
+      } catch {
+        // Fallback attempt failed
+      }
+    }
+  };
+
+  // Initial fetch and automatic periodic background synchronization (polling every 10s + focus trigger)
+  useEffect(() => {
+    fetchServerUsers();
+    fetchWikiDatabase();
+
+    // Auto sync every 10 seconds for real-time changes across mobile and PC
+    const interval = setInterval(() => {
+      fetchServerUsers();
+      fetchWikiDatabase();
+    }, 10000);
+
+    // Auto sync when user switches back to the browser window/tab or unlocks screen
+    const handleFocusOrVisibility = () => {
+      if (!document.hidden) {
+        fetchServerUsers();
+        fetchWikiDatabase();
       }
     };
-    fetchServerUsers();
+
+    window.addEventListener('focus', handleFocusOrVisibility);
+    document.addEventListener('visibilitychange', handleFocusOrVisibility);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('focus', handleFocusOrVisibility);
+      document.removeEventListener('visibilitychange', handleFocusOrVisibility);
+    };
   }, []);
+
+  // Save to localStorage when wikiData changes
+  useEffect(() => {
+    try {
+      localStorage.setItem('multiverse_wiki_data', JSON.stringify(wikiData));
+    } catch {
+      // Ignore quota errors
+    }
+  }, [wikiData]);
 
   // Save users to localStorage as backup
   useEffect(() => {
@@ -122,73 +223,6 @@ export default function App() {
     }
     return guestUser;
   }, [users, currentUserId, guestUser]);
-
-  // Fetch wiki_database.json dynamically on startup from GitHub API (instant live update), Raw GitHub, CDN, or Local
-  useEffect(() => {
-    const fetchWikiDatabase = async () => {
-      const timestamp = Date.now();
-
-      // 1. Try GitHub REST API first (No CDN caching, updates instantly upon commit)
-      try {
-        const ghApiRes = await fetch(
-          `https://api.github.com/repos/Launcher69/Project-KAYN/contents/Web/public/wiki_database.json?t=${timestamp}`
-        );
-        if (ghApiRes.ok) {
-          const ghJson = await ghApiRes.json();
-          if (ghJson.content && ghJson.encoding === 'base64') {
-            const cleanBase64 = ghJson.content.replace(/\n/g, '');
-            const binaryString = atob(cleanBase64);
-            const bytes = Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
-            const decodedText = new TextDecoder('utf-8').decode(bytes);
-            const parsedData = JSON.parse(decodedText);
-            if (Array.isArray(parsedData) && parsedData.length > 0) {
-              setWikiData(parsedData);
-              console.log('Wiki database loaded instantly from GitHub REST API');
-              return;
-            }
-          }
-        }
-      } catch (err) {
-        console.warn('GitHub API fetch failed or rate limited, fallback to raw URLs:', err);
-      }
-
-      // 2. Fallbacks: Raw GitHub URL, CDN, Local API, Local File
-      const fallbackUrls = [
-        `https://raw.githubusercontent.com/Launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${timestamp}`,
-        `https://cdn.jsdelivr.net/gh/Launcher69/Project-KAYN@main/Web/public/wiki_database.json?t=${timestamp}`,
-        `/api/wiki-data?t=${timestamp}`,
-        `/wiki_database.json?t=${timestamp}`,
-      ];
-
-      for (const url of fallbackUrls) {
-        try {
-          const res = await fetch(url);
-          if (res.ok) {
-            const body = await res.json();
-            const dataArray = Array.isArray(body) ? body : body?.data;
-            if (Array.isArray(dataArray) && dataArray.length > 0) {
-              setWikiData(dataArray);
-              console.log(`Wiki database loaded successfully from fallback: ${url}`);
-              return;
-            }
-          }
-        } catch (err) {
-          console.warn(`Fallback attempt failed for ${url}:`, err);
-        }
-      }
-    };
-
-    fetchWikiDatabase();
-  }, []);
-
-  // Save to localStorage when wikiData changes
-  useEffect(() => {
-    try {
-      localStorage.setItem('multiverse_wiki_data', JSON.stringify(wikiData));
-    } catch {
-      // Ignore quota errors
-    }
-  }, [wikiData]);
 
   // Filter & View State
   const [filter, setFilter] = useState<FilterState>(() => {
@@ -505,27 +539,51 @@ export default function App() {
   };
 
   // Delete item handler
-  const handleDeleteItem = (id: string, e: React.MouseEvent) => {
+  const handleDeleteItem = async (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     if (window.confirm('¿Estás seguro de eliminar esta entidad del lore?')) {
-      setWikiData((prev) => prev.filter((item) => item.id !== id));
+      const updated = wikiData.filter((item) => item.id !== id);
+      setWikiData(updated);
       if (selectedModalId === id) setSelectedModalId(null);
       playSound('click');
+
+      try {
+        await fetch('/api/wiki-data', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: updated }),
+        });
+      } catch (err) {
+        console.warn('Failed to delete item on backend:', err);
+      }
     }
   };
 
   // Save new/edited item
-  const handleSaveItem = (savedItem: WikiItem) => {
+  const handleSaveItem = async (savedItem: WikiItem) => {
+    let updated: WikiItem[] = [];
     setWikiData((prev) => {
       const exists = prev.some((i) => i.id === savedItem.id);
       if (exists) {
-        return prev.map((i) => (i.id === savedItem.id ? savedItem : i));
+        updated = prev.map((i) => (i.id === savedItem.id ? savedItem : i));
       } else {
-        return [savedItem, ...prev];
+        updated = [savedItem, ...prev];
       }
+      return updated;
     });
+
     setIsEditorOpen(false);
     setItemToEdit(null);
+
+    try {
+      await fetch('/api/wiki-data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: [savedItem] }),
+      });
+    } catch (err) {
+      console.warn('Failed to persist saved item to backend:', err);
+    }
   };
 
   return (
