@@ -27,8 +27,23 @@ export const WikiCard: React.FC<WikiCardProps> = ({
 }) => {
   const badgeColors = getItemTypeBadgeColor(item.tipo);
   const relations = parseRelations(item, wikiData);
-  const hasImage = item.imagenes && item.imagenes.length > 0;
   const worldName = getDisplayName(item.mundo_id, wikiData);
+
+  // Helper: Obtener la imagen propia de la entidad o heredar la del Mundo
+  const getCardImage = (item: WikiItem, wikiData: WikiItem[]): string | null => {
+    // 1. Si la entidad tiene foto propia, la usa
+    if (item.imagenes && item.imagenes.length > 0 && item.imagenes[0]) {
+      return item.imagenes[0];
+    }
+    // 2. Si no tiene foto, busca la foto del Mundo al que pertenece (mundo_id)
+    const parentWorld = wikiData.find((w) => w.id === item.mundo_id);
+    if (parentWorld && parentWorld.imagenes && parentWorld.imagenes.length > 0 && parentWorld.imagenes[0]) {
+      return parentWorld.imagenes[0];
+    }
+    return null;
+  };
+
+  const displayImage = getCardImage(item, wikiData);
 
   const getCategoryIcon = (tipo: string) => {
     const t = (tipo || '').toLowerCase();
@@ -61,11 +76,12 @@ export const WikiCard: React.FC<WikiCardProps> = ({
           playSound('modal');
         }}
       >
-        {hasImage ? (
+        {displayImage ? (
           <img
-            src={item.imagenes![0]}
+            src={displayImage}
             alt={item.nombre || item.id}
             referrerPolicy="no-referrer"
+            loading="lazy"
             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
             onError={(e) => {
               (e.target as HTMLElement).style.display = 'none';

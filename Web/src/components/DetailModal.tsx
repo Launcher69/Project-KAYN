@@ -34,6 +34,20 @@ interface DetailModalProps {
   onToggleFavorite: (id: string, e: React.MouseEvent) => void;
 }
 
+// Helper: Obtener la imagen propia o heredar la del Mundo
+const getItemDisplayImage = (targetItem: WikiItem, data: WikiItem[]): string | null => {
+  // 1. Imagen propia
+  if (targetItem.imagenes && targetItem.imagenes.length > 0 && targetItem.imagenes[0]) {
+    return targetItem.imagenes[0];
+  }
+  // 2. Imagen del Mundo al que pertenece (mundo_id)
+  const parentWorld = data.find((w) => w.id === targetItem.mundo_id);
+  if (parentWorld && parentWorld.imagenes && parentWorld.imagenes.length > 0 && parentWorld.imagenes[0]) {
+    return parentWorld.imagenes[0];
+  }
+  return null;
+};
+
 export const DetailModal: React.FC<DetailModalProps> = ({
   itemId,
   wikiData,
@@ -63,20 +77,21 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
   const badgeColors = getItemTypeBadgeColor(item.tipo);
   const worldName = getDisplayName(item.mundo_id, wikiData);
-  const hasImages = item.imagenes && item.imagenes.length > 0;
-  const [activeImage, setActiveImage] = useState<string>(hasImages ? item.imagenes![0] : '');
+  
+  // Obtener la imagen a mostrar (propia o del mundo)
+  const initialImage = getItemDisplayImage(item, wikiData);
+  const [activeImage, setActiveImage] = useState<string>(initialImage || '');
 
-  // Update active image when current item changes
+  // Sync activeImage cuando cambia el id o el item actual
   useEffect(() => {
-    if (item.imagenes && item.imagenes.length > 0) {
-      setActiveImage(item.imagenes[0]);
-    } else {
-      setActiveImage('');
-    }
-  }, [currentId]);
+    const displayImg = getItemDisplayImage(item, wikiData);
+    setActiveImage(displayImg || '');
+  }, [currentId, item, wikiData]);
+
+  const displayMainImage = activeImage || initialImage;
+  const hasDisplayImage = Boolean(displayMainImage);
 
   const handleInternalNavigate = (targetId: string) => {
-    // Truncate future history if navigated from middle
     const newStack = historyStack.slice(0, historyIndex + 1);
     newStack.push(targetId);
     setHistoryStack(newStack);
@@ -258,14 +273,14 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             </div>
           )}
 
-          <div className={`grid grid-cols-1 ${hasImages ? 'lg:grid-cols-12' : ''} gap-6`}>
+          <div className={`grid grid-cols-1 ${hasDisplayImage ? 'lg:grid-cols-12' : ''} gap-6`}>
             
             {/* Left Media Gallery Column */}
-            {hasImages && (
+            {hasDisplayImage && (
               <div className="lg:col-span-5 space-y-3">
                 <div className="relative w-full h-72 rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden shadow-lg">
                   <img
-                    src={activeImage || item.imagenes![0]}
+                    src={displayMainImage!}
                     alt={item.nombre || item.id}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-top"
@@ -275,10 +290,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   />
                 </div>
 
-                {/* Gallery Thumbnails */}
-                {item.imagenes!.length > 1 && (
+                {/* Gallery Thumbnails (Solo si el item tiene múltiples fotos propias) */}
+                {item.imagenes && item.imagenes.length > 1 && (
                   <div className="flex items-center gap-2 overflow-x-auto pb-1">
-                    {item.imagenes!.map((img, idx) => (
+                    {item.imagenes.map((img, idx) => (
                       <img
                         key={idx}
                         src={img}
@@ -298,7 +313,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             )}
 
             {/* Right Info Column */}
-            <div className={`${hasImages ? 'lg:col-span-7' : 'w-full'} space-y-5`}>
+            <div className={`${hasDisplayImage ? 'lg:col-span-7' : 'w-full'} space-y-5`}>
               
               {/* Title & Tags */}
               <div>

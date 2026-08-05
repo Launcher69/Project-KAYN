@@ -18,12 +18,15 @@ Por ahora, NO generes las fichas todavía. Únicamente analiza toda la partida y
 ---
 
 PASO 2:
+
+"REGLA ESTRICTA DE TIPO: El campo 'tipo:' en el YAML debe ser ÚNICAMENTE una de estas palabras en minúsculas: 'mundo', 'lugar', 'npc', 'objeto', 'faccion' o 'trama'. NUNCA añadas barras ni descriptores extra como 'Lugar / Nave' o 'Mundo / Espacial'. Si quieres especificar detalles, ponlos dentro de 'detalles:'."
+
 ¡Perfecto! Ahora genera ÚNICAMENTE las publicaciones completas para los canales:
 - 🌌 #foro-mundos
 - 📍 #foro-lugares
 
 Asegúrate de incluir todos los atributos en 'detalles:' y redactar las descripciones completas en varios párrafos.
-Da todo para copiar en un bloque
+Da todo para copiar en un bloque par que simplemente lo copie lo que te pido
 ---
 
 PASO 3:
