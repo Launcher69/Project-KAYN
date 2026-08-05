@@ -33,6 +33,48 @@ def get_target_forum_name(tipo: str) -> str:
     return f"foro-{plural}"
 
 
+def split_content_smart(content: str, max_length: int = 1850) -> list:
+    """Divide el texto estrictamente por párrafos completos (\n\n / punto y aparte)"""
+    chunks = []
+    remaining = content.strip()
+
+    while len(remaining) > max_length:
+        # 1. PRIMERA PRIORIDAD: Buscar el último 'punto y aparte' (\n\n) dentro del límite
+        split_pos = remaining.rfind("\n\n", 0, max_length)
+
+        # 2. SEGUNDA PRIORIDAD: Si un solo párrafo fuera gigante, buscar un punto y seguido (.\n o . )
+        if split_pos == -1 or split_pos < 400:
+            dot_pos = remaining.rfind(".\n", 0, max_length)
+            if dot_pos != -1 and dot_pos > 400:
+                split_pos = dot_pos + 1
+            else:
+                dot_space_pos = remaining.rfind(". ", 0, max_length)
+                if dot_space_pos != -1 and dot_space_pos > 400:
+                    split_pos = dot_space_pos + 1
+
+        # 3. TERCERA PRIORIDAD: Salto de línea simple
+        if split_pos == -1 or split_pos < 200:
+            split_pos = remaining.rfind("\n", 0, max_length)
+
+        # 4. ÚLTIMO RECURSO: Espacio entre palabras
+        if split_pos == -1:
+            split_pos = remaining.rfind(" ", 0, max_length)
+
+        if split_pos == -1:
+            split_pos = max_length
+
+        chunk = remaining[:split_pos].strip()
+        if chunk:
+            chunks.append(chunk)
+
+        remaining = remaining[split_pos:].strip()
+
+    if remaining:
+        chunks.append(remaining)
+
+    return chunks
+
+
 def parse_master_text(full_text: str) -> list:
     """Extrae cada ficha eliminando guiones dobles --- y cabeceras de canal sobrantes"""
     entities = []
@@ -84,14 +126,12 @@ async def process_world_generation(ctx):
         )
         return
 
-    # Mensaje de estado (se crea DESPUÉS del comando ctx.message)
     status_msg = await ctx.send(
         "⏳ Leyendo datos y preparando la generación automática del mundo..."
     )
 
     full_text = ""
 
-    # 🛡️ CORTE PERFECTO: 'before=ctx.message' ignora todo lo escrito DESPUÉS de lanzar el comando
     async for msg in ctx.channel.history(
         limit=100, before=ctx.message, oldest_first=True
     ):
@@ -157,20 +197,18 @@ async def process_world_generation(ctx):
         title = entity["nombre"][:100]
 
         try:
-            if len(content) <= 2000:
-                await forum.create_thread(name=title, content=content)
-            else:
-                first_part = content[:1900]
-                second_part = content[1900:]
+            # 🛡️ DIVISIÓN INTELIGENTE DE TEXTO: Respeta párrafos y no corta palabras
+            chunks = split_content_smart(content, max_length=1850)
 
+            if len(chunks) == 1:
+                await forum.create_thread(name=title, content=chunks[0])
+            else:
                 thread_with_msg = await forum.create_thread(
-                    name=title, content=first_part
+                    name=title, content=chunks[0]
                 )
                 thread = thread_with_msg.thread
 
-                while len(second_part) > 0:
-                    chunk = second_part[:1900]
-                    second_part = second_part[1900:]
+                for chunk in chunks[1:]:
                     await thread.send(chunk)
                     await asyncio.sleep(0.5)
 
