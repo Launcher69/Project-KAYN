@@ -9,7 +9,6 @@ import { INITIAL_WIKI_DATA } from './data/initialWikiData';
 import { getDisplayName } from './utils/textUtils';
 import { Navbar } from './components/Navbar';
 import { CategoryBar } from './components/CategoryBar';
-import { StatsOverview } from './components/StatsOverview';
 import { WikiCard } from './components/WikiCard';
 import { WikiGraph } from './components/WikiGraph';
 import { TimelineView } from './components/TimelineView';
@@ -20,7 +19,7 @@ import { Layers, Plus, Globe } from 'lucide-react';
 import { playSound } from './utils/soundEffects';
 
 export default function App() {
-  // Cargar datos desde localStorage como respaldo inicial
+  // Load data from localStorage if available, or fall back to initial dataset
   const [wikiData, setWikiData] = useState<WikiItem[]>(() => {
     try {
       const saved = localStorage.getItem('multiverse_wiki_data');
@@ -33,70 +32,47 @@ export default function App() {
     return INITIAL_WIKI_DATA;
   });
 
-  // URL directa a tu archivo en GitHub Raw con anti-caché
-  const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${Date.now()}`;
-
-
-  // Fetch ultra-rápido invirtiendo el orden (API de GitHub PRIMERO)
+  // Fetch wiki_database.json dynamically on startup from server/static asset
   useEffect(() => {
     const fetchWikiDatabase = async () => {
-      const timestamp = Date.now();
-      
-      // API de GitHub primero (0s de caché)
-      const GITHUB_API_URL = `https://api.github.com/repos/launcher69/Project-KAYN/contents/Web/public/wiki_database.json?v=${timestamp}`;
-      const GITHUB_RAW_URL = `https://raw.githubusercontent.com/launcher69/Project-KAYN/main/Web/public/wiki_database.json?v=${timestamp}`;
-
       try {
-        console.log('🔄 Solicitando datos frescos en tiempo real...');
-
-        // 🥇 INTENTO 1 (PRIMERO): API REST de GitHub (Cero caché, 0s de espera)
-        const apiRes = await fetch(GITHUB_API_URL);
+        // Try server API first
+        const apiRes = await fetch(`/api/wiki-data?t=${Date.now()}`);
         if (apiRes.ok) {
-          const fileData = await apiRes.json();
-          if (fileData && fileData.content) {
-            // Decodificar Base64 respetando caracteres UTF-8
-            const binaryString = atob(fileData.content.replace(/\s/g, ''));
-            const bytes = new Uint8Array(binaryString.split('').map(c => c.charCodeAt(0)));
-            const jsonText = new TextDecoder('utf-8').decode(bytes);
-            const parsed = JSON.parse(jsonText);
-
-            if (Array.isArray(parsed) && parsed.length > 0) {
-              console.log('⚡ Wiki cargada EN TIEMPO REAL (0s) desde API de GitHub:', parsed.length, 'elementos');
-              setWikiData(parsed);
-              return; // ¡Éxito inmediato sin esperar a la CDN!
-            }
+          const body = await apiRes.json();
+          if (body.success && Array.isArray(body.data)) {
+            setWikiData(body.data);
+            return;
           }
         }
 
-        // 🥈 INTENTO 2 (Solo si falla la API): GitHub Raw
-        const response = await fetch(GITHUB_RAW_URL);
-        if (response.ok) {
-          const parsed = await response.json();
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            console.log('✨ Wiki cargada desde GitHub Raw:', parsed.length, 'elementos');
+        // Direct static fetch of wiki_database.json
+        const staticRes = await fetch(`/wiki_database.json?t=${Date.now()}`);
+        if (staticRes.ok) {
+          const parsed = await staticRes.json();
+          if (Array.isArray(parsed)) {
             setWikiData(parsed);
             return;
           }
         }
       } catch (err) {
-        console.error('❌ Error al cargar datos dinámicos:', err);
+        console.warn('Carga dinámica de wiki_database.json fallida, usando caché/datos base:', err);
       }
     };
 
     fetchWikiDatabase();
   }, []);
 
-
-  // Guardar en localStorage cuando wikiData cambie
+  // Save to localStorage when wikiData changes
   useEffect(() => {
     try {
       localStorage.setItem('multiverse_wiki_data', JSON.stringify(wikiData));
     } catch {
-      // Ignorar errores de espacio
+      // Ignore quota errors
     }
   }, [wikiData]);
 
-  // Filtros y Estado de Vista
+  // Filter & View State
   const [filter, setFilter] = useState<FilterState>({
     search: '',
     world: 'all',
@@ -110,21 +86,27 @@ export default function App() {
   const [itemToEdit, setItemToEdit] = useState<WikiItem | null>(null);
   const [isEditorOpen, setIsEditorOpen] = useState<boolean>(false);
 
-  // Extraer Mundos
+  // Extract worlds
   const worlds = [...new Set(wikiData.map((item) => item.mundo_id).filter(Boolean))];
 
   const getWorldDisplayName = (worldId: string) => {
     return getDisplayName(worldId, wikiData);
   };
 
-  // Lógica de filtrado de elementos
+  // Items scoped to selected world (or all) for CategoryBar and StatsOverview counters
+  const itemsByWorld = filter.world === 'all'
+    ? wikiData
+    : wikiData.filter((item) => item.mundo_id === filter.world || (item.tipo === 'mundo' && item.id === filter.world));
+
+  // Filter items logic
   const filteredItems = wikiData.filter((item) => {
-    // 1. Coincidencia de Mundo
+
+    // 1. World match
     if (filter.world !== 'all' && item.mundo_id !== filter.world) {
       return false;
     }
 
-    // 2. Coincidencia de Categoría
+    // 2. Category match
     if (filter.category !== 'todos') {
       const type = (item.tipo || 'entidad').toLowerCase();
       if (filter.category === 'npc') {
@@ -134,18 +116,18 @@ export default function App() {
       }
     }
 
-    // 3. Solo Favoritos
+    // 3. Favorites only
     if (filter.favoritesOnly && !item.isFavorite) {
       return false;
     }
 
-    // 4. Coincidencia de Etiqueta (Tag)
+    // 4. Tag match
     if (filter.tag) {
       const tags = item.etiquetas_discord || [];
       if (!tags.includes(filter.tag)) return false;
     }
 
-    // 5. Búsqueda por Texto
+    // 5. Search text match
     if (filter.search.trim()) {
       const query = filter.search.toLowerCase().trim();
       const name = (item.nombre || '').toLowerCase();
@@ -166,7 +148,7 @@ export default function App() {
     return true;
   });
 
-  // Handler para conmutar Favoritos
+  // Favorite toggle handler
   const handleToggleFavorite = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     setWikiData((prev) =>
@@ -175,7 +157,7 @@ export default function App() {
     playSound('click');
   };
 
-  // Handler para eliminar entidad
+  // Delete item handler
   const handleDeleteItem = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     if (window.confirm('¿Estás seguro de eliminar esta entidad del lore?')) {
@@ -185,7 +167,7 @@ export default function App() {
     }
   };
 
-  // Handler para guardar cambios desde el editor
+  // Save new/edited item
   const handleSaveItem = (savedItem: WikiItem) => {
     setWikiData((prev) => {
       const exists = prev.some((i) => i.id === savedItem.id);
@@ -218,16 +200,14 @@ export default function App() {
         filteredCount={filteredItems.length}
       />
 
-      {/* Barra de Categorías */}
-      <CategoryBar filter={filter} setFilter={setFilter} items={wikiData} />
+      {/* Category Bar */}
+      <CategoryBar filter={filter} setFilter={setFilter} items={itemsByWorld} />
 
-      {/* Dashboard Resumen Estadísticas */}
-      <StatsOverview items={wikiData} getWorldDisplayName={getWorldDisplayName} />
 
-      {/* Contenido Principal según Modo de Vista */}
+      {/* Main Content Views */}
       <main className="pb-16">
         
-        {/* VISTA DE TARJETAS */}
+        {/* CARDS GRID VIEW */}
         {viewMode === 'cards' && (
           <div className="max-w-7xl mx-auto px-4 lg:px-8 py-4">
             {filteredItems.length > 0 ? (
@@ -270,7 +250,7 @@ export default function App() {
           </div>
         )}
 
-        {/* VISTA DE GRAFO INTERACTIVO */}
+        {/* GRAPH VIEW */}
         {viewMode === 'graph' && (
           <div className="max-w-7xl mx-auto px-4 lg:px-8 py-4">
             <WikiGraph
@@ -283,7 +263,7 @@ export default function App() {
           </div>
         )}
 
-        {/* VISTA DE CRONOLOGÍA */}
+        {/* TIMELINE VIEW */}
         {viewMode === 'timeline' && (
           <TimelineView
             items={filteredItems}
@@ -292,7 +272,7 @@ export default function App() {
           />
         )}
 
-        {/* VISTA DE TABLA */}
+        {/* TABLE VIEW */}
         {viewMode === 'table' && (
           <TableView
             items={filteredItems}
@@ -310,7 +290,7 @@ export default function App() {
 
       </main>
 
-      {/* Modal de Detalle */}
+      {/* Detail Viewer Modal */}
       <DetailModal
         itemId={selectedModalId}
         wikiData={wikiData}
@@ -319,7 +299,7 @@ export default function App() {
         onToggleFavorite={handleToggleFavorite}
       />
 
-      {/* Modal de Editor de Entidad */}
+      {/* Item Editor / Creator Modal */}
       {isEditorOpen && (
         <ItemEditorModal
           itemToEdit={itemToEdit}

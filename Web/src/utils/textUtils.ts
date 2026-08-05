@@ -176,3 +176,22 @@ export function findBacklinks(item: WikiItem, wikiData: WikiItem[]): ParsedRelat
       targetType: other.tipo,
     }));
 }
+
+export function getItemImages(item: WikiItem, wikiData: WikiItem[]): string[] {
+  if (item.imagenes && item.imagenes.length > 0 && item.imagenes.some((img) => img && img.trim().length > 0)) {
+    return item.imagenes.filter((img) => img && img.trim().length > 0);
+  }
+
+  // Fallback to world image if item doesn't have any valid images
+  if (item.mundo_id) {
+    const worldItem = wikiData.find(
+      (i) => (i.tipo === 'mundo' || i.tipo === 'world') && (i.id === item.mundo_id || i.mundo_id === item.mundo_id)
+    );
+    if (worldItem && worldItem.imagenes && worldItem.imagenes.length > 0) {
+      return worldItem.imagenes.filter((img) => img && img.trim().length > 0);
+    }
+  }
+
+  return [];
+}
+

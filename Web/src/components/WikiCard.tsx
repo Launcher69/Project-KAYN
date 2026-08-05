@@ -1,6 +1,6 @@
 import React from 'react';
 import { WikiItem } from '../types';
-import { getItemTypeBadgeColor, getDisplayName, parseRelations } from '../utils/textUtils';
+import { getItemTypeBadgeColor, getDisplayName, parseRelations, getItemImages } from '../utils/textUtils';
 import { Globe, Star, ArrowUpRight, Shield, MapPin, Package, User, Scroll } from 'lucide-react';
 import { playSound } from '../utils/soundEffects';
 
@@ -27,23 +27,9 @@ export const WikiCard: React.FC<WikiCardProps> = ({
 }) => {
   const badgeColors = getItemTypeBadgeColor(item.tipo);
   const relations = parseRelations(item, wikiData);
+  const itemImages = getItemImages(item, wikiData);
+  const hasImage = itemImages.length > 0;
   const worldName = getDisplayName(item.mundo_id, wikiData);
-
-  // Helper: Obtener la imagen propia de la entidad o heredar la del Mundo
-  const getCardImage = (item: WikiItem, wikiData: WikiItem[]): string | null => {
-    // 1. Si la entidad tiene foto propia, la usa
-    if (item.imagenes && item.imagenes.length > 0 && item.imagenes[0]) {
-      return item.imagenes[0];
-    }
-    // 2. Si no tiene foto, busca la foto del Mundo al que pertenece (mundo_id)
-    const parentWorld = wikiData.find((w) => w.id === item.mundo_id);
-    if (parentWorld && parentWorld.imagenes && parentWorld.imagenes.length > 0 && parentWorld.imagenes[0]) {
-      return parentWorld.imagenes[0];
-    }
-    return null;
-  };
-
-  const displayImage = getCardImage(item, wikiData);
 
   const getCategoryIcon = (tipo: string) => {
     const t = (tipo || '').toLowerCase();
@@ -76,18 +62,18 @@ export const WikiCard: React.FC<WikiCardProps> = ({
           playSound('modal');
         }}
       >
-        {displayImage ? (
+        {hasImage ? (
           <img
-            src={displayImage}
+            src={itemImages[0]}
             alt={item.nombre || item.id}
             referrerPolicy="no-referrer"
-            loading="lazy"
             className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
             onError={(e) => {
               (e.target as HTMLElement).style.display = 'none';
             }}
           />
         ) : (
+
           <div className="w-full h-full bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950/40 flex items-center justify-center p-6 text-slate-700 group-hover:text-indigo-400 transition-colors">
             <Globe className="w-14 h-14 sm:w-16 sm:h-16 opacity-30" />
           </div>

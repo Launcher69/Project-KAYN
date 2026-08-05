@@ -7,6 +7,7 @@ import {
   parseRelations,
   findBacklinks,
   cleanText,
+  getItemImages,
 } from '../utils/textUtils';
 import {
   X,
@@ -33,20 +34,6 @@ interface DetailModalProps {
   onNavigateTo: (id: string) => void;
   onToggleFavorite: (id: string, e: React.MouseEvent) => void;
 }
-
-// Helper: Obtener la imagen propia o heredar la del Mundo
-const getItemDisplayImage = (targetItem: WikiItem, data: WikiItem[]): string | null => {
-  // 1. Imagen propia
-  if (targetItem.imagenes && targetItem.imagenes.length > 0 && targetItem.imagenes[0]) {
-    return targetItem.imagenes[0];
-  }
-  // 2. Imagen del Mundo al que pertenece (mundo_id)
-  const parentWorld = data.find((w) => w.id === targetItem.mundo_id);
-  if (parentWorld && parentWorld.imagenes && parentWorld.imagenes.length > 0 && parentWorld.imagenes[0]) {
-    return parentWorld.imagenes[0];
-  }
-  return null;
-};
 
 export const DetailModal: React.FC<DetailModalProps> = ({
   itemId,
@@ -77,21 +64,23 @@ export const DetailModal: React.FC<DetailModalProps> = ({
 
   const badgeColors = getItemTypeBadgeColor(item.tipo);
   const worldName = getDisplayName(item.mundo_id, wikiData);
-  
-  // Obtener la imagen a mostrar (propia o del mundo)
-  const initialImage = getItemDisplayImage(item, wikiData);
-  const [activeImage, setActiveImage] = useState<string>(initialImage || '');
+  const itemImages = getItemImages(item, wikiData);
+  const hasImages = itemImages.length > 0;
+  const [activeImage, setActiveImage] = useState<string>(hasImages ? itemImages[0] : '');
 
-  // Sync activeImage cuando cambia el id o el item actual
+  // Update active image when current item changes
   useEffect(() => {
-    const displayImg = getItemDisplayImage(item, wikiData);
-    setActiveImage(displayImg || '');
-  }, [currentId, item, wikiData]);
+    const imgs = getItemImages(item, wikiData);
+    if (imgs.length > 0) {
+      setActiveImage(imgs[0]);
+    } else {
+      setActiveImage('');
+    }
+  }, [currentId, wikiData]);
 
-  const displayMainImage = activeImage || initialImage;
-  const hasDisplayImage = Boolean(displayMainImage);
 
   const handleInternalNavigate = (targetId: string) => {
+    // Truncate future history if navigated from middle
     const newStack = historyStack.slice(0, historyIndex + 1);
     newStack.push(targetId);
     setHistoryStack(newStack);
@@ -273,14 +262,14 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             </div>
           )}
 
-          <div className={`grid grid-cols-1 ${hasDisplayImage ? 'lg:grid-cols-12' : ''} gap-6`}>
+          <div className={`grid grid-cols-1 ${hasImages ? 'lg:grid-cols-12' : ''} gap-6`}>
             
             {/* Left Media Gallery Column */}
-            {hasDisplayImage && (
+            {hasImages && (
               <div className="lg:col-span-5 space-y-3">
                 <div className="relative w-full h-72 rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden shadow-lg">
                   <img
-                    src={displayMainImage!}
+                    src={activeImage || itemImages[0]}
                     alt={item.nombre || item.id}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-top"
@@ -290,10 +279,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                   />
                 </div>
 
-                {/* Gallery Thumbnails (Solo si el item tiene múltiples fotos propias) */}
-                {item.imagenes && item.imagenes.length > 1 && (
+                {/* Gallery Thumbnails */}
+                {itemImages.length > 1 && (
                   <div className="flex items-center gap-2 overflow-x-auto pb-1">
-                    {item.imagenes.map((img, idx) => (
+                    {itemImages.map((img, idx) => (
                       <img
                         key={idx}
                         src={img}
@@ -312,8 +301,9 @@ export const DetailModal: React.FC<DetailModalProps> = ({
               </div>
             )}
 
+
             {/* Right Info Column */}
-            <div className={`${hasDisplayImage ? 'lg:col-span-7' : 'w-full'} space-y-5`}>
+            <div className={`${hasImages ? 'lg:col-span-7' : 'w-full'} space-y-5`}>
               
               {/* Title & Tags */}
               <div>
@@ -520,3 +510,4 @@ export const DetailModal: React.FC<DetailModalProps> = ({
     </div>
   );
 };
+
