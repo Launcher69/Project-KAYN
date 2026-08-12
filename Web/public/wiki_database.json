@@ -5308,11 +5308,11 @@
     {
         "id": "sheet_roronoa_zoro",
         "tipo": "ficha",
-        "nombre": "Ficha de Monkey D. Luffy",
+        "nombre": "Ficha de Roronoa Zoro",
         "mundo_id": "world_one_piece",
         "relaciones": [
             {
-                "id_destino": "npc_monkey_d_luffy",
+                "id_destino": "npc_roronoa_zoro",
                 "relacion": "Ficha perteneciente a"
             }
         ],
