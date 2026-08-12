@@ -5282,5 +5282,27 @@
         "contenido_lore": "### Descripción\n\nEl Haki de Armadura (Busoshoku Haki) es una manifestación directa de la energía espiritual y la fuerza de voluntad del usuario. A diferencia de las Frutas del Diablo, no requiere haber ingerido ningún fruto legendario, sino que es una habilidad latente en todos los seres vivos que exige un entrenamiento físico y mental extremo para ser despertada y perfeccionada.\n\nEsta habilidad crea una armadura invisible o de un tono negro metálico a su alrededor que incrementa drásticamente la potencia ofensiva y la resistencia defensiva. Además, es la herramienta principal para combatir a los usuarios de Frutas del Diablo, ya que al recubrir los golpes o armas con este Haki se puede forzar el contacto con el \"cuerpo verdadero\" de los usuarios intangibles de tipo Logia.\n\n### Habilidades\n\n- **Endurecimiento (Koka):** Recubre partes del cuerpo o armas con una capa densa de color negro que aumenta la dureza física al nivel del acero o superior.\n- **Anulación de Logias:** Permite golpear e infligir daño físico real a usuarios de Frutas del Diablo cuya constitución física haya sido alterada.\n- **Emisión (Ryou):** Los maestros de esta técnica pueden hacer fluir el Haki fuera de su cuerpo para golpear a distancia o destruir objetos desde el interior.\n\n### Limitaciones\n\n- **Agotamiento Espiritual:** El uso prolongado o intensivo consume rápidamente la energía del usuario, dejándolo exhausto e incapaz de usar Haki durante un periodo de recuperación.\n- **Superación por Haki Mayor:** Si el Haki del oponente es significativamente más denso o fuerte, la armadura puede ser atravesada o rota.",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1534579599873150976"
+    },
+    {
+        "id": "poder_magic_void",
+        "tipo": "poder",
+        "nombre": "Magic Void (Magia del Vacío)",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "npc_monkey_d_luffy",
+                "relacion": "Poseedor y usuario de la Magia del Vacío"
+            }
+        ],
+        "detalles": {
+            "categoria": "Poder / Magia del Vacío",
+            "tipo_magia": "Manipulación Espacial & Armadura Mística",
+            "rangos_disponibles": "Rango 0 al Rango 4"
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nMagic Void es una disciplina mágica de alto nivel basada en la canalización de la energía del vacío místico. Otorga al usuario el control sobre la teletransportación espacial, la creación y manifestación de armaduras biomecánicas de alta resistencia (HP 100.000) y la proyección de ataques de energía láser destructivos. \n\nA medida que el usuario asciende de rango, su dominio sobre la masa, el espacio y la reparación de la armadura se incrementa drásticamente.\n\n### ⚡ Rango 0\n\n- **Conexión:** El usuario puede entrar y salir de la armadura a voluntad (Distancia máxima: 500 Km).\n- **Armadura:** Dependiendo de la armadura, otorga un +10 a las características divididas entre destreza y fuerza.\n- **Armadura Completa:** Mientras el usuario permanezca dentro de la armadura no recibirá daño directo a su vida. La vida base de la armadura es de 100.000 HP.\n- **Levitación:** El usuario puede canalizar su energía del vacío para hacer levitar su propio cuerpo.\n\n### ⚡ Rango 1\n\n- **Teletransportación:** El usuario puede teletransportarse a cualquier lugar que vea (ya sea de forma directa o indirecta a través de pantallas o reflejos).\n- **Intercambio:** Permite intercambiar de posición de forma instantánea con la armadura.\n- **Disparo de Energía:** Concentra energía del vacío y la dispara a modo de proyección láser de precisión.\n\n### ⚡ Rango 2\n\n- **Llamada:** Teletransporta la armadura directamente a la posición del usuario, haciendo que este entre automáticamente en su interior.\n- **Teletransportación Aumentada:** Permite teletransportarse a cualquier lugar visible llevando consigo a aliados cercanos.\n- **Armor Creator:** Permite crear una armadura con diferentes modificaciones y alternar entre varios diseños (Límite: Solo se puede crear 1 armadura al mes).\n- **Armor Repair I:** El usuario puede reparar un 10% de la durabilidad total de la armadura.\n- **Rayo De Energía I:** Concentra la energía del vacío para disparar un rayo láser continuo que inflige daño prolongado (Duración máxima: 3 turnos).\n\n### ⚡ Rango 3\n\n- **Armor Repair II:** El usuario puede reparar un 30% de la durabilidad total de la armadura.\n- **Rayo De Energía II:** Concentra la energía del vacío para disparar un rayo láser continuo que inflige daño prolongado (Duración máxima: 5 turnos).\n- **Teletransportación Masiva:** La teletransportación aumentada permite transportar objetos y estructuras de gran tamaño junto al usuario y sus aliados.\n\n### ⚡ Rango 4\n\n- **Armor Repair III:** El usuario puede reparar hasta un 50% de la durabilidad total de la armadura en combate.\n- **Rayo De Energía Máximo:** Disparo de rayo láser continuo de máxima potencia con capacidad de daño prolongado avanzado e impacto destructivo masivo.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537199599268270141"
     }
 ]
