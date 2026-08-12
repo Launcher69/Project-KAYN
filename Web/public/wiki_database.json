@@ -5304,6 +5304,10 @@
             {
                 "id_destino": "world_one_piece",
                 "relacion": "Manifestación de la voluntad espiritual en este mundo"
+            },
+            {
+                "id_destino": "npc_peyj",
+                "relacion": "Técnica dominada y perfeccionada por PeyJ"
             }
         ],
         "detalles": {
