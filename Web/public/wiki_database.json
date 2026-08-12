@@ -5396,66 +5396,11 @@
             }
         ],
         "detalles": {
-            "ficha_atributos": [
-                {
-                    "id": "fuerza",
-                    "name": "Fuerza",
-                    "category": "fisico",
-                    "value": 9,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural"
-                },
-                {
-                    "id": "resistencia",
-                    "name": "Resistencia",
-                    "category": "fisico",
-                    "value": 9,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural"
-                },
-                {
-                    "id": "destreza",
-                    "name": "Destreza",
-                    "category": "fisico",
-                    "value": 8,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural"
-                },
-                {
-                    "id": "combate_cerca",
-                    "name": "Combate Cuerpo a Cuerpo",
-                    "category": "combate",
-                    "value": 8,
-                    "tier": "T1",
-                    "tierLabel": "Terrenal",
-                    "note": "Sube a [T2] usando Haki"
-                },
-                {
-                    "id": "combate_lejos",
-                    "name": "Combate a Distancia",
-                    "category": "combate",
-                    "value": 2,
-                    "tier": "T1",
-                    "tierLabel": "Terrenal"
-                },
-                {
-                    "id": "inteligencia",
-                    "name": "Inteligencia",
-                    "category": "mente_mistica",
-                    "value": 2,
-                    "tier": "T1",
-                    "tierLabel": "Terrenal"
-                },
-                {
-                    "id": "magia_ocultismo",
-                    "name": "Magia / Ocultismo",
-                    "category": "mente_mistica",
-                    "value": 8,
-                    "tier": "T4",
-                    "tierLabel": "Anomalía",
-                    "note": "Representa su fruta despertada y distorsión física"
-                }
-            ]
+            "ficha_atributos": "[{\"id\":\"fuerza\",\"name\":\"Fuerza\",\"category\":\"fisico\",\"value\":8,\"tier\":\"T2\",\"tierLabel\":\"Sobrenatural\"},{\"id\":\"resistencia\",\"name\":\"Resistencia\",\"category\":\"fisico\",\"value\":9,\"tier\":\"T2\",\"tierLabel\":\"Sobrenatural\"},{\"id\":\"destreza\",\"name\":\"Destreza\",\"category\":\"fisico\",\"value\":8,\"tier\":\"T2\",\"tierLabel\":\"Sobrenatural\"},{\"id\":\"combate_cerca\",\"name\":\"Combate Cuerpo a Cuerpo\",\"category\":\"combate\",\"value\":8,\"tier\":\"T1\",\"tierLabel\":\"Terrenal\",\"note\":\"Sube a [T2] usando Haki\"},{\"id\":\"combate_lejos\",\"name\":\"Combate a Distancia\",\"category\":\"combate\",\"value\":2,\"tier\":\"T1\",\"tierLabel\":\"Terrenal\"},{\"id\":\"inteligencia\",\"name\":\"Inteligencia\",\"category\":\"mente_mistica\",\"value\":2,\"tier\":\"T1\",\"tierLabel\":\"Terrenal\"},{\"id\":\"magia_ocultismo\",\"name\":\"Magia / Ocultismo\",\"category\":\"mente_mistica\",\"value\":8,\"tier\":\"T4\",\"tierLabel\":\"Anomalía\",\"note\":\"Representa su fruta despertada y distorsión física\"}]",
+            "alias": "Luffy Sombrero de Paja",
+            "especie": "",
+            "alineamiento": "",
+            "equipamiento": ""
         },
         "categoria_discord": "Pruevas",
         "etiquetas_discord": [],
