@@ -1,23 +1,12 @@
 import asyncio
 import os
-import threading
-from http.server import HTTPServer, SimpleHTTPRequestHandler
 import discord
 from discord.ext import commands
 import config
 from modules.exporter import save_to_json
 from modules.scanner import scan_guild_forums
+from modules.web_api import start_api_server
 from modules.world_generator import process_world_generation
-
-
-def run_dummy_server():
-    port = int(os.environ.get("PORT", 10000))
-    server = HTTPServer(("0.0.0.0", port), SimpleHTTPRequestHandler)
-    print(f"🌐 Servidor web abierto en el puerto {port}", flush=True)
-    server.serve_forever()
-
-
-threading.Thread(target=run_dummy_server, daemon=True).start()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -31,13 +20,45 @@ async def on_ready():
     print("--------------------------------------------------", flush=True)
     print(f"🤖 Bot en la nube iniciado como: {bot.user}", flush=True)
     print("--------------------------------------------------", flush=True)
+    # Iniciar la API Web en segundo plano
+    await start_api_server(bot)
+
+
+@bot.command(name="sync")
+async def sync_wiki(ctx):
+    status_msg = None
+    try:
+        status_msg = await ctx.send(
+            "🔄 Escaneando foros y procesando imágenes en la nube..."
+        )
+    except discord.NotFound:
+        pass
+
+    database, errors = await scan_guild_forums(ctx.guild)
+    success = await asyncio.to_thread(save_to_json, database, config.JSON_FILE)
+
+    if status_msg:
+        try:
+            if success:
+                response = f"✅ **¡Wiki en la nube actualizada!**\nSe procesaron **{len(database)} elementos**."
+            else:
+                response = "❌ Hubo un error al actualizar GitHub."
+
+            if errors:
+                response += f"\n\n⚠️ **Avisos ({len(errors)}):**\n" + "\n".join(
+                    [f"- {e}" for e in errors[:5]]
+                )
+
+            await status_msg.edit(content=response)
+        except discord.NotFound:
+            pass
+
 
 @bot.command(name="generar_mundo", aliases=["crear_mundo", "auto_foro"])
 async def generar_mundo_cmd(ctx):
-    """Genera automáticamente foros e hilos a partir de texto pegado o archivo .txt"""
     await process_world_generation(ctx)
-    # Ejecuta la sincronización hacia GitHub/Web al terminar
     await sync_wiki(ctx)
+
 
 @bot.command(
     name="borrar_categoria",
@@ -45,7 +66,6 @@ async def generar_mundo_cmd(ctx):
 )
 @commands.has_permissions(administrator=True)
 async def borrar_categoria_cmd(ctx):
-    """Elimina todos los canales y la categoría completa con confirmación"""
     category = ctx.channel.category
     if not category:
         await ctx.send(
@@ -56,13 +76,11 @@ async def borrar_categoria_cmd(ctx):
     canales_count = len(category.channels)
     cat_name = category.name
 
-    # 1. Mensaje de advertencia
     await ctx.send(
         f"⚠️ **¡ATENCIÓN!** Vas a eliminar la categoría **'{cat_name}'** con todos sus **{canales_count} canales y publicaciones**.\n\n"
         f"⚠️ *Esta acción NO se puede deshacer.* Responde a este mensaje escribiendo **CONFIRMAR** en los próximos 30 segundos para proceder."
     )
 
-    # 2. Esperar confirmación exacta
     def check(m):
         return (
             m.author == ctx.author
@@ -78,53 +96,23 @@ async def borrar_categoria_cmd(ctx):
         )
         return
 
-    await ctx.send(
-        f"🗑️ Eliminando categoría **'{cat_name}'** y sus canales..."
-    )
-
-    # 3. Borrar canales dentro de la categoría
     channels_to_delete = list(category.channels)
     for channel in channels_to_delete:
-        if channel != ctx.channel:  # Borrar los demás canales primero
+        if channel != ctx.channel:
             try:
                 await channel.delete()
                 await asyncio.sleep(0.5)
-            except Exception as e:
-                print(f"Error borrando canal {channel.name}: {e}", flush=True)
+            except Exception:
+                pass
 
-    # 4. Borrar el canal actual y la categoría
     try:
         await ctx.channel.delete()
         await category.delete()
         print(f"🗑️ Categoría '{cat_name}' eliminada con éxito.", flush=True)
-    except Exception as e:
-        print(f"Error borrando la categoría: {e}", flush=True)
+    except Exception:
+        pass
 
-    # 5. Sincronizar automáticamente para actualizar la Web
     await sync_wiki(ctx)
-
-@bot.command(name="sync")
-async def sync_wiki(ctx):
-    status_msg = await ctx.send(
-        "🔄 Escaneando foros y procesando imágenes en la nube..."
-    )
-
-    database, errors = await scan_guild_forums(ctx.guild)
-
-    # Exportar a GitHub por API en hilo secundario
-    success = await asyncio.to_thread(save_to_json, database, config.JSON_FILE)
-
-    if success:
-        response = f"✅ **¡Wiki en la nube actualizada!**\nSe procesaron **{len(database)} elementos**."
-    else:
-        response = "❌ Hubo un error al actualizar GitHub."
-
-    if errors:
-        response += f"\n\n⚠️ **Avisos ({len(errors)}):**\n" + "\n".join(
-            [f"- {e}" for e in errors[:5]]
-        )
-
-    await status_msg.edit(content=response)
 
 
 if __name__ == "__main__":
