@@ -5383,5 +5383,84 @@
         "contenido_lore": "### Descripción\n\nFicha oficial de atributos del personaje Roronoa Zoro.",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1537210375832084570"
+    },
+    {
+        "id": "sheet_monkey_d_luffy",
+        "tipo": "ficha",
+        "nombre": "Ficha de Monkey D. Luffy",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "npc_monkey_d_luffy",
+                "relacion": "Ficha perteneciente a"
+            }
+        ],
+        "detalles": {
+            "ficha_atributos": [
+                {
+                    "id": "fuerza",
+                    "name": "Fuerza",
+                    "category": "fisico",
+                    "value": 9,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural"
+                },
+                {
+                    "id": "resistencia",
+                    "name": "Resistencia",
+                    "category": "fisico",
+                    "value": 9,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural"
+                },
+                {
+                    "id": "destreza",
+                    "name": "Destreza",
+                    "category": "fisico",
+                    "value": 8,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural"
+                },
+                {
+                    "id": "combate_cerca",
+                    "name": "Combate Cuerpo a Cuerpo",
+                    "category": "combate",
+                    "value": 8,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal",
+                    "note": "Sube a [T2] usando Haki"
+                },
+                {
+                    "id": "combate_lejos",
+                    "name": "Combate a Distancia",
+                    "category": "combate",
+                    "value": 2,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal"
+                },
+                {
+                    "id": "inteligencia",
+                    "name": "Inteligencia",
+                    "category": "mente_mistica",
+                    "value": 2,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal"
+                },
+                {
+                    "id": "magia_ocultismo",
+                    "name": "Magia / Ocultismo",
+                    "category": "mente_mistica",
+                    "value": 8,
+                    "tier": "T4",
+                    "tierLabel": "Anomalía",
+                    "note": "Representa su fruta despertada y distorsión física"
+                }
+            ]
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nFicha oficial de atributos del capitán Monkey D. Luffy.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537212629943062688"
     }
 ]
