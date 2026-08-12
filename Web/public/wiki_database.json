@@ -5304,5 +5304,84 @@
         "contenido_lore": "### Descripción\n\nMagic Void es una disciplina mágica de alto nivel basada en la canalización de la energía del vacío místico. Otorga al usuario el control sobre la teletransportación espacial, la creación y manifestación de armaduras biomecánicas de alta resistencia (HP 100.000) y la proyección de ataques de energía láser destructivos. \n\nA medida que el usuario asciende de rango, su dominio sobre la masa, el espacio y la reparación de la armadura se incrementa drásticamente.\n\n### ⚡ Rango 0\n\n- **Conexión:** El usuario puede entrar y salir de la armadura a voluntad (Distancia máxima: 500 Km).\n- **Armadura:** Dependiendo de la armadura, otorga un +10 a las características divididas entre destreza y fuerza.\n- **Armadura Completa:** Mientras el usuario permanezca dentro de la armadura no recibirá daño directo a su vida. La vida base de la armadura es de 100.000 HP.\n- **Levitación:** El usuario puede canalizar su energía del vacío para hacer levitar su propio cuerpo.\n\n### ⚡ Rango 1\n\n- **Teletransportación:** El usuario puede teletransportarse a cualquier lugar que vea (ya sea de forma directa o indirecta a través de pantallas o reflejos).\n- **Intercambio:** Permite intercambiar de posición de forma instantánea con la armadura.\n- **Disparo de Energía:** Concentra energía del vacío y la dispara a modo de proyección láser de precisión.\n\n### ⚡ Rango 2\n\n- **Llamada:** Teletransporta la armadura directamente a la posición del usuario, haciendo que este entre automáticamente en su interior.\n- **Teletransportación Aumentada:** Permite teletransportarse a cualquier lugar visible llevando consigo a aliados cercanos.\n- **Armor Creator:** Permite crear una armadura con diferentes modificaciones y alternar entre varios diseños (Límite: Solo se puede crear 1 armadura al mes).\n- **Armor Repair I:** El usuario puede reparar un 10% de la durabilidad total de la armadura.\n- **Rayo De Energía I:** Concentra la energía del vacío para disparar un rayo láser continuo que inflige daño prolongado (Duración máxima: 3 turnos).\n\n### ⚡ Rango 3\n\n- **Armor Repair II:** El usuario puede reparar un 30% de la durabilidad total de la armadura.\n- **Rayo De Energía II:** Concentra la energía del vacío para disparar un rayo láser continuo que inflige daño prolongado (Duración máxima: 5 turnos).\n- **Teletransportación Masiva:** La teletransportación aumentada permite transportar objetos y estructuras de gran tamaño junto al usuario y sus aliados.\n\n### ⚡ Rango 4\n\n- **Armor Repair III:** El usuario puede reparar hasta un 50% de la durabilidad total de la armadura en combate.\n- **Rayo De Energía Máximo:** Disparo de rayo láser continuo de máxima potencia con capacidad de daño prolongado avanzado e impacto destructivo masivo.",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1537199599268270141"
+    },
+    {
+        "id": "sheet_roronoa_zoro",
+        "tipo": "ficha",
+        "nombre": "Ficha de Roronoa Zoro",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "char_roronoa_zoro",
+                "relacion": "Ficha perteneciente a"
+            }
+        ],
+        "detalles": {
+            "ficha_atributos": [
+                {
+                    "id": "fuerza",
+                    "name": "Fuerza",
+                    "category": "fisico",
+                    "value": 9,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural"
+                },
+                {
+                    "id": "resistencia",
+                    "name": "Resistencia",
+                    "category": "fisico",
+                    "value": 9,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural"
+                },
+                {
+                    "id": "destreza",
+                    "name": "Destreza",
+                    "category": "fisico",
+                    "value": 8,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural"
+                },
+                {
+                    "id": "combate_cerca",
+                    "name": "Combate Cuerpo a Cuerpo",
+                    "category": "combate",
+                    "value": 9,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural",
+                    "note": "Estilo Santoryu"
+                },
+                {
+                    "id": "combate_lejos",
+                    "name": "Combate a Distancia",
+                    "category": "combate",
+                    "value": 4,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal"
+                },
+                {
+                    "id": "inteligencia",
+                    "name": "Inteligencia",
+                    "category": "mente_mistica",
+                    "value": 3,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal"
+                },
+                {
+                    "id": "magia_ocultismo",
+                    "name": "Magia / Ocultismo",
+                    "category": "mente_mistica",
+                    "value": 7,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural",
+                    "note": "Haki del Rey & Asura"
+                }
+            ]
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nFicha oficial de atributos del personaje Roronoa Zoro.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537210375832084570"
     }
 ]
