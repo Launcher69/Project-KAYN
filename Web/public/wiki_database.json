@@ -5312,7 +5312,7 @@
         "mundo_id": "world_one_piece",
         "relaciones": [
             {
-                "id_destino": "char_roronoa_zoro",
+                "id_destino": "npc_monkey_d_luffy",
                 "relacion": "Ficha perteneciente a"
             }
         ],
