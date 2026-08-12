@@ -5158,20 +5158,8 @@
         "mundo_id": "world_one_piece",
         "relaciones": [
             {
-                "id_destino": "npc_jade",
+                "id_destino": "npc_monkey_d_luffy",
                 "relacion": "Tío adoptivo, tutor legal y protector incondicional"
-            },
-            {
-                "id_destino": "lugar_refugio_orfanato",
-                "relacion": "Cofundador y jefe del taller de mantenimiento del faro"
-            },
-            {
-                "id_destino": "faccion_red_iris",
-                "relacion": "Miembro cofundador histórico en secreto"
-            },
-            {
-                "id_destino": "lugar_taller_mammago",
-                "relacion": "Aliados mecánicos y colegas de profesión"
             }
         ],
         "detalles": {
