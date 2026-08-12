@@ -5152,7 +5152,7 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534575455901057266"
     },
     {
-        "id": "npc_peyj",
+        "id": "npcprueva_peyj",
         "tipo": "npc",
         "nombre": "Pey'j",
         "mundo_id": "world_one_piece",
@@ -5306,7 +5306,7 @@
                 "relacion": "Manifestación de la voluntad espiritual en este mundo"
             },
             {
-                "id_destino": "npc_peyj",
+                "id_destino": "npcprueva_peyj",
                 "relacion": "Técnica dominada y perfeccionada por PeyJ"
             }
         ],
