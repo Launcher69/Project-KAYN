@@ -3,6 +3,8 @@ import os
 import discord
 from discord.ext import commands
 import config
+import json
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from modules.exporter import save_to_json
 from modules.scanner import scan_guild_forums
 from modules.web_api import start_api_server
@@ -11,6 +13,53 @@ from modules.world_generator import process_world_generation
 intents = discord.Intents.default()
 intents.message_content = True
 intents.guilds = True
+
+
+
+class WikiRequestHandler(BaseHTTPRequestHandler):
+    def _set_headers(self, status=200):
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
+
+    def do_OPTIONS(self):
+        # Maneja la verificación preflight del navegador (CORS)
+        self._set_headers(200)
+
+    def do_POST(self):
+        if self.path == "/api/edit-item":
+            try:
+                content_length = int(self.headers.get("Content-Length", 0))
+                body = self.rfile.read(content_length)
+                data = json.loads(body.decode("utf-8"))
+
+                print(f"📥 Petición de edición recibida para: {data.get('nombre')}", flush=True)
+
+                # TODO: Aquí puedes llamar a tu función save_to_json o actualizar GitHub
+                # Ejemplo: save_to_json(data, config.JSON_FILE)
+
+                self._set_headers(200)
+                res = {"success": True, "message": "Ficha actualizada con éxito"}
+                self.wfile.write(json.dumps(res).encode("utf-8"))
+            except Exception as e:
+                print(f"❌ Error al procesar edit-item: {e}", flush=True)
+                self._set_headers(500)
+                res = {"success": False, "error": str(e)}
+                self.wfile.write(json.dumps(res).encode("utf-8"))
+        else:
+            self._set_headers(404)
+            res = {"success": False, "error": "Endpoint no encontrado"}
+            self.wfile.write(json.dumps(res).encode("utf-8"))
+
+def run_dummy_server():
+    port = int(os.environ.get("PORT", 10000))
+    server = HTTPServer(("0.0.0.0", port), WikiRequestHandler)
+    print(f"🌐 Servidor API de la Wiki escuchando en el puerto {port}", flush=True)
+    server.serve_forever()
+
 
 bot = commands.Bot(command_prefix=config.PREFIX, intents=intents)
 
