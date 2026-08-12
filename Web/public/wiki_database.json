@@ -5401,7 +5401,7 @@
                     "id": "fuerza",
                     "name": "Fuerza",
                     "category": "fisico",
-                    "value": 7,
+                    "value": 8,
                     "tier": "T2",
                     "tierLabel": "Sobrenatural"
                 },
