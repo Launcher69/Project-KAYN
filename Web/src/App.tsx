@@ -645,8 +645,11 @@ export default function App() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(discordPayload),
         });
+        if (!botResponse.ok && botResponse.status === 404) {
+          throw new Error('Proxy 404');
+        }
       } catch (proxyErr) {
-        // Fallback to direct client fetch if proxy fails
+        // Fallback to direct client fetch if proxy fails or returns 404
         botResponse = await fetch('https://wiki-bot-discord.onrender.com/api/edit-item', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
