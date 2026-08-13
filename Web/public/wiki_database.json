@@ -1788,40 +1788,6 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534575442886135978"
     },
     {
-        "id": "npc_monkey_d_luffy",
-        "tipo": "npc",
-        "nombre": "Monkey D. Luffy",
-        "mundo_id": "world_one_piece",
-        "relaciones": [
-            {
-                "id_destino": "lugar_going_merry",
-                "relacion": "Capitán del barco"
-            },
-            {
-                "id_destino": "faccion_piratas_sombrero_paja",
-                "relacion": "Fundador y líder"
-            },
-            {
-                "id_destino": "objeto_sombrero_de_paja",
-                "relacion": "Propietario del tesoro sentimental"
-            },
-            {
-                "id_destino": "poder_mera_mera_no_mi",
-                "relacion": "Fruta de su hermano"
-            }
-        ],
-        "detalles": {
-            "alias": "Luffy Sombrero de Paja",
-            "rol": "Capitán Pirata",
-            "recompensa": "30.000.000 Berries"
-        },
-        "categoria_discord": "Pruevas",
-        "etiquetas_discord": [],
-        "contenido_lore": "Nacido en la Villa Foosha en el East Blue, Luffy fue criado bajo la dura tutela de su abuelo, el Vicealmirante de la Marina Monkey D. Garp, y posteriormente por la familia de bandidos de Dadan junto a sus hermanos de juramento, Ace y Sabo. Desde muy niño sintió la llamada del mar tras entablar amistad con Shanks \"el Pelirrojo\", un poderoso capitán pirata que le salvó la vida a costa de su propio brazo y le confió su preciado sombrero de paja.\n\nInspirado por esa promesa y movido por un deseo inquebrantable de libertad absoluta, Luffy se hizo a la mar a los 17 años con la firme convicción de reclutar una tripulación leal y convertirse en el próximo Rey de los Piratas. Su personalidad es despreocupada, ingenua y extremadamente voraz cuando se trata de comida, pero muestra una determinación feroz e inquebrantable cuando sus amigos o camaradas están en peligro.\n\n### Habilidades\n\n- **Fruta Gomu Gomu:** Al haber ingerido accidentalmente una Fruta del Diablo de tipo Paramecia (o Zoan Mítica), su cuerpo adquirió las propiedades de la goma. Es inmune a los golpes físicos normales y a las descargas eléctricas, y puede estirar sus extremidades para atacar a larga distancia.\n- **Tácticas de Combate Improvistas:** Capaz de inventar técnicas creativas en el calor de la batalla para golpear con devastadora fuerza destructiva a sus rivales.\n\n### Equipamiento\n\n- **Sombrero de Paja de Shanks:** Su posesión más aprecia\n\nda. Protege el sombrero a toda costa en cada combate.\n\n### Secretos\n\n- Posee la mítica inicial \"D.\" en su nombre, vinculada al misterioso \"Voluntad de D.\" que desafía el orden del Gobierno Mundial.",
-        "imagenes": [],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1534575455901057266"
-    },
-    {
         "id": "npcprueva_peyj",
         "tipo": "npc",
         "nombre": "Pey'j",
@@ -2079,88 +2045,5 @@
         "contenido_lore": "### Descripción\n\nFicha oficial de atributos del personaje Roronoa Zoro.",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1537210375832084570"
-    },
-    {
-        "id": "sheet_monkey_d_luffy",
-        "tipo": "ficha",
-        "nombre": "Ficha de Monkey D. Luffy",
-        "mundo_id": "world_one_piece",
-        "relaciones": [
-            {
-                "id_destino": "npc_monkey_d_luffy",
-                "relacion": "Ficha perteneciente a"
-            }
-        ],
-        "detalles": {
-            "ficha_atributos": [
-                {
-                    "id": "fuerza",
-                    "name": "Fuerza",
-                    "category": "fisico",
-                    "value": 9,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural"
-                },
-                {
-                    "id": "resistencia",
-                    "name": "Resistencia",
-                    "category": "fisico",
-                    "value": 9,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural"
-                },
-                {
-                    "id": "destreza",
-                    "name": "Destreza",
-                    "category": "fisico",
-                    "value": 8,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural"
-                },
-                {
-                    "id": "combate_cerca",
-                    "name": "Combate Cuerpo a Cuerpo",
-                    "category": "combate",
-                    "value": 8,
-                    "tier": "T1",
-                    "tierLabel": "Terrenal",
-                    "note": "Sube a [T2] usando Haki"
-                },
-                {
-                    "id": "combate_lejos",
-                    "name": "Combate a Distancia",
-                    "category": "combate",
-                    "value": 2,
-                    "tier": "T1",
-                    "tierLabel": "Terrenal"
-                },
-                {
-                    "id": "inteligencia",
-                    "name": "Inteligencia",
-                    "category": "mente_mistica",
-                    "value": 2,
-                    "tier": "T1",
-                    "tierLabel": "Terrenal"
-                },
-                {
-                    "id": "magia_ocultismo",
-                    "name": "Magia / Ocultismo",
-                    "category": "mente_mistica",
-                    "value": 8,
-                    "tier": "T4",
-                    "tierLabel": "Anomalía",
-                    "note": "Representa su fruta despertada y distorsión física"
-                }
-            ],
-            "alias": "Luffy Sombrero de Paja",
-            "especie": "",
-            "alineamiento": "",
-            "equipamiento": ""
-        },
-        "categoria_discord": "Pruevas",
-        "etiquetas_discord": [],
-        "contenido_lore": "",
-        "imagenes": [],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1537212629943062688"
     }
 ]
