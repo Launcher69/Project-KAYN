@@ -1856,6 +1856,28 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534575455901057266"
     },
     {
+        "id": "npcprueva_peyj",
+        "tipo": "npc",
+        "nombre": "Pey'j",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "npc_monkey_d_luffy",
+                "relacion": "Se quiere parecer a el"
+            }
+        ],
+        "detalles": {
+            "especie": "Híbrido Porcino (Jabalí antropomórfico)",
+            "ocupacion": "Mecánico jefe, inventor y tutor",
+            "equipo": "Cortador de Jet-Boots (Botas Propulsoras) y llave inglesa pesada"
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nPey'j es un híbrido porcino de carácter cascarrabias pero corazón de oro. Experto absoluto en mecánica, soldadura e ingeniería improvisada, es capaz de construir o reparar cualquier máquina a partir de chatarra militar. Detrás de sus constantes quejas y su humor socarrón se esconde una devoción total hacia su sobrina adoptiva Jade, a quien ha criado desde muy pequeña jurando protegerla de las sombras de su verdadero pasado.\nPey'j conoció a los verdaderos padres de Jade en los primeros días de la invasión alienígena. Tras la trágica desaparición de ambos, prometió mantener a la niña a salvo en Hillys. Para lograrlo, construyó el refugio del Faro y mantuvo en absoluto secreto su propia implicación pasada en la creación de la resistencia clandestina de la Red IRIS, intentando alejar a Jade de los peligros de la guerra abierta.\nA medida que la trama se intensifica, Pey'j se ve obligado a volver a la acción directa, equipando a Jade con inventos clave como las Botas Propulsoras para superar barreras defensivas. Su posterior captura durante la infiltración en la Antigua Fábrica de Nutripills destruye la calma del grupo y se convierte en la motivación principal de Jade para asaltar las instalaciones militares y viajar hasta Selene para rescatarlo.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537236096688070726"
+    },
+    {
         "id": "objeto_sombrero_de_paja",
         "tipo": "objeto",
         "nombre": "Sombrero de Paja de Shanks",
