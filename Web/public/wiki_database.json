@@ -2204,10 +2204,6 @@
         "mundo_id": "world_Poderes_Creators",
         "relaciones": [
             {
-                "id_destino": "lugar_ejemplo",
-                "relacion": "Descripción con el lugar"
-            },
-            {
                 "id_destino": "faccion_ejemplo",
                 "relacion": "Descciocion con la faccion"
             }
@@ -2219,7 +2215,7 @@
         },
         "categoria_discord": "Poderes Creators",
         "etiquetas_discord": [],
-        "contenido_lore": "### Descripción\n\nEs un mundo creado por mi",
+        "contenido_lore": "Es un mundo creado por mi",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1537464878996914196"
     }
