@@ -141,7 +141,8 @@ export default function App() {
             const ghJson = await ghApiRes.json();
             if (ghJson.content && ghJson.encoding === 'base64') {
               const cleanBase64 = ghJson.content.replace(/\n/g, '');
-              const decodedText = atob(cleanBase64);
+              const binaryBytes = Uint8Array.from(atob(cleanBase64), c => c.charCodeAt(0));
+              const decodedText = new TextDecoder('utf-8').decode(binaryBytes);
               const parsed = JSON.parse(decodedText);
               const dataArray = Array.isArray(parsed) ? parsed : parsed?.data;
               if (Array.isArray(dataArray) && dataArray.length > 0) {
