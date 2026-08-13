@@ -5068,34 +5068,6 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534511399903035423"
     },
     {
-        "id": "world_one_piece",
-        "tipo": "mundo",
-        "nombre": "One Piece(Prueva)",
-        "mundo_id": "world_one_piece",
-        "relaciones": [
-            {
-                "id_destino": "lugar_going_merry",
-                "relacion": "Barco que navega por sus aguas"
-            },
-            {
-                "id_destino": "faccion_piratas_sombrero_paja",
-                "relacion": "Banda pirata que recorre este mundo"
-            }
-        ],
-        "detalles": {
-            "clima": "Variable y extremo según la región o la isla",
-            "tecnologia": "Anacrónica (Carabelas, Dials, Den Den Mushi)",
-            "amenazas": "Piratas, Marina, Reyes Marinos"
-        },
-        "categoria_discord": "Pruevas",
-        "etiquetas_discord": [],
-        "contenido_lore": "### Descripción\n\nEl universo de One Piece es un vasto planeta compuesto predominantemente por agua, dividido en cuatro grandes océanos: East Blue, West Blue, North Blue y South Blue. Estos mares están separados por una gigantesca masa continental conocida como la Red Line y una peligrosa franja marítima conocida como la Grand Line, flanqueada a su vez por las peligrosas aguas calmadas del Calm Belt, hábitat natural de los letales Reyes Marinos.\n\nEs un mundo convulso marcado por la Gran Era Pirata, desencadenada tras la ejecución del Legendario Rey de los Piratas, Gol D. Roger. El Gobierno Mundial y su brazo militar, la Marina, intentan mantener un frágil control social bajo la premisa de la \"Justicia Absoluta\", mientras miles de tripulaciones se lanzan a la mar en busca del legendario tesoro final oculto en la última isla de la Grand Line.\n\nOne Piece",
-        "imagenes": [
-            "https://i.ibb.co/wFwtqkvg/132362552920.avif"
-        ],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1534575428625236029"
-    },
-    {
         "id": "lugar_going_merry",
         "tipo": "lugar",
         "nombre": "Going Merry",
