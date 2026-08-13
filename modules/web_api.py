@@ -53,7 +53,7 @@ def clean_yaml_payload(data: dict) -> dict:
 
 
 async def process_web_edit(data: dict):
-    """Edita los hilos/mensajes en Discord y actualiza GitHub"""
+    """Edita los hilos/mensajes en Discord, limpia avisos de sistema y actualiza GitHub"""
     global BOT_INSTANCE
     if not BOT_INSTANCE:
         return False, "Bot no inicializado"
@@ -81,12 +81,12 @@ async def process_web_edit(data: dict):
         if not thread:
             return False, "Hilo no encontrado en Discord"
 
-        # 1. Editar título del hilo si cambió
-        nuevo_nombre = data.get("nombre", thread.name)[:100]
-        if thread.name != nuevo_nombre:
+        # 1. Editar el título del hilo SOLO SI ha cambiado de verdad
+        nuevo_nombre = data.get("nombre", thread.name)[:100].strip()
+        if thread.name.strip() != nuevo_nombre:
             await thread.edit(name=nuevo_nombre)
 
-        # 2. Construir YAML limpio
+        # 2. Construir el YAML limpio
         yaml_payload = clean_yaml_payload(data)
         yaml_str = yaml.dump(
             yaml_payload,
@@ -98,20 +98,28 @@ async def process_web_edit(data: dict):
 
         full_new_content = f"---\n{yaml_str}\n---\n\n{lore_text}".strip()
 
-        # 3. Dividir si supera 2000 caracteres
+        # 3. Dividir si supera los 2000 caracteres
         chunks = split_content_smart(full_new_content, max_length=1850)
 
-        # 4. Obtener mensajes del Hilo
+        # 4. Obtener mensajes existentes en el Hilo
         messages = []
         async for msg in thread.history(limit=100, oldest_first=True):
-            messages.append(msg)
+            # BORRAR MENSAJES DEL SISTEMA (Ej: "WikiK ha cambiado el nombre...")
+            if msg.is_system():
+                try:
+                    await msg.delete()
+                    await asyncio.sleep(0.2)
+                except Exception:
+                    pass
+            else:
+                messages.append(msg)
 
         if not messages:
             return False, "El hilo está vacío"
 
         first_msg = messages[0]
 
-        # Lógica de Autor (Si fue humano: borrar y re-publicar. Si fue Bot: editar)
+        # Si el primer mensaje fue escrito por un humano: Borrar y publicar como Bot
         if first_msg.author != BOT_INSTANCE.user:
             print(
                 f"📝 Mensaje humano en '{thread.name}'. Reemplazando por mensaje del Bot...",

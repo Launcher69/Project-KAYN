@@ -163,9 +163,16 @@ async def scan_guild_forums(guild: discord.Guild):
             for thread in threads:
                 try:
                     messages = []
-                    async for msg in thread.history(
-                        limit=None, oldest_first=True
-                    ):
+                    async for msg in thread.history(limit=None, oldest_first=True):
+                        # BORRAR MENSAJES DE SISTEMA AUTOMÁTICAMENTE
+                        if msg.is_system():
+                            try:
+                                await msg.delete()
+                                await asyncio.sleep(0.2)
+                            except Exception:
+                                pass
+                            continue
+
                         messages.append(msg)
 
                     if not messages:
