@@ -1858,12 +1858,12 @@
     {
         "id": "npcprueva_peyj",
         "tipo": "npc",
-        "nombre": "Pey'j",
+        "nombre": "Pey'J (Cerdy)",
         "mundo_id": "world_one_piece",
         "relaciones": [
             {
                 "id_destino": "npc_monkey_d_luffy",
-                "relacion": "Se quiere parecer a el"
+                "relacion": "Tío adoptivo, tutor legal y protector incondicional"
             }
         ],
         "detalles": {
