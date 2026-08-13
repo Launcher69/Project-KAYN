@@ -2196,5 +2196,31 @@
         "contenido_lore": "",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1537212629943062688"
+    },
+    {
+        "id": "world_Poderes_Creators",
+        "tipo": "mundo",
+        "nombre": "Ejemplo",
+        "mundo_id": "world_Poderes_Creators",
+        "relaciones": [
+            {
+                "id_destino": "lugar_ejemplo",
+                "relacion": "Descripción con el lugar"
+            },
+            {
+                "id_destino": "faccion_ejemplo",
+                "relacion": "Descciocion con la faccion"
+            }
+        ],
+        "detalles": {
+            "clima": "ejemplo",
+            "tecnologia": "ejemplo",
+            "amenazas": "ejemplo"
+        },
+        "categoria_discord": "Poderes Creators",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nDescripccion de ejemplo",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537464878996914196"
     }
 ]
