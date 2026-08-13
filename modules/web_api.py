@@ -15,11 +15,9 @@ BOT_INSTANCE = None
 def clean_yaml_payload(data: dict) -> dict:
     """Limpia y normaliza el payload para que el YAML resultante sea 100% nativo"""
 
-    # 1. Normalizar relaciones a lista de dicts
+    # 1. Normalizar relaciones (soporta dict para Mundos y list para Entidades)
     relaciones_raw = data.get("relaciones", [])
-    if isinstance(relaciones_raw, dict):
-        relaciones_cleaned = [relaciones_raw]
-    elif isinstance(relaciones_raw, list):
+    if isinstance(relaciones_raw, (dict, list)):
         relaciones_cleaned = relaciones_raw
     else:
         relaciones_cleaned = []

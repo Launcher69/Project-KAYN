@@ -40,6 +40,12 @@ def is_category_frozen(cat_name: str) -> bool:
 
 def load_existing_db(filepath: str) -> list:
     """Carga la base de datos previa directamente desde GitHub Raw o archivo local"""
+    clean_path = filepath.replace("\\", "/").strip("/")
+    if clean_path.startswith("./"):
+        clean_path = clean_path[2:]
+    if clean_path.lower() in ["web/wiki_database.json", "wiki_database.json"]:
+        clean_path = "Web/public/wiki_database.json"
+
     if GITHUB_REPO:
         try:
             clean_repo = (
@@ -47,9 +53,6 @@ def load_existing_db(filepath: str) -> list:
                 .strip()
                 .strip("/")
             )
-            clean_path = filepath.replace("\\", "/").strip("/")
-            if clean_path.startswith("./"):
-                clean_path = clean_path[2:]
 
             raw_url = f"https://raw.githubusercontent.com/{clean_repo}/main/{clean_path}?v={int(time.time())}"
             req = urllib.request.Request(
@@ -73,22 +76,31 @@ def load_existing_db(filepath: str) -> list:
                 flush=True,
             )
 
-    try:
-        if os.path.exists(filepath):
-            with open(filepath, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                if isinstance(data, list):
-                    return data
-    except Exception:
-        pass
+    candidate_files = [
+        clean_path,
+        "Web/public/wiki_database.json",
+        "Web/wiki_database.json",
+        "public/wiki_database.json",
+        "wiki_database.json",
+    ]
+
+    for candidate in candidate_files:
+        try:
+            if os.path.exists(candidate):
+                with open(candidate, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if isinstance(data, list) and len(data) > 0:
+                        return data
+        except Exception:
+            pass
 
     return []
 
 
 async def scan_guild_forums(guild: discord.Guild):
-    """Escanea los foros activos y conserva las fichas congeladas comparando nombres base limpios"""
+    """Escanea los foros activos y conserva las fichas congeladas y exclusivas de la web"""
 
-    # 1. Cargar la base de datos previa de GitHub
+    # 1. Cargar la base de datos previa de GitHub o local
     existing_db = load_existing_db(JSON_FILE)
 
     # 2. Identificar nombres BASE limpios de las categorías congeladas en Discord
@@ -102,7 +114,7 @@ async def scan_guild_forums(guild: discord.Guild):
                 flush=True,
             )
 
-    # 3. Preservar fichas cuya categoría limpia coincida con las categorías congeladas
+    # 3. Preservar fichas congeladas y fichas exclusivas de la web (sin URL de Discord)
     preserved_items = []
     if existing_db:
         for item in existing_db:
@@ -110,17 +122,19 @@ async def scan_guild_forums(guild: discord.Guild):
                 item.get("categoria_discord", "")
             )
             item_mundo_base = clean_category_name(item.get("mundo_id", ""))
+            url_disc = str(item.get("url_discord", "")).strip()
 
-            # Si el nombre base coincide con una categoría congelada, SE CONSERVA
+            # Conservar si pertenece a categoría congelada O si es un elemento exclusivo de la Web
             if (
                 item_cat_base in frozen_base_names
                 or item_mundo_base in frozen_base_names
+                or not url_disc
             ):
                 preserved_items.append(item)
 
         if preserved_items:
             print(
-                f"❄️ Conservando {len(preserved_items)} fichas congeladas de mundos terminados.",
+                f"❄️ Conservando {len(preserved_items)} fichas (congeladas / creadas en Web).",
                 flush=True,
             )
 
@@ -264,10 +278,15 @@ async def scan_guild_forums(guild: discord.Guild):
                         flush=True,
                     )
 
-    # 5. Fusionar fichas congeladas conservadas + fichas activas escaneadas
-    final_database = preserved_items + new_scanned_items
+    # 5. Fusionar fichas conservadas + fichas activas escaneadas sin duplicados
+    db_map = {item["id"]: item for item in preserved_items if "id" in item}
+    for item in new_scanned_items:
+        if "id" in item:
+            db_map[item["id"]] = item
+
+    final_database = list(db_map.values())
     print(
-        f"\n✨ Sincronización completada: {len(preserved_items)} fichas congeladas conservadas + {len(new_scanned_items)} fichas activas = {len(final_database)} total en la Wiki.",
+        f"\n✨ Sincronización completada: {len(preserved_items)} fichas conservadas + {len(new_scanned_items)} fichas escaneadas = {len(final_database)} total únicas en la Wiki.",
         flush=True,
     )
 

@@ -5,7 +5,7 @@ load_dotenv()
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 PREFIX = os.getenv("COMMAND_PREFIX", "!")
-JSON_FILE = os.getenv("OUTPUT_JSON_FILE", "web/wiki_database.json")
+JSON_FILE = os.getenv("OUTPUT_JSON_FILE", "Web/public/wiki_database.json")
 IMGBB_API_KEY = os.getenv("IMGBB_API_KEY")
 
 # Datos para la API de GitHub

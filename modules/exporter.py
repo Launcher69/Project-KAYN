@@ -1,5 +1,6 @@
 import base64
 import json
+import os
 import urllib.error
 import urllib.request
 from config import GITHUB_REPO, GITHUB_TOKEN
@@ -28,9 +29,24 @@ def save_to_json(data: list, filepath: str) -> bool:
         if clean_path.startswith("./"):
             clean_path = clean_path[2:]
 
+        # Normalizar minúsculas web/ a Web/public/
+        if clean_path.lower() in ["web/wiki_database.json", "wiki_database.json"]:
+            clean_path = "Web/public/wiki_database.json"
+
+        # Guardar en Web/public/wiki_database.json
         try:
+            os.makedirs(os.path.dirname(clean_path), exist_ok=True)
             with open(clean_path, "w", encoding="utf-8") as f:
                 f.write(json_str)
+        except Exception as file_err:
+            print(f"⚠️ Error escribiendo localmente en {clean_path}: {file_err}", flush=True)
+
+        # También guardar copia en Web/wiki_database.json para compatibilidad local
+        try:
+            secondary_path = "Web/wiki_database.json"
+            if clean_path != secondary_path and os.path.exists("Web"):
+                with open(secondary_path, "w", encoding="utf-8") as f:
+                    f.write(json_str)
         except Exception:
             pass
 

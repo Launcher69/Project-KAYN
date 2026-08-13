@@ -90,7 +90,7 @@ export default function App() {
   // Fetch wiki data: jsDelivr ultra-fast loader with local fallback
   const fetchWikiDatabase = async () => {
     const timestamp = Date.now();
-    const JSDELIVR_URL = `https://cdn.jsdelivr.net/gh/launcher69/Project-KAYN@main/Web/public/wiki_database.json?v=${timestamp}`;
+    const JSDELIVR_URL = `https://cdn.jsdelivr.net/gh/Launcher69/Project-KAYN@main/Web/public/wiki_database.json?v=${timestamp}`;
     const LOCAL_URL = `/wiki_database.json?v=${timestamp}`;
 
     try {
@@ -124,7 +124,7 @@ export default function App() {
 
     const fetchWikiDatabaseEffect = async () => {
       const timestamp = Date.now();
-      const JSDELIVR_URL = `https://cdn.jsdelivr.net/gh/launcher69/Project-KAYN@main/Web/public/wiki_database.json?v=${timestamp}`;
+      const JSDELIVR_URL = `https://cdn.jsdelivr.net/gh/Launcher69/Project-KAYN@main/Web/public/wiki_database.json?v=${timestamp}`;
 
       try {
         // 1. Try local server API first
