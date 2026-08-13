@@ -125,9 +125,10 @@ export default function App() {
     const fetchWikiDatabaseEffect = async () => {
       const timestamp = Date.now();
       const JSDELIVR_URL = `https://cdn.jsdelivr.net/gh/Launcher69/Project-KAYN@main/Web/public/wiki_database.json?v=${timestamp}`;
+      const GITHUB_API_URL = `https://api.github.com/repos/Launcher69/Project-KAYN/contents/Web/public/wiki_database.json?t=${timestamp}`;
 
       try {
-        // 1. Try local server API first
+        // 1. Try local server / Cloudflare API first
         const localApiRes = await fetch(`/api/wiki-data?t=${timestamp}`);
         if (localApiRes.ok) {
           const apiJson = await localApiRes.json();
@@ -137,7 +138,29 @@ export default function App() {
           }
         }
 
-        // 2. Fallback to jsDelivr
+        // 2. Try direct GitHub REST API (0s delay, bypasses Fastly CDN 5-min cache)
+        try {
+          const ghApiRes = await fetch(GITHUB_API_URL, {
+            headers: { 'Cache-Control': 'no-cache, no-store', 'User-Agent': 'WikiApp' },
+          });
+          if (ghApiRes.ok) {
+            const ghJson = await ghApiRes.json();
+            if (ghJson.content && ghJson.encoding === 'base64') {
+              const cleanBase64 = ghJson.content.replace(/\n/g, '');
+              const decodedText = atob(cleanBase64);
+              const parsed = JSON.parse(decodedText);
+              const dataArray = Array.isArray(parsed) ? parsed : parsed?.data;
+              if (Array.isArray(dataArray) && dataArray.length > 0) {
+                setWikiData(dataArray);
+                return;
+              }
+            }
+          }
+        } catch (ghErr) {
+          console.warn('GitHub REST API fetch fallback warning:', ghErr);
+        }
+
+        // 3. Fallback to jsDelivr CDN
         const response = await fetch(JSDELIVR_URL);
         if (response.ok) {
           const parsed = await response.json();

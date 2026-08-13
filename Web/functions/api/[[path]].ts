@@ -189,24 +189,61 @@ export const onRequest = async (context: { request: Request; env: Env; params: {
       return jsonResponse({ success: true, deletedId: userId });
     }
 
-    // 6. GET /api/wiki-data
+    // 6. GET /api/wiki-data (Consulta instantánea a GitHub REST API sin caché de 5 minutos)
     if (path === '/api/wiki-data' && method === 'GET') {
-      const { results } = await env.DB.prepare('SELECT * FROM wiki_items').all();
-      const items = (results || []).map((w: any) => ({
-        id: w.id,
-        tipo: w.tipo,
-        nombre: w.nombre,
-        mundo_id: w.mundo_id,
-        relaciones: w.relaciones ? JSON.parse(w.relaciones) : [],
-        detalles: w.detalles ? JSON.parse(w.detalles) : {},
-        etiquetas_discord: w.etiquetas_discord ? JSON.parse(w.etiquetas_discord) : [],
-        contenido_lore: w.contenido_lore || '',
-        imagenes: w.imagenes ? JSON.parse(w.imagenes) : [],
-        url_discord: w.url_discord || '',
-        isFavorite: Boolean(w.is_favorite),
-        createdAt: w.created_at,
-      }));
-      return jsonResponse({ success: true, count: items.length, data: items });
+      try {
+        const ghRes = await fetch(
+          `https://api.github.com/repos/Launcher69/Project-KAYN/contents/Web/public/wiki_database.json?t=${Date.now()}`,
+          {
+            headers: {
+              'User-Agent': 'CloudflarePagesWiki',
+              'Cache-Control': 'no-cache, no-store',
+            },
+          }
+        );
+        if (ghRes.ok) {
+          const ghJson: any = await ghRes.json();
+          if (ghJson.content && ghJson.encoding === 'base64') {
+            const cleanBase64 = ghJson.content.replace(/\n/g, '');
+            const decodedText = atob(cleanBase64);
+            const parsed = JSON.parse(decodedText);
+            const dataArray = Array.isArray(parsed) ? parsed : parsed?.data;
+            if (Array.isArray(dataArray) && dataArray.length > 0) {
+              return jsonResponse({ success: true, count: dataArray.length, data: dataArray });
+            }
+          }
+        }
+      } catch (ghErr) {
+        console.warn('Error obteniendo de GitHub REST API en Cloudflare Function:', ghErr);
+      }
+
+      // Fallback: Consultar base de datos D1 si GitHub API falla
+      if (env.DB) {
+        try {
+          const { results } = await env.DB.prepare('SELECT * FROM wiki_items').all();
+          if (results && results.length > 0) {
+            const items = (results || []).map((w: any) => ({
+              id: w.id,
+              tipo: w.tipo,
+              nombre: w.nombre,
+              mundo_id: w.mundo_id,
+              relaciones: w.relaciones ? JSON.parse(w.relaciones) : [],
+              detalles: w.detalles ? JSON.parse(w.detalles) : {},
+              etiquetas_discord: w.etiquetas_discord ? JSON.parse(w.etiquetas_discord) : [],
+              contenido_lore: w.contenido_lore || '',
+              imagenes: w.imagenes ? JSON.parse(w.imagenes) : [],
+              url_discord: w.url_discord || '',
+              isFavorite: Boolean(w.is_favorite),
+              createdAt: w.created_at,
+            }));
+            return jsonResponse({ success: true, count: items.length, data: items });
+          }
+        } catch (d1Err) {
+          console.warn('Error fallback D1:', d1Err);
+        }
+      }
+
+      return jsonResponse({ success: false, error: 'No se encontraron datos' }, 404);
     }
 
     // 7. POST /api/wiki-data
