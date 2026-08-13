@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { User, WikiItem } from '../types';
-import { X, ShieldCheck, Globe, Check, Lock, Trash2, UserPlus, Sparkles, Search, User as UserIcon } from 'lucide-react';
+import { X, ShieldCheck, Globe, Lock, Trash2, UserPlus, Search, User as UserIcon, Eye, Edit3 } from 'lucide-react';
 import { playSound } from '../utils/soundEffects';
+import { getWorldPermissionLevel } from '../utils/permissions';
 
 interface AdminUsersModalProps {
   isOpen: boolean;
   onClose: () => void;
   users: User[];
   wikiData: WikiItem[];
-  onUpdateUserPermissions: (userId: string, allowedWorldIds: string[] | null) => Promise<void>;
+  onUpdateUserPermissions: (
+    userId: string,
+    viewableWorldIds: string[] | null,
+    editableWorldIds: string[] | null
+  ) => Promise<void>;
   onUpdateUserRole: (userId: string, role: 'admin' | 'user') => Promise<void>;
   onDeleteUser: (userId: string) => Promise<void>;
   onRegisterUserByAdmin: (user: User) => Promise<void>;
@@ -52,27 +57,44 @@ export const AdminUsersModal: React.FC<AdminUsersModalProps> = ({
 
   const activeUser = users.find((u) => u.id === selectedUserId) || users[0] || null;
 
-  const handleToggleWorldPermission = async (user: User, worldItem: WikiItem) => {
+  const handleSetWorldPermission = async (
+    user: User,
+    worldItem: WikiItem,
+    level: 'none' | 'view' | 'edit'
+  ) => {
     playSound('click');
     setSavingUserId(user.id);
     try {
       const keys = [...new Set([worldItem.id, worldItem.mundo_id].filter(Boolean))] as string[];
-      let currentAllowed = user.allowedWorldIds;
-      if (currentAllowed === null || currentAllowed === undefined) {
-        // Currently has access to all worlds; toggling off this world means allowing all minus these keys
-        const allKeys = new Set(worldEntities.flatMap((w) => [w.id, w.mundo_id].filter(Boolean) as string[]));
-        keys.forEach((k) => allKeys.delete(k));
-        currentAllowed = Array.from(allKeys);
-      } else {
-        const isCurrentlyAllowed = user.allowedWorldIds.some((id) => keys.includes(id));
-        if (isCurrentlyAllowed) {
-          currentAllowed = currentAllowed.filter((id) => !keys.includes(id));
-        } else {
-          currentAllowed = [...new Set([...currentAllowed, ...keys])];
-        }
+      const allWorldKeys = Array.from(
+        new Set(worldEntities.flatMap((w) => [w.id, w.mundo_id].filter(Boolean) as string[]))
+      );
+
+      let currentViewable = user.viewableWorldIds !== undefined ? user.viewableWorldIds : user.allowedWorldIds;
+      let currentEditable = user.editableWorldIds !== undefined ? user.editableWorldIds : user.allowedWorldIds;
+
+      if (currentViewable === null || currentViewable === undefined) {
+        currentViewable = [...allWorldKeys];
+      }
+      if (currentEditable === null || currentEditable === undefined) {
+        currentEditable = [...allWorldKeys];
       }
 
-      await onUpdateUserPermissions(user.id, currentAllowed);
+      let newViewable = [...currentViewable];
+      let newEditable = [...currentEditable];
+
+      if (level === 'none') {
+        newViewable = newViewable.filter((k) => !keys.includes(k));
+        newEditable = newEditable.filter((k) => !keys.includes(k));
+      } else if (level === 'view') {
+        newViewable = [...new Set([...newViewable, ...keys])];
+        newEditable = newEditable.filter((k) => !keys.includes(k));
+      } else if (level === 'edit') {
+        newViewable = [...new Set([...newViewable, ...keys])];
+        newEditable = [...new Set([...newEditable, ...keys])];
+      }
+
+      await onUpdateUserPermissions(user.id, newViewable, newEditable);
     } catch (err) {
       console.error(err);
     } finally {
@@ -80,12 +102,29 @@ export const AdminUsersModal: React.FC<AdminUsersModalProps> = ({
     }
   };
 
-  const handleSetAllWorlds = async (user: User, allowAll: boolean) => {
+  const handleSetAllWorldLevels = async (user: User, level: 'none' | 'view' | 'edit') => {
     playSound('click');
     setSavingUserId(user.id);
     try {
-      const allowed = allowAll ? null : [];
-      await onUpdateUserPermissions(user.id, allowed);
+      const allWorldKeys = Array.from(
+        new Set(worldEntities.flatMap((w) => [w.id, w.mundo_id].filter(Boolean) as string[]))
+      );
+
+      let newViewable: string[] | null = [];
+      let newEditable: string[] | null = [];
+
+      if (level === 'none') {
+        newViewable = [];
+        newEditable = [];
+      } else if (level === 'view') {
+        newViewable = [...allWorldKeys];
+        newEditable = [];
+      } else if (level === 'edit') {
+        newViewable = null;
+        newEditable = null;
+      }
+
+      await onUpdateUserPermissions(user.id, newViewable, newEditable);
     } catch (err) {
       console.error(err);
     } finally {
@@ -176,6 +215,8 @@ export const AdminUsersModal: React.FC<AdminUsersModalProps> = ({
       password: newPassword,
       role: isAdmin ? 'admin' : 'user',
       allowedWorldIds: isAdmin ? null : guestAllowedWorlds,
+      viewableWorldIds: isAdmin ? null : (guestUser?.viewableWorldIds ?? guestAllowedWorlds),
+      editableWorldIds: isAdmin ? null : (guestUser?.editableWorldIds ?? guestAllowedWorlds),
       favorites: [],
       avatarColor: randomColor,
       createdAt: new Date().toISOString(),
@@ -198,109 +239,92 @@ export const AdminUsersModal: React.FC<AdminUsersModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/70 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 text-indigo-400 shadow-sm">
-              <ShieldCheck className="w-5 h-5 text-indigo-400" />
+            <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+              <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-base font-bold text-white">Panel de Administración de Usuarios</h2>
-                <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 rounded-full">
-                  Admin Access
-                </span>
-              </div>
-              <p className="text-xs text-slate-400">Control de permisos de lectura y acceso a mundos del Multiverso</p>
+              <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                Gestión de Usuarios y Permisos
+              </h2>
+              <p className="text-xs text-slate-400">Control de permisos de lectura y edición por mundos del Multiverso</p>
             </div>
           </div>
           <button
-            onClick={() => {
-              playSound('click');
-              onClose();
-            }}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors cursor-pointer"
+            onClick={onClose}
+            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Content split into Left (User List) and Right (World Permissions) */}
-        <div className="flex-1 flex flex-col md:flex-row min-h-0 divide-y md:divide-y-0 md:divide-x divide-slate-800/80">
-          
-          {/* Left Column: User List */}
-          <div className="w-full md:w-80 flex flex-col bg-slate-950/40 p-4 shrink-0">
-            <div className="flex items-center justify-between mb-3 gap-2">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500" />
+        {/* Modal Body: Master-Detail Layout */}
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden min-h-[420px]">
+          {/* Left Column: User Search & List */}
+          <div className="w-full md:w-72 border-r border-slate-800/80 bg-slate-950/50 flex flex-col shrink-0">
+            {/* Search & Add Bar */}
+            <div className="p-3 border-b border-slate-800/80 space-y-2">
+              <div className="relative">
+                <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
                 <input
                   type="text"
+                  placeholder="Buscar usuario..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Buscar usuario..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-900 border border-slate-800 rounded-xl text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors"
                 />
               </div>
+
               <button
                 type="button"
-                onClick={() => {
-                  setShowAddUser((prev) => !prev);
-                  playSound('click');
-                }}
-                className="p-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl transition-colors cursor-pointer shadow-md shrink-0"
-                title="Crear nuevo usuario"
+                onClick={() => setShowAddUser(!showAddUser)}
+                className="w-full py-1.5 px-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md transition-colors cursor-pointer flex items-center justify-center gap-1.5"
               >
-                <UserPlus className="w-4 h-4" />
+                <UserPlus className="w-3.5 h-3.5" />
+                <span>{showAddUser ? 'Cancelar' : 'Crear Usuario'}</span>
               </button>
             </div>
 
-            {/* Form to add user */}
+            {/* Add User Form Inline Drawer */}
             {showAddUser && (
-              <form onSubmit={handleCreateUser} className="mb-3 p-3 bg-slate-900 border border-indigo-500/30 rounded-xl space-y-2.5 animate-in fade-in">
-                <h4 className="text-xs font-bold text-indigo-300 flex items-center gap-1.5">
-                  <UserPlus className="w-3.5 h-3.5" />
-                  <span>Crear Nuevo Usuario</span>
-                </h4>
-                {addUserError && (
-                  <p className="text-[11px] text-rose-400">{addUserError}</p>
-                )}
-                <input
-                  type="text"
-                  placeholder="Nombre de usuario"
-                  value={newUsername}
-                  onChange={(e) => setNewUsername(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
-                />
-                <input
-                  type="password"
-                  placeholder="Contraseña"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-indigo-500"
-                />
-                <div className="flex items-center justify-end gap-2 pt-1">
-                  <button
-                    type="button"
-                    onClick={() => setShowAddUser(false)}
-                    className="px-2.5 py-1 text-xs text-slate-400 hover:text-white"
-                  >
-                    Cancelar
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-lg shadow-sm"
-                  >
-                    Crear
-                  </button>
+              <form onSubmit={handleCreateUser} className="p-3 bg-slate-900 border-b border-slate-800 space-y-2.5 animate-in slide-in-from-top-2 duration-150">
+                <h4 className="text-xs font-bold text-indigo-300">Añadir Nuevo Usuario</h4>
+                {addUserError && <p className="text-[11px] text-rose-400">{addUserError}</p>}
+                <div>
+                  <label className="text-[10px] text-slate-400 uppercase font-semibold block mb-1">Nombre</label>
+                  <input
+                    type="text"
+                    required
+                    value={newUsername}
+                    onChange={(e) => setNewUsername(e.target.value)}
+                    placeholder="ej. carlos_lore"
+                    className="w-full px-2.5 py-1 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-indigo-500"
+                  />
                 </div>
+                <div>
+                  <label className="text-[10px] text-slate-400 uppercase font-semibold block mb-1">Contraseña</label>
+                  <input
+                    type="password"
+                    required
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="w-full px-2.5 py-1 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-200 focus:outline-none focus:border-indigo-500"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition-colors cursor-pointer"
+                >
+                  Guardar Cuenta
+                </button>
               </form>
             )}
 
-            {/* Users list */}
-            <div className="flex-1 overflow-y-auto space-y-1.5 pr-1">
+            {/* User List */}
+            <div className="flex-1 overflow-y-auto p-2 space-y-1">
               {filteredUsers.map((u) => {
                 const isSelected = activeUser?.id === u.id;
                 const isAdmin = u.role === 'admin' || u.username.toLowerCase() === 'admin';
-                const allowedCount = u.allowedWorldIds === null || u.allowedWorldIds === undefined
-                  ? 'Todos'
-                  : `${u.allowedWorldIds.length}/${worldEntities.length}`;
 
                 return (
                   <div
@@ -343,9 +367,6 @@ export const AdminUsersModal: React.FC<AdminUsersModalProps> = ({
                             </span>
                           )}
                         </div>
-                        <span className="text-[10px] text-slate-400 block">
-                          Mundos: <span className="text-indigo-300 font-semibold">{allowedCount}</span>
-                        </span>
                       </div>
                     </div>
 
@@ -428,88 +449,135 @@ export const AdminUsersModal: React.FC<AdminUsersModalProps> = ({
                         <ShieldCheck className="w-3.5 h-3.5" />
                         <span>{activeUser.role === 'admin' ? 'Quitar Admin' : 'Hacer Admin'}</span>
                       </button>
-
-                      {activeUser.role !== 'admin' && (
-                        <>
-                          <button
-                            type="button"
-                            onClick={() => handleSetAllWorlds(activeUser, true)}
-                            className="px-2.5 py-1.5 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 font-semibold text-xs rounded-lg transition-colors cursor-pointer flex items-center gap-1"
-                          >
-                            <Check className="w-3.5 h-3.5" />
-                            <span>Permitir Todos</span>
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => handleSetAllWorlds(activeUser, false)}
-                            className="px-2.5 py-1.5 bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/30 font-semibold text-xs rounded-lg transition-colors cursor-pointer flex items-center gap-1"
-                          >
-                            <Lock className="w-3.5 h-3.5" />
-                            <span>Bloquear Todos</span>
-                          </button>
-                        </>
-                      )}
                     </div>
                   )}
                 </div>
 
                 {/* World Permissions Grid */}
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                    <Globe className="w-4 h-4 text-indigo-400" />
-                    <span>Permisos de Acceso a Mundos ({worldEntities.length})</span>
-                  </h4>
+                  <div className="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <Globe className="w-4 h-4 text-indigo-400" />
+                        <span>Permisos por Mundo ({worldEntities.length})</span>
+                      </h4>
+                      <p className="text-[11px] text-slate-400 mt-0.5">
+                        Define el nivel de acceso para cada mundo: <strong className="text-slate-300">Bloqueado</strong> (sin acceso), <strong className="text-amber-300">Solo Ver</strong> (lectura) o <strong className="text-emerald-300">Ver y Editar</strong> (crear, editar y borrar).
+                      </p>
+                    </div>
+
+                    {activeUser.role !== 'admin' && (
+                      <div className="flex items-center gap-1.5 shrink-0 self-start sm:self-auto">
+                        <button
+                          type="button"
+                          onClick={() => handleSetAllWorldLevels(activeUser, 'view')}
+                          className="px-2 py-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold text-[11px] rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                        >
+                          <Eye className="w-3 h-3" />
+                          <span>Ver Todos</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleSetAllWorldLevels(activeUser, 'edit')}
+                          className="px-2 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold text-[11px] rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                        >
+                          <Edit3 className="w-3 h-3" />
+                          <span>Editar Todos</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleSetAllWorldLevels(activeUser, 'none')}
+                          className="px-2 py-1 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 font-semibold text-[11px] rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                        >
+                          <Lock className="w-3 h-3" />
+                          <span>Bloquear Todos</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
 
                   {activeUser.role === 'admin' ? (
                     <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-xl text-indigo-200 text-xs flex items-center gap-2">
                       <ShieldCheck className="w-5 h-5 text-indigo-400 shrink-0" />
-                      <span>El usuario Administrador tiene acceso garantizado a todos los mundos del sistema sin restricciones.</span>
+                      <span>El usuario Administrador tiene acceso total (Ver y Editar) a todos los mundos del sistema sin restricciones.</span>
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {worldEntities.map((world) => {
-                        const keys = [world.id, world.mundo_id].filter(Boolean) as string[];
-                        const isAllowed =
-                          activeUser.allowedWorldIds === null ||
-                          activeUser.allowedWorldIds === undefined ||
-                          activeUser.allowedWorldIds.some((id) => keys.includes(id));
+                        const level = getWorldPermissionLevel(activeUser, world.id, wikiData);
 
                         return (
                           <div
                             key={world.id}
-                            onClick={() => handleToggleWorldPermission(activeUser, world)}
-                            className={`flex items-center justify-between p-3 rounded-xl border transition-all cursor-pointer select-none ${
-                              isAllowed
-                                ? 'bg-indigo-950/40 border-indigo-500/50 hover:bg-indigo-900/30'
-                                : 'bg-slate-950/60 border-slate-800 opacity-60 hover:opacity-100 hover:border-slate-700'
+                            className={`p-3 rounded-xl border transition-all flex flex-col justify-between gap-2.5 ${
+                              level === 'edit'
+                                ? 'bg-indigo-950/40 border-indigo-500/50'
+                                : level === 'view'
+                                ? 'bg-amber-950/30 border-amber-500/40'
+                                : 'bg-slate-950/60 border-slate-800 opacity-70'
                             }`}
                           >
                             <div className="flex items-center gap-2.5 min-w-0">
                               <div
                                 className={`p-2 rounded-lg shrink-0 ${
-                                  isAllowed ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-800 text-slate-500'
+                                  level === 'edit'
+                                    ? 'bg-indigo-500/20 text-indigo-400'
+                                    : level === 'view'
+                                    ? 'bg-amber-500/20 text-amber-400'
+                                    : 'bg-slate-800 text-slate-500'
                                 }`}
                               >
                                 <Globe className="w-4 h-4" />
                               </div>
-                              <div className="min-w-0">
+                              <div className="min-w-0 flex-1">
                                 <p className="text-xs font-bold text-white truncate">{world.nombre}</p>
                                 <p className="text-[10px] text-slate-400 truncate">ID: {world.id}</p>
                               </div>
                             </div>
 
-                            <div className="shrink-0 ml-2">
-                              {isAllowed ? (
-                                <span className="flex items-center gap-1 px-2 py-1 text-[10px] font-bold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-md">
-                                  <Check className="w-3 h-3" />
-                                  Permitido
-                                </span>
-                              ) : (
-                                <span className="flex items-center gap-1 px-2 py-1 text-[10px] font-bold bg-rose-500/10 border border-rose-500/30 text-rose-400 rounded-md">
-                                  <Lock className="w-3 h-3" />
-                                  Restringido
-                                </span>
-                              )}
+                            {/* 3-way permission selector */}
+                            <div className="grid grid-cols-3 gap-1 p-1 bg-slate-950/80 rounded-lg border border-slate-800/80">
+                              <button
+                                type="button"
+                                onClick={() => handleSetWorldPermission(activeUser, world, 'none')}
+                                className={`py-1 px-1.5 rounded text-[10px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                                  level === 'none'
+                                    ? 'bg-rose-500/30 text-rose-300 border border-rose-500/50 shadow-sm'
+                                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                }`}
+                                title="Sin Acceso (Oculto)"
+                              >
+                                <Lock className="w-2.5 h-2.5" />
+                                <span>Bloqueado</span>
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={() => handleSetWorldPermission(activeUser, world, 'view')}
+                                className={`py-1 px-1.5 rounded text-[10px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                                  level === 'view'
+                                    ? 'bg-amber-500/30 text-amber-300 border border-amber-500/50 shadow-sm'
+                                    : 'text-slate-400 hover:text-amber-300 hover:bg-slate-800/50'
+                                }`}
+                                title="Solo Ver (Lectura)"
+                              >
+                                <Eye className="w-2.5 h-2.5" />
+                                <span>Solo Ver</span>
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={() => handleSetWorldPermission(activeUser, world, 'edit')}
+                                className={`py-1 px-1.5 rounded text-[10px] font-bold transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                                  level === 'edit'
+                                    ? 'bg-emerald-500/30 text-emerald-300 border border-emerald-500/50 shadow-sm'
+                                    : 'text-slate-400 hover:text-emerald-300 hover:bg-slate-800/50'
+                                }`}
+                                title="Ver y Editar (Acceso Total)"
+                              >
+                                <Edit3 className="w-2.5 h-2.5" />
+                                <span>Ver y Editar</span>
+                              </button>
                             </div>
                           </div>
                         );
@@ -574,23 +642,18 @@ export const AdminUsersModal: React.FC<AdminUsersModalProps> = ({
       {/* Notice Modal Overlay */}
       {noticeMessage && (
         <div className="fixed inset-0 z-[70] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4">
-            <div className="flex items-center gap-3 text-amber-400">
-              <div className="p-2 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-xl">
-                <Lock className="w-5 h-5" />
-              </div>
-              <h3 className="text-sm font-bold text-white">Acción no permitida</h3>
-            </div>
+          <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-5 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
+            <h3 className="text-sm font-bold text-white">Aviso del Sistema</h3>
             <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/70 p-3 rounded-xl border border-slate-800">
               {noticeMessage}
             </p>
-            <div className="flex justify-end pt-1">
+            <div className="flex justify-end">
               <button
                 type="button"
                 onClick={() => setNoticeMessage(null)}
                 className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer"
               >
-                Entendido
+                Aceptar
               </button>
             </div>
           </div>

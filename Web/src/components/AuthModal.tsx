@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { User } from '../types';
 import { X, User as UserIcon, Lock, UserPlus, LogIn, Sparkles, AlertCircle } from 'lucide-react';
 import { playSound } from '../utils/soundEffects';
+import { sendDiscordLog } from '../utils/discordLogger';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -51,6 +52,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         if (res.ok && data.success && data.user) {
           playSound('click');
           onLoginSuccess(data.user);
+          sendDiscordLog({
+            username: data.user.username,
+            role: data.user.role,
+            avatarUrl: data.user.avatarUrl,
+            eventType: 'login',
+          });
           onClose();
           return;
         } else {

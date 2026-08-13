@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { CategoryType, FilterState, WikiItem } from '../types';
-import { User, MapPin, Package, Shield, Scroll, Globe, Layers, Tag, X, Sparkles, BookOpen, Zap } from 'lucide-react';
+import { User, MapPin, Package, Shield, Scroll, Globe, Layers, Tag, X, Sparkles, BookOpen, Zap, FileText } from 'lucide-react';
 import { playSound } from '../utils/soundEffects';
 
 interface CategoryBarProps {
@@ -10,20 +10,72 @@ interface CategoryBarProps {
 }
 
 export const CategoryBar: React.FC<CategoryBarProps> = ({ filter, setFilter, items }) => {
-  // Base default categories
-  const baseCategories: { type: CategoryType; label: string; icon: React.ReactNode }[] = [
-    { type: 'todos', label: 'Todos', icon: <Layers className="w-3.5 h-3.5" /> },
-    { type: 'npc', label: 'Personajes', icon: <User className="w-3.5 h-3.5" /> },
-    { type: 'lugar', label: 'Lugares', icon: <MapPin className="w-3.5 h-3.5" /> },
-    { type: 'objeto', label: 'Objetos', icon: <Package className="w-3.5 h-3.5" /> },
-    { type: 'faccion', label: 'Facciones', icon: <Shield className="w-3.5 h-3.5" /> },
-    { type: 'trama', label: 'Tramas', icon: <Scroll className="w-3.5 h-3.5" /> },
-    { type: 'mundo', label: 'Mundos', icon: <Globe className="w-3.5 h-3.5" /> },
-  ];
+  const getItemCountForCategory = (cat: CategoryType) => {
+    if (cat === 'todos') return items.length;
+    return items.filter((item) => {
+      const type = (item.tipo || 'entidad').toLowerCase();
+      if (cat === 'npc') return ['npc', 'pc', 'personaje'].includes(type);
+      if (cat === 'poder') return ['poder', 'poderes', 'habilidad', 'habilidades', 'sistema_poder', 'magia', 'magias', 'hechizo'].includes(type);
+      if (cat === 'ficha') return ['ficha', 'fichas', 'ficha_personaje', 'expediente', 'sheet'].includes(type);
+      return type === cat;
+    }).length;
+  };
 
-  // Dynamically discover any custom "tipo" present in the items array (e.g. "magias", "vehiculos", etc.)
+  // Base default categories
+  const baseCategories = useMemo(() => {
+    const list: { type: CategoryType; label: string; icon: React.ReactNode }[] = [
+      { type: 'todos', label: 'Todos', icon: <Layers className="w-3.5 h-3.5" /> },
+      { type: 'npc', label: 'Personajes', icon: <User className="w-3.5 h-3.5" /> },
+      { type: 'lugar', label: 'Lugares', icon: <MapPin className="w-3.5 h-3.5" /> },
+      { type: 'objeto', label: 'Objetos', icon: <Package className="w-3.5 h-3.5" /> },
+      { type: 'faccion', label: 'Facciones', icon: <Shield className="w-3.5 h-3.5" /> },
+      { type: 'trama', label: 'Tramas', icon: <Scroll className="w-3.5 h-3.5" /> },
+    ];
+
+    // Only show "Mundos" tab when viewing ALL worlds
+    if (filter.world === 'all') {
+      list.push({ type: 'mundo', label: 'Mundos', icon: <Globe className="w-3.5 h-3.5" /> });
+    }
+
+    // Only show "Poderes" if current world items contain at least 1 power
+    if (getItemCountForCategory('poder') > 0) {
+      list.push({ type: 'poder', label: 'Poderes', icon: <Zap className="w-3.5 h-3.5 text-amber-400" /> });
+    }
+
+    // Only show "Fichas" if current world items contain at least 1 character sheet / expediente
+    if (getItemCountForCategory('ficha') > 0) {
+      list.push({ type: 'ficha', label: 'Fichas', icon: <FileText className="w-3.5 h-3.5 text-cyan-400" /> });
+    }
+
+    return list;
+  }, [filter.world, items]);
+
+  // Dynamically discover any custom "tipo" present in the items array (e.g. "vehiculos", etc.)
   const categories = useMemo(() => {
-    const knownTypes = new Set(['todos', 'npc', 'pc', 'personaje', 'lugar', 'objeto', 'faccion', 'trama', 'mundo']);
+    const knownTypes = new Set([
+      'todos',
+      'npc',
+      'pc',
+      'personaje',
+      'lugar',
+      'objeto',
+      'faccion',
+      'trama',
+      'mundo',
+      'poder',
+      'poderes',
+      'habilidad',
+      'habilidades',
+      'sistema_poder',
+      'magia',
+      'magias',
+      'hechizo',
+      'ficha',
+      'fichas',
+      'ficha_personaje',
+      'expediente',
+      'sheet',
+    ]);
     const customTypes = new Set<string>();
 
     items.forEach((item) => {
@@ -34,18 +86,14 @@ export const CategoryBar: React.FC<CategoryBarProps> = ({ filter, setFilter, ite
     });
 
     const dynamicCats: { type: CategoryType; label: string; icon: React.ReactNode }[] = Array.from(customTypes).map((customType) => {
-      // Format pretty label (e.g., "magias" -> "Magias", "hechizo_magico" -> "Hechizo Magico")
       const formattedLabel = customType
         .replace(/_/g, ' ')
         .replace(/\b\w/g, (l) => l.toUpperCase());
 
-      // Assign icon based on name hints or fallback
       let icon = <Sparkles className="w-3.5 h-3.5 text-amber-400" />;
-      if (customType.includes('magia') || customType.includes('hechizo') || customType.includes('encantamiento')) {
-        icon = <Sparkles className="w-3.5 h-3.5 text-purple-400" />;
-      } else if (customType.includes('libro') || customType.includes('lore') || customType.includes('documento')) {
+      if (customType.includes('libro') || customType.includes('lore') || customType.includes('documento')) {
         icon = <BookOpen className="w-3.5 h-3.5 text-cyan-400" />;
-      } else if (customType.includes('habilidad') || customType.includes('poder') || customType.includes('tecnologia')) {
+      } else if (customType.includes('tecnologia') || customType.includes('nave')) {
         icon = <Zap className="w-3.5 h-3.5 text-emerald-400" />;
       }
 
@@ -57,16 +105,7 @@ export const CategoryBar: React.FC<CategoryBarProps> = ({ filter, setFilter, ite
     });
 
     return [...baseCategories, ...dynamicCats];
-  }, [items]);
-
-  const getItemCountForCategory = (cat: CategoryType) => {
-    if (cat === 'todos') return items.length;
-    return items.filter((item) => {
-      const type = (item.tipo || 'entidad').toLowerCase();
-      if (cat === 'npc') return ['npc', 'pc', 'personaje'].includes(type);
-      return type === cat;
-    }).length;
-  };
+  }, [baseCategories, items]);
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3">

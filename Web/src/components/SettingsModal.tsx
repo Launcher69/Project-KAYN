@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { User } from '../types';
-import { X, Lock, Check, KeyRound, Sparkles, AlertCircle, Palette, Upload, Image as ImageIcon, Trash2, Link as LinkIcon } from 'lucide-react';
+import { X, Lock, Check, KeyRound, Sparkles, AlertCircle, Palette, Upload, Image as ImageIcon, Trash2, Link as LinkIcon, Send, Bot } from 'lucide-react';
 import { playSound } from '../utils/soundEffects';
+import { getDiscordWebhookUrl, setDiscordWebhookUrl, sendDiscordLog } from '../utils/discordLogger';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -22,9 +23,19 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   const [avatarColor, setAvatarColor] = useState(currentUser.avatarColor || 'bg-indigo-600');
   const [imageUrlInput, setImageUrlInput] = useState(currentUser.avatarUrl || '');
   const [showUrlInput, setShowUrlInput] = useState(false);
+  const [webhookUrl, setWebhookUrlInput] = useState('');
+  const [testingWebhook, setTestingWebhook] = useState(false);
+  const [webhookSuccess, setWebhookSuccess] = useState<string | null>(null);
+  const [webhookError, setWebhookError] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setWebhookUrlInput(getDiscordWebhookUrl());
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -126,6 +137,41 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
     };
     onUpdateUser(updated);
     playSound('click');
+  };
+
+  const handleSaveDiscordWebhook = () => {
+    const clean = webhookUrl.trim();
+    setDiscordWebhookUrl(clean);
+    playSound('click');
+    setWebhookError(null);
+    setWebhookSuccess(clean ? '¡URL de Webhook guardada con éxito!' : 'Webhook desactivado.');
+  };
+
+  const handleTestDiscordWebhook = async () => {
+    const clean = webhookUrl.trim();
+    if (!clean) {
+      setWebhookError('Introduce una URL de Webhook de Discord para probar');
+      return;
+    }
+    setTestingWebhook(true);
+    setWebhookError(null);
+    setWebhookSuccess(null);
+
+    const res = await sendDiscordLog({
+      username: currentUser.username,
+      role: currentUser.role,
+      avatarUrl: currentUser.avatarUrl,
+      eventType: 'test',
+      customWebhookUrl: clean,
+    });
+
+    setTestingWebhook(false);
+    if (res.success) {
+      playSound('click');
+      setWebhookSuccess('¡Mensaje de prueba enviado con éxito a tu canal de Discord! 🚀');
+    } else {
+      setWebhookError(res.error || 'No se pudo enviar el mensaje a Discord. Revisa la URL.');
+    }
   };
 
   return (
@@ -266,6 +312,68 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               ))}
             </div>
           </div>
+
+          {/* Discord Webhook Logs Configuration (Solo para Administradores) */}
+          {currentUser.role === 'admin' && (
+            <div className="space-y-4 pt-4 border-t border-slate-800">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                <Bot className="w-3.5 h-3.5 text-indigo-400" />
+                <span>Registros de Acceso en Discord (Solo Admin)</span>
+              </h3>
+
+              <p className="text-[11px] text-slate-400 leading-relaxed">
+                Envía automáticamente un log a tu canal de Discord cuando cualquier usuario inicie sesión o acceda a la wiki.
+              </p>
+
+              {webhookError && (
+                <div className="flex items-center gap-2 p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl text-rose-300 text-xs animate-in fade-in">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+                  <span>{webhookError}</span>
+                </div>
+              )}
+
+              {webhookSuccess && (
+                <div className="flex items-center gap-2 p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-300 text-xs animate-in fade-in">
+                  <Check className="w-4 h-4 shrink-0 text-emerald-400" />
+                  <span>{webhookSuccess}</span>
+                </div>
+              )}
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1.5">
+                  URL del Webhook de Discord
+                </label>
+                <input
+                  type="text"
+                  value={webhookUrl}
+                  onChange={(e) => setWebhookUrlInput(e.target.value)}
+                  placeholder="https://discord.com/api/webhooks/..."
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all font-mono"
+                />
+              </div>
+
+              <div className="flex items-center gap-2 pt-1">
+                <button
+                  type="button"
+                  onClick={handleSaveDiscordWebhook}
+                  className="flex-1 py-2 bg-indigo-600/20 border border-indigo-500/30 hover:bg-indigo-600/30 text-indigo-300 font-semibold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <Check className="w-3.5 h-3.5" />
+                  <span>Guardar Webhook</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleTestDiscordWebhook}
+                  disabled={testingWebhook}
+                  className="py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 disabled:opacity-50"
+                >
+                  <Send className="w-3.5 h-3.5 text-indigo-400" />
+                  <span>{testingWebhook ? 'Enviando...' : 'Probar Log'}</span>
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Change Password Form */}
           <form onSubmit={handleSavePassword} className="space-y-4 pt-4 border-t border-slate-800">

@@ -15,11 +15,14 @@ import { TimelineView } from './components/TimelineView';
 import { TableView } from './components/TableView';
 import { DetailModal } from './components/DetailModal';
 import { ItemEditorModal } from './components/ItemEditorModal';
+import { CharacterSheetModal } from './components/CharacterSheetModal';
 import { AuthModal } from './components/AuthModal';
 import { SettingsModal } from './components/SettingsModal';
 import { AdminUsersModal } from './components/AdminUsersModal';
-import { Layers, Plus, Globe } from 'lucide-react';
+import { Layers, Plus, Globe, Check, AlertCircle } from 'lucide-react';
 import { playSound } from './utils/soundEffects';
+import { sendDiscordLog } from './utils/discordLogger';
+import { canUserEditItem, canUserEditWorld, canUserViewWorld } from './utils/permissions';
 
 export default function App() {
   // Load data from localStorage if available, or fall back to initial dataset
@@ -59,6 +62,15 @@ export default function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [characterSheetItemToEdit, setCharacterSheetItemToEdit] = useState<WikiItem | null>(null);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+
+  const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    setToast({ message, type });
+    setTimeout(() => {
+      setToast((cur) => (cur?.message === message ? null : cur));
+    }, 4500);
+  };
 
   // Fetch users from server to sync persistent permissions & admin changes
   const fetchServerUsers = async () => {
@@ -75,99 +87,71 @@ export default function App() {
     }
   };
 
-  // Fetch wiki data: prioritize Cloudflare D1 /api/wiki-data first, then fallbacks
+  // Fetch wiki data: jsDelivr ultra-fast loader with local fallback
   const fetchWikiDatabase = async () => {
     const timestamp = Date.now();
+    const JSDELIVR_URL = `https://cdn.jsdelivr.net/gh/launcher69/Project-KAYN@main/Web/public/wiki_database.json?v=${timestamp}`;
+    const LOCAL_URL = `/wiki_database.json?v=${timestamp}`;
 
-    // 1. Try local Cloudflare D1 API first
     try {
-      const d1Res = await fetch(`/api/wiki-data?t=${timestamp}`);
-      if (d1Res.ok) {
-        const d1Data = await d1Res.json();
-        const items = Array.isArray(d1Data) ? d1Data : d1Data?.data;
-        if (Array.isArray(items) && items.length > 0) {
-          setWikiData(items);
+      console.log('🔄 Solicitando datos actualizados a jsDelivr...');
+      const response = await fetch(JSDELIVR_URL);
+      if (response.ok) {
+        const parsed = await response.json();
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          console.log('⚡ Wiki cargada al instante desde jsDelivr:', parsed.length, 'elementos');
+          setWikiData(parsed);
+          return;
+        }
+      }
+
+      const localRes = await fetch(LOCAL_URL);
+      if (localRes.ok) {
+        const parsed = await localRes.json();
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setWikiData(parsed);
           return;
         }
       }
     } catch (err) {
-      console.warn('Cloudflare D1 /api/wiki-data fetch error, trying fallbacks:', err);
-    }
-
-    // 2. Try GitHub REST API
-    try {
-      const ghApiRes = await fetch(
-        `https://api.github.com/repos/Launcher69/Project-KAYN/contents/Web/public/wiki_database.json?t=${timestamp}`
-      );
-      if (ghApiRes.ok) {
-        const ghJson = await ghApiRes.json();
-        if (ghJson.content && ghJson.encoding === 'base64') {
-          const cleanBase64 = ghJson.content.replace(/\n/g, '');
-          const binaryString = atob(cleanBase64);
-          const bytes = Uint8Array.from(binaryString, (char) => char.charCodeAt(0));
-          const decodedText = new TextDecoder('utf-8').decode(bytes);
-          const parsedData = JSON.parse(decodedText);
-          if (Array.isArray(parsedData) && parsedData.length > 0) {
-            setWikiData(parsedData);
-            return;
-          }
-        }
-      }
-    } catch (err) {
-      console.warn('GitHub API fetch failed or rate limited:', err);
-    }
-
-    // 3. Fallbacks: Raw GitHub URL, CDN, Local File
-    const fallbackUrls = [
-      `https://raw.githubusercontent.com/Launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=${timestamp}`,
-      `https://cdn.jsdelivr.net/gh/Launcher69/Project-KAYN@main/Web/public/wiki_database.json?t=${timestamp}`,
-      `/wiki_database.json?t=${timestamp}`,
-    ];
-
-    for (const url of fallbackUrls) {
-      try {
-        const res = await fetch(url);
-        if (res.ok) {
-          const body = await res.json();
-          const dataArray = Array.isArray(body) ? body : body?.data;
-          if (Array.isArray(dataArray) && dataArray.length > 0) {
-            setWikiData(dataArray);
-            return;
-          }
-        }
-      } catch {
-        // Fallback attempt failed
-      }
+      console.warn('⚠️ Error al cargar datos dinámicos:', err);
     }
   };
 
-  // Initial fetch and automatic periodic background synchronization (polling every 10s + focus trigger)
+  // Carga dinámicamente usando jsDelivr (peticiones ilimitadas y 0s de espera)
   useEffect(() => {
     fetchServerUsers();
-    fetchWikiDatabase();
 
-    // Auto sync every 10 seconds for real-time changes across mobile and PC
-    const interval = setInterval(() => {
-      fetchServerUsers();
-      fetchWikiDatabase();
-    }, 10000);
+    const fetchWikiDatabaseEffect = async () => {
+      const timestamp = Date.now();
+      const JSDELIVR_URL = `https://cdn.jsdelivr.net/gh/launcher69/Project-KAYN@main/Web/public/wiki_database.json?v=${timestamp}`;
 
-    // Auto sync when user switches back to the browser window/tab or unlocks screen
-    const handleFocusOrVisibility = () => {
-      if (!document.hidden) {
-        fetchServerUsers();
-        fetchWikiDatabase();
+      try {
+        // 1. Try local server API first
+        const localApiRes = await fetch(`/api/wiki-data?t=${timestamp}`);
+        if (localApiRes.ok) {
+          const apiJson = await localApiRes.json();
+          if (apiJson.success && Array.isArray(apiJson.data) && apiJson.data.length > 0) {
+            setWikiData(apiJson.data);
+            return;
+          }
+        }
+
+        // 2. Fallback to jsDelivr
+        const response = await fetch(JSDELIVR_URL);
+        if (response.ok) {
+          const parsed = await response.json();
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setWikiData(parsed);
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn('⚠️ Error al cargar datos dinámicos:', err);
       }
     };
 
-    window.addEventListener('focus', handleFocusOrVisibility);
-    document.addEventListener('visibilitychange', handleFocusOrVisibility);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('focus', handleFocusOrVisibility);
-      document.removeEventListener('visibilitychange', handleFocusOrVisibility);
-    };
+    fetchWikiDatabaseEffect();
   }, []);
 
   // Save to localStorage when wikiData changes
@@ -223,6 +207,26 @@ export default function App() {
     }
     return guestUser;
   }, [users, currentUserId, guestUser]);
+
+  // Log page access to Discord Webhook (once per browser session per user)
+  useEffect(() => {
+    if (currentUser && currentUser.username) {
+      const loggedKey = `discord_logged_${currentUser.id}`;
+      try {
+        if (!sessionStorage.getItem(loggedKey)) {
+          sessionStorage.setItem(loggedKey, 'true');
+          sendDiscordLog({
+            username: currentUser.username,
+            role: currentUser.role,
+            avatarUrl: currentUser.avatarUrl,
+            eventType: 'entry',
+          });
+        }
+      } catch {
+        // Ignore session storage errors
+      }
+    }
+  }, [currentUser]);
 
   // Filter & View State
   const [filter, setFilter] = useState<FilterState>(() => {
@@ -281,36 +285,23 @@ export default function App() {
   const [itemToEdit, setItemToEdit] = useState<WikiItem | null>(null);
   const [isEditorOpen, setIsEditorOpen] = useState<boolean>(false);
 
-  // Helper to check if world is allowed for a user
-  const isWorldAllowedForUser = (worldId: string, user: User | null): boolean => {
-    if (!user) return true;
-    if (user.role === 'admin' || user.username.toLowerCase() === 'admin') return true;
-    if (user.allowedWorldIds === null || user.allowedWorldIds === undefined) return true;
-
-    const candidateKeys = new Set<string>([worldId]);
-    const matchingWorld = wikiData.find(
-      (i) => (i.tipo === 'mundo' || i.tipo === 'world') && (i.id === worldId || i.mundo_id === worldId)
-    );
-    if (matchingWorld) {
-      if (matchingWorld.id) candidateKeys.add(matchingWorld.id);
-      if (matchingWorld.mundo_id) candidateKeys.add(matchingWorld.mundo_id);
-    }
-
-    return user.allowedWorldIds.some((allowedId) => candidateKeys.has(allowedId));
-  };
-
-  // Extract worlds filtered by current user permissions
+  // Extract worlds viewable by current user
   const worlds = useMemo(() => {
     const allWorlds = [...new Set(wikiData.map((item) => item.mundo_id).filter(Boolean))];
-    return allWorlds.filter((wId) => isWorldAllowedForUser(wId, currentUser));
+    return allWorlds.filter((wId) => canUserViewWorld(currentUser, wId, wikiData));
   }, [wikiData, currentUser]);
 
-  // If currently selected world filter is not allowed for active user, reset filter to 'all'
+  // If currently selected world filter is not viewable for active user, reset filter to 'all'
   useEffect(() => {
-    if (filter.world !== 'all' && currentUser && !isWorldAllowedForUser(filter.world, currentUser)) {
-      setFilter((prev) => ({ ...prev, world: 'all' }));
+    if (filter.world !== 'all') {
+      if (currentUser && !canUserViewWorld(currentUser, filter.world, wikiData)) {
+        setFilter((prev) => ({ ...prev, world: 'all' }));
+      }
+      if (filter.category === 'mundo') {
+        setFilter((prev) => ({ ...prev, category: 'todos' }));
+      }
     }
-  }, [filter.world, currentUser]);
+  }, [filter.world, filter.category, currentUser, wikiData]);
 
   const getWorldDisplayName = (worldId: string) => {
     return getDisplayName(worldId, wikiData);
@@ -326,15 +317,13 @@ export default function App() {
     }));
   }, [wikiData, currentUser]);
 
-  // Filter entities according to current user's world permissions
+  // Filter entities according to current user's view permissions
   const allowedWikiData = useMemo(() => {
     return wikiDataWithUserFavorites.filter((item) => {
-      if (item.tipo === 'mundo') {
-        return isWorldAllowedForUser(item.id, currentUser);
-      }
-      return isWorldAllowedForUser(item.mundo_id, currentUser);
+      const targetWorldId = item.tipo === 'mundo' ? item.id : item.mundo_id;
+      return canUserViewWorld(currentUser, targetWorldId, wikiData);
     });
-  }, [wikiDataWithUserFavorites, currentUser]);
+  }, [wikiDataWithUserFavorites, currentUser, wikiData]);
 
   // Items scoped to selected world (or all) for CategoryBar counters
   const itemsByWorld = filter.world === 'all'
@@ -354,6 +343,10 @@ export default function App() {
         const type = (item.tipo || 'entidad').toLowerCase();
         if (filter.category === 'npc') {
           if (!['npc', 'pc', 'personaje'].includes(type)) return false;
+        } else if (filter.category === 'poder') {
+          if (!['poder', 'poderes', 'habilidad', 'habilidades', 'sistema_poder', 'magia', 'magias', 'hechizo'].includes(type)) return false;
+        } else if (filter.category === 'ficha') {
+          if (!['ficha', 'fichas', 'ficha_personaje', 'expediente', 'sheet'].includes(type)) return false;
         } else if (type !== filter.category) {
           return false;
         }
@@ -459,12 +452,22 @@ export default function App() {
     }
   };
 
-  const handleUpdateUserPermissions = async (userId: string, allowedWorldIds: string[] | null) => {
+  const handleUpdateUserPermissions = async (
+    userId: string,
+    viewableWorldIds: string[] | null,
+    editableWorldIds: string[] | null
+  ) => {
+    const updates = {
+      viewableWorldIds,
+      editableWorldIds,
+      allowedWorldIds: editableWorldIds,
+    };
+
     try {
       const res = await fetch(`/api/users/${userId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ allowedWorldIds }),
+        body: JSON.stringify(updates),
       });
       const data = await res.json();
       if (res.ok && data.success && data.user) {
@@ -474,16 +477,24 @@ export default function App() {
     } catch (err) {
       console.warn('Backend update failed:', err);
     }
-    setUsers((prev) => prev.map((u) => (u.id === userId ? { ...u, allowedWorldIds } : u)));
+    setUsers((prev) =>
+      prev.map((u) =>
+        u.id === userId
+          ? { ...u, viewableWorldIds, editableWorldIds, allowedWorldIds: editableWorldIds }
+          : u
+      )
+    );
   };
 
   const handleUpdateUserRole = async (userId: string, role: 'admin' | 'user') => {
     const allowedWorldIds = role === 'admin' ? null : [];
+    const viewableWorldIds = role === 'admin' ? null : [];
+    const editableWorldIds = role === 'admin' ? null : [];
     try {
       const res = await fetch(`/api/users/${userId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ role, allowedWorldIds }),
+        body: JSON.stringify({ role, allowedWorldIds, viewableWorldIds, editableWorldIds }),
       });
       const data = await res.json();
       if (res.ok && data.success && data.user) {
@@ -494,7 +505,17 @@ export default function App() {
       console.warn('Backend update role failed:', err);
     }
     setUsers((prev) =>
-      prev.map((u) => (u.id === userId ? { ...u, role, allowedWorldIds: role === 'admin' ? null : u.allowedWorldIds } : u))
+      prev.map((u) =>
+        u.id === userId
+          ? {
+              ...u,
+              role,
+              allowedWorldIds: role === 'admin' ? null : u.allowedWorldIds,
+              viewableWorldIds: role === 'admin' ? null : u.viewableWorldIds,
+              editableWorldIds: role === 'admin' ? null : u.editableWorldIds,
+            }
+          : u
+      )
     );
   };
 
@@ -541,6 +562,12 @@ export default function App() {
   // Delete item handler
   const handleDeleteItem = async (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
+    const targetItem = wikiData.find((item) => item.id === id);
+    if (!canUserEditItem(currentUser, targetItem, wikiData)) {
+      alert('🔒 Solo un administrador o usuario autorizado para este mundo puede eliminar contenido.');
+      return;
+    }
+
     if (window.confirm('¿Estás seguro de eliminar esta entidad del lore?')) {
       const updated = wikiData.filter((item) => item.id !== id);
       setWikiData(updated);
@@ -561,6 +588,22 @@ export default function App() {
 
   // Save new/edited item
   const handleSaveItem = async (savedItem: WikiItem) => {
+    if (!canUserEditItem(currentUser, savedItem, wikiData)) {
+      alert('🔒 No tienes permisos para modificar o guardar elementos en este mundo.');
+      return;
+    }
+    // 1. Prepare exact payload format specified by Discord Bot API
+    const discordPayload = {
+      id: savedItem.id,
+      tipo: savedItem.tipo,
+      nombre: savedItem.nombre,
+      mundo_id: savedItem.mundo_id,
+      relaciones: savedItem.relaciones || [],
+      detalles: savedItem.detalles || {},
+      contenido_lore: savedItem.contenido_lore || '',
+      url_discord: savedItem.url_discord || '',
+    };
+
     let updated: WikiItem[] = [];
     setWikiData((prev) => {
       const exists = prev.some((i) => i.id === savedItem.id);
@@ -575,14 +618,61 @@ export default function App() {
     setIsEditorOpen(false);
     setItemToEdit(null);
 
+    // Save to local wiki-data backend cache
     try {
       await fetch('/api/wiki-data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data: [savedItem] }),
+        body: JSON.stringify({ data: updated }),
       });
     } catch (err) {
-      console.warn('Failed to persist saved item to backend:', err);
+      console.warn('Failed to persist saved item to local backend:', err);
+    }
+
+    // If no url_discord provided, saved successfully on Web without contacting Discord bot
+    if (!savedItem.url_discord || savedItem.url_discord.trim() === '') {
+      showToast('Entidad guardada correctamente en la Web', 'success');
+      playSound('success');
+      return;
+    }
+
+    // Call Discord Bot server on Render (via Express proxy for CORS/Cold-start reliability)
+    try {
+      let botResponse;
+      try {
+        botResponse = await fetch('/api/edit-discord-item', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(discordPayload),
+        });
+      } catch (proxyErr) {
+        // Fallback to direct client fetch if proxy fails
+        botResponse = await fetch('https://wiki-bot-discord.onrender.com/api/edit-item', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(discordPayload),
+        });
+      }
+
+      let resData: any = {};
+      try {
+        resData = await botResponse.json();
+      } catch {
+        resData = { success: false, error: 'Respuesta no válida del servidor.' };
+      }
+
+      if (botResponse.ok && resData.success) {
+        showToast('Ficha actualizada en Discord y Web', 'success');
+        playSound('success');
+        fetchWikiDatabase();
+      } else {
+        showToast(`Guardado en Web (Discord: ${resData.error || resData.message || 'Sin actualización'})`, 'success');
+        playSound('success');
+      }
+    } catch (err: any) {
+      console.error('Error enviando datos al Bot de Discord:', err);
+      showToast('Guardado en Web correctamente', 'success');
+      playSound('success');
     }
   };
 
@@ -631,6 +721,10 @@ export default function App() {
                     onToggleFavorite={handleToggleFavorite}
                     onEditItem={(i, e) => {
                       e.stopPropagation();
+                      if (!canUserEditItem(currentUser, i, wikiData)) {
+                        alert('🔒 Solo los administradores o usuarios asignados a este mundo pueden modificar esta entidad.');
+                        return;
+                      }
                       setItemToEdit(i);
                       setIsEditorOpen(true);
                     }}
@@ -687,12 +781,22 @@ export default function App() {
           <TableView
             items={filteredItems}
             wikiData={wikiData}
+            currentUser={currentUser}
             onOpenModal={(id) => setSelectedModalId(id)}
             onToggleFavorite={handleToggleFavorite}
             onEditItem={(i, e) => {
               e.stopPropagation();
-              setItemToEdit(i);
-              setIsEditorOpen(true);
+              if (!canUserEditItem(currentUser, i, wikiData)) {
+                alert('🔒 Solo los administradores o usuarios asignados a este mundo pueden modificar esta entidad.');
+                return;
+              }
+              const isFicha = ['ficha', 'fichas', 'ficha_personaje', 'expediente', 'sheet'].includes((i.tipo || '').toLowerCase());
+              if (isFicha) {
+                setCharacterSheetItemToEdit(i);
+              } else {
+                setItemToEdit(i);
+                setIsEditorOpen(true);
+              }
             }}
             onDeleteItem={handleDeleteItem}
           />
@@ -707,13 +811,44 @@ export default function App() {
         onClose={() => setSelectedModalId(null)}
         onNavigateTo={(id) => setSelectedModalId(id)}
         onToggleFavorite={handleToggleFavorite}
+        onSaveItem={handleSaveItem}
+        onEditItem={(itemToEdit) => {
+          setSelectedModalId(null);
+          const isFicha = ['ficha', 'fichas', 'ficha_personaje', 'expediente', 'sheet'].includes((itemToEdit.tipo || '').toLowerCase());
+          if (isFicha) {
+            setCharacterSheetItemToEdit(itemToEdit);
+          } else {
+            setItemToEdit(itemToEdit);
+            setIsEditorOpen(true);
+          }
+        }}
+        currentUser={currentUser}
       />
+
+      {/* Character / Role Sheet Attribute Editor Modal (opened from Table view) */}
+      {characterSheetItemToEdit && (
+        <CharacterSheetModal
+          item={characterSheetItemToEdit}
+          isOpen={!!characterSheetItemToEdit}
+          initialIsEditing={true}
+          onClose={() => setCharacterSheetItemToEdit(null)}
+          onSaveItem={(updated) => {
+            handleSaveItem(updated);
+            setCharacterSheetItemToEdit(null);
+          }}
+          currentUser={currentUser}
+          wikiData={wikiData}
+          onNavigateTo={(id) => setSelectedModalId(id)}
+        />
+      )}
+
 
       {/* Item Editor / Creator Modal */}
       {isEditorOpen && (
         <ItemEditorModal
           itemToEdit={itemToEdit}
           wikiData={wikiData}
+          currentUser={currentUser}
           onSave={handleSaveItem}
           onClose={() => {
             setIsEditorOpen(false);
@@ -756,6 +891,22 @@ export default function App() {
           onDeleteUser={handleDeleteUser}
           onRegisterUserByAdmin={handleRegisterUserByAdmin}
         />
+      )}
+
+      {/* Toast Notification Popup */}
+      {toast && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700/90 shadow-2xl shadow-black animate-in slide-in-from-bottom-5 fade-in duration-200">
+          {toast.type === 'success' ? (
+            <div className="p-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+              <Check className="w-5 h-5" />
+            </div>
+          ) : (
+            <div className="p-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400">
+              <AlertCircle className="w-5 h-5" />
+            </div>
+          )}
+          <span className="text-xs font-bold text-slate-100">{toast.message}</span>
+        </div>
       )}
 
     </div>

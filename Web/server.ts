@@ -12,9 +12,66 @@ async function startServer() {
 
   app.use(express.json({ limit: "10mb" }));
 
-  // API endpoint to read wiki_database.json dynamically from disk
-  app.get("/api/wiki-data", (req, res) => {
+  // API endpoint to read wiki_database.json dynamically (GitHub REST API primary + disk fallback)
+  app.get("/api/wiki-data", async (req, res) => {
     try {
+      const candidatePaths = [
+        "Web/public/wiki_database.json",
+        "web/wiki_database.json",
+        "Web/wiki_database.json",
+        "wiki_database.json",
+      ];
+
+      // 1. Try fetching directly from GitHub REST API (bypasses GitHub Raw 5-minute CDN cache)
+      for (const ghPath of candidatePaths) {
+        try {
+          const ghApiRes = await fetch(
+            `https://api.github.com/repos/Launcher69/Project-KAYN/contents/${ghPath}?t=` + Date.now(),
+            { headers: { "Cache-Control": "no-cache, no-store", "User-Agent": "WikiApp" } }
+          );
+          if (ghApiRes.ok) {
+            const ghJson = await ghApiRes.json();
+            if (ghJson.content && ghJson.encoding === "base64") {
+              const cleanBase64 = ghJson.content.replace(/\n/g, "");
+              const buffer = Buffer.from(cleanBase64, "base64");
+              const decodedText = buffer.toString("utf-8");
+              const parsed = JSON.parse(decodedText);
+              const dataArray = Array.isArray(parsed) ? parsed : parsed?.data;
+              if (Array.isArray(dataArray) && dataArray.length > 0) {
+                try {
+                  const publicPath = path.join(process.cwd(), "public", "wiki_database.json");
+                  fs.writeFileSync(publicPath, JSON.stringify(dataArray, null, 2), "utf-8");
+                } catch {}
+                return res.json({ success: true, count: dataArray.length, data: dataArray });
+              }
+            }
+          }
+        } catch (ghErr) {
+          console.warn(`GitHub REST API fetch error for ${ghPath}:`, ghErr);
+        }
+      }
+
+      // 2. Try raw fallback
+      try {
+        const ghRes = await fetch("https://raw.githubusercontent.com/Launcher69/Project-KAYN/main/Web/public/wiki_database.json?t=" + Date.now(), {
+          headers: { "Cache-Control": "no-cache, no-store" },
+        });
+        if (ghRes.ok) {
+          const ghJson = await ghRes.json();
+          const dataArray = Array.isArray(ghJson) ? ghJson : ghJson?.data;
+          if (Array.isArray(dataArray) && dataArray.length > 0) {
+            try {
+              const publicPath = path.join(process.cwd(), "public", "wiki_database.json");
+              fs.writeFileSync(publicPath, JSON.stringify(dataArray, null, 2), "utf-8");
+            } catch {}
+            return res.json({ success: true, count: dataArray.length, data: dataArray });
+          }
+        }
+      } catch (ghErr) {
+        console.warn("GitHub Raw fetch error on server, fallback to disk:", ghErr);
+      }
+
+      // 2. Disk fallback
       const publicPath = path.join(process.cwd(), "public", "wiki_database.json");
       const rootPath = path.join(process.cwd(), "wiki_database.json");
 
@@ -58,6 +115,51 @@ async function startServer() {
       return res.json({ success: true, count: data.length });
     } catch (err: any) {
       return res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // API endpoint to proxy edits to Discord Bot on Render
+  app.post("/api/edit-discord-item", async (req, res) => {
+    try {
+      console.log("Enviando petición a Bot de Discord en Render:", req.body?.id);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 45000); // 45s timeout for Render cold start
+
+      const renderRes = await fetch("https://wiki-bot-discord.onrender.com/api/edit-item", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(req.body),
+        signal: controller.signal,
+      });
+      clearTimeout(timeout);
+
+      const responseText = await renderRes.text();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseErr) {
+        if (renderRes.status === 501 || responseText.includes("Unsupported method ('POST')")) {
+          data = {
+            success: false,
+            error: "El servidor de Render está usando SimpleHTTPRequestHandler (HTTP 501: Unsupported method POST). Debes actualizar 'main.py' en el Bot para que acepte peticiones POST en /api/edit-item."
+          };
+        } else if (responseText.includes("<!DOCTYPE") || responseText.includes("<html")) {
+          data = { success: false, error: `Servidor devolvió error HTML ${renderRes.status}` };
+        } else {
+          data = { success: false, error: responseText || `HTTP ${renderRes.status}` };
+        }
+      }
+
+      return res.status(renderRes.status).json(data);
+    } catch (err: any) {
+      console.error("Error al proxy de edición a Discord Bot:", err);
+      const isTimeout = err.name === 'AbortError';
+      return res.status(500).json({
+        success: false,
+        error: isTimeout
+          ? "El servidor de Render tardó demasiado en responder (posiblemente iniciando el bot de Discord)."
+          : err.message || "Error al conectar con el servidor del Bot."
+      });
     }
   });
 
@@ -337,6 +439,84 @@ CREATE TABLE IF NOT EXISTS wiki_items (
 
       res.setHeader("Content-Type", "text/plain; charset=utf-8");
       return res.send(sql);
+    } catch (err: any) {
+      return res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // Relay logs to Discord Webhook
+  app.post("/api/discord-log", async (req, res) => {
+    try {
+      const webhookUrl = (req.body?.webhookUrl || process.env.DISCORD_WEBHOOK_URL || "").trim();
+
+      if (!webhookUrl) {
+        return res.status(400).json({
+          success: false,
+          error: "No se ha configurado la URL del Webhook de Discord. Ingresa la URL en la configuración.",
+        });
+      }
+
+      const { username, role, eventType } = req.body;
+      const dateStr = new Date().toLocaleString("es-ES", {
+        dateStyle: "full",
+        timeStyle: "medium",
+      });
+
+      const isTest = eventType === "test";
+      const isLogin = eventType === "login";
+
+      const embedTitle = isTest
+        ? "🤖 Prueba de Conexión con Discord Webhook"
+        : isLogin
+        ? "🔐 Inicio de Sesión de Usuario"
+        : "📥 Nuevo Acceso a Multiverso Wiki";
+
+      const embedColor = isTest ? 3447003 : isLogin ? 5763719 : 5814783;
+
+      const discordPayload = {
+        username: "Multiverso Wiki Bot",
+        avatar_url: "https://cdn-icons-png.flaticon.com/512/3688/3688609.png",
+        embeds: [
+          {
+            title: embedTitle,
+            color: embedColor,
+            fields: [
+              {
+                name: "👤 Usuario",
+                value: `**${username || "Invitado"}**`,
+                inline: true,
+              },
+              {
+                name: "🛡️ Rol",
+                value: `\`${(role || "user").toUpperCase()}\``,
+                inline: true,
+              },
+              {
+                name: "📅 Fecha y Hora",
+                value: `\`${dateStr}\``,
+                inline: false,
+              },
+            ],
+            footer: {
+              text: "Multiverso Wiki • Registro de Accesos",
+            },
+            timestamp: new Date().toISOString(),
+          },
+        ],
+      };
+
+      const discordRes = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(discordPayload),
+      });
+
+      if (discordRes.ok || discordRes.status === 204) {
+        return res.json({ success: true });
+      } else {
+        const errText = await discordRes.text();
+        return res.status(400).json({ success: false, error: `Discord Webhook error: ${errText || discordRes.status}` });
+      }
     } catch (err: any) {
       return res.status(500).json({ success: false, error: err.message });
     }

@@ -246,6 +246,84 @@ export const onRequest = async (context: { request: Request; env: Env; params: {
       return jsonResponse({ success: true, count: data.length });
     }
 
+    // 8. POST /api/discord-log
+    if (path === '/api/discord-log' && method === 'POST') {
+      const body = await request.json();
+      const webhookUrl = (body.webhookUrl || (env as any).DISCORD_WEBHOOK_URL || '').trim();
+
+      if (!webhookUrl) {
+        return jsonResponse(
+          {
+            success: false,
+            error: 'No se ha configurado la URL del Webhook de Discord. Ingresa la URL en la configuración.',
+          },
+          400
+        );
+      }
+
+      const { username, role, eventType } = body;
+      const dateStr = new Date().toLocaleString('es-ES', {
+        dateStyle: 'full',
+        timeStyle: 'medium',
+      });
+
+      const isTest = eventType === 'test';
+      const isLogin = eventType === 'login';
+
+      const embedTitle = isTest
+        ? '🤖 Prueba de Conexión con Discord Webhook'
+        : isLogin
+        ? '🔐 Inicio de Sesión de Usuario'
+        : '📥 Nuevo Acceso a Multiverso Wiki';
+
+      const embedColor = isTest ? 3447003 : isLogin ? 5763719 : 5814783;
+
+      const discordPayload = {
+        username: 'Multiverso Wiki Bot',
+        avatar_url: 'https://cdn-icons-png.flaticon.com/512/3688/3688609.png',
+        embeds: [
+          {
+            title: embedTitle,
+            color: embedColor,
+            fields: [
+              {
+                name: '👤 Usuario',
+                value: `**${username || 'Invitado'}**`,
+                inline: true,
+              },
+              {
+                name: '🛡️ Rol',
+                value: `\`${(role || 'user').toUpperCase()}\``,
+                inline: true,
+              },
+              {
+                name: '📅 Fecha y Hora',
+                value: `\`${dateStr}\``,
+                inline: false,
+              },
+            ],
+            footer: {
+              text: 'Multiverso Wiki • Registro de Accesos',
+            },
+            timestamp: new Date().toISOString(),
+          },
+        ],
+      };
+
+      const discordRes = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(discordPayload),
+      });
+
+      if (discordRes.ok || discordRes.status === 204) {
+        return jsonResponse({ success: true });
+      } else {
+        const errText = await discordRes.text();
+        return jsonResponse({ success: false, error: `Discord Webhook error: ${errText || discordRes.status}` }, 400);
+      }
+    }
+
     return jsonResponse({ success: false, error: 'Ruta no encontrada' }, 404);
   } catch (err: any) {
     return jsonResponse({ success: false, error: err.message }, 500);

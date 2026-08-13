@@ -44,7 +44,9 @@ export interface User {
   role?: 'admin' | 'user' | 'guest';
   avatarUrl?: string;
   avatarColor?: string;
-  allowedWorldIds?: string[] | null; // null means all worlds allowed (e.g. admin or unrestricted)
+  allowedWorldIds?: string[] | null; // Legacy / Fallback field
+  viewableWorldIds?: string[] | null; // Worlds the user can VIEW (null = all worlds)
+  editableWorldIds?: string[] | null; // Worlds the user can EDIT (null = all allowed worlds)
   favorites: string[]; // List of WikiItem IDs marked as favorites
   createdAt: string;
 }

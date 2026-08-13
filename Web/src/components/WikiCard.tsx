@@ -1,7 +1,7 @@
 import React from 'react';
 import { WikiItem } from '../types';
 import { getItemTypeBadgeColor, getDisplayName, parseRelations, getItemImages } from '../utils/textUtils';
-import { Globe, Star, ArrowUpRight, Shield, MapPin, Package, User, Scroll } from 'lucide-react';
+import { Globe, Star, ArrowUpRight, Shield, MapPin, Package, User, Scroll, Zap, FileText } from 'lucide-react';
 import { playSound } from '../utils/soundEffects';
 
 interface WikiCardProps {
@@ -38,6 +38,8 @@ export const WikiCard: React.FC<WikiCardProps> = ({
     if (t === 'objeto') return <Package className="w-3 h-3" />;
     if (t === 'faccion') return <Shield className="w-3 h-3" />;
     if (t === 'trama') return <Scroll className="w-3 h-3" />;
+    if (['poder', 'poderes', 'habilidad', 'habilidades', 'sistema_poder', 'magia', 'magias', 'hechizo'].includes(t)) return <Zap className="w-3 h-3 text-amber-400" />;
+    if (['ficha', 'fichas', 'ficha_personaje', 'expediente', 'sheet'].includes(t)) return <FileText className="w-3 h-3 text-cyan-400" />;
     return <Globe className="w-3 h-3" />;
   };
 

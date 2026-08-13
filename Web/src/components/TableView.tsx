@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { WikiItem } from '../types';
+import { WikiItem, User } from '../types';
 import { getDisplayName, getItemTypeBadgeColor, parseRelations } from '../utils/textUtils';
-import { Eye, Star, ArrowUpDown, Edit3, Trash2, Globe } from 'lucide-react';
+import { Eye, Star, ArrowUpDown, Edit3, Trash2, Globe, Lock } from 'lucide-react';
 import { playSound } from '../utils/soundEffects';
+import { canUserEditItem } from '../utils/permissions';
 
 interface TableViewProps {
   items: WikiItem[];
   wikiData: WikiItem[];
+  currentUser?: User | null;
   onOpenModal: (id: string) => void;
   onToggleFavorite: (id: string, e: React.MouseEvent) => void;
   onEditItem: (item: WikiItem, e: React.MouseEvent) => void;
@@ -16,6 +18,7 @@ interface TableViewProps {
 export const TableView: React.FC<TableViewProps> = ({
   items,
   wikiData,
+  currentUser,
   onOpenModal,
   onToggleFavorite,
   onEditItem,
@@ -86,6 +89,7 @@ export const TableView: React.FC<TableViewProps> = ({
                 const badgeColors = getItemTypeBadgeColor(item.tipo);
                 const relations = parseRelations(item, wikiData);
                 const worldName = getDisplayName(item.mundo_id, wikiData);
+                const canEdit = canUserEditItem(currentUser, item, wikiData);
 
                 return (
                   <tr key={item.id} className="hover:bg-slate-800/40 transition-colors">
@@ -135,20 +139,32 @@ export const TableView: React.FC<TableViewProps> = ({
                         >
                           <Eye className="w-3.5 h-3.5" />
                         </button>
-                        <button
-                          onClick={(e) => onEditItem(item, e)}
-                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
-                          title="Editar"
-                        >
-                          <Edit3 className="w-3.5 h-3.5" />
-                        </button>
-                        <button
-                          onClick={(e) => onDeleteItem(item.id, e)}
-                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-rose-400 transition-colors"
-                          title="Eliminar"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
+
+                        {canEdit ? (
+                          <>
+                            <button
+                              onClick={(e) => onEditItem(item, e)}
+                              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors cursor-pointer"
+                              title="Editar"
+                            >
+                              <Edit3 className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              onClick={(e) => onDeleteItem(item.id, e)}
+                              className="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-rose-400 transition-colors cursor-pointer"
+                              title="Eliminar"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </>
+                        ) : (
+                          <div
+                            className="p-1.5 rounded-lg bg-slate-800/40 text-slate-600"
+                            title="Solo administradores o usuarios asignados a este mundo pueden modificarlo"
+                          >
+                            <Lock className="w-3.5 h-3.5 text-slate-500" />
+                          </div>
+                        )}
                       </div>
                     </td>
                   </tr>
