@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+import time
 import urllib.error
 import urllib.request
 from config import GITHUB_REPO, GITHUB_TOKEN
@@ -13,7 +14,7 @@ def purge_jsdelivr_cache(repo: str, path: str):
         req = urllib.request.Request(
             purge_url, headers={"User-Agent": "DiscordWikiBot"}
         )
-        with urllib.request.urlopen(req) as resp:
+        with urllib.request.urlopen(req, timeout=10) as resp:
             if resp.status == 200:
                 print("⚡ Caché de jsDelivr purgada en 0,1s.", flush=True)
     except Exception as e:
@@ -80,45 +81,62 @@ def save_to_json(data: list, filepath: str) -> bool:
         return False
 
 
-def update_github_file(repo: str, path: str, content: str, token: str) -> bool:
-    """Modifica un archivo en GitHub enviando [skip ci]"""
-    try:
-        url = f"https://api.github.com/repos/{repo}/contents/{path}"
-        headers = {
-            "Authorization": f"token {token}",
-            "Accept": "application/vnd.github.v3+json",
-            "User-Agent": "DiscordWikiBot",
-        }
+def update_github_file(repo: str, path: str, content: str, token: str, max_retries: int = 3) -> bool:
+    """Modifica un archivo en GitHub enviando [skip ci] con sistema de reintentos automático"""
+    url = f"https://api.github.com/repos/{repo}/contents/{path}"
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3+json",
+        "User-Agent": "DiscordWikiBot",
+    }
 
-        sha = None
+    for attempt in range(1, max_retries + 1):
         try:
-            req_get = urllib.request.Request(
-                f"{url}?ref=main", headers=headers
+            # 1. Obtener el SHA actual del archivo si existe
+            sha = None
+            try:
+                req_get = urllib.request.Request(
+                    f"{url}?ref=main", headers=headers
+                )
+                with urllib.request.urlopen(req_get, timeout=15) as resp:
+                    res_json = json.loads(resp.read().decode("utf-8"))
+                    sha = res_json.get("sha")
+            except Exception:
+                pass
+
+            # 2. Convertir contenido a Base64
+            content_b64 = base64.b64encode(content.encode("utf-8")).decode("utf-8")
+
+            payload = {
+                "message": f"Auto-sync Wiki desde Discord en {path} [skip ci]",
+                "content": content_b64,
+                "branch": "main",
+            }
+            if sha:
+                payload["sha"] = sha
+
+            payload_bytes = json.dumps(payload).encode("utf-8")
+            req_put = urllib.request.Request(
+                url, data=payload_bytes, headers=headers, method="PUT"
             )
-            with urllib.request.urlopen(req_get) as resp:
-                res_json = json.loads(resp.read().decode("utf-8"))
-                sha = res_json.get("sha")
-        except Exception:
-            pass
 
-        content_b64 = base64.b64encode(content.encode("utf-8")).decode("utf-8")
+            # 3. Petición PUT a GitHub con Timeout de 30s
+            with urllib.request.urlopen(req_put, timeout=30) as resp:
+                if resp.status in [200, 201]:
+                    return True
 
-        payload = {
-            "message": f"Auto-sync Wiki desde Discord en {path} [skip ci]",
-            "content": content_b64,
-            "branch": "main",
-        }
-        if sha:
-            payload["sha"] = sha
+        except urllib.error.HTTPError as http_err:
+            print(f"  └─ ⚠️ Intento {attempt}/{max_retries} falló (HTTP {http_err.code}: {http_err.reason})", flush=True)
+            # Reintentar si es error de servidor temporal (500, 502, 503, 504)
+            if http_err.code in [500, 502, 503, 504] and attempt < max_retries:
+                time.sleep(3 * attempt)  # Espera 3s, 6s... antes de reintentar
+                continue
+            break
+        except Exception as e:
+            print(f"  └─ ⚠️ Intento {attempt}/{max_retries} falló con error: {e}", flush=True)
+            if attempt < max_retries:
+                time.sleep(3 * attempt)
+                continue
+            break
 
-        payload_bytes = json.dumps(payload).encode("utf-8")
-        req_put = urllib.request.Request(
-            url, data=payload_bytes, headers=headers, method="PUT"
-        )
-
-        with urllib.request.urlopen(req_put) as resp:
-            return resp.status in [200, 201]
-
-    except Exception as e:
-        print(f"  └─ ⚠️ Error API GitHub: {e}", flush=True)
-        return False
+    return False
