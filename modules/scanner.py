@@ -46,35 +46,41 @@ def load_existing_db(filepath: str) -> list:
     if clean_path.lower() in ["web/wiki_database.json", "wiki_database.json"]:
         clean_path = "Web/public/wiki_database.json"
 
+    candidate_paths = [
+        clean_path,
+        "Web/public/wiki_database.json",
+        "web/wiki_database.json",
+        "Web/wiki_database.json",
+        "wiki_database.json",
+    ]
+
     if GITHUB_REPO:
-        try:
-            clean_repo = (
-                GITHUB_REPO.replace("https://github.com/", "")
-                .strip()
-                .strip("/")
-            )
+        clean_repo = (
+            GITHUB_REPO.replace("https://github.com/", "")
+            .strip()
+            .strip("/")
+        )
+        for gh_path in candidate_paths:
+            try:
+                raw_url = f"https://raw.githubusercontent.com/{clean_repo}/main/{gh_path}?v={int(time.time())}"
+                req = urllib.request.Request(
+                    raw_url,
+                    headers={
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+                    },
+                )
 
-            raw_url = f"https://raw.githubusercontent.com/{clean_repo}/main/{clean_path}?v={int(time.time())}"
-            req = urllib.request.Request(
-                raw_url,
-                headers={
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-                },
-            )
-
-            with urllib.request.urlopen(req) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-                if isinstance(data, list) and len(data) > 0:
-                    print(
-                        f"📥 Base de datos previa descargada de GitHub ({len(data)} fichas encontradas).",
-                        flush=True,
-                    )
-                    return data
-        except Exception as e:
-            print(
-                f"  └─ ⚠️ No se pudo descargar el JSON previo desde GitHub: {e}",
-                flush=True,
-            )
+                with urllib.request.urlopen(req) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    if isinstance(data, list) and len(data) > 0:
+                        print(
+                            f"📥 Base de datos previa descargada de GitHub desde '{gh_path}' ({len(data)} fichas encontradas).",
+                            flush=True,
+                        )
+                        return data
+            except Exception:
+                continue
+        print("  └─ ⚠️ No se pudo descargar el JSON previo desde GitHub (probando fallback local).", flush=True)
 
     candidate_files = [
         clean_path,

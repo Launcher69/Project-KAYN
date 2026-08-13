@@ -25,18 +25,8 @@ import { sendDiscordLog } from './utils/discordLogger';
 import { canUserEditItem, canUserEditWorld, canUserViewWorld } from './utils/permissions';
 
 export default function App() {
-  // Load data from localStorage if available, or fall back to initial dataset
-  const [wikiData, setWikiData] = useState<WikiItem[]>(() => {
-    try {
-      const saved = localStorage.getItem('multiverse_wiki_data');
-      if (saved) {
-        return JSON.parse(saved);
-      }
-    } catch {
-      // Fallback
-    }
-    return INITIAL_WIKI_DATA;
-  });
+  // wikiData siempre se carga directamente del JSON en vivo (sin caché de localStorage)
+  const [wikiData, setWikiData] = useState<WikiItem[]>([]);
 
   // User Authentication & User Persistence
   const [users, setUsers] = useState<User[]>(() => {
@@ -118,8 +108,12 @@ export default function App() {
     }
   };
 
-  // Carga dinámicamente usando jsDelivr (peticiones ilimitadas y 0s de espera)
+  // Carga dinámicamente el JSON en vivo sin guardar ni leer de localStorage
   useEffect(() => {
+    try {
+      localStorage.removeItem('multiverse_wiki_data');
+    } catch {}
+
     fetchServerUsers();
 
     const fetchWikiDatabaseEffect = async () => {
@@ -128,7 +122,7 @@ export default function App() {
       const GITHUB_API_URL = `https://api.github.com/repos/Launcher69/Project-KAYN/contents/Web/public/wiki_database.json?t=${timestamp}`;
 
       try {
-        // 1. Try local server / Cloudflare API first
+        // 1. Intentar servidor local / API Cloudflare primero
         const localApiRes = await fetch(`/api/wiki-data?t=${timestamp}`);
         if (localApiRes.ok) {
           const apiJson = await localApiRes.json();
@@ -138,7 +132,7 @@ export default function App() {
           }
         }
 
-        // 2. Try direct GitHub REST API (0s delay, bypasses Fastly CDN 5-min cache)
+        // 2. Intentar API REST de GitHub (0s de retraso, bypass a la caché CDN de 5 min)
         try {
           const ghApiRes = await fetch(GITHUB_API_URL, {
             headers: { 'Cache-Control': 'no-cache, no-store', 'User-Agent': 'WikiApp' },
@@ -160,7 +154,7 @@ export default function App() {
           console.warn('GitHub REST API fetch fallback warning:', ghErr);
         }
 
-        // 3. Fallback to jsDelivr CDN
+        // 3. Fallback a jsDelivr CDN
         const response = await fetch(JSDELIVR_URL);
         if (response.ok) {
           const parsed = await response.json();
@@ -169,22 +163,17 @@ export default function App() {
             return;
           }
         }
+
+        // 4. Último recurso absoluto si todo lo demás falla (sin conexión): INITIAL_WIKI_DATA
+        setWikiData(INITIAL_WIKI_DATA);
       } catch (err) {
-        console.warn('⚠️ Error al cargar datos dinámicos:', err);
+        console.warn('⚠️ Error al cargar datos dinámicos, usando fallback inicial:', err);
+        setWikiData(INITIAL_WIKI_DATA);
       }
     };
 
     fetchWikiDatabaseEffect();
   }, []);
-
-  // Save to localStorage when wikiData changes
-  useEffect(() => {
-    try {
-      localStorage.setItem('multiverse_wiki_data', JSON.stringify(wikiData));
-    } catch {
-      // Ignore quota errors
-    }
-  }, [wikiData]);
 
   // Save users to localStorage as backup
   useEffect(() => {
