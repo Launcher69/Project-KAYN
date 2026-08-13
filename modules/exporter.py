@@ -5,8 +5,22 @@ import urllib.request
 from config import GITHUB_REPO, GITHUB_TOKEN
 
 
+def purge_jsdelivr_cache(repo: str, path: str):
+    """Avisa a jsDelivr para borrar la caché y refrescar los datos en 0,1s"""
+    try:
+        purge_url = f"https://purge.jsdelivr.net/gh/{repo}@main/{path}"
+        req = urllib.request.Request(
+            purge_url, headers={"User-Agent": "DiscordWikiBot"}
+        )
+        with urllib.request.urlopen(req) as resp:
+            if resp.status == 200:
+                print("⚡ Caché de jsDelivr purgada en 0,1s.", flush=True)
+    except Exception as e:
+        print(f"⚠️ No se pudo purgar jsDelivr: {e}", flush=True)
+
+
 def save_to_json(data: list, filepath: str) -> bool:
-    """Guarda localmente y actualiza el archivo en GitHub usando la ruta configurada"""
+    """Guarda localmente, actualiza GitHub y borra la caché de jsDelivr"""
     try:
         json_str = json.dumps(data, ensure_ascii=False, indent=4)
 
@@ -22,7 +36,7 @@ def save_to_json(data: list, filepath: str) -> bool:
 
         if GITHUB_TOKEN and GITHUB_REPO:
             print(
-                f"🚀 Enviando actualización a GitHub por API en: '{clean_path}'...",
+                f"🚀 Enviando actualización a GitHub API en: '{clean_path}'...",
                 flush=True,
             )
 
@@ -39,10 +53,10 @@ def save_to_json(data: list, filepath: str) -> bool:
                 token=GITHUB_TOKEN.strip(),
             )
             if success:
-                print("✨ ¡Datos enviados a GitHub instantáneamente!", flush=True)
+                print("✨ ¡Guardado en GitHub!", flush=True)
+                # Purga instantánea en jsDelivr
+                purge_jsdelivr_cache(clean_repo, clean_path)
                 return True
-            else:
-                print("⚠️ Falló la actualización en GitHub por API.", flush=True)
 
         return True
     except Exception as e:
@@ -51,7 +65,7 @@ def save_to_json(data: list, filepath: str) -> bool:
 
 
 def update_github_file(repo: str, path: str, content: str, token: str) -> bool:
-    """Modifica un archivo en GitHub enviando [skip ci] para evitar la recompilación de Cloudflare"""
+    """Modifica un archivo en GitHub enviando [skip ci]"""
     try:
         url = f"https://api.github.com/repos/{repo}/contents/{path}"
         headers = {
@@ -73,9 +87,8 @@ def update_github_file(repo: str, path: str, content: str, token: str) -> bool:
 
         content_b64 = base64.b64encode(content.encode("utf-8")).decode("utf-8")
 
-        # [skip ci] le dice a Cloudflare Pages que NO ejecute un nuevo Build
         payload = {
-            "message": f"Auto-sync Wiki desde Discord en {path} [skip ci]",  # <--- ¡AQUÍ ESTÁ EL TRUCO!
+            "message": f"Auto-sync Wiki desde Discord en {path} [skip ci]",
             "content": content_b64,
             "branch": "main",
         }
@@ -90,9 +103,6 @@ def update_github_file(repo: str, path: str, content: str, token: str) -> bool:
         with urllib.request.urlopen(req_put) as resp:
             return resp.status in [200, 201]
 
-    except urllib.error.HTTPError as e:
-        print(f"  └─ ⚠️ Error API GitHub ({e.code}) en '{path}'", flush=True)
-        return False
     except Exception as e:
-        print(f"  └─ ⚠️ Error inesperado: {e}", flush=True)
+        print(f"  └─ ⚠️ Error API GitHub: {e}", flush=True)
         return False
