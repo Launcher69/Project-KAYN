@@ -5138,6 +5138,10 @@
             {
                 "id_destino": "objeto_sombrero_de_paja",
                 "relacion": "Propietario del tesoro sentimental"
+            },
+            {
+                "id_destino": "npcprueva_peyj",
+                "relacion": "Aliado"
             }
         ],
         "detalles": {
