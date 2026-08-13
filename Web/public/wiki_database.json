@@ -5068,34 +5068,6 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534511399903035423"
     },
     {
-        "id": "world_one_piece",
-        "tipo": "mundo",
-        "nombre": "One Piece(Prueva)",
-        "mundo_id": "world_one_piece",
-        "relaciones": [
-            {
-                "id_destino": "lugar_going_merry",
-                "relacion": "Barco que navega por sus aguas"
-            },
-            {
-                "id_destino": "faccion_piratas_sombrero_paja",
-                "relacion": "Banda pirata que recorre este mundo"
-            }
-        ],
-        "detalles": {
-            "clima": "Variable y extremo según la región o la isla",
-            "tecnologia": "Anacrónica (Carabelas, Dials, Den Den Mushi)",
-            "amenazas": "Piratas, Marina, Reyes Marinos"
-        },
-        "categoria_discord": "Pruevas",
-        "etiquetas_discord": [],
-        "contenido_lore": "### Descripción\n\nEl universo de One Piece es un vasto planeta compuesto predominantemente por agua, dividido en cuatro grandes océanos: East Blue, West Blue, North Blue y South Blue. Estos mares están separados por una gigantesca masa continental conocida como la Red Line y una peligrosa franja marítima conocida como la Grand Line, flanqueada a su vez por las peligrosas aguas calmadas del Calm Belt, hábitat natural de los letales Reyes Marinos.\n\nEs un mundo convulso marcado por la Gran Era Pirata, desencadenada tras la ejecución del Legendario Rey de los Piratas, Gol D. Roger. El Gobierno Mundial y su brazo militar, la Marina, intentan mantener un frágil control social bajo la premisa de la \"Justicia Absoluta\", mientras miles de tripulaciones se lanzan a la mar en busca del legendario tesoro final oculto en la última isla de la Grand Line.\n\nOne Piece",
-        "imagenes": [
-            "https://i.ibb.co/wFwtqkvg/132362552920.avif"
-        ],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1534575428625236029"
-    },
-    {
         "id": "lugar_going_merry",
         "tipo": "lugar",
         "nombre": "Going Merry",
@@ -5138,6 +5110,10 @@
             {
                 "id_destino": "objeto_sombrero_de_paja",
                 "relacion": "Propietario del tesoro sentimental"
+            },
+            {
+                "id_destino": "poder_mera_mera_no_mi",
+                "relacion": "Fruta de su hermano"
             }
         ],
         "detalles": {
@@ -5147,7 +5123,7 @@
         },
         "categoria_discord": "Pruevas",
         "etiquetas_discord": [],
-        "contenido_lore": "### Biografía y Trasfondo\n\nNacido en la Villa Foosha en el East Blue, Luffy fue criado bajo la dura tutela de su abuelo, el Vicealmirante de la Marina Monkey D. Garp, y posteriormente por la familia de bandidos de Dadan junto a sus hermanos de juramento, Ace y Sabo. Desde muy niño sintió la llamada del mar tras entablar amistad con Shanks \"el Pelirrojo\", un poderoso capitán pirata que le salvó la vida a costa de su propio brazo y le confió su preciado sombrero de paja.\n\nInspirado por esa promesa y movido por un deseo inquebrantable de libertad absoluta, Luffy se hizo a la mar a los 17 años con la firme convicción de reclutar una tripulación leal y convertirse en el próximo Rey de los Piratas. Su personalidad es despreocupada, ingenua y extremadamente voraz cuando se trata de comida, pero muestra una determinación feroz e inquebrantable cuando sus amigos o camaradas están en peligro.\n\n### Habilidades\n\n- **Fruta Gomu Gomu:** Al haber ingerido accidentalmente una Fruta del Diablo de tipo Paramecia (o Zoan Mítica), su cuerpo adquirió las propiedades de la goma. Es inmune a los golpes físicos normales y a las descargas eléctricas, y puede estirar sus extremidades para atacar a larga distancia.\n- **Tácticas de Combate Improvistas:** Capaz de inventar técnicas creativas en el calor de la batalla para golpear con devastadora fuerza destructiva a sus rivales.\n\n### Equipamiento\n\n- **Sombrero de Paja de Shanks:** Su posesión más aprecia\n\nda. Protege el sombrero a toda costa en cada combate.\n\n### Secretos\n\n- Posee la mítica inicial \"D.\" en su nombre, vinculada al misterioso \"Voluntad de D.\" que desafía el orden del Gobierno Mundial.",
+        "contenido_lore": "Nacido en la Villa Foosha en el East Blue, Luffy fue criado bajo la dura tutela de su abuelo, el Vicealmirante de la Marina Monkey D. Garp, y posteriormente por la familia de bandidos de Dadan junto a sus hermanos de juramento, Ace y Sabo. Desde muy niño sintió la llamada del mar tras entablar amistad con Shanks \"el Pelirrojo\", un poderoso capitán pirata que le salvó la vida a costa de su propio brazo y le confió su preciado sombrero de paja.\n\nInspirado por esa promesa y movido por un deseo inquebrantable de libertad absoluta, Luffy se hizo a la mar a los 17 años con la firme convicción de reclutar una tripulación leal y convertirse en el próximo Rey de los Piratas. Su personalidad es despreocupada, ingenua y extremadamente voraz cuando se trata de comida, pero muestra una determinación feroz e inquebrantable cuando sus amigos o camaradas están en peligro.\n\n### Habilidades\n\n- **Fruta Gomu Gomu:** Al haber ingerido accidentalmente una Fruta del Diablo de tipo Paramecia (o Zoan Mítica), su cuerpo adquirió las propiedades de la goma. Es inmune a los golpes físicos normales y a las descargas eléctricas, y puede estirar sus extremidades para atacar a larga distancia.\n- **Tácticas de Combate Improvistas:** Capaz de inventar técnicas creativas en el calor de la batalla para golpear con devastadora fuerza destructiva a sus rivales.\n\n### Equipamiento\n\n- **Sombrero de Paja de Shanks:** Su posesión más aprecia\n\nda. Protege el sombrero a toda costa en cada combate.\n\n### Secretos\n\n- Posee la mítica inicial \"D.\" en su nombre, vinculada al misterioso \"Voluntad de D.\" que desafía el orden del Gobierno Mundial.",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1534575455901057266"
     },
