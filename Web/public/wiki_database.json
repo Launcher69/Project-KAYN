@@ -2250,13 +2250,13 @@
         "tipo": "npc",
         "nombre": "Kayn Colins",
         "mundo_id": "world_GTA_RP",
-        "relaciones": null,
+        "relaciones": [],
         "detalles": {
             "ocupacion": "Cadete de policia"
         },
         "categoria_discord": "GTA RP",
         "etiquetas_discord": [],
-        "contenido_lore": "### Biografía\n En un Cadete que está en la academia",
+        "contenido_lore": "En un Cadete que está en la academia",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1537618185711525888"
     }
