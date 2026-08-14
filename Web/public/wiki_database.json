@@ -2218,5 +2218,46 @@
         "contenido_lore": "Es un mundo creado por mi",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1537464878996914196"
+    },
+    {
+        "id": "world_GTA_RP",
+        "tipo": "mundo",
+        "nombre": "GTA RP",
+        "mundo_id": "world_GTA_RP",
+        "relaciones": [
+            {
+                "id_destino": "lugar_ejemplo",
+                "relacion": "Descripción con el lugar"
+            },
+            {
+                "id_destino": "faccion_ejemplo",
+                "relacion": "Descciocion con la faccion"
+            }
+        ],
+        "detalles": {
+            "clima": "ejemplo",
+            "tecnologia": "ejemplo",
+            "amenazas": "ejemplo"
+        },
+        "categoria_discord": "GTA RP",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nMundo de mis personajes de FiveM",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537617038607126559"
+    },
+    {
+        "id": "npc_gta_kayn_colins",
+        "tipo": "npc",
+        "nombre": "Kayn Colins",
+        "mundo_id": "world_GTA_RP",
+        "relaciones": null,
+        "detalles": {
+            "ocupacion": "Cadete de policia"
+        },
+        "categoria_discord": "GTA RP",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\n En un Cadete que está en la academia",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537618185711525888"
     }
 ]
