@@ -2252,7 +2252,83 @@
         "mundo_id": "world_GTA_RP",
         "relaciones": [],
         "detalles": {
-            "ocupacion": "Cadete de policia"
+            "ocupacion": "Cadete de policia",
+            "alias": "Tukumano ",
+            "especie": "",
+            "alineamiento": "",
+            "equipamiento": "",
+            "ficha_atributos": [
+                {
+                    "id": "fuerza",
+                    "name": "Fuerza",
+                    "description": "Potencia muscular, capacidad de carga y daño físico bruto.",
+                    "category": "fisico",
+                    "value": 5,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal",
+                    "note": ""
+                },
+                {
+                    "id": "resistencia",
+                    "name": "Resistencia",
+                    "description": "Aguantar impactos, salud, dureza física y tolerancia al dolor/cansancio.",
+                    "category": "fisico",
+                    "value": 5,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal",
+                    "note": ""
+                },
+                {
+                    "id": "destreza",
+                    "name": "Destreza",
+                    "description": "Velocidad de reacción, reflejos, esquiva, agilidad y coordinación.",
+                    "category": "fisico",
+                    "value": 5,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal",
+                    "note": ""
+                },
+                {
+                    "id": "combate_cuerpo",
+                    "name": "Combate Cuerpo a Cuerpo",
+                    "description": "Artes marciales, pelea callejera y uso de armas blancas.",
+                    "category": "combate",
+                    "value": 5,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal",
+                    "note": ""
+                },
+                {
+                    "id": "combate_distancia",
+                    "name": "Combate a Distancia",
+                    "description": "Puntería con proyectiles, armas de fuego o disparos de energía.",
+                    "category": "combate",
+                    "value": 5,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal",
+                    "note": ""
+                },
+                {
+                    "id": "inteligencia",
+                    "name": "Inteligencia",
+                    "description": "Razonamiento lógico, ciencia, estrategia e ingeniería.",
+                    "category": "mente_mistica",
+                    "value": 5,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal",
+                    "note": ""
+                },
+                {
+                    "id": "magia_ocultismo",
+                    "name": "Magia / Ocultismo",
+                    "description": "Control arcano, energía espiritual, conjuros y poder místico.",
+                    "category": "mente_mistica",
+                    "value": 5,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal",
+                    "note": ""
+                }
+            ]
         },
         "categoria_discord": "GTA RP",
         "etiquetas_discord": [],
