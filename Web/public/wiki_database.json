@@ -1818,6 +1818,28 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534575442886135978"
     },
     {
+        "id": "npcprueva_peyj",
+        "tipo": "npc",
+        "nombre": "Pey'J (Cerdy)",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "npc_monkey_d_luffy",
+                "relacion": "Tío adoptivo, tutor legal y protector incondicional"
+            }
+        ],
+        "detalles": {
+            "especie": "Híbrido Porcino (Jabalí antropomórfico)",
+            "ocupacion": "Mecánico jefe, inventor y tutor",
+            "equipo": "Cortador de Jet-Boots (Botas Propulsoras) y llave inglesa pesada"
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Biografía\nPey'j es un híbrido porcino de carácter cascarrabias pero corazón de oro. Experto absoluto en mecánica, soldadura e ingeniería improvisada, es capaz de construir o reparar cualquier máquina a partir de chatarra militar. Detrás de sus constantes quejas y su humor socarrón se esconde una devoción total hacia su sobrina adoptiva Jade, a quien ha criado desde muy pequeña jurando protegerla de las sombras de su verdadero pasado.\nPey'j conoció a los verdaderos padres de Jade en los primeros días de la invasión alienígena. Tras la trágica desaparición de ambos, prometió mantener a la niña a salvo en Hillys. Para lograrlo, construyó el refugio del Faro y mantuvo en absoluto secreto su propia implicación pasada en la creación de la resistencia clandestina de la Red IRIS, intentando alejar a Jade de los peligros de la guerra abierta.\nA medida que la trama se intensifica, Pey'j se ve obligado a volver a la acción directa, equipando a Jade con inventos clave como las Botas Propulsoras para superar barreras defensivas. Su posterior captura durante la infiltración en la Antigua Fábrica de Nutripills destruye la calma del grupo y se convierte en la motivación principal de Jade para asaltar las instalaciones militares y viajar hasta Selene para rescatarlo.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537236096688070726"
+    },
+    {
         "id": "npc_monkey_d_luffy",
         "tipo": "npc",
         "nombre": "Monkey D. Luffy",
@@ -1854,28 +1876,6 @@
         "contenido_lore": "### Biografía y Trasfondo\n\nNacido en la Villa Foosha en el East Blue, Luffy fue criado bajo la dura tutela de su abuelo, el Vicealmirante de la Marina Monkey D. Garp, y posteriormente por la familia de bandidos de Dadan junto a sus hermanos de juramento, Ace y Sabo. Desde muy niño sintió la llamada del mar tras entablar amistad con Shanks \"el Pelirrojo\", un poderoso capitán pirata que le salvó la vida a costa de su propio brazo y le confió su preciado sombrero de paja.\n\nInspirado por esa promesa y movido por un deseo inquebrantable de libertad absoluta, Luffy se hizo a la mar a los 17 años con la firme convicción de reclutar una tripulación leal y convertirse en el próximo Rey de los Piratas. Su personalidad es despreocupada, ingenua y extremadamente voraz cuando se trata de comida, pero muestra una determinación feroz e inquebrantable cuando sus amigos o camaradas están en peligro.\n\n### Habilidades\n\n- **Fruta Gomu Gomu:** Al haber ingerido accidentalmente una Fruta del Diablo de tipo Paramecia (o Zoan Mítica), su cuerpo adquirió las propiedades de la goma. Es inmune a los golpes físicos normales y a las descargas eléctricas, y puede estirar sus extremidades para atacar a larga distancia.\n- **Tácticas de Combate Improvistas:** Capaz de inventar técnicas creativas en el calor de la batalla para golpear con devastadora fuerza destructiva a sus rivales.\n\n### Equipamiento\n\n- **Sombrero de Paja de Shanks:** Su posesión más aprecia\n\nda. Protege el sombrero a toda costa en cada combate.\n\n### Secretos\n\n- Posee la mítica inicial \"D.\" en su nombre, vinculada al misterioso \"Voluntad de D.\" que desafía el orden del Gobierno Mundial.",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1534575455901057266"
-    },
-    {
-        "id": "npcprueva_peyj",
-        "tipo": "npc",
-        "nombre": "Pey'J (Cerdy)",
-        "mundo_id": "world_one_piece",
-        "relaciones": [
-            {
-                "id_destino": "npc_monkey_d_luffy",
-                "relacion": "Tío adoptivo, tutor legal y protector incondicional"
-            }
-        ],
-        "detalles": {
-            "especie": "Híbrido Porcino (Jabalí antropomórfico)",
-            "ocupacion": "Mecánico jefe, inventor y tutor",
-            "equipo": "Cortador de Jet-Boots (Botas Propulsoras) y llave inglesa pesada"
-        },
-        "categoria_discord": "Pruevas",
-        "etiquetas_discord": [],
-        "contenido_lore": "### Biografía\nPey'j es un híbrido porcino de carácter cascarrabias pero corazón de oro. Experto absoluto en mecánica, soldadura e ingeniería improvisada, es capaz de construir o reparar cualquier máquina a partir de chatarra militar. Detrás de sus constantes quejas y su humor socarrón se esconde una devoción total hacia su sobrina adoptiva Jade, a quien ha criado desde muy pequeña jurando protegerla de las sombras de su verdadero pasado.\nPey'j conoció a los verdaderos padres de Jade en los primeros días de la invasión alienígena. Tras la trágica desaparición de ambos, prometió mantener a la niña a salvo en Hillys. Para lograrlo, construyó el refugio del Faro y mantuvo en absoluto secreto su propia implicación pasada en la creación de la resistencia clandestina de la Red IRIS, intentando alejar a Jade de los peligros de la guerra abierta.\nA medida que la trama se intensifica, Pey'j se ve obligado a volver a la acción directa, equipando a Jade con inventos clave como las Botas Propulsoras para superar barreras defensivas. Su posterior captura durante la infiltración en la Antigua Fábrica de Nutripills destruye la calma del grupo y se convierte en la motivación principal de Jade para asaltar las instalaciones militares y viajar hasta Selene para rescatarlo.",
-        "imagenes": [],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1537236096688070726"
     },
     {
         "id": "objeto_sombrero_de_paja",
@@ -1957,31 +1957,26 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534575500712743014"
     },
     {
-        "id": "poder_mera_mera_no_mi",
+        "id": "poder_magic_void",
         "tipo": "poder",
-        "nombre": "Fruta Mera Mera",
+        "nombre": "Magic Void (Magia del Vacío)",
         "mundo_id": "world_one_piece",
         "relaciones": [
             {
-                "id_destino": "npc_portgas_d_ace",
-                "relacion": "Consumida por Ace, otorgándole poderes ígneos"
-            },
-            {
-                "id_destino": "world_one_piece",
-                "relacion": "Fruta del Diablo legendaria de este mar"
+                "id_destino": "npc_monkey_d_luffy",
+                "relacion": "Poseedor y usuario de la Magia del Vacío"
             }
         ],
         "detalles": {
-            "categoria": "Fruta del Diablo",
-            "clase": "Logia",
-            "elemento": "Fuego",
-            "debilidad": "Agua de mar, Kairoseki, Fruta Magu Magu"
+            "categoria": "Poder / Magia del Vacío",
+            "tipo_magia": "Manipulación Espacial & Armadura Mística",
+            "rangos_disponibles": "Rango 0 al Rango 4"
         },
         "categoria_discord": "Pruevas",
         "etiquetas_discord": [],
-        "contenido_lore": "### Descripción\n\nLa Fruta Mera Mera es una Fruta del Diablo de tipo Logia extremadamente poderosa que otorga a su consumidor la capacidad de crear, controlar y transformarse en fuego a voluntad. Su apariencia física es la de una fruta anaranjada redonda cubierta de patrones en forma de espirales o llamas, rematada por un tallo en la parte superior.\n\nComo todas las Frutas del Diablo de clase Logia, concede una intangibilidad casi absoluta frente a ataques físicos convencionales, ya que el cuerpo del usuario se convierte instantáneamente en llamas puras ante cualquier impacto. El consumidor puede proyectar ráfagas incandescentes, crear marejadas de fuego devastadoras y utilizar el empuje de las llamas para impulsarse a gran velocidad.\n\n### Habilidades\n\n- **Cuerpo de Fuego (Intangibilidad Logia):** Los ataques físicos estándar, balas y espadas atraviesan al usuario sin causarle daño.\n- **Proyección Ígnea:** Capacidad para lanzar proyectiles, columnas y explosiones de fuego a gran escala (como el famoso ataque *Hiken* / Puño de Fuego).\n- **Control Térmico:** Aumento drástico de la temperatura ambiental a su alrededor.\n\n### Limitaciones\n\n- **Debilidades del Mar:** Pérdida total de fuerza e incapacidad para nadar al sumergirse en agua de mar, además de ser neutralizado por el mineral Kairoseki.\n- **Jerarquía Elemental:** Es vulnerable al calor superior de la Fruta Magu Magu (Magma), la cual puede quemar e imposibilitar la intangibilidad de esta fruta.\n\n- **Haki de Armadura:** Los ataques impregnados con Haki de Armadura pueden golpear el cuerpo verdadero del usuario.",
+        "contenido_lore": "### Descripción\n\nMagic Void es una disciplina mágica de alto nivel basada en la canalización de la energía del vacío místico. Otorga al usuario el control sobre la teletransportación espacial, la creación y manifestación de armaduras biomecánicas de alta resistencia (HP 100.000) y la proyección de ataques de energía láser destructivos. \n\nA medida que el usuario asciende de rango, su dominio sobre la masa, el espacio y la reparación de la armadura se incrementa drásticamente.\n\n### ⚡ Rango 0\n\n- **Conexión:** El usuario puede entrar y salir de la armadura a voluntad (Distancia máxima: 500 Km).\n- **Armadura:** Dependiendo de la armadura, otorga un +10 a las características divididas entre destreza y fuerza.\n- **Armadura Completa:** Mientras el usuario permanezca dentro de la armadura no recibirá daño directo a su vida. La vida base de la armadura es de 100.000 HP.\n- **Levitación:** El usuario puede canalizar su energía del vacío para hacer levitar su propio cuerpo.\n\n### ⚡ Rango 1\n\n- **Teletransportación:** El usuario puede teletransportarse a cualquier lugar que vea (ya sea de forma directa o indirecta a través de pantallas o reflejos).\n- **Intercambio:** Permite intercambiar de posición de forma instantánea con la armadura.\n- **Disparo de Energía:** Concentra energía del vacío y la dispara a modo de proyección láser de precisión.\n\n### ⚡ Rango 2\n\n- **Llamada:** Teletransporta la armadura directamente a la posición del usuario, haciendo que este entre automáticamente en su interior.\n- **Teletransportación Aumentada:** Permite teletransportarse a cualquier lugar visible llevando consigo a aliados cercanos.\n- **Armor Creator:** Permite crear una armadura con diferentes modificaciones y alternar entre varios diseños (Límite: Solo se puede crear 1 armadura al mes).\n- **Armor Repair I:** El usuario puede reparar un 10% de la durabilidad total de la armadura.\n- **Rayo De Energía I:** Concentra la energía del vacío para disparar un rayo láser continuo que inflige daño prolongado (Duración máxima: 3 turnos).\n\n### ⚡ Rango 3\n\n- **Armor Repair II:** El usuario puede reparar un 30% de la durabilidad total de la armadura.\n- **Rayo De Energía II:** Concentra la energía del vacío para disparar un rayo láser continuo que inflige daño prolongado (Duración máxima: 5 turnos).\n- **Teletransportación Masiva:** La teletransportación aumentada permite transportar objetos y estructuras de gran tamaño junto al usuario y sus aliados.\n\n### ⚡ Rango 4\n\n- **Armor Repair III:** El usuario puede reparar hasta un 50% de la durabilidad total de la armadura en combate.\n- **Rayo De Energía Máximo:** Disparo de rayo láser continuo de máxima potencia con capacidad de daño prolongado avanzado e impacto destructivo masivo.",
         "imagenes": [],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1534579589375070388"
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537199599268270141"
     },
     {
         "id": "poder_busoshoku_haki",
@@ -2014,105 +2009,31 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1534579599873150976"
     },
     {
-        "id": "poder_magic_void",
+        "id": "poder_mera_mera_no_mi",
         "tipo": "poder",
-        "nombre": "Magic Void (Magia del Vacío)",
+        "nombre": "Fruta Mera Mera",
         "mundo_id": "world_one_piece",
         "relaciones": [
             {
-                "id_destino": "npc_monkey_d_luffy",
-                "relacion": "Poseedor y usuario de la Magia del Vacío"
-            }
-        ],
-        "detalles": {
-            "categoria": "Poder / Magia del Vacío",
-            "tipo_magia": "Manipulación Espacial & Armadura Mística",
-            "rangos_disponibles": "Rango 0 al Rango 4"
-        },
-        "categoria_discord": "Pruevas",
-        "etiquetas_discord": [],
-        "contenido_lore": "### Descripción\n\nMagic Void es una disciplina mágica de alto nivel basada en la canalización de la energía del vacío místico. Otorga al usuario el control sobre la teletransportación espacial, la creación y manifestación de armaduras biomecánicas de alta resistencia (HP 100.000) y la proyección de ataques de energía láser destructivos. \n\nA medida que el usuario asciende de rango, su dominio sobre la masa, el espacio y la reparación de la armadura se incrementa drásticamente.\n\n### ⚡ Rango 0\n\n- **Conexión:** El usuario puede entrar y salir de la armadura a voluntad (Distancia máxima: 500 Km).\n- **Armadura:** Dependiendo de la armadura, otorga un +10 a las características divididas entre destreza y fuerza.\n- **Armadura Completa:** Mientras el usuario permanezca dentro de la armadura no recibirá daño directo a su vida. La vida base de la armadura es de 100.000 HP.\n- **Levitación:** El usuario puede canalizar su energía del vacío para hacer levitar su propio cuerpo.\n\n### ⚡ Rango 1\n\n- **Teletransportación:** El usuario puede teletransportarse a cualquier lugar que vea (ya sea de forma directa o indirecta a través de pantallas o reflejos).\n- **Intercambio:** Permite intercambiar de posición de forma instantánea con la armadura.\n- **Disparo de Energía:** Concentra energía del vacío y la dispara a modo de proyección láser de precisión.\n\n### ⚡ Rango 2\n\n- **Llamada:** Teletransporta la armadura directamente a la posición del usuario, haciendo que este entre automáticamente en su interior.\n- **Teletransportación Aumentada:** Permite teletransportarse a cualquier lugar visible llevando consigo a aliados cercanos.\n- **Armor Creator:** Permite crear una armadura con diferentes modificaciones y alternar entre varios diseños (Límite: Solo se puede crear 1 armadura al mes).\n- **Armor Repair I:** El usuario puede reparar un 10% de la durabilidad total de la armadura.\n- **Rayo De Energía I:** Concentra la energía del vacío para disparar un rayo láser continuo que inflige daño prolongado (Duración máxima: 3 turnos).\n\n### ⚡ Rango 3\n\n- **Armor Repair II:** El usuario puede reparar un 30% de la durabilidad total de la armadura.\n- **Rayo De Energía II:** Concentra la energía del vacío para disparar un rayo láser continuo que inflige daño prolongado (Duración máxima: 5 turnos).\n- **Teletransportación Masiva:** La teletransportación aumentada permite transportar objetos y estructuras de gran tamaño junto al usuario y sus aliados.\n\n### ⚡ Rango 4\n\n- **Armor Repair III:** El usuario puede reparar hasta un 50% de la durabilidad total de la armadura en combate.\n- **Rayo De Energía Máximo:** Disparo de rayo láser continuo de máxima potencia con capacidad de daño prolongado avanzado e impacto destructivo masivo.",
-        "imagenes": [],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1537199599268270141"
-    },
-    {
-        "id": "sheet_roronoa_zoro",
-        "tipo": "ficha",
-        "nombre": "Ficha de Roronoa Zoro",
-        "mundo_id": "world_one_piece",
-        "relaciones": [
+                "id_destino": "npc_portgas_d_ace",
+                "relacion": "Consumida por Ace, otorgándole poderes ígneos"
+            },
             {
-                "id_destino": "npc_roronoa_zoro",
-                "relacion": "Ficha perteneciente a"
+                "id_destino": "world_one_piece",
+                "relacion": "Fruta del Diablo legendaria de este mar"
             }
         ],
         "detalles": {
-            "ficha_atributos": [
-                {
-                    "id": "fuerza",
-                    "name": "Fuerza",
-                    "category": "fisico",
-                    "value": 9,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural"
-                },
-                {
-                    "id": "resistencia",
-                    "name": "Resistencia",
-                    "category": "fisico",
-                    "value": 9,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural"
-                },
-                {
-                    "id": "destreza",
-                    "name": "Destreza",
-                    "category": "fisico",
-                    "value": 8,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural"
-                },
-                {
-                    "id": "combate_cerca",
-                    "name": "Combate Cuerpo a Cuerpo",
-                    "category": "combate",
-                    "value": 9,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural",
-                    "note": "Estilo Santoryu"
-                },
-                {
-                    "id": "combate_lejos",
-                    "name": "Combate a Distancia",
-                    "category": "combate",
-                    "value": 4,
-                    "tier": "T1",
-                    "tierLabel": "Terrenal"
-                },
-                {
-                    "id": "inteligencia",
-                    "name": "Inteligencia",
-                    "category": "mente_mistica",
-                    "value": 3,
-                    "tier": "T1",
-                    "tierLabel": "Terrenal"
-                },
-                {
-                    "id": "magia_ocultismo",
-                    "name": "Magia / Ocultismo",
-                    "category": "mente_mistica",
-                    "value": 7,
-                    "tier": "T2",
-                    "tierLabel": "Sobrenatural",
-                    "note": "Haki del Rey & Asura"
-                }
-            ]
+            "categoria": "Fruta del Diablo",
+            "clase": "Logia",
+            "elemento": "Fuego",
+            "debilidad": "Agua de mar, Kairoseki, Fruta Magu Magu"
         },
         "categoria_discord": "Pruevas",
         "etiquetas_discord": [],
-        "contenido_lore": "### Descripción\n\nFicha oficial de atributos del personaje Roronoa Zoro.",
+        "contenido_lore": "### Descripción\n\nLa Fruta Mera Mera es una Fruta del Diablo de tipo Logia extremadamente poderosa que otorga a su consumidor la capacidad de crear, controlar y transformarse en fuego a voluntad. Su apariencia física es la de una fruta anaranjada redonda cubierta de patrones en forma de espirales o llamas, rematada por un tallo en la parte superior.\n\nComo todas las Frutas del Diablo de clase Logia, concede una intangibilidad casi absoluta frente a ataques físicos convencionales, ya que el cuerpo del usuario se convierte instantáneamente en llamas puras ante cualquier impacto. El consumidor puede proyectar ráfagas incandescentes, crear marejadas de fuego devastadoras y utilizar el empuje de las llamas para impulsarse a gran velocidad.\n\n### Habilidades\n\n- **Cuerpo de Fuego (Intangibilidad Logia):** Los ataques físicos estándar, balas y espadas atraviesan al usuario sin causarle daño.\n- **Proyección Ígnea:** Capacidad para lanzar proyectiles, columnas y explosiones de fuego a gran escala (como el famoso ataque *Hiken* / Puño de Fuego).\n- **Control Térmico:** Aumento drástico de la temperatura ambiental a su alrededor.\n\n### Limitaciones\n\n- **Debilidades del Mar:** Pérdida total de fuerza e incapacidad para nadar al sumergirse en agua de mar, además de ser neutralizado por el mineral Kairoseki.\n- **Jerarquía Elemental:** Es vulnerable al calor superior de la Fruta Magu Magu (Magma), la cual puede quemar e imposibilitar la intangibilidad de esta fruta.\n\n- **Haki de Armadura:** Los ataques impregnados con Haki de Armadura pueden golpear el cuerpo verdadero del usuario.",
         "imagenes": [],
-        "url_discord": "https://discord.com/channels/1525578054330482688/1537210375832084570"
+        "url_discord": "https://discord.com/channels/1525578054330482688/1534579589375070388"
     },
     {
         "id": "sheet_monkey_d_luffy",
@@ -2198,6 +2119,85 @@
         "url_discord": "https://discord.com/channels/1525578054330482688/1537212629943062688"
     },
     {
+        "id": "sheet_roronoa_zoro",
+        "tipo": "ficha",
+        "nombre": "Ficha de Roronoa Zoro",
+        "mundo_id": "world_one_piece",
+        "relaciones": [
+            {
+                "id_destino": "npc_roronoa_zoro",
+                "relacion": "Ficha perteneciente a"
+            }
+        ],
+        "detalles": {
+            "ficha_atributos": [
+                {
+                    "id": "fuerza",
+                    "name": "Fuerza",
+                    "category": "fisico",
+                    "value": 9,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural"
+                },
+                {
+                    "id": "resistencia",
+                    "name": "Resistencia",
+                    "category": "fisico",
+                    "value": 9,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural"
+                },
+                {
+                    "id": "destreza",
+                    "name": "Destreza",
+                    "category": "fisico",
+                    "value": 8,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural"
+                },
+                {
+                    "id": "combate_cerca",
+                    "name": "Combate Cuerpo a Cuerpo",
+                    "category": "combate",
+                    "value": 9,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural",
+                    "note": "Estilo Santoryu"
+                },
+                {
+                    "id": "combate_lejos",
+                    "name": "Combate a Distancia",
+                    "category": "combate",
+                    "value": 4,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal"
+                },
+                {
+                    "id": "inteligencia",
+                    "name": "Inteligencia",
+                    "category": "mente_mistica",
+                    "value": 3,
+                    "tier": "T1",
+                    "tierLabel": "Terrenal"
+                },
+                {
+                    "id": "magia_ocultismo",
+                    "name": "Magia / Ocultismo",
+                    "category": "mente_mistica",
+                    "value": 7,
+                    "tier": "T2",
+                    "tierLabel": "Sobrenatural",
+                    "note": "Haki del Rey & Asura"
+                }
+            ]
+        },
+        "categoria_discord": "Pruevas",
+        "etiquetas_discord": [],
+        "contenido_lore": "### Descripción\n\nFicha oficial de atributos del personaje Roronoa Zoro.",
+        "imagenes": [],
+        "url_discord": "https://discord.com/channels/1525578054330482688/1537210375832084570"
+    },
+    {
         "id": "world_Poderes_Creators",
         "tipo": "mundo",
         "nombre": "Poderes Creators",
@@ -2253,12 +2253,11 @@
         "relaciones": [],
         "detalles": {
             "ocupacion": "Cadete de policia",
-            "Alias en comidaria": "Tukumano",
             "ficha_atributos": "[object Object], [object Object], [object Object], [object Object], [object Object], [object Object], [object Object]"
         },
         "categoria_discord": "GTA RP",
         "etiquetas_discord": [],
-        "contenido_lore": "Kayn Colins es actualmente Cadete de la lspd de los Santos. \n\nTras la realización de la academia está realizando su labor como cadete junto a oficiales.\n\n# Familia\nMadre: María Jiménez (Española)\nPadre: Kevin Colins (Inglés/Americano)\n\n# Pasado\nKayn creció en una familia ....",
+        "contenido_lore": "Kayn Colins es actualmente Cadete de la lspd de los Santos. \n\nTras la realización de la academia está realizando su labor como cadete junto a oficiales.\n\n# Familia\nMadre: María Jiménez (Española)\nPadre: Kevin Colins (Estadounidense)\n\n# Pasado\nKayn nació y se crió en España, empapándose de la cultura, costumbres y el idioma local de su madre, María. Su padre, Kevin Collins, un ciudadano estadounidense, se había asentado en España años atrás, pero siempre mantuvo vivas sus raíces americanas en casa, enseñándole a Kayn el inglés desde pequeño.\n\nTras 6 años viviendo en Estados Unidos y ayudando a su familia a establecerse, Kayn ha asimilado el choque cultural. Ver los contrastes de la sociedad americana y la delincuencia de ciudades como Los Santos despertó en él la vocación de servicio. Decidió postular a la academia de policía para proteger el nuevo hogar de su familia y encontrar su propio propósito en este país.\n\nA los 22 años, debido a una gran oportunidad laboral para Kevin o por el deseo de este de regresar a su país natal, la familia entera tomó la decisión de trasladarse a los Estados Unidos. Para Kayn fue dejar toda su vida atrás (amigos, estudios, costumbres) para empezar de cero en un entorno completamente nuevo, aunque con la ventaja de ya dominar el idioma de su padre.",
         "imagenes": [],
         "url_discord": "https://discord.com/channels/1525578054330482688/1537618185711525888"
     }
